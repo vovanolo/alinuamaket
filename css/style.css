@@ -134,3 +134,23 @@ header{
 }
 
 /* end of header */
+
+
+/* the news section */
+.section_news{
+    margin-top: 150px;
+    height: 500px;
+}
+.card img{
+    height: 255px;
+    display: block;
+}
+.section_news h1{
+    margin-bottom: 44px;
+}
+.card_content_box{
+    position: relative !important;
+    top: 0;
+
+}
+/* end of news section */
