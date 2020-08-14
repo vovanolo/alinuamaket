@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alin</title>
   <!-- CSS only -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -74,14 +75,6 @@
         <!-- slider must be in absolute!! -->
 
       </div>
-      <div class="row hero_main_link">
-        <div class="col offset-sm-1">
-          <a href="#" class="text_align_center">
-            <span>Обрати автомобіль</span>
-            <img src="./images/Ellipse 20.svg" alt="">
-          </a>
-        </div>
-      </div>
     </div>
 
     <div class="slider_hero_absolute">
@@ -135,29 +128,104 @@
 
   <section class="section_news">
     <div class="container">
-      <h1>
-        Новини
-      </h1>
-      <div class="card-deck">
-        <div class="card">
-          <img src="./images/Rectangle 3.png" class="card-img-top" alt="...">
-          <div class="card_content_box">
-            <p>Оренда авто</p>
-            <p>Для юридичних лиць</p>
+      <div class="row">
+        <div class="col">
+          <h2>
+            Новини
+          </h2>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3">
+        <div class="col">
+          <div class="card card_relative">
+            <div class="img_responsive_container news_card_img">
+              <img src="./images/Rectangle 3.png" alt="...">
+            </div>
+            <div class="card_content_box">
+              <p class="card_content">Оренда авто<br><span>Для юридичних лиць</span></p>
+            </div>
           </div>
         </div>
-        <div class="card">
-          <img src="./images/Rectangle 4.png" class="card-img-top" alt="...">
+        <div class="col">
+          <div class="card card_relative">
+            <div class="img_responsive_container news_card_img">
+              <img src="./images/Rectangle 4.png" alt="...">
+            </div>
+            <div class="card_content_box">
+              <p class="card_content">Оренда авто<br><span>З водієм</span></p>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <img src="./images/Rectangle 5.png" class="card-img-top" alt="...">
+        <div class="col">
+          <div class="card card_relative">
+            <div class="img_responsive_container news_card_img">
+              <img src="./images/Rectangle 5.png" alt="...">
+            </div>
+            <div class="card_content_box">
+              <p class="card_content">Новинки<br><span>Новий асортимент</span></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- end of the news section -->
+  <!--the begin of how it works section   -->
+  <section class="how_it_works">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h3>Як це працює?</h3>
+          <h2>Орендувати авто легше ніж ви думаєте</h2>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-1 news_col_empty"></div>
+        <div class="col-lg col-md-12">
+          <div class="icon_box">
+            <img class="icon_absolute" src="./images/location.png" alt="">
+          </div>
+          <div class="icon_description icon_description_left">
+            <h3>Оберіть локацію</h3>
+            <p>Вкажіть зручне для вас місце</p>
+          </div>
+        </div>
+        <div class="col-xl-2 col_line">
+          <div class="line_position_first">
+            <img src="./images/Line 3.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg col-md-12">
+          <div class="icon_box">
+            <img class="icon_absolute" src="./images/post.png" alt="">
+          </div>
+          <div class="icon_description icon_description_center">
+            <h3>Оберіть локацію</h3>
+            <p>Вкажіть зручне для вас місце</p>
+          </div>
+        </div>
+        <div class="col-xl-2 col_line">
+          <div class="line_position_last">
+            <img src="./images/Line 2.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg col-md-12">
+          <div class="icon_box">
+            <img class="icon_absolute" src="./images/car.png" alt="">
+          </div>
+          <div class="icon_description icon_description_right">
+            <h3>Оберіть локацію</h3>
+            <p>Вкажіть зручне для вас місце</p>
+          </div>
+        </div>
+        <div class="col-1 news_col_empty"></div>
+      </div>
+    </div>
+
+  </section>
+  <!-- the end of how it works section -->
 
 
 
