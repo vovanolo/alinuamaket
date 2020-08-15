@@ -114,6 +114,10 @@ header{
     line-height: 21px;
     margin-top: 44px;
 }
+.main_button:hover{
+    background-color: #212121;
+    transition: 0.5s background ease-in-out;
+}
 /* end of header */
 
 
@@ -218,3 +222,32 @@ header{
     color: #9E9E9E;
 }
 /* the end of how it works section */
+
+
+/* the loyal section */
+.program_loyal{
+    margin-top: 200px;
+}
+.icon_cirle{
+    width: 68px;
+    height: 68px;
+    background: #F2F2F2;
+    position: relative;
+    margin-right: 20px;
+    border-radius:50%;
+}
+.info_line{
+    display: flex;
+    position: relative;
+    left: 0;
+    margin-top: 30px;
+}
+.second_loyal{
+    margin-top: 140px;
+}
+/* the end of loyal section */
+/* slider section */
+.slider_section{
+    margin-top: 150px;
+}
+/* end of slider section */
