@@ -1,17 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/rent.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- CSS only -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="./css/rent.css" />
 </head>
+
 <body>
-    
-    <!-- the begin of menu -->
+  <!-- the begin of menu -->
+  <nav class="navbar navbar-expand-md navbar-light sticky-top">
+    <div class="container">
+      <a href="#" class="navbar-brand">
+        <img src="./images/asset 3 1.png" alt="" />
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto ml-auto">
+          <li class="nav-item active mx-xl-4 mx-md-3">
+            <a href="#" class="nav-link">Прокат <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active mx-xl-4 mx-md-3">
+            <a href="#" class="nav-link">Трансфери</a>
+          </li>
+          <li class="nav-item active mx-xl-4 mx-md-3">
+            <a href="#" class="nav-link">Асистенс</a>
+          </li>
+          <li class="nav-item active mx-xl-4 mx-md-3">
+            <a href="#" class="nav-link">FAQ</a>
+          </li>
+          <li class="nav-item active mx-xl-4 mx-md-3">
+            <a href="#" class="nav-link">Контакти</a>
+          </li>
+          <li class="nav-item dropdown mx-xl-4 mx-md-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              UA
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">EN</a>
+              <a class="dropdown-item" href="#">RU</a>
+            </div>
+          </li>
+          <li class="nav-item mx-xl-4 mx-md-3">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="nav_button">
+                Зв’язок
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- end of menu -->
 
-    <!-- end of menu -->
+  <!-- the begin of the section -->
+  <section>
+    <div class="container">
+      <div class="row car_nav_diseapear">
+        <div class="col-lg-2">
+          <a class="all_car" href="#">Всі автомобілі</a><span>/</span>
+        </div>
+        <div class="col-lg-2"><a href="#">Преміум</a><span>/</span></div>
+        <div class="col-lg-2"><a href="#">Позашляховик</a><span>/</span></div>
+        <div class="col-lg-2"><a href="#">Кабріолет</a><span>/</span></div>
+        <div class="col-lg-2"><a href="#">Конфорт</a><span>/</span></div>
+        <div class="col-lg-2"><a href="#">Економ</a></div>
+      </div>
+      <div class="row car_nav_apear">
+        <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Всі автомобілі
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Преміум</a>
+          <a class="dropdown-item" href="#">Позашляховик</a>
+          <a class="dropdown-item" href="#">Кабріолет</a>
+          <a class="dropdown-item" href="#">Конфорт</a>
+          <a class="dropdown-item" href="#">Економ</a>
+        </div>
+      </div>
 
+      <!-- the begin of the cards -->
+      <div class="card-deck car_cards">
+        <div class="card">
+          <img src="./images/Rectangle 9.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">BMW S SERIES SEDAN (G30)</h5>
+            <p class="card-text">
+              2018
+            </p>
+            <img src="./images/Vector.png" alt="" />
+            <span>4 місця</span>
+            <span class="text_button"><text>90€</text> / в день</span>
+            <br />
+            <img src="./images/Vector (1).png" alt="" />
+            <span>Кондиціонер
+              <button type="button" class="nav_button">
+                Детальніше
+              </button></span>
+            <br />
+            <img src="./images/Vector (2).png" alt="" />
+            <span>1000€</span>
 
+          </div>
+        </div>
+        <div class="card">
+          <img src="./images/Rectangle 8.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">NISSAN SENTRA</h5>
+            <p class="card-text">
+              2016
+            </p>
+            <img src="./images/Vector.png" alt="" />
+            <span>4 місця</span>
+            <span class="text_button"><text>40€</text> / в день</span>
+            <br />
+            <img src="./images/Vector (1).png" alt="" />
+            <span>Кондиціонер
+              <button type="button" class="nav_button">
+                Детальніше
+              </button></span>
+            <br />
+            <img src="./images/Vector (2).png" alt="" />
+            <span>500€</span>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./images/Rectangle 8 (1).png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">VOLKSWAGEN JETTA</h5>
+            <p class="card-text">
+              2016
+            </p>
+            <img src="./images/Vector.png" alt="" />
+            <span>5 місця</span>
+            <span class="text_button"><text>40€</text> / в день</span>
+            <br />
+            <img src="./images/Vector (1).png" alt="" />
+            <span>Кондиціонер
+              <button type="button" class="nav_button">
+                Детальніше
+              </button></span>
+            <br />
+            <img src="./images/Vector (2).png" alt="" />
+            <span>500€</span>
+
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- end of cards -->
+  <!-- the end of the section -->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
+
 </html>

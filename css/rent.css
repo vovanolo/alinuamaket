@@ -1,3 +1,113 @@
-/* menu style */
+body {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
 
+/* menu style */
+nav {
+  height: 100%;
+  width: 100%;
+  font-size: 18px;
+  color: #212121;
+  background: #f2f2f2;
+}
+
+a > img {
+  padding-right: 9em;
+}
+
+.nav_button {
+  height: 40px;
+  width: 165px;
+  background: #9e9e9e;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+  border-color: white;
+}
+
+.nav_button:hover {
+  color: white;
+  background: #212121;
+  transition: 0.5s background ease-in-out;
+}
 /* end of menu style */
+
+/* section style */
+section {
+  margin-top: 150px;
+  font-size: 16px;
+}
+
+div > a {
+  color: #212121;
+}
+
+div > a:hover {
+  color: #212121;
+}
+
+.all_car {
+  color: #9e9e9e;
+}
+
+.all_car:hover {
+  color: #9e9e9e;
+}
+
+/* cards style */
+.car_cards {
+  margin-top: 59px;
+}
+
+.car_cards .card {
+  border: none;
+}
+
+.car_cards button {
+  position: absolute;
+  height: 47px;
+  width: 165px;
+  margin-left: 40px;
+}
+
+.card-body > h5 {
+  color: #212121;
+  font-size: 24px;
+}
+
+.card-body > p {
+  color: #212121;
+  font-size: 18px;
+}
+
+.card-body > img {
+  padding-right: 12px;
+}
+
+.text_button {
+  padding-left: 80px;
+  color: #212121;
+  font-size: 22px;
+}
+
+span > text {
+  font-size: 26px;
+  color: #9e9e9e;
+}
+/* end of cards style */
+
+/* end of section style */
+
+.car_nav_apear {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .car_nav_diseapear {
+    display: none;
+  }
+  .car_nav_apear {
+    display: block;
+  }
+}
