@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Hero from '../components/Hero';
+
 export default function Home() {
   const { t, i18n } = useTranslation();
 
@@ -11,8 +13,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      {t('Привіт, Світ!')}
-    </div>
+    <>
+      <Hero />
+    </>
   );
 }
