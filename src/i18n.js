@@ -4,14 +4,22 @@ import { initReactI18next } from "react-i18next";
 // the translations
 // (tip move them in a JSON file and import them)
 const resources = {
-  en: {
-    translation: {
-      "Hello, World": "Hello, World!"
-    }
-  },
   ua: {
     translation: {
-      "Hello, World": "Привіт, Світ!"
+      "Прокат": "Прокат",
+      "Трансфери": "Трансфери",
+      "Асистенс": "Асистенс",
+      "Контакти": "Контакти",
+      "Привіт, Світ!": "Привіт, Світ!"
+    }
+  },
+  ru: {
+    translation: {
+      "Прокат": "Прокат",
+      "Трансфери": "Трансферы",
+      "Асистенс": "Асистенс",
+      "Контакти": "Контакты",
+      "Привіт, Світ!": "Привет, Мир!"
     }
   }
 };
