@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import car_1 from '../images/news/car_1.jpg';
-import car_2 from '../images/news/car_2.jpg';
-import car_3 from '../images/news/car_3.jpg';
-
 import NewsCard from '../components/NewsCard';
 
 import '../styles/news.css';
+
+import car_1 from '../images/news/car_1.jpg';
+import car_2 from '../images/news/car_2.jpg';
+import car_3 from '../images/news/car_3.jpg';
 
 export default function News() {
   const [language, setLanguage] = useState('ua');

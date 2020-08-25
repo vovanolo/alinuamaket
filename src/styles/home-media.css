@@ -1,4 +1,4 @@
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .slider__container_hero {
     max-width: 60vw;
   }
@@ -6,9 +6,17 @@
   .slider__container_hero:before {
     left: 30%;
   }
+
+  .rent-step__line {
+    width: 15%;
+  }
+
+  .rent-step__line-icon {
+    width: 150%;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hero-cta-box {
     padding-top: 75px;
     height: unset;
@@ -26,6 +34,10 @@
 
   .news-title {
     margin-top: 500px;
+  }
+
+  .rent-step__line {
+    display: none;
   }
 }
 
