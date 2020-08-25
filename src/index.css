@@ -14,7 +14,9 @@ body {
 
 h1, h2, h3, h4, p {
   font-weight: 400;
-  line-height: 1.7;
+  margin: 0;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 h1 {
@@ -31,6 +33,11 @@ h3 {
 
 h4 {
   font-size: 1.1rem;
+}
+
+h5, h6 {
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 p {
@@ -63,6 +70,8 @@ p {
 
 .img-responsive {
   display: block;
+  max-height: 100%;
+  max-width: 100%;
   width: 100%;
   height: 100%;
   object-position: center;
@@ -74,4 +83,8 @@ p {
 
 .img-responsive_contain {
   object-fit: contain;
+}
+
+.img-responsive_right {
+  object-position: right;
 }

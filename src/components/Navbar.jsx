@@ -13,7 +13,7 @@ export default function Navbar() {
   }, [language]);
 
   function changeLanguage(newLanguage) {
-    const newLang = newLanguage || 'ua';
+    const newLang = newLanguage;
     localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);

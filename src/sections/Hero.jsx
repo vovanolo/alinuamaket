@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
-import heroStyles from '../styles/Hero.module.css';
+
 import '../styles/hero.css';
 
 import slide01 from '../images/Slider/01_Car.png';
@@ -21,7 +21,7 @@ export default function Hero() {
   }, [language]);
 
   function changeLanguage(newLanguage) {
-    const newLang = newLanguage || 'ua';
+    const newLang = newLanguage;
     localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
@@ -30,7 +30,7 @@ export default function Hero() {
   return (
     <>
       <Swiper
-        className={heroStyles.sliderContainer}
+        className="slider__container_hero"
         loop
         autoplay={{
           delay: 5000
@@ -42,31 +42,31 @@ export default function Hero() {
         onSwiper={(swiper) => console.log(swiper)}
       >
         <SwiperSlide>
-          <img className="img-responsive img-responsive_contain" src={slide01} alt="Slide 1" />
+          <img className="img-responsive img-responsive_contain img-responsive_right" src={slide01} alt="Slide 1" />
         </SwiperSlide>
         <SwiperSlide>
-          <img className="img-responsive img-responsive_contain" src={slide01} alt="Slide 2" />
+          <img className="img-responsive img-responsive_contain img-responsive_right" src={slide01} alt="Slide 2" />
         </SwiperSlide>
         <SwiperSlide>
-          <img className="img-responsive img-responsive_contain" src={slide01} alt="Slide 3" />
+          <img className="img-responsive img-responsive_contain img-responsive_right" src={slide01} alt="Slide 3" />
         </SwiperSlide>
       </Swiper>
+      
       <div className="container">
-        <div className={heroStyles.ctaBox}>
+        <div className="hero-cta-box">
           <div className="row">
             <div className="col">
-              <div className={heroStyles.titleBox}>
-                <h1 className="hero__title">
-                  <span className="text_black">{t('Прокат нових авто')}</span>
-                  <br />
-                  <span className="text_grey">{t('у Львові')}</span>
+              <div className="hero-cta-box__title-box">
+                <h1>
+                  <span className="text_black hero-cta-box__title">{t('Прокат нових авто')}</span>
+                  <span className="text_grey hero-cta-box__subtitle">{t('у Львові')}</span>
                 </h1>
               </div>
             </div>
           </div>
 
           <div className="row">
-            <div className="col-xl-3">
+            <div className="col-xl-3 col-lg-4 col-md-5 col-sm-7 col">
               <button className="btn_main">
                 {t('Орендувати')}
               </button>

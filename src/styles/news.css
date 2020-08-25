@@ -1,0 +1,29 @@
+.news-title {
+  margin-top: 150px;
+  margin-bottom: 44px;
+}
+
+.news-card {
+  max-height: 255px;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-card__info-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--color-grey);
+  border-top-left-radius: 20px;
+  padding: 12px 50px 10px 38px;
+}
+
+.news-card__title {
+  color: var(--color-white);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.news-card__description {
+  color: var(--color-black);
+}
