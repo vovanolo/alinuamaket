@@ -1,0 +1,44 @@
+.rent-subtitle {
+  margin-top: 150px;
+}
+
+.rent-title {
+  margin-top: 15px;
+  margin-bottom: 92px;
+}
+
+.rent-step__icon-container {
+  text-align: center;
+}
+
+.rent-step__description {
+  text-align: center;
+}
+
+.rent-step__title {
+  font-size: 1.6rem;
+}
+
+.rent-step__line {
+  width: 10%;
+  position: relative;
+}
+
+.rent-step__line:not(.rent-step__line_inverted) {
+  margin-top: 30px;
+}
+
+.rent-step__line_inverted {
+  margin-top: 10px;
+}
+
+.rent-step__line_inverted > .rent-step__line-icon {
+  transform: rotateZ(180deg) translateX(50%) !important;
+}
+
+.rent-step__line-icon {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+}
