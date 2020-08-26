@@ -14,6 +14,17 @@
   .rent-step__line-icon {
     width: 150%;
   }
+
+  .loyalty__car {
+    position: unset;
+    transform: none;
+    margin-top: 25px;
+    margin-bottom: 50px;
+  }
+
+  .loyalty__row {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 767px) {

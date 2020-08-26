@@ -8,7 +8,7 @@ import 'swiper/components/pagination/pagination.scss';
 
 import '../styles/hero.css';
 
-import slide01 from '../images/Slider/01_Car.png';
+import slide01 from '../images/slider/01_Car.png';
 
 SwiperCore.use([Pagination, Autoplay]);
 

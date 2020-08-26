@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Hero from '../sections/Hero';
 import News from '../sections/News';
 import Rent from '../sections/Rent';
+import Loyalty from '../sections/Loyalty';
 
 import '../styles/home-media.css';
 
@@ -21,6 +22,7 @@ export default function Home() {
       <Hero />
       <News />
       <Rent />
+      <Loyalty />
     </>
   );
 }

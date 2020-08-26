@@ -1,0 +1,26 @@
+.loyalty__title {
+  margin-top: 112px;
+  margin-bottom: 50px;
+}
+
+.loyalty__row {
+  margin-top: 50px;
+}
+
+.loyalty__car {
+  position: absolute;
+}
+
+.loyalty__car_left {
+  left: -100%;
+  right: 100%;
+}
+
+.loyalty__car_right {
+  left: 100%;
+  right: -100%;
+}
+
+.loyalty__card {
+  margin-bottom: 50px;
+}
