@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
+import RentWithDriver from './pages/RentWithDriver';
 
 export default function Router() {
   return (
@@ -14,6 +15,9 @@ export default function Router() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/rent_with_driver">
+          <RentWithDriver />
         </Route>
 
         <Route path="*">
