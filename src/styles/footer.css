@@ -1,0 +1,26 @@
+.footer {
+  background-color: var(--color-grey_light);
+  padding: 73px 0;
+  margin-top: 100px;
+}
+
+.footer__menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__social-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__up-btn {
+  border: none;
+  background: none;
+}

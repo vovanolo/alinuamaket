@@ -5,6 +5,7 @@ import Hero from '../sections/Hero';
 import News from '../sections/News';
 import Rent from '../sections/Rent';
 import Loyalty from '../sections/Loyalty';
+import Partners from '../sections/Partners';
 
 import '../styles/home-media.css';
 
@@ -23,6 +24,7 @@ export default function Home() {
       <News />
       <Rent />
       <Loyalty />
+      <Partners />
     </>
   );
 }
