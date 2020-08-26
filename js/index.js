@@ -37,3 +37,7 @@ $('#navbarNavDropdown').on('show.bs.collapse', () => {
 $('#navbarNavDropdown').on('hide.bs.collapse', () => {
   navbar.classList.remove('bg-light');
 });
+
+
+
+
