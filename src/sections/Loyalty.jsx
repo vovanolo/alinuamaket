@@ -109,6 +109,12 @@ export default function Loyalty() {
         </div>
       </div>
 
+      <div className="row">
+        <div className="col-xl-3 col-lg-4 col-md-5">
+          <button className="btn_main">{t('Орендувати')}</button>
+        </div>
+      </div>
+
     </div>
   );
 }
