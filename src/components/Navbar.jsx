@@ -31,7 +31,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="mainNavbar">
           <ul className="navbar-nav ml-auto mr-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">{t('Прокат')}</Link>
+              <Link to="/rent" className="nav-link">{t('Прокат')}</Link>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-link">{t('Трансфери')}</Link>
