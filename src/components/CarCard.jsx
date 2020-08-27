@@ -2,7 +2,13 @@ import React from "react";
 
 import "../styles/car_card.css";
 
-import car from "../images/sonata.png";
+import place from '../images/Places.svg';
+import wind from '../images/wind.svg';
+import group from '../images/Group 388.svg';
+
+
+
+
 
 export default function CarCard({ card_head, year, number, air, price, dayPrice, photo }) {
     return (
@@ -17,23 +23,23 @@ export default function CarCard({ card_head, year, number, air, price, dayPrice,
                         <div className="row">
                             <div className="col-lg-6">
                                 <div>
-                                    {/* <img src="./images/Vector.png" alt="places" /> */}
+                                    <img src={place}  alt="places" />
                                     <span>{number}</span>
                                 </div>
                                 
                                 <div>
-                                    {/* <img src="./images/Vector (1).png" alt="konduk" /> */}
+                                    <img src={wind} alt="konduk" />
                                     <span>{air}</span>
                                 </div>
 
                                 <div>
-                                    {/* <img src="./images/Vector (2).png" alt="price" /> */}
+                                    <img src={group} alt="price" />
                                     <span>{price}</span>
                                 </div>
                             </div>
                             <div className="col-lg-6">
                                 <span className="text_button">
-                                    {dayPrice}€ / в день
+                                    <span className="text_grey">{dayPrice}€</span> / в день
                                 </span>
                                 <button type="button" className="btn_main">
                                     Детальніше

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import '../styles/rent_page.css';
 
-import car from '../images/sonata.png';
+import car from '../images/slider/01_Car.png';
 import CarCard from '../components/CarCard';
 
 export default function Rent() {
@@ -30,7 +30,8 @@ export default function Rent() {
             year: '2018',
             number: '5 місць',
             air: 'кондиціонер',
-            price: '5000€',
+            price: 5000,
+            dayPrice: Math.round(5000 / 31),
             photo: car
         },
         {
@@ -39,6 +40,7 @@ export default function Rent() {
             number: '5 місць',
             air: 'кондиціонер',
             price: '5000€',
+            dayPrice: Math.round(5000 / 31),
             photo: car
         },
         {
@@ -47,6 +49,7 @@ export default function Rent() {
             number: '5 місць',
             air: 'кондиціонер',
             price: '5000€',
+            dayPrice: Math.round(5000 / 31),
             photo: car
         },
         {
@@ -55,6 +58,7 @@ export default function Rent() {
             number: '5 місць',
             air: 'кондиціонер',
             price: '5000€',
+            dayPrice: Math.round(5000 / 31),
             photo: car
         },
         {
@@ -63,6 +67,7 @@ export default function Rent() {
             number: '5 місць',
             air: 'кондиціонер',
             price: '5000€',
+            dayPrice: Math.round(5000 / 31),
             photo: car
         }
         
@@ -72,10 +77,10 @@ export default function Rent() {
     return (
         <div className='rent_page'>
             <div className="container">
-                <div className="row car_nav_diseapear">
+                <div className="row align-items-center car_nav_diseapear">
                     <div className="col-xl-9">
                         <div className="rent-nav__filters">
-                            <Link to="/filter" className="rent-nav__filter-item rent-nav__filter-item_active">Всі автомобілі</Link>
+                            <Link to="/filter" className="rent-nav__filter-item text_grey">Всі автомобілі</Link>
                             <span>/</span>
                             <Link to="/filter" className="rent-nav__filter-item">Преміум</Link>
                             <span>/</span>
@@ -90,7 +95,7 @@ export default function Rent() {
                     </div>
                     <div className="col-xl-3">
                         <select className="input">
-                            <option>1</option>
+                            <option>{t('Все')}</option>
                             <option>2</option>
                             <option>3</option>
                         </select>
@@ -115,13 +120,14 @@ export default function Rent() {
 
             <div className="container">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-                    {CardData.map(({ card_head, year, number, air, price, photo }) => (
+                    {CardData.map(({ card_head, year, number, air, price, dayPrice, photo }) => (
                         <CarCard
                         card_head={card_head}
                         year={year}
                         number={number}
                         air={air}
                         price={price}
+                        dayPrice={dayPrice}
                         photo={photo}
                         />
                     ))}

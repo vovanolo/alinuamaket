@@ -43,7 +43,7 @@ export default function Navbar() {
               <Link to="/" className="nav-link">FAQ</Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-link">{t('Контакти')}</Link>
+              <Link to="/contacts" className="nav-link">{t('Контакти')}</Link>
             </li>
           </ul>
 
