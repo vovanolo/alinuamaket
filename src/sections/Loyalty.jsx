@@ -87,6 +87,7 @@ export default function Loyalty() {
               icon={icon}
               iconAlt={iconAlt}
               description={description}
+              margin={5}
             />
           ))}
         </div>

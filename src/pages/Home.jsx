@@ -14,7 +14,6 @@ export default function Home() {
 
   useEffect(() => {
     const newLanguage = localStorage.getItem('lang');
-    console.log(newLanguage);
     i18n.changeLanguage(newLanguage);
   }, []);
 
