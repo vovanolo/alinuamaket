@@ -1,71 +1,92 @@
-.rent_with_driver{
-    margin-top: 150px;
+.rent_with_driver {
+  margin-top: 150px;
 }
 
-.rent_form{
-    border: 1px solid #9E9E9E;
-    border-radius: 10px;
-    padding: 41px 48px 41px 48px;
-    position: relative;
-}
-.transf_border{
-    border: 1px solid #9E9E9E;
-    border-radius: 10px;
-    height: 45px;
-}
-.transf-location{
-    height: 110px;
-    border: 1px solid #9E9E9E;
-    border-radius: 5px;
-    margin-top: 15px;
-    padding: 18px 0 0 25px;
-}
-.transf-location p{
-    font-size: 14px;
-    line-height: 16px;
-    color: #9E9E9E;
+.rent_form {
+  border: 1px solid #9E9E9E;
+  border-radius: 10px;
+  padding: 41px 48px 41px 48px;
+  position: relative;
 }
 
-.transf_date{
-    border: 1px solid #9E9E9E;
-    border-radius: 5px;
-    height: 100px;
-    margin-top: 30px;
-    padding: 20px 0 0 25px;
+.transf_border {
+  border: 1px solid #9E9E9E;
+  border-radius: 10px;
+  height: 45px;
 }
-.transf_date p{
-    font-size: 14px;
-    line-height: 16px;
-    color: #9E9E9E;
-    margin-bottom: 10px;
+
+.transf-location {
+  height: 110px;
+  border: 1px solid #9E9E9E;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 18px 25px;
 }
-.transf_input{
-    border:none;
-    font-size: 18px;
-    line-height: 21px;
-    color: #212121;
-    margin: 10px 0 10px 0;
+
+.transf-location p {
+  font-size: 14px;
+  line-height: 16px;
+  color: #9E9E9E;
 }
-.rent_form button{
-    display: block;
-    position: absolute;
-    border:none;
-    width: 107px;
-    height: 34px;
-    background: #9E9E9E;
-    border-radius: 10px;
-    font-size: 18px;
-    line-height: 21px;
-    color: #FFFFFF;
-    bottom: -4%;
-    right: 6%;
+
+.transf_date {
+  border: 1px solid #9E9E9E;
+  border-radius: 5px;
+  height: 100px;
+  margin-top: 30px;
+  padding: 20px 0 0 25px;
 }
+
+.transf_date p {
+  font-size: 14px;
+  line-height: 16px;
+  color: #9E9E9E;
+  margin-bottom: 10px;
+}
+
+.transf_input {
+  border: none;
+  font-size: 1rem;
+  line-height: 21px;
+  color: var(--color-black);
+  width: 100%;
+}
+
+.transf_input::placeholder {
+  color: var(--color-black);
+}
+
+.transf_time_input {
+  border: none;
+  font-size: 1rem;
+}
+
+.rent_form button {
+  display: block;
+  position: absolute;
+  border:none;
+  width: 107px;
+  height: 34px;
+  background: var(--color-grey);
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--color-white);
+  bottom: -4%;
+  right: 6%;
+}
+
+
 [type="date"] {
-    background:#fff url(../images/calendar.png)  97% 50% no-repeat ;
-  }
-  [type="date"]::-webkit-inner-spin-button {
-    display: none;
-  }
-  [type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-  }
+  background:#fff url(../images/rent_with_driver/calendar_no_bg.svg) 97% 50% no-repeat;
+}
+
+
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}

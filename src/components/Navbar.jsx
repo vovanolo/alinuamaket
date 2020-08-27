@@ -34,7 +34,7 @@ export default function Navbar() {
               <Link to="/" className="nav-link">{t('Прокат')}</Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-link">{t('Трансфери')}</Link>
+              <Link to="/rent_with_driver" className="nav-link">{t('Трансфери')}</Link>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-link">{t('Асистенс')}</Link>
