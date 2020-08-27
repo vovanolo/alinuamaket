@@ -45,6 +45,19 @@ p {
   font-size: 1rem;
 }
 
+.input {
+  width: 100%;
+  padding: 8px 17px;
+  border: 1px solid var(--color-grey);
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--color-black);
+}
+
+.input::placeholder {
+  color: var(--color-grey);
+}
+
 .text_black {
   color: var(--color-black);
 }
