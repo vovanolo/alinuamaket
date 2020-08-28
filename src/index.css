@@ -106,3 +106,7 @@ a.text_black:hover {
 .img-responsive_right {
   object-position: right;
 }
+
+.navbar-offset {
+  margin-top: 130px;
+}

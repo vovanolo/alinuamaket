@@ -1,0 +1,15 @@
+.breadcumbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.breadcumbs__item {
+  display: inline-block;
+}
+
+.breadcumbs__item:not(:last-child)::after {
+  content: '/';
+  margin: 0 1rem;
+}

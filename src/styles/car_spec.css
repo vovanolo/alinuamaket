@@ -1,0 +1,19 @@
+.car-spec {
+  margin-bottom: 15px;
+}
+
+.car-spec__title {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.car-spec__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.car-spec__item {
+  font-size: 0.8rem;
+}

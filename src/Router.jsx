@@ -10,6 +10,7 @@ import RentWithDriver from './pages/RentWithDriver';
 import Rent from './pages/Rent';
 import Reserv from './pages/Reserv';
 import Contacts from './pages/Contacts';
+import CarInfo from './pages/CarInfo';
 
 export default function Router() {
   return (
@@ -30,6 +31,9 @@ export default function Router() {
         </Route>
         <Route exact path="/contacts">
           <Contacts />
+        </Route>
+        <Route exact path="/car_info">
+          <CarInfo />
         </Route>
 
         <Route path="*">
