@@ -54,12 +54,13 @@
   color: var(--color-black);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
   .switch__input-container {
-    flex-direction: column;
-    justify-content: flex-start;
+    display: block;
   }
+}
 
+@media (max-width: 991px) {
   .switch__box {
     max-width: calc(50% - 10px);
   }
