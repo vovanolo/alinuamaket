@@ -76,11 +76,19 @@ a.text_black:hover {
   width: 100%;
   display: inline-block;
   transition: 0.1s ease-in-out;
+  text-align: center;
+  text-decoration: none;
   
   border: none;
   border-radius: 10px;
   background-color: var(--color-grey);
   color: var(--color-white);
+}
+
+.btn_main:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-decoration: none;
 }
 
 .btn_slim {
@@ -89,20 +97,6 @@ a.text_black:hover {
 
 .btn_nav {
   padding: 0.9rem 1.1rem;
-}
-
-.btn_main > a {
-  color: var(--color-white);
-  text-decoration: none;
-}
-
-.btn_main:hover {
-  background-color: var(--color-black);
-}
-
-.btn_main:hover > a {
-  color: var(--color-white);
-  text-decoration: none;
 }
 
 .img-responsive {

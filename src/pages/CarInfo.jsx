@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import '../styles/breadcumbs.css';
 import '../styles/car_info.css';
@@ -157,7 +157,7 @@ export default function CarInfo() {
           </div>
           <div className="row justify-content-center">
             <div className="col-lg-12 col-sm-8 col">
-              <button type="button" className="btn_main">{t('Орендувати')}</button>
+              <Link to="/reserv" className="btn_main">{t('Орендувати')}</Link>
             </div>
           </div>
         </div>

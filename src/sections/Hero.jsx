@@ -66,9 +66,7 @@ export default function Hero() {
 
           <div className="row">
             <div className="col-xl-3 col-lg-4 col-md-5 col-sm-7 col">
-              <button className="btn_main">
-                <Link className="link_white" to="/rent">{t('Орендувати')}</Link>
-              </button>
+              <Link to="/rent" className="btn_main">{t('Орендувати')}</Link>
             </div>
           </div>
           

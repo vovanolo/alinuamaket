@@ -78,7 +78,7 @@ export default function Rent() {
         <div className='rent_page'>
             <div className="container">
                 <div className="row align-items-center car_nav_diseapear">
-                    <div className="col-xl-9">
+                    <div className="col-lg-9">
                         <div className="rent-nav__filters">
                             <Link to="/filter" className="rent-nav__filter-item text_grey">Всі автомобілі</Link>
                             <span>/</span>
@@ -93,7 +93,7 @@ export default function Rent() {
                             <Link to="/filter" className="rent-nav__filter-item">Економ</Link>
                         </div>
                     </div>
-                    <div className="col-xl-3">
+                    <div className="col-lg-3">
                         <select className="input">
                             <option>{t('Все')}</option>
                             <option>2</option>
@@ -101,17 +101,32 @@ export default function Rent() {
                         </select>
                     </div>
                 </div>
-                <div className="row car_nav_apear">
-                    <a className="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Всі автомобілі
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a className="dropdown-item" href="#">Преміум</a>
-                        <a className="dropdown-item" href="#">Позашляховик</a>
-                        <a className="dropdown-item" href="#">Кабріолет</a>
-                        <a className="dropdown-item" href="#">Конфорт</a>
-                        <a className="dropdown-item" href="#">Економ</a>
+                <div className="row align-items-center mb-4 car_nav_apear">
+                    <div className="col-6">
+                        <a
+                            className="dropdown-toggle"
+                            href="#"
+                            id="navbarDropdownMenuLink"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"
+                        >
+                            Всі автомобілі
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a className="dropdown-item" href="#">Преміум</a>
+                            <a className="dropdown-item" href="#">Позашляховик</a>
+                            <a className="dropdown-item" href="#">Кабріолет</a>
+                            <a className="dropdown-item" href="#">Конфорт</a>
+                            <a className="dropdown-item" href="#">Економ</a>
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        <select className="input">
+                            <option>{t('Все')}</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
                     </div>
                 </div>
             </div>

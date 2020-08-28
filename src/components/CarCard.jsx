@@ -43,9 +43,7 @@ export default function CarCard({ name, year, placesCount, air, price, dayPrice,
                             <span className="text_button">
                                 <span className="text_grey">{dayPrice}€</span> / в день
                             </span>
-                            <button type="button" className="btn_main">
-                                <Link to="/car_info/1">Детальніше</Link>
-                            </button>
+                            <Link to="/car_info/1" className="btn_main">Детальніше</Link>
                         </div>
                     </div>
                 </div>

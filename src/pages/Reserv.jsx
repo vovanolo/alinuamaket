@@ -8,6 +8,7 @@ import car from '../images/slider/01_Car.png';
 import SwitchLocation from '../components/SwitchLocation';
 import SwitchTime from '../components/SwitchTime';
 import Option from '../components/Option';
+import { Link } from 'react-router-dom';
 
 export default function Reserv() {
   const [language, setLanguage] = useState('ua');
@@ -160,7 +161,7 @@ export default function Reserv() {
 
           <div className="row">
             <div className="col-md-10">
-              <button type="button" className="btn_main">{t('Орендувати')}</button>
+              <Link to="/rent_with_driver" className="btn_main">{t('Орендувати')}</Link>
             </div>
           </div>
         </div>
