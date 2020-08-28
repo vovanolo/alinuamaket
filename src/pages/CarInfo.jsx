@@ -66,7 +66,7 @@ export default function CarInfo() {
       </div>
 
       <div className="row">
-        <div className="col-xl-3">
+        <div className="col-lg-3">
           <div className="row">
             <div className="col">
               <h3 className="text_black">{t('Загальні технічні характеристики')}</h3>
@@ -81,11 +81,11 @@ export default function CarInfo() {
             </div>
           </div>
         </div>
-        <div className="col-xl-6">
+        <div className="col-lg-6 mb-3">
           <div className="d-flex flex-column justify-content-between h-100">
             <div className="row">
               <div className="col">
-                <img src={car1} alt="car1" />
+                <img className="img-responsive img-responsive_cover" src={car1} alt="car1" />
               </div>
             </div>
 
@@ -102,54 +102,61 @@ export default function CarInfo() {
             </div>
           </div>
         </div>
-        <div className="col-xl-3">
-          <h3 className="card-title">BMW S SERIES SEDAN (G30)</h3>
-          <h4>530E IPERFORMANCE</h4>
-          <h4 className="card-text">2018</h4>
-          <ul className="car-info__info-list">
-            <li className="car-info__info-item">
-              <img src={place} alt="places" />
-              <span className="car-info__info-item-title">4 місця</span>
-            </li>
+        <div className="col-lg-3">
+          <div className="row">
+            <div className="col">
+              <h3 className="card-title">BMW S SERIES SEDAN (G30)</h3>
+              <h4>530E IPERFORMANCE</h4>
+              <h4 className="card-text">2018</h4>
+              <ul className="car-info__info-list">
+                <li className="car-info__info-item">
+                  <img src={place} alt="places" />
+                  <span className="car-info__info-item-title">4 місця</span>
+                </li>
 
-            <li className="car-info__info-item">
-              <img src={wind} alt="konduk" />
-              <span className="car-info__info-item-title">Кондиціонер</span>
-            </li>
+                <li className="car-info__info-item">
+                  <img src={wind} alt="konduk" />
+                  <span className="car-info__info-item-title">Кондиціонер</span>
+                </li>
 
-            <li className="d-flex justify-content-between car-info__info-item car-info__info-item_price">
-              <span>
-                <img src={group} alt="price" />
-                <span className="car-info__info-item-title">1000€</span>
-              </span>
+                <li className="d-flex justify-content-between car-info__info-item car-info__info-item_price">
+                  <span>
+                    <img src={group} alt="price" />
+                    <span className="car-info__info-item-title">1000€</span>
+                  </span>
 
-              <span>
-                <span className="text_black">{t('від')} </span>
-                <span className="text_grey">120€</span>
-              </span>
-            </li>
-          </ul>
-          
-          <ul className="car-info__price-list">
-            <li className="car-info__price-list-item">
-              <div className="car-info__price-list-days">1-2</div>
-              <div className="car-info__price-list-price">120€</div>
-            </li>
-            <li className="car-info__price-list-item">
-              <div className="car-info__price-list-days">3-7</div>
-              <div className="car-info__price-list-price">100€</div>
-            </li>
-            <li className="car-info__price-list-item">
-              <div className="car-info__price-list-days">8+</div>
-              <div className="car-info__price-list-price">80€</div>
-            </li>
-            <li className="car-info__price-list-item">
-              <div className="car-info__price-list-days">30+</div>
-              <div className="car-info__price-list-price">50€</div>
-            </li>
-          </ul>
-          
-          <button type="button" className="btn_main">{t('Орендувати')}</button>
+                  <span>
+                    <span className="text_black">{t('від')} </span>
+                    <span className="text_grey">120€</span>
+                  </span>
+                </li>
+              </ul>
+              
+              <ul className="car-info__price-list">
+              <li className="car-info__price-list-item">
+                <div className="car-info__price-list-days">1-2</div>
+                <div className="car-info__price-list-price">120€</div>
+              </li>
+              <li className="car-info__price-list-item">
+                <div className="car-info__price-list-days">3-7</div>
+                <div className="car-info__price-list-price">100€</div>
+              </li>
+              <li className="car-info__price-list-item">
+                <div className="car-info__price-list-days">8+</div>
+                <div className="car-info__price-list-price">80€</div>
+              </li>
+              <li className="car-info__price-list-item">
+                <div className="car-info__price-list-days">30+</div>
+                <div className="car-info__price-list-price">50€</div>
+              </li>
+            </ul>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-lg-12 col-sm-8 col">
+              <button type="button" className="btn_main">{t('Орендувати')}</button>
+            </div>
+          </div>
         </div>
       </div>
       
