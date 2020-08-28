@@ -37,7 +37,7 @@ export default function Navbar() {
               <Link to="/rent_with_driver" className="nav-link">{t('Трансфери')}</Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-link">{t('Асистенс')}</Link>
+              <Link to="/assistance" className="nav-link">{t('Асистенс')}</Link>
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-link">FAQ</Link>

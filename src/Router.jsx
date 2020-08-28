@@ -10,6 +10,7 @@ import RentWithDriver from './pages/RentWithDriver';
 import Rent from './pages/Rent';
 import Reserv from './pages/Reserv';
 import Contacts from './pages/Contacts';
+import Assistance from './pages/Assistance';
 
 export default function Router() {
   return (
@@ -27,6 +28,9 @@ export default function Router() {
         </Route>
         <Route exact path="/reserv">
           <Reserv />
+        </Route>
+        <Route exact path="/assistance">
+          <Assistance />
         </Route>
         <Route exact path="/contacts">
           <Contacts />
