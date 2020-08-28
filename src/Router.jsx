@@ -10,11 +10,8 @@ import RentWithDriver from './pages/RentWithDriver';
 import Rent from './pages/Rent';
 import Reserv from './pages/Reserv';
 import Contacts from './pages/Contacts';
-<<<<<<< HEAD
 import CarInfo from './pages/CarInfo';
-=======
 import Assistance from './pages/Assistance';
->>>>>>> f7cd2aa61a1964c9f81bbaf905db0e8eb26a8488
 
 export default function Router() {
   return (

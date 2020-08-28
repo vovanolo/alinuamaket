@@ -1,94 +1,92 @@
+.car-card__img-container {
+  height: 206px;
+  overflow: hidden;
+}
 
-  
+.car-card__spec-name {
+  margin-left: 12px;
+  vertical-align: center;
+  display: inline-block;
+}
 
-  
-  
-  
-  .card{
-      border:none;
-  }
-  
-  .nav_button:hover {
-    color: white;
-    background: #212121;
-    transition: 0.5s background ease-in-out;
-  }
-  /* end of menu style */
-  
-  /* section style */
-  section {
-    margin-top: 150px;
-    font-size: 16px;
-  }
-  
-  div > a {
-    color: #212121;
-  }
-  
-  div > a:hover {
-    color: #212121;
-  }
-  
-  .all_car {
-    color: #9e9e9e;
-  }
-  
-  .all_car:hover {
-    color: #9e9e9e;
-  }
-  
-  /* cards style */
-  .car_cards {
-    margin-top: 59px;
-  }
-  
-  .car_cards .card {
-    border: none;
-  }
-  
-  .car_cards button {
-    height: 47px;
-    width: 165px;
-    left: 10%;
-  }
-  
-  .card-body > h5 {
-    color: #212121;
-    font-size: 24px;
-  }
-  
-  .card-body > p {
-    color: #212121;
-    font-size: 18px;
-  }
-  
-  .text_button {
-    color: #212121;
-    font-size: 22px;
-  }
-  
-  span > text {
-    font-size: 26px;
-    color: #9e9e9e;
-  }
-  /* end of cards style */
-  
-  /* end of section style */
-  
-  .car_nav_apear {
+.car-card__spec-icon {
+  vertical-align: center;
+  margin-top: -3px;
+}
+
+/* section style */
+/* section {
+  margin-top: 150px;
+  font-size: 16px;
+}
+
+div > a {
+  color: #212121;
+}
+
+div > a:hover {
+  color: #212121;
+}
+
+.all_car {
+  color: #9e9e9e;
+}
+
+.all_car:hover {
+  color: #9e9e9e;
+} */
+
+/* cards style */
+/* .car_cards {
+  margin-top: 59px;
+}
+
+.car_cards .card {
+  border: none;
+}
+
+.car_cards button {
+  height: 47px;
+  width: 165px;
+  left: 10%;
+}
+
+.card-body > h5 {
+  color: #212121;
+  font-size: 24px;
+}
+
+.card-body > p {
+  color: #212121;
+  font-size: 18px;
+}
+
+.text_button {
+  color: #212121;
+  font-size: 22px;
+}
+
+span > text {
+  font-size: 26px;
+  color: #9e9e9e;
+} */
+/* end of cards style */
+
+/* end of section style */
+
+/* .car_nav_apear {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .car_nav_diseapear {
     display: none;
   }
-  
-  @media (max-width: 992px) {
-    .car_nav_diseapear {
-      display: none;
-    }
-    .car_nav_apear {
-      display: block;
-    }
+  .car_nav_apear {
+    display: block;
   }
-  
-  .rent_page{
-      margin-top: 200px;
-  }
+}
 
+.rent_page{
+  margin-top: 200px;
+} */
