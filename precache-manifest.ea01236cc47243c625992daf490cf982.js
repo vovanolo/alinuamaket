@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c1139bf0ce2c0b46a44f3834f4ee0c2b",
+    "revision": "2d1ddf94671215c81103061a321fd24d",
     "url": "/alinuamaket/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/alinuamaket/static/css/2.71652b47.chunk.css"
   },
   {
-    "revision": "84fa8dd3fa2fe8cd9961",
-    "url": "/alinuamaket/static/css/main.420a2cf5.chunk.css"
+    "revision": "39ff56546cadcc3751c3",
+    "url": "/alinuamaket/static/css/main.279554fa.chunk.css"
   },
   {
     "revision": "fea080e231157e638f4a",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/alinuamaket/static/js/2.4fe75b24.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "84fa8dd3fa2fe8cd9961",
-    "url": "/alinuamaket/static/js/main.7c7c783f.chunk.js"
+    "revision": "39ff56546cadcc3751c3",
+    "url": "/alinuamaket/static/js/main.35c5d499.chunk.js"
   },
   {
     "revision": "b0985fe81794e6a4d73d",
