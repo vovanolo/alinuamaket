@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 import '../styles/breadcumbs.css';
 import '../styles/car_info.css';
@@ -17,9 +18,11 @@ import CarCard from '../components/CarCard';
 export default function CarInfo() {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
+  const { id } = useParams();
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
+    console.log(id);
   }, [language]);
 
   function changeLanguage(newLanguage) {
@@ -173,6 +176,7 @@ export default function CarInfo() {
           placesCount="7 місць"
           price="800"
           dayPrice="70"
+          air="Кондиціонер"
           photo={car1}
         />
         <CarCard
@@ -181,6 +185,7 @@ export default function CarInfo() {
           placesCount="7 місць"
           price="800"
           dayPrice="70"
+          air="Кондиціонер"
           photo={car2}
         />
         <CarCard
@@ -189,6 +194,7 @@ export default function CarInfo() {
           placesCount="7 місць"
           price="800"
           dayPrice="70"
+          air="Кондиціонер"
           photo={car3}
         />
       </div>

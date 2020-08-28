@@ -1,18 +1,51 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
+
+import '../styles/navbar.css';
 
 import logo from '../images/Logo.png';
 
 export default function Navbar() {
   const [language, setLanguage] = useState('ua');
+  const [scrollOffset, setScrollOffset] = useState(0);
+
   const { t, i18n } = useTranslation();
 
   const navbarContainer = useRef(null);
   const navbar = useRef(null);
-  const navbarToggler = useRef(null);
 
-  const [scrollOffset, setScrollOffset] = useState(0);
+  const location = useLocation();
+
+  //#region effects
+
+  useEffect(() => {
+    const url = location.pathname;
+
+    if (url === '/assistance') {
+      navbarContainer.current.classList.remove('navbar_default');
+      navbarContainer.current.classList.add('navbar_assistance');
+      navbarContainer.current.classList.remove('navbar-light');
+      navbarContainer.current.classList.add('navbar-dark');
+    }
+    else if (url !== '/') {
+      navbarContainer.current.classList.remove('navbar_assistance');
+      navbarContainer.current.classList.add('navbar_default');
+      navbarContainer.current.classList.remove('navbar-dark');
+      navbarContainer.current.classList.add('navbar-light');
+    }
+    else if (url === '/') {
+      navbarContainer.current.classList.remove('navbar_assistance');
+      navbarContainer.current.classList.remove('navbar_default');
+      navbarContainer.current.classList.remove('navbar-dark');
+      navbarContainer.current.classList.add('navbar-light');
+    }
+
+    return function cleanup() {
+      navbarContainer.current.classList.remove('navbar_assistance');
+    }
+  }, [location]);
 
   useEffect(() => {
     window.addEventListener('scroll', scrollEventHandler);
@@ -25,19 +58,33 @@ export default function Navbar() {
   useEffect(() => {
     if (scrollOffset > 70) {
       navbarContainer.current.classList.add('bg-light');
+
+      if (navbarContainer.current.classList.contains('navbar-dark')) {
+        navbarContainer.current.classList.remove('navbar-dark');
+      }
+      
+      navbarContainer.current.classList.add('navbar-light');
     }
     else {
       navbarContainer.current.classList.remove('bg-light');
+
+      if (location.pathname === '/assistance') {
+        navbarContainer.current.classList.add('navbar-dark');
+      }
     }
   }, [scrollOffset]);
-
-  function scrollEventHandler(e) {
-    setScrollOffset(e.currentTarget.pageYOffset);
-  }
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
+
+  //#endregion
+
+  //#region functions
+
+  function scrollEventHandler(e) {
+    setScrollOffset(e.currentTarget.pageYOffset);
+  }
 
   function changeLanguage(newLanguage) {
     const newLang = newLanguage;
@@ -60,12 +107,26 @@ export default function Navbar() {
   }
 
   function showNavbar() {
-    navbarContainer.current.classList.add('bg-light');
+    if (location.pathname === '/') {
+      navbarContainer.current.classList.add('bg-light');
+
+      if (navbarContainer.current.classList.contains('navbar-dark')) {
+        navbarContainer.current.classList.remove('navbar-dark');
+      }
+    }
   }
 
   function hideNavbar() {
-    navbarContainer.current.classList.remove('bg-light');
+    if (location.pathname === '/') {
+      navbarContainer.current.classList.remove('bg-light');
+
+      if (location.pathname === '/assistance') {
+        navbarContainer.current.classList.add('navbar-dark');
+      }
+    }
   }
+
+  //#endregion
 
   return (
     <nav
@@ -109,6 +170,13 @@ export default function Navbar() {
                 <button className="dropdown-item">RU</button>
               </div>
             </li>
+            {location.pathname !== '/' && (
+              <li className="nav-item">
+                <button className="btn_main btn_slim">
+                  {t('Зв\'язок')}
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>

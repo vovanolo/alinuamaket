@@ -1,0 +1,7 @@
+.navbar_assistance {
+  background-color: var(--color-grey_light-transparent);
+}
+
+.navbar_default {
+  background-color: var(--color-grey_light);
+}

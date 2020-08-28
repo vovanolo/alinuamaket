@@ -8,7 +8,7 @@ export default function CarSpec({ title, specs }) {
       <h5 className="car-spec__title">{title}:</h5>
       <ul className="car-spec__list">
         {specs.map((spec, index) => (
-          <li className="car-spec__item">
+          <li key={index} className="car-spec__item">
             {spec.name}: {spec.value}
           </li>
         ))}

@@ -5,6 +5,7 @@ import "../styles/car_card.css";
 import place from '../images/Places.svg';
 import wind from '../images/wind.svg';
 import group from '../images/Group 388.svg';
+import { Link } from "react-router-dom";
 
 export default function CarCard({ name, year, placesCount, air, price, dayPrice, photo }) {
     return (
@@ -43,7 +44,7 @@ export default function CarCard({ name, year, placesCount, air, price, dayPrice,
                                 <span className="text_grey">{dayPrice}€</span> / в день
                             </span>
                             <button type="button" className="btn_main">
-                                Детальніше
+                                <Link to="/car_info/1">Детальніше</Link>
                             </button>
                         </div>
                     </div>

@@ -36,7 +36,7 @@ export default function Router() {
         <Route exact path="/contacts">
           <Contacts />
         </Route>
-        <Route exact path="/car_info">
+        <Route path="/car_info/:id">
           <CarInfo />
         </Route>
 

@@ -15,3 +15,16 @@
 .offset_top{
     margin-top: 300px;
 }
+
+.assistance__main-principle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 991px) {
+    .assistance__main-principle {
+        position: unset;
+        transform: none;
+    }
+}
