@@ -135,7 +135,7 @@ export default function Navbar() {
       className="navbar navbar-expand-lg navbar-light fixed-top"
     >
       <div className="container">
-        <Link to="/" className="navbar-brand">
+        <Link to="/alinuamaket" className="navbar-brand">
           <img src={logo} alt="Alin logo" />
         </Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" onClick={toggleNavbar}>
@@ -153,7 +153,7 @@ export default function Navbar() {
               <Link to="/assistance" className="nav-link">{t('Асистенс')}</Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-link">FAQ</Link>
+              <Link to="/alinuamaket" className="nav-link">FAQ</Link>
             </li>
             <li className="nav-item">
               <Link to="/contacts" className="nav-link">{t('Контакти')}</Link>

@@ -18,7 +18,7 @@ export default function Router() {
     <BrowserRouter>
       <Navbar />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/alinuamaket">
           <Home />
         </Route>
         <Route exact path="/rent_with_driver">

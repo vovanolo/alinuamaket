@@ -28,7 +28,7 @@ export default function Rent() {
         {
             card_head: 'BMW S SERIES SEDAN',
             year: '2018',
-            number: '5 місць',
+            placesCount: '5 місць',
             air: 'кондиціонер',
             price: 5000,
             dayPrice: Math.round(5000 / 31),
@@ -37,7 +37,7 @@ export default function Rent() {
         {
             card_head: 'BMW S SERIES SEDAN',
             year: '2018',
-            number: '5 місць',
+            placesCount: '5 місць',
             air: 'кондиціонер',
             price: '5000€',
             dayPrice: Math.round(5000 / 31),
@@ -46,7 +46,7 @@ export default function Rent() {
         {
             card_head: 'BMW S SERIES SEDAN',
             year: '2018',
-            number: '5 місць',
+            placesCount: '5 місць',
             air: 'кондиціонер',
             price: '5000€',
             dayPrice: Math.round(5000 / 31),
@@ -55,7 +55,7 @@ export default function Rent() {
         {
             card_head: 'BMW S SERIES SEDAN',
             year: '2018',
-            number: '5 місць',
+            placesCount: '5 місць',
             air: 'кондиціонер',
             price: '5000€',
             dayPrice: Math.round(5000 / 31),
@@ -64,7 +64,7 @@ export default function Rent() {
         {
             card_head: 'BMW S SERIES SEDAN',
             year: '2018',
-            number: '5 місць',
+            placesCount: '5 місць',
             air: 'кондиціонер',
             price: '5000€',
             dayPrice: Math.round(5000 / 31),
@@ -135,11 +135,11 @@ export default function Rent() {
 
             <div className="container">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-                    {CardData.map(({ card_head, year, number, air, price, dayPrice, photo }) => (
+                    {CardData.map(({ card_head, year, placesCount, air, price, dayPrice, photo }) => (
                         <CarCard
                         card_head={card_head}
                         year={year}
-                        number={number}
+                        placesCount={placesCount}
                         air={air}
                         price={price}
                         dayPrice={dayPrice}

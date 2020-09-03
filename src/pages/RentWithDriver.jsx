@@ -71,12 +71,12 @@ export default function RentWithDriver() {
               </div>
             </div>
             <div className="row d-flex justify-content-between">
-              <div className="col-5 transf-location d-flex flex-column justify-content-between">
+              <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
                 <p>від</p>
                 <input placeholder="Вкажіть Локацію" className="transf_input" type="text" />
                 <p>місто,область,країна</p>
               </div>
-              <div className="col-5 transf-location d-flex flex-column justify-content-between">
+              <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
                 <p>від</p>
                 <input placeholder="Вкажіть Локацію" className="transf_input" type="text" />
                 <p>місто,область,країна</p>
@@ -85,11 +85,11 @@ export default function RentWithDriver() {
             <div className="row">
               <div className="col-12 transf_date">
                 <div className="row d-flex justify-content-between">
-                  <div className="col-5">
+                  <div className="col-md-5">
                     <p>Дата</p>
                     <input type="date" className="transf_time_input" />
                   </div>
-                  <div className="col-5">
+                  <div className="col-md-5 margin_down">
                     <p>Час</p>
                     <input type="time" className="transf_time_input" />
                   </div>
