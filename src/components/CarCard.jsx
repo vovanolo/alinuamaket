@@ -24,17 +24,17 @@ export default function CarCard({ name, year, placesCount, air, price, dayPrice,
                     <p className="card-text">{year}</p>
                     <div className="row">
                         <div className="col-lg-6">
-                            <div>
+                            <div className='mt-1'>
                                 <img className="car-card__spec-icon" src={place} alt="places" />
                                 <span className="car-card__spec-name">{placesCount}</span>
                             </div>
                             
-                            <div>
+                            <div className='mt-1'>
                                 <img className="car-card__spec-icon" src={wind} alt="konduk" />
                                 <span className="car-card__spec-name">{air}</span>
                             </div>
 
-                            <div>
+                            <div className='mt-1'>
                                 <img className="car-card__spec-icon" src={group} alt="price" />
                                 <span className="car-card__spec-name">{price}€</span>
                             </div>
@@ -43,7 +43,7 @@ export default function CarCard({ name, year, placesCount, air, price, dayPrice,
                             <span className="text_button">
                                 <span className="text_grey">{dayPrice}€</span> / в день
                             </span>
-                            <Link to="/car_info/1" className="btn_main">Детальніше</Link>
+                            <Link to="/car_info/1" className="mt-2 btn_main btn_slim d-flex justify-content-center align-items-center">Детальніше</Link>
                         </div>
                     </div>
                 </div>

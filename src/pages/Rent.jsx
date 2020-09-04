@@ -26,7 +26,7 @@ export default function Rent() {
 
     const CardData = [
         {
-            card_head: 'BMW S SERIES SEDAN',
+            name: 'BMW S SERIES SEDAN',
             year: '2018',
             placesCount: '5 місць',
             air: 'кондиціонер',
@@ -35,38 +35,38 @@ export default function Rent() {
             photo: car
         },
         {
-            card_head: 'BMW S SERIES SEDAN',
+            name: 'BMW S SERIES SEDAN',
             year: '2018',
             placesCount: '5 місць',
             air: 'кондиціонер',
-            price: '5000€',
+            price: 5000,
             dayPrice: Math.round(5000 / 31),
             photo: car
         },
         {
-            card_head: 'BMW S SERIES SEDAN',
+            name: 'BMW S SERIES SEDAN',
             year: '2018',
             placesCount: '5 місць',
             air: 'кондиціонер',
-            price: '5000€',
+            price: 5000,
             dayPrice: Math.round(5000 / 31),
             photo: car
         },
         {
-            card_head: 'BMW S SERIES SEDAN',
+            name: 'BMW S SERIES SEDAN',
             year: '2018',
             placesCount: '5 місць',
             air: 'кондиціонер',
-            price: '5000€',
+            price: 5000,
             dayPrice: Math.round(5000 / 31),
             photo: car
         },
         {
-            card_head: 'BMW S SERIES SEDAN',
+            name: 'BMW S SERIES SEDAN',
             year: '2018',
             placesCount: '5 місць',
             air: 'кондиціонер',
-            price: '5000€',
+            price: 5000,
             dayPrice: Math.round(5000 / 31),
             photo: car
         }
@@ -135,9 +135,9 @@ export default function Rent() {
 
             <div className="container">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-                    {CardData.map(({ card_head, year, placesCount, air, price, dayPrice, photo }) => (
+                    {CardData.map(({ name, year, placesCount, air, price, dayPrice, photo }) => (
                         <CarCard
-                        card_head={card_head}
+                        name={name}
                         year={year}
                         placesCount={placesCount}
                         air={air}
