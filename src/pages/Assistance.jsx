@@ -95,7 +95,7 @@ export default function Assistance() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 mt-md-0 mt-sm-5 mt-5">
                         <div className="row mt-2 d-flex align-items-center">
                             <div className="col-md-3">
                                 <img src={fourth} alt="" />
@@ -133,14 +133,18 @@ export default function Assistance() {
                         <img className="img-responsive img-responsive_contain" src={car} alt="" />
                     </div>
                 </div>
-                <div className="top_top row mt-5 d-flex justify-content-between">
-                    <div className="col-lg-7 mb-3">
-                        <img className='w-100' src={last} alt=""/>
-                    </div>
-                    <div className="col-lg-5">
-                        <div className="assistance__main-principle">
-                            <p>Основний принцип роботи компанії – не просто обслуговування автомобілів, а результат та вдячні постійні клієнти! Саме завдяки їй ви зможете зекономити свій час та нерви. Забудьте про безмежні черги та століття втраченого часу.</p>
-                            <p className='mt-4'>Програма надає вам можливість вирішити всі технічні питання не виходячи з дому чи офісу. Лише один дзвінок і ось персональний сервіс консультант вирушає вам на допомогу.</p>
+                <div className="container_fluid-custom">
+                    <div className="top_top row mt-5 d-flex justify-content-between">
+                        <div className="col-lg-7 mb-3">
+                            <div className="absol">
+                                <img className='' src={last} alt=""/>
+                            </div>
+                        </div>
+                        <div className="col-lg-5">
+                            <div className="assistance__main-principle">
+                                <p>Основний принцип роботи компанії – не просто обслуговування автомобілів, а результат та вдячні постійні клієнти! Саме завдяки їй ви зможете зекономити свій час та нерви. Забудьте про безмежні черги та століття втраченого часу.</p>
+                                <p className='mt-4'>Програма надає вам можливість вирішити всі технічні питання не виходячи з дому чи офісу. Лише один дзвінок і ось персональний сервіс консультант вирушає вам на допомогу.</p>
+                            </div>
                         </div>
                     </div>
                 </div>

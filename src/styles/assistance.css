@@ -19,12 +19,35 @@
 .assistance__main-principle {
     position: relative;
     top: 50%;
+    right: -10%;
     transform: translateY(-50%);
+}
+
+.absol{
+    position: relative;
+    left: -35%;
+    width: 120%;
+    height: 30em;
+}
+.absol img{
+    height: 100%;
+    width: 100%;
+}
+.container_fluid-custom{
+    position: relative;
+    margin-top: 100px;
+    /* margin-bottom: 400px; */
 }
 
 @media (max-width: 991px) {
     .assistance__main-principle {
         position: unset;
         transform: none;
+        
+    }
+    .absol{
+        position: static;
+        width: auto;
+        height: auto;
     }
 }

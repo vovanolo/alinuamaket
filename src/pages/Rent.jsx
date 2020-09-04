@@ -94,8 +94,8 @@ export default function Rent() {
                         </div>
                     </div>
                     <div className="col-lg-3">
-                        <select className="input">
-                            <option>{t('Все')}</option>
+                        <select className="input text_grey this_select">
+                            <option>{t('Сортувати за')}</option>
                             <option>2</option>
                             <option>3</option>
                         </select>
@@ -122,8 +122,8 @@ export default function Rent() {
                         </div>
                     </div>
                     <div className="col-6">
-                        <select className="input">
-                            <option>{t('Все')}</option>
+                        <select className="input text_grey this_select">
+                            <option>{t('сортувати за')}</option>
                             <option>2</option>
                             <option>3</option>
                         </select>
