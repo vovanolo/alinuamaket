@@ -135,15 +135,16 @@ export default function Rent() {
 
             <div className="container">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-                    {CardData.map(({ name, year, placesCount, air, price, dayPrice, photo }) => (
+                    {CardData.map(({ name, year, placesCount, air, price, dayPrice, photo }, index) => (
                         <CarCard
-                        name={name}
-                        year={year}
-                        placesCount={placesCount}
-                        air={air}
-                        price={price}
-                        dayPrice={dayPrice}
-                        photo={photo}
+                            key={index}
+                            name={name}
+                            year={year}
+                            placesCount={placesCount}
+                            air={air}
+                            price={price}
+                            dayPrice={dayPrice}
+                            photo={photo}
                         />
                     ))}
                 </div>

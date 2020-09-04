@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
+import $ from 'jquery';
 
 import '../styles/navbar.css';
 
@@ -29,13 +30,13 @@ export default function Navbar() {
       navbarContainer.current.classList.remove('navbar-light');
       navbarContainer.current.classList.add('navbar-dark');
     }
-    else if (url !== '/') {
+    else if (url !== '/alinuamaket') {
       navbarContainer.current.classList.remove('navbar_assistance');
       navbarContainer.current.classList.add('navbar_default');
       navbarContainer.current.classList.remove('navbar-dark');
       navbarContainer.current.classList.add('navbar-light');
     }
-    else if (url === '/') {
+    else if (url === '/alinuamaket') {
       navbarContainer.current.classList.remove('navbar_assistance');
       navbarContainer.current.classList.remove('navbar_default');
       navbarContainer.current.classList.remove('navbar-dark');
@@ -44,6 +45,7 @@ export default function Navbar() {
 
     return function cleanup() {
       navbarContainer.current.classList.remove('navbar_assistance');
+      $('#mainNavbar').collapse('hide');
     }
   }, [location]);
 
@@ -107,7 +109,7 @@ export default function Navbar() {
   }
 
   function showNavbar() {
-    if (location.pathname === '/') {
+    if (location.pathname === '/alinuamaket') {
       navbarContainer.current.classList.add('bg-light');
 
       if (navbarContainer.current.classList.contains('navbar-dark')) {
@@ -117,7 +119,7 @@ export default function Navbar() {
   }
 
   function hideNavbar() {
-    if (location.pathname === '/') {
+    if (location.pathname === '/alinuamaket') {
       navbarContainer.current.classList.remove('bg-light');
 
       if (location.pathname === '/assistance') {
@@ -142,17 +144,17 @@ export default function Navbar() {
           <span className="navbar-toggler-icon" />
         </button>
         <div ref={navbar} className="collapse navbar-collapse" id="mainNavbar">
-          <ul className="navbar-nav ml-auto mr-auto">
-            <li className="nav-item">
+          <ul className={`navbar-nav ${location.pathname === '/alinuamaket' ? 'navbar__menu-list' : 'ml-auto'}`}>
+            <li className="nav-item mr-lg-3 mr-md-0">
               <Link to="/rent" className="nav-link">{t('Прокат')}</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item mr-lg-3 mr-md-0">
               <Link to="/rent_with_driver" className="nav-link">{t('Трансфери')}</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item mr-lg-3 mr-md-0">
               <Link to="/assistance" className="nav-link">{t('Асистенс')}</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item mr-lg-3 mr-md-0">
               <Link to="/alinuamaket" className="nav-link">FAQ</Link>
             </li>
             <li className="nav-item">
@@ -160,8 +162,8 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <ul className="navbar-nav">
-            <li className="nav-item dropdown">
+          <ul className={`navbar-nav ${location.pathname === '/alinuamaket' && 'navbar__menu-language'}`}>
+            <li className={`nav-item dropdown ${location.pathname !== '/alinuamaket' && 'mx-lg-4 mx-md-0'}`}>
               <button className="btn nav-link dropdown-toggle" data-toggle="dropdown">
                 {language.toUpperCase()}
               </button>
@@ -170,9 +172,9 @@ export default function Navbar() {
                 <button className="dropdown-item">RU</button>
               </div>
             </li>
-            {location.pathname !== '/' && (
+            {location.pathname !== '/alinuamaket' && (
               <li className="nav-item">
-                <button className="btn_main btn_slim">
+                <button className="btn_main btn_nav">
                   {t('Зв\'язок')}
                 </button>
               </li>

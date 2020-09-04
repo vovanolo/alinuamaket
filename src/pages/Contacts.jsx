@@ -124,15 +124,15 @@ export default function Contacts() {
                     </div>
                     <div className="col-md-6">
                         <iframe
+                            title="Contacts map"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1296.5608658575609!2d23.959709706541158!3d49.81490518871833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ae75d4ae39b99%3A0xaf9110949f3614b6!2zQWxpbiAtINCe0YDQtdC90LTQsCDQsNCy0YLQviDRgtCwINC_0LDRgdCw0LbQuNGA0YHRjNC60ZYg0L_QtdGA0LXQstC10LfQtdC90L3Rjw!5e0!3m2!1sru!2sua!4v1598553528433!5m2!1sru!2sua"
-                            width="600"
-                            height="450"
-                            frameborder="0"
-                            style={{ border: 0 }}
-                            allowfullscreen=""
+                            width={600}
+                            height={450}
+                            frameBorder={0}
+                            allowFullScreen={false}
                             aria-hidden="false"
-                            tabindex="0"
-                        ></iframe>
+                            tabIndex={0}
+                        />
                     </div>
                 </div>
 

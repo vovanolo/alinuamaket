@@ -52,6 +52,7 @@ export default function Partners() {
             autoplay={{
               delay: 5000
             }}
+            slidesPerView={5}
             breakpoints={{
               992: {
                 slidesPerView: 5
@@ -61,10 +62,12 @@ export default function Partners() {
               },
               450: {
                 slidesPerView: 2
+              },
+              1: {
+                slidesPerView: 1
               }
             }}
             spaceBetween={30}
-            slidesPerView={1}
             pagination={{ clickable: true }}
           >
             <SwiperSlide>

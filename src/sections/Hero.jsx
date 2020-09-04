@@ -38,7 +38,9 @@ export default function Hero() {
         }}
         spaceBetween={0}
         slidesPerView={1}
-        pagination={{ clickable: true }}
+        pagination={{
+          clickable: true
+        }}
       >
         <SwiperSlide>
           <img className="img-responsive img-responsive_contain img-responsive_right" src={slide01} alt="Slide 1" />
