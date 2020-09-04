@@ -155,18 +155,12 @@ export default function Contacts() {
                         <textarea className='input mt-2' placeholder='Коментар'></textarea>
                         
                         <div className="row mt-2">
-                            <div className="col-md-4 ">
+                            <div className="col-lg-4">
                                 <button className='btn_main'>Надіслати</button>
                             </div>
                         </div>
-                        
-
                     </div>
-
-
                 </div>
-
-
             </div>
         </div>
     );

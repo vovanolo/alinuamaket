@@ -20,10 +20,10 @@ export default function LoyaltyCard({ icon, iconAlt, description, margin }) {
 
   return (
     <div className={`row align-items-center mb-${margin}`}>
-      <div className="col-xl-2 col-lg-3 col-12 mb-md-3 mb-lg-0">
+      <div className="col-lg-3 col-12 mb-lg-0 mb-3">
         <img className="loyalty-card__icon" src={icon} alt={iconAlt} />
       </div>
-      <div className="col-xl-10 col-lg-9 col-12">
+      <div className="col-lg-9 col-12">
         <p className="loyalty-card__description">{description}</p>
       </div>
     </div>

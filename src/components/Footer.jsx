@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
 
 import '../styles/footer.css';
 import '../styles/footer-media.css';
@@ -24,6 +25,12 @@ export default function Footer() {
     localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
+  }
+
+  function scrollTop() {
+    $([document.documentElement, document.body]).animate({
+      scrollTop: 0
+    }, 1000);
   }
 
   return (
@@ -77,7 +84,7 @@ export default function Footer() {
           </div>
 
           <div className="col-lg-1 col-12">
-            <button className="footer__up-btn">
+            <button className="footer__up-btn" onClick={scrollTop}>
               <img src={goUp} alt="Go up" />
             </button>
           </div>

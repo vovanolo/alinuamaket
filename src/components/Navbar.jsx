@@ -28,24 +28,30 @@ export default function Navbar() {
       navbarContainer.current.classList.remove('navbar_default');
       navbarContainer.current.classList.add('navbar_assistance');
       navbarContainer.current.classList.remove('navbar-light');
+      navbarContainer.current.classList.remove('bg-light');
       navbarContainer.current.classList.add('navbar-dark');
-    }
-    else if (url !== '/alinuamaket') {
-      navbarContainer.current.classList.remove('navbar_assistance');
-      navbarContainer.current.classList.add('navbar_default');
-      navbarContainer.current.classList.remove('navbar-dark');
-      navbarContainer.current.classList.add('navbar-light');
     }
     else if (url === '/alinuamaket') {
       navbarContainer.current.classList.remove('navbar_assistance');
       navbarContainer.current.classList.remove('navbar_default');
       navbarContainer.current.classList.remove('navbar-dark');
+      navbarContainer.current.classList.remove('bg-dark');
+      navbarContainer.current.classList.add('navbar-light');
+    }
+    else {
+      navbarContainer.current.classList.remove('navbar_assistance');
+      navbarContainer.current.classList.add('navbar_default');
+      navbarContainer.current.classList.remove('navbar-dark');
+      navbarContainer.current.classList.remove('bg-dark');
       navbarContainer.current.classList.add('navbar-light');
     }
 
     return function cleanup() {
       navbarContainer.current.classList.remove('navbar_assistance');
       $('#mainNavbar').collapse('hide');
+      $([document.documentElement, document.body]).animate({
+        scrollTop: 0
+      }, 500);
     }
   }, [location]);
 
@@ -61,11 +67,13 @@ export default function Navbar() {
     if (scrollOffset > 70) {
       navbarContainer.current.classList.add('bg-light');
 
-      if (navbarContainer.current.classList.contains('navbar-dark')) {
-        navbarContainer.current.classList.remove('navbar-dark');
+      if (!navbarContainer.current.classList.contains('bg-dark')) {
+        if (navbarContainer.current.classList.contains('navbar-dark')) {
+          navbarContainer.current.classList.remove('navbar-dark');
+        }
+        
+        navbarContainer.current.classList.add('navbar-light');
       }
-      
-      navbarContainer.current.classList.add('navbar-light');
     }
     else {
       navbarContainer.current.classList.remove('bg-light');
@@ -96,14 +104,21 @@ export default function Navbar() {
   }
 
   function toggleNavbar() {
-    console.log(scrollOffset);
     if (scrollOffset < 70) {
-      console.log(1);
       if (!navbarContainer.current.classList.contains('bg-light')) {
         showNavbar();
       }
       else {
         hideNavbar();
+      }
+
+      if (location.pathname === '/assistance') {
+        if (!navbarContainer.current.classList.contains('bg-dark')) {
+          navbarContainer.current.classList.add('bg-dark');
+        }
+        else {
+          navbarContainer.current.classList.remove('bg-dark');
+        }
       }
     }
   }
