@@ -6,12 +6,24 @@
   --color-white: #ffffff;
 }
 
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./fonts/Gilroy-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./fonts/Gilroy-Medium.ttf');
+  font-weight: 500;
+}
+
 html {
   font-size: 18px;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gilroy', sans-serif;
 }
 
 h1, h2, h3, h4, p {
@@ -92,11 +104,11 @@ a.text_black:hover {
 }
 
 .btn_slim {
-  padding: 10px 52px;
+  padding: 10px 0;
 }
 
 .btn_nav {
-  padding: 0.9rem 1.1rem;
+  padding: 9px 52px;
 }
 
 .img-responsive {

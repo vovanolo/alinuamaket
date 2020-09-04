@@ -82,8 +82,9 @@ export default function Loyalty() {
             <img className="img-responsive img-responsive_contain" src={car1} alt="Car" />
           </div>
 
-          {loyaltyCardsData1.map(({ icon, iconAlt, description }) => (
+          {loyaltyCardsData1.map(({ icon, iconAlt, description }, index) => (
             <LoyaltyCard
+              key={index}
               icon={icon}
               iconAlt={iconAlt}
               description={description}
@@ -100,8 +101,9 @@ export default function Loyalty() {
             <img className="img-responsive img-responsive_contain" src={car2} alt="Car" />
           </div>
 
-          {loyaltyCardsData2.map(({ icon, iconAlt, description }) => (
+          {loyaltyCardsData2.map(({ icon, iconAlt, description }, index) => (
             <LoyaltyCard
+              key={index}
               icon={icon}
               iconAlt={iconAlt}
               description={description}

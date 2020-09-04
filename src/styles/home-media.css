@@ -4,7 +4,7 @@
   }
   
   .slider__container_hero:before {
-    left: 30%;
+    left: 35%;
   }
 
   .rent-step__line {
@@ -41,6 +41,10 @@
   
   .slider__container_hero:before {
     background-color: transparent;
+  }
+  
+  .slider__container_hero .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+    background-color: var(--color-grey);
   }
 
   .news-title {

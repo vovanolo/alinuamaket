@@ -48,10 +48,11 @@ export default function RentWithDriver() {
       <div className="container">
         <div className="row">
           <div className="col-lg-5 col-12">
-            <h2 className="text_black mb-3">Оренда машини з водієм</h2>
+            <h2 className="text_black mb-5">Оренда машини з водієм</h2>
 
-            {loyaltyCardsData.map(({ icon, iconAlt, description }) => (
+            {loyaltyCardsData.map(({ icon, iconAlt, description }, index) => (
               <LoyaltyCard
+                key={index}
                 icon={icon}
                 iconAlt={iconAlt}
                 description={description}

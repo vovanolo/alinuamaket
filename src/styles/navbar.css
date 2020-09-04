@@ -5,3 +5,29 @@
 .navbar_default {
   background-color: var(--color-grey_light);
 }
+
+.navbar__menu-list {
+  margin-left: 117px;
+}
+
+.navbar__menu-language {
+  margin-left: auto;
+  margin-right: 135px;
+}
+
+@media(max-width: 1199px) {
+  .navbar__menu-language {
+    margin-right: 110px;
+  }
+}
+
+@media(max-width: 991px) {
+  .navbar__menu-list {
+    margin-left: 0;
+  }
+  
+  .navbar__menu-language {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
