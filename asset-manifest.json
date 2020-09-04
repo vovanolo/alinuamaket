@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/alinuamaket/static/css/main.279554fa.chunk.css",
-    "main.js": "/alinuamaket/static/js/main.35c5d499.chunk.js",
-    "main.js.map": "/alinuamaket/static/js/main.35c5d499.chunk.js.map",
+    "main.css": "/alinuamaket/static/css/main.d6acb37a.chunk.css",
+    "main.js": "/alinuamaket/static/js/main.99964da5.chunk.js",
+    "main.js.map": "/alinuamaket/static/js/main.99964da5.chunk.js.map",
     "runtime-main.js": "/alinuamaket/static/js/runtime-main.2c0f3c47.js",
     "runtime-main.js.map": "/alinuamaket/static/js/runtime-main.2c0f3c47.js.map",
     "static/css/2.71652b47.chunk.css": "/alinuamaket/static/css/2.71652b47.chunk.css",
-    "static/js/2.4fe75b24.chunk.js": "/alinuamaket/static/js/2.4fe75b24.chunk.js",
-    "static/js/2.4fe75b24.chunk.js.map": "/alinuamaket/static/js/2.4fe75b24.chunk.js.map",
+    "static/js/2.1a906681.chunk.js": "/alinuamaket/static/js/2.1a906681.chunk.js",
+    "static/js/2.1a906681.chunk.js.map": "/alinuamaket/static/js/2.1a906681.chunk.js.map",
     "index.html": "/alinuamaket/index.html",
-    "precache-manifest.ea01236cc47243c625992daf490cf982.js": "/alinuamaket/precache-manifest.ea01236cc47243c625992daf490cf982.js",
+    "precache-manifest.02821bb06b20edb2d742cc9908bed82f.js": "/alinuamaket/precache-manifest.02821bb06b20edb2d742cc9908bed82f.js",
     "service-worker.js": "/alinuamaket/service-worker.js",
     "static/css/2.71652b47.chunk.css.map": "/alinuamaket/static/css/2.71652b47.chunk.css.map",
-    "static/css/main.279554fa.chunk.css.map": "/alinuamaket/static/css/main.279554fa.chunk.css.map",
-    "static/js/2.4fe75b24.chunk.js.LICENSE.txt": "/alinuamaket/static/js/2.4fe75b24.chunk.js.LICENSE.txt",
+    "static/css/main.d6acb37a.chunk.css.map": "/alinuamaket/static/css/main.d6acb37a.chunk.css.map",
+    "static/js/2.1a906681.chunk.js.LICENSE.txt": "/alinuamaket/static/js/2.1a906681.chunk.js.LICENSE.txt",
     "static/media/01_Car.png": "/alinuamaket/static/media/01_Car.0cf3839a.png",
     "static/media/5_percent.svg": "/alinuamaket/static/media/5_percent.1df6edf9.svg",
+    "static/media/index.css": "/alinuamaket/static/media/Gilroy-Regular.ae5e7255.ttf",
     "static/media/Group 388.svg": "/alinuamaket/static/media/Group 388.2027dcb3.svg",
     "static/media/Places.svg": "/alinuamaket/static/media/Places.e2748452.svg",
     "static/media/arrow_left.svg": "/alinuamaket/static/media/arrow_left.8a1ae4c3.svg",
@@ -67,8 +68,8 @@
   "entrypoints": [
     "static/js/runtime-main.2c0f3c47.js",
     "static/css/2.71652b47.chunk.css",
-    "static/js/2.4fe75b24.chunk.js",
-    "static/css/main.279554fa.chunk.css",
-    "static/js/main.35c5d499.chunk.js"
+    "static/js/2.1a906681.chunk.js",
+    "static/css/main.d6acb37a.chunk.css",
+    "static/js/main.99964da5.chunk.js"
   ]
 }

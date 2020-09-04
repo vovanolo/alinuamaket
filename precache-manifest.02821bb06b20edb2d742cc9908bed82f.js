@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2d1ddf94671215c81103061a321fd24d",
+    "revision": "66a2f8868d8a7d96770eea1c4a931d30",
     "url": "/alinuamaket/index.html"
   },
   {
-    "revision": "fea080e231157e638f4a",
+    "revision": "a1b47e7bc1633d04b978",
     "url": "/alinuamaket/static/css/2.71652b47.chunk.css"
   },
   {
-    "revision": "39ff56546cadcc3751c3",
-    "url": "/alinuamaket/static/css/main.279554fa.chunk.css"
+    "revision": "f02c5dceb99ec12d6368",
+    "url": "/alinuamaket/static/css/main.d6acb37a.chunk.css"
   },
   {
-    "revision": "fea080e231157e638f4a",
-    "url": "/alinuamaket/static/js/2.4fe75b24.chunk.js"
+    "revision": "a1b47e7bc1633d04b978",
+    "url": "/alinuamaket/static/js/2.1a906681.chunk.js"
   },
   {
     "revision": "b6840d1fa4cd3c3e88b7c215b28b2e9e",
-    "url": "/alinuamaket/static/js/2.4fe75b24.chunk.js.LICENSE.txt"
+    "url": "/alinuamaket/static/js/2.1a906681.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "39ff56546cadcc3751c3",
-    "url": "/alinuamaket/static/js/main.35c5d499.chunk.js"
+    "revision": "f02c5dceb99ec12d6368",
+    "url": "/alinuamaket/static/js/main.99964da5.chunk.js"
   },
   {
     "revision": "b0985fe81794e6a4d73d",
@@ -34,6 +34,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "1df6edf928f7a93d7ee6f65d9a55dcfa",
     "url": "/alinuamaket/static/media/5_percent.1df6edf9.svg"
+  },
+  {
+    "revision": "6444f14adcdee041b62184f13139a56d",
+    "url": "/alinuamaket/static/media/Gilroy-Medium.6444f14a.ttf"
+  },
+  {
+    "revision": "ae5e7255973ffe09b53f07a2805232a8",
+    "url": "/alinuamaket/static/media/Gilroy-Regular.ae5e7255.ttf"
   },
   {
     "revision": "2027dcb3068ac88f4568df7a0c7eea52",
