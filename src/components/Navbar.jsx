@@ -8,13 +8,40 @@ import '../styles/navbar.css';
 
 import logo from '../images/Logo.png';
 
+const navThemesClassNames = {
+  grey: 'navbar_grey navbar-light',
+  white: 'bg-light navbar-light',
+  transparent: 'navbar-light',
+  semiTransparent: 'navbar_semi-transparent navbar-dark'
+};
+
+const navTheme = {
+  default: {
+    inactive: navThemesClassNames.grey,
+    active: navThemesClassNames.white
+  },
+  transparent: {
+    inactive: navThemesClassNames.transparent,
+    active: navThemesClassNames.white
+  },
+  semiTransparent: {
+    inactive: navThemesClassNames.semiTransparent,
+    active: navThemesClassNames.white
+  }
+};
+
+let scrollOffset = 0;
+
+let url = '/alinuamaket';
+
 export default function Navbar() {
   const [language, setLanguage] = useState('ua');
-  const [scrollOffset, setScrollOffset] = useState(0);
+  const [currentNavTheme, setCurrentNavTheme] = useState(navTheme.transparent);
+  const [userScrolledDown, setUserScrolledDown] = useState(false);
+  const [userOpenedNav, setUserOpenedNav] = useState(false);
 
   const { t, i18n } = useTranslation();
 
-  const navbarContainer = useRef(null);
   const navbar = useRef(null);
 
   const location = useLocation();
@@ -22,67 +49,43 @@ export default function Navbar() {
   //#region effects
 
   useEffect(() => {
-    const url = location.pathname;
+    window.addEventListener('scroll', scrollEventHandler);
 
-    if (url === '/assistance') {
-      navbarContainer.current.classList.remove('navbar_default');
-      navbarContainer.current.classList.add('navbar_assistance');
-      navbarContainer.current.classList.remove('navbar-light');
-      navbarContainer.current.classList.remove('bg-light');
-      navbarContainer.current.classList.add('navbar-dark');
+    $('#mainNavbar').on('show.bs.collapse', showNavbar);
+    $('#mainNavbar').on('hide.bs.collapse', hideNavbar);
+
+    return function cleanup() {
+      window.removeEventListener('scroll', scrollEventHandler);
+      
+      $('#mainNavbar').off('show.bs.collapse');
+      $('#mainNavbar').off('hide.bs.collapse');
     }
-    else if (url === '/alinuamaket') {
-      navbarContainer.current.classList.remove('navbar_assistance');
-      navbarContainer.current.classList.remove('navbar_default');
-      navbarContainer.current.classList.remove('navbar-dark');
-      navbarContainer.current.classList.remove('bg-dark');
-      navbarContainer.current.classList.add('navbar-light');
-    }
-    else {
-      navbarContainer.current.classList.remove('navbar_assistance');
-      navbarContainer.current.classList.add('navbar_default');
-      navbarContainer.current.classList.remove('navbar-dark');
-      navbarContainer.current.classList.remove('bg-dark');
-      navbarContainer.current.classList.add('navbar-light');
+  }, []);
+
+  useEffect(() => {
+    url = location.pathname;
+
+    switch (url) {
+      case '/alinuamaket':
+        setCurrentNavTheme(navTheme.transparent);
+        break;
+      
+      case '/assistance':
+        setCurrentNavTheme(navTheme.semiTransparent);
+        break;
+    
+      default:
+        setCurrentNavTheme(navTheme.default);
+        break;
     }
 
     return function cleanup() {
-      navbarContainer.current.classList.remove('navbar_assistance');
       $('#mainNavbar').collapse('hide');
       $([document.documentElement, document.body]).animate({
         scrollTop: 0
       }, 500);
     }
   }, [location]);
-
-  useEffect(() => {
-    window.addEventListener('scroll', scrollEventHandler);
-
-    return function cleanup() {
-      window.removeEventListener('scroll', scrollEventHandler);
-    }
-  }, [navbar]);
-
-  useEffect(() => {
-    if (scrollOffset > 70) {
-      navbarContainer.current.classList.add('bg-light');
-
-      if (!navbarContainer.current.classList.contains('bg-dark')) {
-        if (navbarContainer.current.classList.contains('navbar-dark')) {
-          navbarContainer.current.classList.remove('navbar-dark');
-        }
-        
-        navbarContainer.current.classList.add('navbar-light');
-      }
-    }
-    else {
-      navbarContainer.current.classList.remove('bg-light');
-
-      if (location.pathname === '/assistance') {
-        navbarContainer.current.classList.add('navbar-dark');
-      }
-    }
-  }, [scrollOffset]);
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
@@ -92,8 +95,18 @@ export default function Navbar() {
 
   //#region functions
 
+  function showNavbar() {
+    setUserOpenedNav(true);
+  }
+
+  function hideNavbar() {
+    setUserOpenedNav(false);
+  }
+
   function scrollEventHandler(e) {
-    setScrollOffset(e.currentTarget.pageYOffset);
+    scrollOffset = e.currentTarget.pageYOffset;
+
+    setUserScrolledDown(scrollOffset > 70);
   }
 
   function changeLanguage(newLanguage) {
@@ -103,59 +116,25 @@ export default function Navbar() {
     i18n.changeLanguage(newLang);
   }
 
-  function toggleNavbar() {
-    if (scrollOffset < 70) {
-      if (!navbarContainer.current.classList.contains('bg-light')) {
-        showNavbar();
-      }
-      else {
-        hideNavbar();
-      }
-
-      if (location.pathname === '/assistance') {
-        if (!navbarContainer.current.classList.contains('bg-dark')) {
-          navbarContainer.current.classList.add('bg-dark');
-        }
-        else {
-          navbarContainer.current.classList.remove('bg-dark');
-        }
-      }
-    }
-  }
-
-  function showNavbar() {
-    if (location.pathname === '/alinuamaket') {
-      navbarContainer.current.classList.add('bg-light');
-
-      if (navbarContainer.current.classList.contains('navbar-dark')) {
-        navbarContainer.current.classList.remove('navbar-dark');
-      }
-    }
-  }
-
-  function hideNavbar() {
-    if (location.pathname === '/alinuamaket') {
-      navbarContainer.current.classList.remove('bg-light');
-
-      if (location.pathname === '/assistance') {
-        navbarContainer.current.classList.add('navbar-dark');
-      }
-    }
-  }
-
   //#endregion
 
   return (
     <nav
-      ref={navbarContainer}
       style={{ transition: '0.2s background ease-in-out' }}
-      className="navbar navbar-expand-lg navbar-light fixed-top"
+      className={`navbar navbar-expand-lg fixed-top ${userScrolledDown || userOpenedNav
+        ? currentNavTheme.active
+        : currentNavTheme.inactive}`}
     >
       <div className="container">
         <Link to="/alinuamaket" className="navbar-brand">
           <img src={logo} alt="Alin logo" />
         </Link>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" onClick={toggleNavbar}>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#mainNavbar"
+        >
           <span className="navbar-toggler-icon" />
         </button>
         <div ref={navbar} className="collapse navbar-collapse" id="mainNavbar">

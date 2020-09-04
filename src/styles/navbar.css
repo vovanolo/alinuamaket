@@ -1,8 +1,8 @@
-.navbar_assistance {
+.navbar_semi-transparent {
   background-color: var(--color-grey_light-transparent);
 }
 
-.navbar_default {
+.navbar_grey {
   background-color: var(--color-grey_light);
 }
 
