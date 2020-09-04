@@ -47,7 +47,7 @@ export default function RentWithDriver() {
     <div className="rent_with_driver mt-6">
       <div className="container">
         <div className="row">
-          <div className="col-md-5 col">
+          <div className="col-lg-5 col-12">
             <h2 className="text_black mb-3">Оренда машини з водієм</h2>
 
             {loyaltyCardsData.map(({ icon, iconAlt, description }) => (
@@ -60,42 +60,44 @@ export default function RentWithDriver() {
             ))}
 
           </div>
-          <div className="col-md-7 rent_form">
-            <button>Далі</button>
-            <div className="row">
-              <div className="col-md-3 transf_border d-flex justify-content-center align-items-center">
-                <p>Трансфер</p>
-              </div>
-              <div className="col-md-4 d-flex justify-content-center align-items-center">
-                <p>Погодинно</p>
-              </div>
-            </div>
-            <div className="row d-flex justify-content-between">
-              <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
-                <p>від</p>
-                <input placeholder="Вкажіть Локацію" className="transf_input" type="text" />
-                <p>місто,область,країна</p>
-              </div>
-              <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
-                <p>від</p>
-                <input placeholder="Вкажіть Локацію" className="transf_input" type="text" />
-                <p>місто,область,країна</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12 transf_date">
-                <div className="row d-flex justify-content-between">
-                  <div className="col-md-5">
-                    <p>Дата</p>
-                    <input type="date" className="transf_time_input" />
-                  </div>
-                  <div className="col-md-5 margin_down">
-                    <p>Час</p>
-                    <input type="time" className="transf_time_input" />
-                  </div>
+          <div className="col-lg-7 col-12">
+            <form className="rent_form">
+              <button>Далі</button>
+              <div className="row">
+                <div className="col-3 transf_border d-flex justify-content-center align-items-center">
+                  <p>Трансфер</p>
+                </div>
+                <div className="col-4 d-flex justify-content-center align-items-center">
+                  <p>Погодинно</p>
                 </div>
               </div>
-            </div>
+              <div className="row mt-3 d-flex justify-content-between">
+                <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
+                  <p>від</p>
+                  <input placeholder="Вкажіть Локацію" className="transf_input" type="text" />
+                  <p>місто,область,країна</p>
+                </div>
+                <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
+                  <p>від</p>
+                  <input placeholder="Вкажіть Локацію" className="transf_input" type="text" />
+                  <p>місто,область,країна</p>
+                </div>
+              </div>
+              <div className="row mt-3 transf_date">
+                <div className="col-lg-5 mb-md-3 mb-lg-0">
+                  <label className="transf-date__input">
+                    <p>Дата</p>
+                    <input type="date" className="transf_time_input" />
+                  </label>
+                </div>
+                <div className="col-lg-5 offset-lg-2 transf_date-input">
+                  <label className="transf-date__input">
+                    <p>Час</p>
+                    <input type="time" className="transf_time_input" />
+                  </label>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
