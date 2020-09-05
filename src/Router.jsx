@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import * as urls from './urls';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -18,25 +20,25 @@ export default function Router() {
     <BrowserRouter>
       <Navbar />
       <Switch>
-        <Route exact path="/alinuamaket">
+        <Route exact path={urls.home}>
           <Home />
         </Route>
-        <Route exact path="/rent_with_driver">
+        <Route exact path={urls.rentWithDriver}>
           <RentWithDriver />
         </Route>
-        <Route exact path="/rent">
+        <Route exact path={urls.rent}>
           <Rent />
         </Route>
-        <Route exact path="/reserv">
+        <Route exact path={urls.reserv}>
           <Reserv />
         </Route>
-        <Route exact path="/assistance">
+        <Route exact path={urls.assistance}>
           <Assistance />
         </Route>
-        <Route exact path="/contacts">
+        <Route exact path={urls.contacts}>
           <Contacts />
         </Route>
-        <Route path="/car_info/:id">
+        <Route path={`${urls.carInfo}/:id`}>
           <CarInfo />
         </Route>
 

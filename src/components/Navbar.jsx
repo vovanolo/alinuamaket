@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import $ from 'jquery';
 
+import { home, assistance, rent, rentWithDriver, contacts } from '../urls';
+
 import '../styles/navbar.css';
 
 import logo from '../images/Logo.png';
@@ -32,7 +34,7 @@ const navTheme = {
 
 let scrollOffset = 0;
 
-let url = '/alinuamaket';
+let currentUrl = home; 
 
 export default function Navbar() {
   const [language, setLanguage] = useState('ua');
@@ -63,14 +65,14 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    url = location.pathname;
+    currentUrl = location.pathname;
 
-    switch (url) {
-      case '/alinuamaket':
+    switch (currentUrl) {
+      case home:
         setCurrentNavTheme(navTheme.transparent);
         break;
       
-      case '/assistance':
+      case assistance:
         setCurrentNavTheme(navTheme.semiTransparent);
         break;
     
@@ -126,7 +128,7 @@ export default function Navbar() {
         : currentNavTheme.inactive}`}
     >
       <div className="container">
-        <Link to="/alinuamaket" className="navbar-brand">
+        <Link to={home} className="navbar-brand">
           <img src={logo} alt="Alin logo" />
         </Link>
         <button
@@ -140,19 +142,16 @@ export default function Navbar() {
         <div ref={navbar} className="collapse navbar-collapse" id="mainNavbar">
           <ul className={`navbar-nav ${location.pathname === '/alinuamaket' ? 'navbar__menu-list' : 'ml-auto'}`}>
             <li className="nav-item mr-lg-3 mr-md-0">
-              <Link to="/rent" className="nav-link">{t('Прокат')}</Link>
+              <Link to={rent} className="nav-link">{t('Прокат')}</Link>
             </li>
             <li className="nav-item mr-lg-3 mr-md-0">
-              <Link to="/rent_with_driver" className="nav-link">{t('Трансфери')}</Link>
+              <Link to={rentWithDriver} className="nav-link">{t('Трансфери')}</Link>
             </li>
             <li className="nav-item mr-lg-3 mr-md-0">
-              <Link to="/assistance" className="nav-link">{t('Асистенс')}</Link>
-            </li>
-            <li className="nav-item mr-lg-3 mr-md-0">
-              <Link to="/alinuamaket" className="nav-link">FAQ</Link>
+              <Link to={assistance} className="nav-link">{t('Асистенс')}</Link>
             </li>
             <li className="nav-item">
-              <Link to="/contacts" className="nav-link">{t('Контакти')}</Link>
+              <Link to={contacts} className="nav-link">{t('Контакти')}</Link>
             </li>
           </ul>
 
@@ -168,9 +167,9 @@ export default function Navbar() {
             </li>
             {location.pathname !== '/alinuamaket' && (
               <li className="nav-item">
-                <button className="btn_main btn_nav">
+                <Link to={contacts} className="btn_main btn_nav">
                   {t('Зв\'язок')}
-                </button>
+                </Link>
               </li>
             )}
           </ul>
