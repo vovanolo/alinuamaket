@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/alinuamaket/static/css/main.3425ab80.chunk.css",
-    "main.js": "/alinuamaket/static/js/main.2c64ffa8.chunk.js",
-    "main.js.map": "/alinuamaket/static/js/main.2c64ffa8.chunk.js.map",
+    "main.css": "/alinuamaket/static/css/main.2a86464b.chunk.css",
+    "main.js": "/alinuamaket/static/js/main.78e84b8a.chunk.js",
+    "main.js.map": "/alinuamaket/static/js/main.78e84b8a.chunk.js.map",
     "runtime-main.js": "/alinuamaket/static/js/runtime-main.2c0f3c47.js",
     "runtime-main.js.map": "/alinuamaket/static/js/runtime-main.2c0f3c47.js.map",
     "static/css/2.71652b47.chunk.css": "/alinuamaket/static/css/2.71652b47.chunk.css",
-    "static/js/2.1665ac05.chunk.js": "/alinuamaket/static/js/2.1665ac05.chunk.js",
-    "static/js/2.1665ac05.chunk.js.map": "/alinuamaket/static/js/2.1665ac05.chunk.js.map",
+    "static/js/2.97b02ce0.chunk.js": "/alinuamaket/static/js/2.97b02ce0.chunk.js",
+    "static/js/2.97b02ce0.chunk.js.map": "/alinuamaket/static/js/2.97b02ce0.chunk.js.map",
     "index.html": "/alinuamaket/index.html",
-    "precache-manifest.c8c34ff432188ced3ecb0b23d571ea1c.js": "/alinuamaket/precache-manifest.c8c34ff432188ced3ecb0b23d571ea1c.js",
+    "precache-manifest.67ca642bbbd1d3205a5cbfe4c26dbf3a.js": "/alinuamaket/precache-manifest.67ca642bbbd1d3205a5cbfe4c26dbf3a.js",
     "service-worker.js": "/alinuamaket/service-worker.js",
     "static/css/2.71652b47.chunk.css.map": "/alinuamaket/static/css/2.71652b47.chunk.css.map",
-    "static/css/main.3425ab80.chunk.css.map": "/alinuamaket/static/css/main.3425ab80.chunk.css.map",
-    "static/js/2.1665ac05.chunk.js.LICENSE.txt": "/alinuamaket/static/js/2.1665ac05.chunk.js.LICENSE.txt",
+    "static/css/main.2a86464b.chunk.css.map": "/alinuamaket/static/css/main.2a86464b.chunk.css.map",
+    "static/js/2.97b02ce0.chunk.js.LICENSE.txt": "/alinuamaket/static/js/2.97b02ce0.chunk.js.LICENSE.txt",
     "static/media/01_Car.png": "/alinuamaket/static/media/01_Car.0cf3839a.png",
     "static/media/5_percent.svg": "/alinuamaket/static/media/5_percent.1df6edf9.svg",
     "static/media/index.css": "/alinuamaket/static/media/Gilroy-Regular.ae5e7255.ttf",
@@ -68,8 +68,8 @@
   "entrypoints": [
     "static/js/runtime-main.2c0f3c47.js",
     "static/css/2.71652b47.chunk.css",
-    "static/js/2.1665ac05.chunk.js",
-    "static/css/main.3425ab80.chunk.css",
-    "static/js/main.2c64ffa8.chunk.js"
+    "static/js/2.97b02ce0.chunk.js",
+    "static/css/main.2a86464b.chunk.css",
+    "static/js/main.78e84b8a.chunk.js"
   ]
 }

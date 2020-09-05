@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3548537b5b80bbf0572a7ea4d3c49323",
+    "revision": "00f7b742aa669a1f390a6eba77cf0046",
     "url": "/alinuamaket/index.html"
   },
   {
-    "revision": "9f2f10e88a0ff6a2ddbf",
+    "revision": "87ff652a6b37dc0fd5cd",
     "url": "/alinuamaket/static/css/2.71652b47.chunk.css"
   },
   {
-    "revision": "1df7cb004f2055064c8f",
-    "url": "/alinuamaket/static/css/main.3425ab80.chunk.css"
+    "revision": "44dd0bb0c128856a7e20",
+    "url": "/alinuamaket/static/css/main.2a86464b.chunk.css"
   },
   {
-    "revision": "9f2f10e88a0ff6a2ddbf",
-    "url": "/alinuamaket/static/js/2.1665ac05.chunk.js"
+    "revision": "87ff652a6b37dc0fd5cd",
+    "url": "/alinuamaket/static/js/2.97b02ce0.chunk.js"
   },
   {
-    "revision": "b6840d1fa4cd3c3e88b7c215b28b2e9e",
-    "url": "/alinuamaket/static/js/2.1665ac05.chunk.js.LICENSE.txt"
+    "revision": "b9c80c723de486fb475df0ee178fb0df",
+    "url": "/alinuamaket/static/js/2.97b02ce0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1df7cb004f2055064c8f",
-    "url": "/alinuamaket/static/js/main.2c64ffa8.chunk.js"
+    "revision": "44dd0bb0c128856a7e20",
+    "url": "/alinuamaket/static/js/main.78e84b8a.chunk.js"
   },
   {
     "revision": "b0985fe81794e6a4d73d",
