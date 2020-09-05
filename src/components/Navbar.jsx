@@ -11,10 +11,10 @@ import '../styles/navbar.css';
 import logo from '../images/Logo.png';
 
 const navThemesClassNames = {
-  grey: 'navbar_grey navbar-light',
-  white: 'bg-light navbar-light',
-  transparent: 'navbar-light',
-  semiTransparent: 'navbar_semi-transparent navbar-dark'
+  grey: 'navbar_grey navbar-text_dark',
+  white: 'bg-light  navbar-text_dark',
+  transparent: ' navbar-text_dark',
+  semiTransparent: 'navbar_semi-transparent  navbar-text_light'
 };
 
 const navTheme = {
@@ -34,7 +34,7 @@ const navTheme = {
 
 let scrollOffset = 0;
 
-let currentUrl = home; 
+let currentUrl = home;
 
 export default function Navbar() {
   const [language, setLanguage] = useState('ua');
@@ -140,7 +140,7 @@ export default function Navbar() {
           <span className="navbar-toggler-icon" />
         </button>
         <div ref={navbar} className="collapse navbar-collapse" id="mainNavbar">
-          <ul className={`navbar-nav ${location.pathname === '/alinuamaket' ? 'navbar__menu-list' : 'ml-auto'}`}>
+          <ul className={`navbar-nav ${location.pathname === home ? 'navbar__menu-list' : 'ml-auto'}`}>
             <li className="nav-item mr-lg-3 mr-md-0">
               <Link to={rent} className="nav-link">{t('Прокат')}</Link>
             </li>
@@ -155,9 +155,9 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <ul className={`navbar-nav ${location.pathname === '/alinuamaket' && 'navbar__menu-language'}`}>
-            <li className={`nav-item dropdown ${location.pathname !== '/alinuamaket' && 'mx-lg-4 mx-md-0'}`}>
-              <button className="btn nav-link dropdown-toggle" data-toggle="dropdown">
+          <ul className={`navbar-nav ${location.pathname === home ? 'navbar__menu-language' : ''}`}>
+            <li className={`nav-item dropdown ${location.pathname !== home ? 'mx-lg-4 mx-md-0' : ''}`}>
+              <button className={`btn nav-link dropdown-toggle nav__lang-btn ${location.pathname === home || location.pathname === assistance ? 'navbar__lang-btn_light' : 'navbar__lang-btn_grey'}`} data-toggle="dropdown">
                 {language.toUpperCase()}
               </button>
               <div className="dropdown-menu" onClick={(e) => changeLanguage(e.target.innerText.toLowerCase())}>
@@ -165,7 +165,7 @@ export default function Navbar() {
                 <button className="dropdown-item">RU</button>
               </div>
             </li>
-            {location.pathname !== '/alinuamaket' && (
+            {location.pathname !== home && (
               <li className="nav-item">
                 <Link to={contacts} className="btn_main btn_nav">
                   {t('Зв\'язок')}

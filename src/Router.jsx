@@ -17,7 +17,7 @@ import Assistance from './pages/Assistance';
 
 export default function Router() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={urls.basename}>
       <Navbar />
       <Switch>
         <Route exact path={urls.home}>

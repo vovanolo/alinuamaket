@@ -1,3 +1,9 @@
+@media (max-width: 1199px) {
+  .slider__container_hero::before {
+    left: 25vw;
+  }
+}
+
 @media (max-width: 991px) {
   .slider__container_hero {
     max-width: 60vw;

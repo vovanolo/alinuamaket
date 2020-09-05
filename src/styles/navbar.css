@@ -15,6 +15,38 @@
   margin-right: 135px;
 }
 
+.navbar-text_dark a.nav-link {
+  color: var(--color-black);
+}
+.navbar-text_dark a.nav-link:hover {
+  color: var(--color-black_hover);
+}
+
+.navbar-text_light a.nav-link {
+  color: var(--color-white);
+}
+.navbar-text_light a.nav-link:hover {
+  color: var(--color-white_hover);
+}
+
+.nav__lang-btn::after {
+  color: var(--color-black) !important;
+}
+
+.navbar__lang-btn_grey {
+  color: var(--color-grey);
+}
+.navbar__lang-btn_grey:hover {
+  color: var(--color-grey_light);
+}
+
+.navbar__lang-btn_light {
+  color: var(--color-white);
+}
+.navbar__lang-btn_light:hover {
+  color: var(--color-white_hover);
+}
+
 @media(max-width: 1199px) {
   .navbar__menu-language {
     margin-right: 110px;
