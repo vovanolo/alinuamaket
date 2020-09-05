@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Formik, Field, Form } from 'formik';
 
 import '../styles/rent_with_driver.css';
 
@@ -23,6 +23,10 @@ export default function RentWithDriver() {
     localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
+  }
+
+  function handleFormSubmit(values) {
+    console.log(values);
   }
 
   const loyaltyCardsData = [
@@ -62,43 +66,53 @@ export default function RentWithDriver() {
 
           </div>
           <div className="col-lg-7 col-12">
-            <form className="rent_form">
-              <button>Далі</button>
-              <div className="row">
-                <div className="col-3 transf_border d-flex justify-content-center align-items-center">
-                  <p>Трансфер</p>
+            <Formik
+              initialValues={{
+                fromLocation: '',
+                toLocation: '',
+                date: new Date(),
+                time: new Date().getTime()
+              }}
+              onSubmit={handleFormSubmit}
+            >
+              <Form className="rent_form">
+                <button type="submit">Далі</button>
+                <div className="row">
+                  <div className="col-3 transf_border d-flex justify-content-center align-items-center">
+                    <p>Трансфер</p>
+                  </div>
+                  <div className="col-4 d-flex justify-content-center align-items-center">
+                    <p>Погодинно</p>
+                  </div>
                 </div>
-                <div className="col-4 d-flex justify-content-center align-items-center">
-                  <p>Погодинно</p>
+                <div className="row mt-3 d-flex justify-content-between">
+                  <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
+                    <p>від</p>
+                    <Field name="fromLocation" placeholder="Вкажіть Локацію" className="transf_input" type="text" />
+                    <p>місто,область,країна</p>
+                  </div>
+                  <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
+                    <p>від</p>
+                    <Field name="toLocation" placeholder="Вкажіть Локацію" className="transf_input" type="text" />
+                    <p>місто,область,країна</p>
+                  </div>
                 </div>
-              </div>
-              <div className="row mt-3 d-flex justify-content-between">
-                <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
-                  <p>від</p>
-                  <input placeholder="Вкажіть Локацію" className="transf_input" type="text" />
-                  <p>місто,область,країна</p>
+                <div className="row mt-3 transf_date">
+                  <div className="col-lg-5 mb-md-3 mb-lg-0">
+                    <label className="transf-date__input">
+                      <p>Дата</p>
+                      <Field name="date" type="date" className="transf_time_input" />
+                    </label>
+                  </div>
+                  <div className="col-lg-5 offset-lg-2 transf_date-input">
+                    <label className="transf-date__input">
+                      <p>Час</p>
+                      <Field name="time" type="time" className="transf_time_input" />
+                    </label>
+                  </div>
                 </div>
-                <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
-                  <p>від</p>
-                  <input placeholder="Вкажіть Локацію" className="transf_input" type="text" />
-                  <p>місто,область,країна</p>
-                </div>
-              </div>
-              <div className="row mt-3 transf_date">
-                <div className="col-lg-5 mb-md-3 mb-lg-0">
-                  <label className="transf-date__input">
-                    <p>Дата</p>
-                    <input type="date" className="transf_time_input" />
-                  </label>
-                </div>
-                <div className="col-lg-5 offset-lg-2 transf_date-input">
-                  <label className="transf-date__input">
-                    <p>Час</p>
-                    <input type="time" className="transf_time_input" />
-                  </label>
-                </div>
-              </div>
-            </form>
+              </Form>
+            </Formik>
           </div>
         </div>
       </div>

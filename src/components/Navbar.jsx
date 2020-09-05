@@ -11,10 +11,10 @@ import '../styles/navbar.css';
 import logo from '../images/Logo.png';
 
 const navThemesClassNames = {
-  grey: 'navbar_grey navbar-text_dark',
-  white: 'bg-light  navbar-text_dark',
-  transparent: ' navbar-text_dark',
-  semiTransparent: 'navbar_semi-transparent  navbar-text_light'
+  grey: 'navbar_grey navbar-text_dark navbar-light',
+  white: 'bg-light navbar-text_dark navbar-light',
+  transparent: ' navbar-text_dark navbar-light',
+  semiTransparent: 'navbar_semi-transparent navbar-text_light navbar-dark'
 };
 
 const navTheme = {
