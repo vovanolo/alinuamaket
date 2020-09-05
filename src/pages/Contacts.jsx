@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Formik, Field, Form, MyText } from 'formik';
 
 import "../styles/contacts.css";
 
@@ -21,6 +22,10 @@ export default function Contacts() {
         localStorage.setItem("lang", newLang);
         setLanguage(newLang);
         i18n.changeLanguage(newLang);
+    }
+
+    function handleFormSubmit(values) {
+        console.log(values);
     }
 
     return (
@@ -149,16 +154,27 @@ export default function Contacts() {
                         </p>
                     </div>
                     <div className="col-md-6 input input_size">
-                        <h3>Зв'язатись з нами</h3>
-                        <input type="text" placeholder='Ваше імя' className='input mt-2'/>
-                        <input type="text" placeholder='Ваш email' className='input mt-2'/>
-                        <textarea className='input mt-2' placeholder='Коментар'></textarea>
-                        
-                        <div className="row mt-2">
-                            <div className="col-lg-4">
-                                <button className='btn_main'>Надіслати</button>
-                            </div>
-                        </div>
+                        <Formik
+                            initialValues={{
+                                name: '',
+                                email: '',
+                                comment: ''
+                            }}
+                            onSubmit={handleFormSubmit}
+                        >
+                            <Form>
+                                <h3>Зв'язатись з нами</h3>
+                                <Field type="text" name="name" placeholder='Ваше імя' className='input mt-2'/>
+                                <Field type="text" name="email" placeholder='Ваш email' className='input mt-2'/>
+                                <Field as='textarea' type="textarea" name="comment" className='input mt-2' placeholder='Коментар' />
+                            
+                                <div className="row mt-2">
+                                    <div className="col-lg-4">
+                                        <button type='submit' className='btn_main'>Надіслати</button>
+                                    </div>
+                                </div>
+                            </Form>
+                        </Formik>
                     </div>
                 </div>
             </div>
