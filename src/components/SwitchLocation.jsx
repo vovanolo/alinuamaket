@@ -5,7 +5,7 @@ import '../styles/switch.css';
 
 import circleSwitch from '../images/circle_switch.svg';
 
-export default function Switch() {
+export default function Switch(props) {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
 
