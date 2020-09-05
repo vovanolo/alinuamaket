@@ -10,9 +10,13 @@ import star from '../images/rent_with_driver/star.svg';
 
 import LoyaltyCard from '../components/LoyaltyCard';
 
-export default function RentWithDriver() {
+export default function RentWithDriver({ data }) {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    console.log(data);
+  }, []);
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
@@ -70,8 +74,8 @@ export default function RentWithDriver() {
               initialValues={{
                 fromLocation: '',
                 toLocation: '',
-                date: new Date(),
-                time: new Date().getTime()
+                date: '',
+                time: ''
               }}
               onSubmit={handleFormSubmit}
             >

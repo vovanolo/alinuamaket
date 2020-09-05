@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import * as urls from './urls';
@@ -16,6 +16,8 @@ import CarInfo from './pages/CarInfo';
 import Assistance from './pages/Assistance';
 
 export default function Router() {
+  const [data, setData] = useState(null);
+
   return (
     <BrowserRouter basename={urls.basename}>
       <Navbar />
@@ -24,13 +26,13 @@ export default function Router() {
           <Home />
         </Route>
         <Route exact path={urls.rentWithDriver}>
-          <RentWithDriver />
+          <RentWithDriver data={data} />
         </Route>
         <Route exact path={urls.rent}>
           <Rent />
         </Route>
         <Route exact path={urls.reserv}>
-          <Reserv />
+          <Reserv sendData={(data) => setData(data)} />
         </Route>
         <Route exact path={urls.assistance}>
           <Assistance />
