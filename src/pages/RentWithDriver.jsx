@@ -37,17 +37,17 @@ export default function RentWithDriver({ data }) {
     {
       icon: transf,
       iconAlt: 'transfer',
-      description: 'Виберіть трансфер або погодинну поїздку'
+      description: 'Виберіть трансфер або погодинну поїздку',
     },
     {
       icon: calendar,
       iconAlt: 'calendar',
-      description: 'Виберіть дату та час'
+      description: 'Виберіть дату та час',
     },
     {
       icon: star,
       iconAlt: 'star',
-      description: 'Виберіть клас автомобіля'
+      description: 'Виберіть клас автомобіля',
     },
   ];
 
@@ -67,7 +67,6 @@ export default function RentWithDriver({ data }) {
                 margin={4}
               />
             ))}
-
           </div>
           <div className="col-lg-7 col-12">
             <Formik
@@ -75,7 +74,7 @@ export default function RentWithDriver({ data }) {
                 fromLocation: '',
                 toLocation: '',
                 date: '',
-                time: ''
+                time: '',
               }}
               onSubmit={handleFormSubmit}
             >
@@ -92,12 +91,22 @@ export default function RentWithDriver({ data }) {
                 <div className="row mt-3 d-flex justify-content-between">
                   <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
                     <p>від</p>
-                    <Field name="fromLocation" placeholder="Вкажіть Локацію" className="transf_input" type="text" />
+                    <Field
+                      name="fromLocation"
+                      placeholder="Вкажіть Локацію"
+                      className="transf_input"
+                      type="text"
+                    />
                     <p>місто,область,країна</p>
                   </div>
                   <div className="col-md-5 transf-location d-flex flex-column justify-content-between">
                     <p>від</p>
-                    <Field name="toLocation" placeholder="Вкажіть Локацію" className="transf_input" type="text" />
+                    <Field
+                      name="toLocation"
+                      placeholder="Вкажіть Локацію"
+                      className="transf_input"
+                      type="text"
+                    />
                     <p>місто,область,країна</p>
                   </div>
                 </div>
@@ -105,13 +114,21 @@ export default function RentWithDriver({ data }) {
                   <div className="col-lg-5 mb-md-3 mb-lg-0">
                     <label className="transf-date__input">
                       <p>Дата</p>
-                      <Field name="date" type="date" className="transf_time_input" />
+                      <Field
+                        name="date"
+                        type="date"
+                        className="transf_time_input"
+                      />
                     </label>
                   </div>
                   <div className="col-lg-5 offset-lg-2 transf_date-input">
                     <label className="transf-date__input">
                       <p>Час</p>
-                      <Field name="time" type="time" className="transf_time_input" />
+                      <Field
+                        name="time"
+                        type="time"
+                        className="transf_time_input"
+                      />
                     </label>
                   </div>
                 </div>
@@ -121,5 +138,5 @@ export default function RentWithDriver({ data }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
