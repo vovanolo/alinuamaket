@@ -48,14 +48,6 @@ export default function Reserv({ sendData }) {
     setExtras(value);
   }
 
-  function handlePriceAdd(e) {
-    if (e.target.checked) {
-      setPrice((prevState) => prevState + 10);
-    } else {
-      setPrice((prevState) => prevState - 10);
-    }
-  }
-
   return (
     <Formik
       initialValues={{
@@ -213,7 +205,6 @@ export default function Reserv({ sendData }) {
                       value={extrasValues.AdditionalDriver}
                       id="extras3"
                       text={t(extrasValues.AdditionalDriver)}
-                      onClick={handlePriceAdd}
                     />
                     <Option
                       onCheck={handleExtrasCheck}
