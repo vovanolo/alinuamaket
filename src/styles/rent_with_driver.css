@@ -10,9 +10,12 @@
 }
 
 .transf_border {
-  border: 1px solid #9E9E9E;
   border-radius: 10px;
-  height: 45px;
+  padding: 12px 5px;
+  margin-bottom: 0;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .transf-location {
@@ -79,6 +82,21 @@
   right: 6%;
 }
 
+.visually-hidden {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding:0 !important;
+	border:0 !important;
+	height: 1px !important; 
+	width: 1px !important; 
+	overflow: hidden;
+}
+
+.visually-hidden:checked ~ .transf_border{
+  border: 1px solid #9E9E9E;
+}
+
 [type="date"] {
   background:#fff url(../images/rent_with_driver/calendar_no_bg.svg) 97% 50% no-repeat;
 }
@@ -93,8 +111,19 @@
   opacity: 0;
 }
 
+.input_radio_transfer{
+  display: inline-block;
+}
+
+
 @media(max-width:560px){
   .margin_down{
     margin-top: 2em;
+  }
+  .transf_border{
+    width: 100%;
+  }
+  .input_radio_transfer{
+    width: 100%;
   }
 }
