@@ -305,7 +305,7 @@ export default function Reserv({ sendData }) {
                     {t('В вартість оренди включено')}:
                   </h4>
                   <ul className="reserv__price-list">
-                    <li className="reserv__price-list-item">
+                    {/* <li className="reserv__price-list-item">
                       <span className="reserv__price-title">
                         {t('Подача по місту')}
                       </span>
@@ -328,15 +328,15 @@ export default function Reserv({ sendData }) {
                       <span className="text_grey reserv__price-price">
                         +15$
                       </span>
-                    </li>
-                    <li className="reserv__price-list-item">
+                    </li> */}
+                    {/* <li className="reserv__price-list-item">
                       <span className="reserv__price-title">
                         {t('Wi-Fi роутер')}
                       </span>
                       <span className="text_grey reserv__price-price">
                         +15$
                       </span>
-                    </li>
+                    </li> */}
                     {extras.map((extra, index) => (
                       <li key={index} className="reserv__price-list-item">
                         <span className="reserv__price-title">{t(extra)}</span>
