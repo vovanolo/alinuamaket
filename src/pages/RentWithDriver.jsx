@@ -37,17 +37,17 @@ export default function RentWithDriver({ data }) {
     {
       icon: transf,
       iconAlt: 'transfer',
-      description: 'Виберіть трансфер або погодинну поїздку'
+      description: 'Виберіть трансфер або погодинну поїздку',
     },
     {
       icon: calendar,
       iconAlt: 'calendar',
-      description: 'Виберіть дату та час'
+      description: 'Виберіть дату та час',
     },
     {
       icon: star,
       iconAlt: 'star',
-      description: 'Виберіть клас автомобіля'
+      description: 'Виберіть клас автомобіля',
     },
   ];
 
@@ -67,7 +67,6 @@ export default function RentWithDriver({ data }) {
                 margin={4}
               />
             ))}
-
           </div>
           <div className="col-lg-7 col-12">
             <Formik
@@ -75,7 +74,7 @@ export default function RentWithDriver({ data }) {
                 fromLocation: '',
                 toLocation: '',
                 date: '',
-                time: ''
+                time: '',
               }}
               onSubmit={handleFormSubmit}
             >
@@ -136,5 +135,5 @@ export default function RentWithDriver({ data }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
