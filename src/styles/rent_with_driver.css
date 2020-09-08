@@ -3,7 +3,7 @@
 }
 
 .rent_form {
-  border: 1px solid #9E9E9E;
+  border: 1px solid #9e9e9e;
   border-radius: 10px;
   padding: 41px 48px 41px 48px;
   position: relative;
@@ -19,7 +19,7 @@
 }
 
 .transf-location {
-  border: 1px solid #9E9E9E;
+  border: 1px solid #9e9e9e;
   border-radius: 5px;
   padding: 18px 25px;
 }
@@ -27,7 +27,7 @@
 .transf-location p {
   font-size: 14px;
   line-height: 16px;
-  color: #9E9E9E;
+  color: #9e9e9e;
 }
 
 .transf_date-container {
@@ -35,14 +35,14 @@
 }
 
 .transf_date {
-  border: 1px solid #9E9E9E;
+  border: 1px solid #9e9e9e;
   border-radius: 5px;
 }
 
 .transf_date p {
   font-size: 14px;
   line-height: 16px;
-  color: #9E9E9E;
+  color: #9e9e9e;
   margin-bottom: 10px;
 }
 
@@ -70,7 +70,7 @@
 .rent_form button {
   display: block;
   position: absolute;
-  border:none;
+  border: none;
   width: 107px;
   height: 34px;
   background: var(--color-grey);
@@ -82,48 +82,35 @@
   right: 6%;
 }
 
-.visually-hidden {
-	position: absolute !important;
-	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-	clip: rect(1px, 1px, 1px, 1px);
-	padding:0 !important;
-	border:0 !important;
-	height: 1px !important; 
-	width: 1px !important; 
-	overflow: hidden;
+.visually-hidden:checked ~ .transf_border {
+  border: 1px solid #9e9e9e;
 }
 
-.visually-hidden:checked ~ .transf_border{
-  border: 1px solid #9E9E9E;
+[type='date'] {
+  background: #fff url(../images/rent_with_driver/calendar_no_bg.svg) 97% 50%
+    no-repeat;
 }
 
-[type="date"] {
-  background:#fff url(../images/rent_with_driver/calendar_no_bg.svg) 97% 50% no-repeat;
-}
-
-
-[type="date"]::-webkit-inner-spin-button {
+[type='date']::-webkit-inner-spin-button {
   display: none;
 }
 
-
-[type="date"]::-webkit-calendar-picker-indicator {
+[type='date']::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
 
-.input_radio_transfer{
+.input_radio_transfer {
   display: inline-block;
 }
 
-
-@media(max-width:560px){
-  .margin_down{
+@media (max-width: 560px) {
+  .margin_down {
     margin-top: 2em;
   }
-  .transf_border{
+  .transf_border {
     width: 100%;
   }
-  .input_radio_transfer{
+  .input_radio_transfer {
     width: 100%;
   }
 }

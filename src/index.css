@@ -28,7 +28,11 @@ body {
   font-family: 'Gilroy', sans-serif;
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
   font-weight: 400;
   margin: 0;
   margin-bottom: 0;
@@ -51,7 +55,8 @@ h4 {
   font-size: 1.1rem;
 }
 
-h5, h6 {
+h5,
+h6 {
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -92,17 +97,22 @@ a.text_black:hover {
   transition: 0.1s ease-in-out;
   text-align: center;
   text-decoration: none;
-  
+
   border: none;
   border-radius: 10px;
   background-color: var(--color-grey);
   color: var(--color-white);
 }
 
-.btn_main:hover {
+.btn_main:hover:not(:disabled) {
   background-color: var(--color-black);
   color: var(--color-white);
   text-decoration: none;
+}
+
+.btn_main:disabled {
+  background-color: var(--color-grey_light);
+  color: var(--color-black);
 }
 
 .btn_slim {
@@ -136,4 +146,15 @@ a.text_black:hover {
 
 .navbar-offset {
   margin-top: 130px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
 }

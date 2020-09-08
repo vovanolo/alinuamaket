@@ -1,158 +1,209 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import '../styles/rent_page.css';
 
 import car from '../images/slider/01_Car.png';
+
 import CarCard from '../components/CarCard';
 
+const Filters = {
+  all: 'Всі автомобілі',
+  premium: 'Преміум',
+  suv: 'Позашляховик',
+  cabriolet: 'Кабріолет',
+  confort: 'Конфорт',
+  cheap: 'Економ',
+};
+
+const Sorters = {
+  priceAsc: 'За зростанням ціни',
+  priceDesc: 'За спаданням ціни',
+};
+
+const CardData = [
+  {
+    id: 1,
+    name: 'BMW S SERIES SEDAN',
+    year: '2018',
+    placesCount: '5 місць',
+    air: 'кондиціонер',
+    price: 100,
+    photo: car,
+    type: Filters.cabriolet,
+  },
+  {
+    id: 2,
+    name: 'BMW S SERIES SEDAN',
+    year: '2018',
+    placesCount: '5 місць',
+    air: 'кондиціонер',
+    price: 350,
+    photo: car,
+    type: Filters.cheap,
+  },
+  {
+    id: 3,
+    name: 'BMW S SERIES SEDAN',
+    year: '2018',
+    placesCount: '5 місць',
+    air: 'кондиціонер',
+    price: 450,
+    photo: car,
+    type: Filters.suv,
+  },
+  {
+    id: 4,
+    name: 'BMW S SERIES SEDAN',
+    year: '2018',
+    placesCount: '5 місць',
+    air: 'кондиціонер',
+    price: 100,
+    photo: car,
+    type: Filters.cheap,
+  },
+  {
+    id: 5,
+    name: 'BMW S SERIES SEDAN',
+    year: '2018',
+    placesCount: '5 місць',
+    air: 'кондиціонер',
+    price: 19235,
+    photo: car,
+    type: Filters.cheap,
+  },
+];
+
 export default function Rent() {
-    const [language, setLanguage] = useState('ua');
-    const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState('ua');
+  const [cars, setCars] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState(Filters.all);
+  const [currentSorter, setCurrentSorter] = useState('');
 
-    useEffect(() => {
-        changeLanguage(localStorage.getItem('lang') || 'ua');
-    }, [language]);
+  const { t, i18n } = useTranslation();
 
-    function changeLanguage(newLanguage) {
-        const newLang = newLanguage;
-        localStorage.setItem('lang', newLang);
-        setLanguage(newLang);
-        i18n.changeLanguage(newLang);
+  useEffect(() => {
+    changeLanguage(localStorage.getItem('lang') || 'ua');
+  }, [language]);
+
+  useEffect(() => {
+    setCars(CardData);
+  }, []);
+
+  function changeLanguage(newLanguage) {
+    const newLang = newLanguage;
+    localStorage.setItem('lang', newLang);
+    setLanguage(newLang);
+    i18n.changeLanguage(newLang);
+  }
+
+  const filtersData = Object.values(Filters);
+  const sortersData = Object.values(Sorters);
+
+  function changeFilter(e) {
+    const { value } = e.target;
+
+    setCurrentFilter(value);
+  }
+
+  function changeSorter(e) {
+    const { value } = e.target;
+
+    setCurrentSorter(value);
+  }
+
+  const filteredCars =
+    currentFilter === Filters.all
+      ? cars
+      : cars.filter(({ type }) => type === currentFilter);
+
+  const sortedCars = filteredCars.sort((a, b) => {
+    switch (currentSorter) {
+      case Sorters.priceAsc:
+        return a.price - b.price;
+
+      case Sorters.priceDesc:
+        return b.price - a.price;
+
+      default:
+        return filteredCars;
     }
+  });
 
-
-
-    const CardData = [
-        {
-            name: 'BMW S SERIES SEDAN',
-            year: '2018',
-            placesCount: '5 місць',
-            air: 'кондиціонер',
-            price: 5000,
-            dayPrice: Math.round(5000 / 31),
-            photo: car
-        },
-        {
-            name: 'BMW S SERIES SEDAN',
-            year: '2018',
-            placesCount: '5 місць',
-            air: 'кондиціонер',
-            price: 5000,
-            dayPrice: Math.round(5000 / 31),
-            photo: car
-        },
-        {
-            name: 'BMW S SERIES SEDAN',
-            year: '2018',
-            placesCount: '5 місць',
-            air: 'кондиціонер',
-            price: 5000,
-            dayPrice: Math.round(5000 / 31),
-            photo: car
-        },
-        {
-            name: 'BMW S SERIES SEDAN',
-            year: '2018',
-            placesCount: '5 місць',
-            air: 'кондиціонер',
-            price: 5000,
-            dayPrice: Math.round(5000 / 31),
-            photo: car
-        },
-        {
-            name: 'BMW S SERIES SEDAN',
-            year: '2018',
-            placesCount: '5 місць',
-            air: 'кондиціонер',
-            price: 5000,
-            dayPrice: Math.round(5000 / 31),
-            photo: car
-        }
-        
-    ]
-
-
-    return (
-        <div className='rent_page'>
-            <div className="container">
-                <div className="row align-items-center car_nav_diseapear">
-                    <div className="col-lg-9">
-                        <div className="rent-nav__filters">
-                            <Link to="/filter" className="rent-nav__filter-item text_grey">Всі автомобілі</Link>
-                            <span>/</span>
-                            <Link to="/filter" className="rent-nav__filter-item">Преміум</Link>
-                            <span>/</span>
-                            <Link to="/filter" className="rent-nav__filter-item">Позашляховик</Link>
-                            <span>/</span>
-                            <Link to="/filter" className="rent-nav__filter-item">Кабріолет</Link>
-                            <span>/</span>
-                            <Link to="/filter" className="rent-nav__filter-item">Конфорт</Link>
-                            <span>/</span>
-                            <Link to="/filter" className="rent-nav__filter-item">Економ</Link>
-                        </div>
-                    </div>
-                    <div className="col-lg-3">
-                        <select className="input text_grey this_select">
-                            <option>{t('Сортувати за')}</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="row align-items-center mb-4 car_nav_apear">
-                    <div className="col-6">
-                        <a
-                            className="dropdown-toggle"
-                            href="#"
-                            id="navbarDropdownMenuLink"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"
-                        >
-                            Всі автомобілі
-                        </a>
-                        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a className="dropdown-item" href="#">Преміум</a>
-                            <a className="dropdown-item" href="#">Позашляховик</a>
-                            <a className="dropdown-item" href="#">Кабріолет</a>
-                            <a className="dropdown-item" href="#">Конфорт</a>
-                            <a className="dropdown-item" href="#">Економ</a>
-                        </div>
-                    </div>
-                    <div className="col-6">
-                        <select className="input text_grey this_select">
-                            <option>{t('сортувати за')}</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </div>
-                </div>
+  return (
+    <div className="rent_page">
+      <div className="container">
+        <div className="row car_nav_diseapear">
+          <div className="col-lg-9">
+            <button
+              type="button"
+              className="btn_main btn_slim rent__filter-collapse-btn"
+              data-toggle="collapse"
+              data-target="#rentFilterCollapse"
+            >
+              Filter By...
+            </button>
+            <div
+              className="collapse collapse rent__filter-container"
+              id="rentFilterCollapse"
+            >
+              <form className="rent-nav__filters">
+                {filtersData.map((filter) => (
+                  <React.Fragment key={filter}>
+                    <input
+                      id={filter}
+                      type="radio"
+                      className="visually-hidden rent-nav__filter-radio"
+                      value={filter}
+                      checked={currentFilter === filter}
+                      onChange={changeFilter}
+                    />
+                    <label className="rent-nav__filter-item" htmlFor={filter}>
+                      {t(filter)}
+                    </label>
+                    <span>/</span>
+                  </React.Fragment>
+                ))}
+              </form>
             </div>
-
-            {/* card */}
-
-            <div className="container">
-                <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-                    {CardData.map(({ name, year, placesCount, air, price, dayPrice, photo }, index) => (
-                        <CarCard
-                            key={index}
-                            name={name}
-                            year={year}
-                            placesCount={placesCount}
-                            air={air}
-                            price={price}
-                            dayPrice={dayPrice}
-                            photo={photo}
-                        />
-                    ))}
-                </div>
-            </div>
-
-
-
-
+          </div>
+          <div className="col-lg-3">
+            <select
+              className="input rent__sort-select this_select"
+              value={currentSorter}
+              onChange={changeSorter}
+            >
+              <option value="" disabled>
+                {t('Сортувати за')}
+              </option>
+              {sortersData.map((sorter) => (
+                <option key={sorter} value={sorter}>
+                  {t(sorter)}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-    )
+      </div>
+
+      <div className="container">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-4">
+          {sortedCars.map(
+            ({ id, name, year, placesCount, air, price, photo }) => (
+              <CarCard
+                key={id}
+                name={name}
+                year={year}
+                placesCount={placesCount}
+                air={air}
+                price={price}
+                dayPrice={Math.round(price / 31)}
+                photo={photo}
+              />
+            )
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }

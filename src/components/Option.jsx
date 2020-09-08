@@ -1,26 +1,14 @@
 import React from 'react';
-import { useField } from 'formik';
 
 import '../styles/option.css';
-import { useEffect } from 'react';
 
-export default function Option({ id, text, onCheck, onClick, ...otherProps }) {
-  const [field] = useField(otherProps);
-
-  useEffect(() => {
-    const { value } = field;
-
-    onCheck(value);
-  }, [field]);
-
+export default function Option({ id, label, ...props }) {
   return (
     <div className="col mb-4">
       <div className="option">
         <div className="option__checkbox-container">
           <input
-            {...field}
-            {...otherProps}
-            onClick={onClick}
+            {...props}
             type="checkbox"
             className="option__checkbox"
             id={`optionsCheckbox${id}`}
@@ -31,7 +19,7 @@ export default function Option({ id, text, onCheck, onClick, ...otherProps }) {
           />
         </div>
         <label htmlFor={`optionsCheckbox${id}`} className="option__text">
-          {text}
+          {label}
         </label>
       </div>
     </div>
