@@ -13,17 +13,51 @@ import car from '../images/slider/01_Car.png';
 
 import Option from '../components/Option';
 
-const extrasValues = {
-  Charger: 'Зарядне/тримач для тел 5€ /Доба',
-  BabyChair: 'Дитяче крісло 5€ /Доба',
-  AdditionalDriver: 'Додатковий водій 10€ /Одноразово',
-  GPS: 'GPS навігація 5€ /Доба',
+const ExtrasType = {
+  perDay: 'Доба',
+  onetime: 'Одноразово',
 };
+
+class ExtrasItem {
+  constructor(price, priceMultiplier, type, text) {
+    this.price = price;
+    this.priceMultiplier = priceMultiplier < 1 ? 1 : priceMultiplier;
+    this.type = type;
+    this.text = text;
+
+    this.displayPrice = this.price * this.priceMultiplier;
+    this.formattedText = `${this.text} ${this.price}€ / ${this.type}`;
+  }
+}
+
+const extrasValues = {
+  Charger: new ExtrasItem(5, 1, ExtrasType.perDay, 'Зарядне/тримач для тел'),
+  BabyChair: new ExtrasItem(5, 1, ExtrasType.perDay, 'Дитяче крісло'),
+  AdditionalDriver: new ExtrasItem(
+    10,
+    1,
+    ExtrasType.onetime,
+    'Додатковий водій'
+  ),
+  GPS: new ExtrasItem(5, 1, ExtrasType.perDay, 'GPS навігація'),
+};
+
+const initialDateFormatted = `${new Date().getFullYear()}-${
+  new Date().getMonth().toString().length < 2
+    ? '0' + (new Date().getMonth() + 1).toString()
+    : new Date().getMonth()
+}-${
+  new Date().getDate().toString().length < 2
+    ? '0' + new Date().getDate()
+    : new Date().getDate()
+}`;
+
+const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
 export default function Reserv({ sendData }) {
   const [language, setLanguage] = useState('ua');
-  const [extras, setExtras] = useState([]);
   const [price, setPrice] = useState(120);
+  const [rentDays, setRentDays] = useState(0);
 
   const { t, i18n } = useTranslation();
   const history = useHistory();
@@ -32,10 +66,10 @@ export default function Reserv({ sendData }) {
     initialValues: {
       locationFrom: '',
       locationTo: '',
-      receiveDate: '',
-      receiveTime: '',
-      returnDate: '',
-      returnTime: '',
+      receiveDate: initialDateFormatted,
+      receiveTime: initialTimeFormatted,
+      returnDate: initialDateFormatted,
+      returnTime: initialTimeFormatted,
       extras: [],
       name: '',
       phone: '',
@@ -51,14 +85,68 @@ export default function Reserv({ sendData }) {
   }, [language]);
 
   useEffect(() => {
-    console.log('formik.values', formik.values);
+    console.log(formik.values);
+
+    const { receiveDate, returnDate } = formik.values;
+
+    if (!(receiveDate && returnDate)) return;
+
+    setRentDays(
+      new Date(returnDate).getDate() - new Date(receiveDate).getDate()
+    );
   }, [formik.values]);
+
+  useEffect(() => {
+    formik.setValues({
+      ...formik.values,
+      extras: formik.values.extras.map((extra) => {
+        const extraParsed = JSON.parse(extra);
+
+        if (extraParsed.type !== ExtrasType.perDay) return extra;
+
+        const newExtra = new ExtrasItem(
+          extraParsed.price,
+          rentDays,
+          extraParsed.type,
+          extraParsed.text
+        );
+
+        return JSON.stringify(newExtra);
+      }),
+    });
+  }, [rentDays]);
 
   function changeLanguage(newLanguage) {
     const newLang = newLanguage;
     localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
+  }
+
+  function handleLocationSwap() {
+    const locationFrom = formik.values.locationFrom;
+    const locationTo = formik.values.locationTo;
+
+    formik.setValues({
+      ...formik.values,
+      locationFrom: locationTo,
+      locationTo: locationFrom,
+    });
+  }
+
+  function handleDateSwap() {
+    const receiveDate = formik.values.receiveDate;
+    const returnDate = formik.values.returnDate;
+    const receiveTime = formik.values.receiveTime;
+    const returnTime = formik.values.returnTime;
+
+    formik.setValues({
+      ...formik.values,
+      receiveDate: returnDate,
+      returnDate: receiveDate,
+      receiveTime: returnTime,
+      returnTime: receiveTime,
+    });
   }
 
   function handleFormSubmit(values) {
@@ -91,7 +179,11 @@ export default function Reserv({ sendData }) {
             <div className="row">
               <div className="col">
                 <div className="switch">
-                  <button type="button" className="switch__btn">
+                  <button
+                    type="button"
+                    className="switch__btn"
+                    onClick={handleLocationSwap}
+                  >
                     <img src={circleSwitch} alt="switch icon" />
                   </button>
 
@@ -131,7 +223,11 @@ export default function Reserv({ sendData }) {
             <div className="row">
               <div className="col">
                 <div className="switch">
-                  <button type="button" className="switch__btn">
+                  <button
+                    type="button"
+                    className="switch__btn"
+                    onClick={handleDateSwap}
+                  >
                     <img src={circleSwitch} alt="switch icon" />
                   </button>
 
@@ -141,6 +237,7 @@ export default function Reserv({ sendData }) {
                       <input
                         name="receiveDate"
                         type="date"
+                        min={initialDateFormatted}
                         className="switch__input"
                         onChange={formik.handleChange}
                         value={formik.values.receiveDate}
@@ -148,6 +245,7 @@ export default function Reserv({ sendData }) {
                       <input
                         name="receiveTime"
                         type="time"
+                        min={initialTimeFormatted}
                         className="switch__input"
                         onChange={formik.handleChange}
                         value={formik.values.receiveTime}
@@ -164,6 +262,7 @@ export default function Reserv({ sendData }) {
                       <input
                         name="returnDate"
                         type="date"
+                        min={initialDateFormatted}
                         className="switch__input"
                         onChange={formik.handleChange}
                         value={formik.values.returnDate}
@@ -195,34 +294,16 @@ export default function Reserv({ sendData }) {
             <div className="row">
               <div className="col">
                 <div className="row row-cols-md-2 row-cols-1">
-                  <Option
-                    name="extras"
-                    value={extrasValues.Charger}
-                    id={extrasValues.Charger}
-                    label={t(extrasValues.Charger)}
-                    onChange={formik.handleChange}
-                  />
-                  <Option
-                    name="extras"
-                    value={extrasValues.BabyChair}
-                    id={extrasValues.BabyChair}
-                    label={t(extrasValues.BabyChair)}
-                    onChange={formik.handleChange}
-                  />
-                  <Option
-                    name="extras"
-                    value={extrasValues.AdditionalDriver}
-                    id={extrasValues.AdditionalDriver}
-                    label={t(extrasValues.AdditionalDriver)}
-                    onChange={formik.handleChange}
-                  />
-                  <Option
-                    name="extras"
-                    value={extrasValues.GPS}
-                    id={extrasValues.GPS}
-                    label={t(extrasValues.GPS)}
-                    onChange={formik.handleChange}
-                  />
+                  {Object.values(extrasValues).map((extrasValue) => (
+                    <Option
+                      id={extrasValue.formattedText}
+                      key={extrasValue.formattedText}
+                      label={t(extrasValue.formattedText)}
+                      name="extras"
+                      value={JSON.stringify(extrasValue)}
+                      onChange={formik.handleChange}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -314,14 +395,22 @@ export default function Reserv({ sendData }) {
                   {t('В вартість оренди включено')}:
                 </h4>
                 <ul className="reserv__price-list">
-                  {extras.map((extra, index) => (
-                    <li key={index} className="reserv__price-list-item">
-                      <span className="reserv__price-title">{t(extra)}</span>
-                      <span className="text_grey reserv__price-price">
-                        +15$
-                      </span>
-                    </li>
-                  ))}
+                  {formik.values.extras.map((extra) => {
+                    const { formattedText, displayPrice } = JSON.parse(extra);
+                    return (
+                      <li
+                        key={formattedText}
+                        className="reserv__price-list-item"
+                      >
+                        <span className="reserv__price-title">
+                          {t(formattedText)}
+                        </span>
+                        <span className="text_grey reserv__price-price">
+                          +{displayPrice}€
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>

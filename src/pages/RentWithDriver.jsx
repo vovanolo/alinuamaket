@@ -15,10 +15,6 @@ export default function RentWithDriver({ data }) {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    console.log(data);
-  }, []);
-
-  useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
 
@@ -83,12 +79,33 @@ export default function RentWithDriver({ data }) {
                 <div className="row">
                   <div className="col-12">
                     <div className="input_radio_transfer">
-                      <input id='rent_with_driver_radio' className='visually-hidden' name='transfer' checked type="radio"/>
-                      <label className='transf_border mr-3' htmlFor="rent_with_driver_radio">Трансфер</label>
+                      <input
+                        id="rent_with_driver_radio"
+                        className="visually-hidden"
+                        name="transfer"
+                        type="radio"
+                        defaultChecked
+                      />
+                      <label
+                        className="transf_border mr-3"
+                        htmlFor="rent_with_driver_radio"
+                      >
+                        Трансфер
+                      </label>
                     </div>
                     <div className="input_radio_transfer">
-                      <input id='rent_with_driver_radio_hours' className='visually-hidden' name='transfer' type="radio"/>
-                      <label className='transf_border' htmlFor="rent_with_driver_radio_hours">Погодинно</label>
+                      <input
+                        id="rent_with_driver_radio_hours"
+                        className="visually-hidden"
+                        name="transfer"
+                        type="radio"
+                      />
+                      <label
+                        className="transf_border"
+                        htmlFor="rent_with_driver_radio_hours"
+                      >
+                        Погодинно
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -96,14 +113,24 @@ export default function RentWithDriver({ data }) {
                   <div className="col-md-6">
                     <div className="transf-location d-flex flex-column justify-content-between">
                       <p>від</p>
-                      <Field name="fromLocation" placeholder="Вкажіть Локацію" className="transf_input" type="text" />
+                      <Field
+                        name="fromLocation"
+                        placeholder="Вкажіть Локацію"
+                        className="transf_input"
+                        type="text"
+                      />
                       <p>місто,область,країна</p>
                     </div>
                   </div>
                   <div className="col-md-6 mt-lg-0 mt-md-0 mt-sm-3 mt-3 d-flex flex-column justify-content-between">
                     <div className="transf-location d-flex flex-column justify-content-between">
                       <p>від</p>
-                      <Field name="fromLocation" placeholder="Вкажіть Локацію" className="transf_input" type="text" />
+                      <Field
+                        name="fromLocation"
+                        placeholder="Вкажіть Локацію"
+                        className="transf_input"
+                        type="text"
+                      />
                       <p>місто,область,країна</p>
                     </div>
                   </div>
@@ -116,13 +143,21 @@ export default function RentWithDriver({ data }) {
                         <div className="col-lg-5 mb-md-3 mb-lg-0">
                           <label className="transf-date__input">
                             <p>Дата</p>
-                            <Field name="date" type="date" className="transf_time_input" />
+                            <Field
+                              name="date"
+                              type="date"
+                              className="transf_time_input"
+                            />
                           </label>
                         </div>
                         <div className="col-lg-5 offset-lg-2 transf_date-input">
                           <label className="transf-date__input">
                             <p>Час</p>
-                            <Field name="time" type="time" className="transf_time_input" />
+                            <Field
+                              name="time"
+                              type="time"
+                              className="transf_time_input"
+                            />
                           </label>
                         </div>
                       </div>
