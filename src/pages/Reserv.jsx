@@ -18,29 +18,44 @@ const ExtrasType = {
   onetime: 'Одноразово',
 };
 
-class ExtrasItem {
-  constructor(price, priceMultiplier, type, text) {
-    this.price = price;
-    this.priceMultiplier = priceMultiplier < 1 ? 1 : priceMultiplier;
-    this.type = type;
-    this.text = text;
+// class ExtrasItem {
+//   constructor(price, priceMultiplier, type, text) {
+//     this.price = price;
+//     this.priceMultiplier = priceMultiplier < 1 ? 1 : priceMultiplier;
+//     this.type = type;
+//     this.text = text;
 
-    this.displayPrice = this.price * this.priceMultiplier;
-    this.formattedText = `${this.text} ${this.price}€ / ${this.type}`;
-  }
-}
+//     this.displayPrice = this.price * this.priceMultiplier;
+//     this.formattedText = `${this.text} ${this.price}€ / ${this.type}`;
+//   }
+// }
 
-const extrasValues = {
-  Charger: new ExtrasItem(5, 1, ExtrasType.perDay, 'Зарядне/тримач для тел'),
-  BabyChair: new ExtrasItem(5, 1, ExtrasType.perDay, 'Дитяче крісло'),
-  AdditionalDriver: new ExtrasItem(
-    10,
-    1,
-    ExtrasType.onetime,
-    'Додатковий водій'
-  ),
-  GPS: new ExtrasItem(5, 1, ExtrasType.perDay, 'GPS навігація'),
-};
+// const extrasValues = {
+//   Charger: new ExtrasItem(5, 1, ExtrasType.perDay, 'Зарядне/тримач для тел'),
+//   BabyChair: new ExtrasItem(5, 1, ExtrasType.perDay, 'Дитяче крісло'),
+//   AdditionalDriver: new ExtrasItem(
+//     10,
+//     1,
+//     ExtrasType.onetime,
+//     'Додатковий водій'
+//   ),
+//   GPS: new ExtrasItem(5, 1, ExtrasType.perDay, 'GPS навігація'),
+// };
+
+const extrasValues = [
+  {
+    id: 1,
+    price: 5,
+    type: ExtrasType.perDay,
+    value: 'Зарядне/тримач для тел',
+  },
+  {
+    id: 2,
+    price: 10,
+    type: ExtrasType.onetime,
+    value: 'Додатковий водій',
+  },
+];
 
 const initialDateFormatted = `${new Date().getFullYear()}-${
   new Date().getMonth().toString().length < 2
@@ -57,7 +72,8 @@ const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()
 export default function Reserv({ sendData }) {
   const [language, setLanguage] = useState('ua');
   const [price, setPrice] = useState(120);
-  const [rentDays, setRentDays] = useState(0);
+  const [allPrices, setAllPrices] = useState([]);
+  const [rentDays, setRentDays] = useState(1);
 
   const { t, i18n } = useTranslation();
   const history = useHistory();
@@ -81,6 +97,10 @@ export default function Reserv({ sendData }) {
   });
 
   useEffect(() => {
+    setAllPrices([120, 100, 80, 50]);
+  }, []);
+
+  useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
 
@@ -91,29 +111,24 @@ export default function Reserv({ sendData }) {
 
     if (!(receiveDate && returnDate)) return;
 
-    setRentDays(
-      new Date(returnDate).getDate() - new Date(receiveDate).getDate()
-    );
+    const newRentDays =
+      new Date(returnDate).getDate() - new Date(receiveDate).getDate();
+
+    setRentDays(newRentDays < 1 ? 1 : newRentDays);
   }, [formik.values]);
 
   useEffect(() => {
-    formik.setValues({
-      ...formik.values,
-      extras: formik.values.extras.map((extra) => {
-        const extraParsed = JSON.parse(extra);
-
-        if (extraParsed.type !== ExtrasType.perDay) return extra;
-
-        const newExtra = new ExtrasItem(
-          extraParsed.price,
-          rentDays,
-          extraParsed.type,
-          extraParsed.text
-        );
-
-        return JSON.stringify(newExtra);
-      }),
-    });
+    if (allPrices.length > 0) {
+      if (rentDays >= 1 && rentDays <= 2) {
+        setPrice(allPrices[0]);
+      } else if (rentDays >= 3 && rentDays <= 7) {
+        setPrice(allPrices[1]);
+      } else if (rentDays >= 8 && rentDays <= 29) {
+        setPrice(allPrices[2]);
+      } else if (rentDays >= 30) {
+        setPrice(allPrices[3]);
+      }
+    }
   }, [rentDays]);
 
   function changeLanguage(newLanguage) {
@@ -294,13 +309,13 @@ export default function Reserv({ sendData }) {
             <div className="row">
               <div className="col">
                 <div className="row row-cols-md-2 row-cols-1">
-                  {Object.values(extrasValues).map((extrasValue) => (
+                  {extrasValues.map(({ id, price, type, value }) => (
                     <Option
-                      id={extrasValue.formattedText}
-                      key={extrasValue.formattedText}
-                      label={t(extrasValue.formattedText)}
+                      key={id}
+                      id={id}
+                      label={t(`${value} ${price}‎€ / ${type}`)}
                       name="extras"
-                      value={JSON.stringify(extrasValue)}
+                      value={id}
                       onChange={formik.handleChange}
                     />
                   ))}
@@ -396,19 +411,22 @@ export default function Reserv({ sendData }) {
                 </h4>
                 <ul className="reserv__price-list">
                   {formik.values.extras.map((extra) => {
-                    const { formattedText, displayPrice } = JSON.parse(extra);
-                    return (
-                      <li
-                        key={formattedText}
-                        className="reserv__price-list-item"
-                      >
-                        <span className="reserv__price-title">
-                          {t(formattedText)}
-                        </span>
-                        <span className="text_grey reserv__price-price">
-                          +{displayPrice}€
-                        </span>
-                      </li>
+                    return extrasValues.map(
+                      ({ id, price, type, value }) =>
+                        id.toString() === extra && (
+                          <li key={id} className="reserv__price-list-item">
+                            <span className="reserv__price-title">
+                              {t(`${value} ${price} / ${type}`)}
+                            </span>
+                            <span className="text_grey reserv__price-price">
+                              +
+                              {type === ExtrasType.perDay
+                                ? price * rentDays
+                                : price}
+                              €
+                            </span>
+                          </li>
+                        )
                     );
                   })}
                 </ul>
@@ -421,7 +439,7 @@ export default function Reserv({ sendData }) {
                   <p className="reserv__final-price-title">
                     {t('Ціна оренди')}:
                   </p>
-                  <p className="reserv__final-price">{price}€</p>
+                  <p className="reserv__final-price">{price * rentDays}€</p>
                 </div>
               </div>
             </div>
