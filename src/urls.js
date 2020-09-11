@@ -7,3 +7,4 @@ export const assistance = '/assistance';
 export const contacts = '/contacts';
 export const carInfo = '/car_info';
 export const faq = '/faq';
+export const news = '/news';

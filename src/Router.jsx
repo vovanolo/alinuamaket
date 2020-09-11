@@ -15,7 +15,7 @@ import Contacts from './pages/Contacts';
 import CarInfo from './pages/CarInfo';
 import Assistance from './pages/Assistance';
 import Faq from './pages/Faq';
-
+import News from './pages/News';
 
 export default function Router() {
   const [data, setData] = useState(null);
@@ -47,6 +47,9 @@ export default function Router() {
         </Route>
         <Route exact path={urls.faq}>
           <Faq />
+        </Route>
+        <Route path={`${urls.news}/:id`}>
+          <News />
         </Route>
 
         <Route path="*">

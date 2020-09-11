@@ -4,6 +4,7 @@
 }
 
 .news-card {
+  display: block;
   max-height: 255px;
   position: relative;
   overflow: hidden;

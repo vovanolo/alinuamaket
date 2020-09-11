@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+
+import { news } from '../urls';
 
 import '../styles/news.css';
 
-export default function NewsCard({ imgSrc, imgAlt, title, description }) {
+export default function NewsCard({ id, imgUrl, imgAlt, title, description }) {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
 
@@ -20,14 +23,18 @@ export default function NewsCard({ imgSrc, imgAlt, title, description }) {
 
   return (
     <div className="col mb-4">
-      <div className="news-card">
-        <img src={imgSrc} className="img-responsive img-responsive_cover" alt={imgAlt} />
+      <Link to={`${news}/${id}`} className="news-card">
+        <img
+          src={imgUrl}
+          className="img-responsive img-responsive_cover"
+          alt={imgAlt}
+        />
 
         <div className="news-card__info-box">
           <h5 className="news-card__title">{title}</h5>
           <p className="news-card__description">{description}</p>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
