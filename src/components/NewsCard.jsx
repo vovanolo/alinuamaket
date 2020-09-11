@@ -22,19 +22,17 @@ export default function NewsCard({ id, imgUrl, imgAlt, title, description }) {
   }
 
   return (
-    <div className="col mb-4">
-      <Link to={`${news}/${id}`} className="news-card">
-        <img
-          src={imgUrl}
-          className="img-responsive img-responsive_cover"
-          alt={imgAlt}
-        />
+    <Link to={`${news}/${id}`} className="news-card">
+      <img
+        src={imgUrl}
+        className="img-responsive img-responsive_cover"
+        alt={imgAlt}
+      />
 
-        <div className="news-card__info-box">
-          <h5 className="news-card__title">{title}</h5>
-          <p className="news-card__description">{description}</p>
-        </div>
-      </Link>
-    </div>
+      <div className="news-card__info-box">
+        <h5 className="news-card__title">{title}</h5>
+        <p className="news-card__description">{description}</p>
+      </div>
+    </Link>
   );
 }
