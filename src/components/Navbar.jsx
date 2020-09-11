@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import $ from 'jquery';
 
-import { home, assistance, rent, rentWithDriver, contacts } from '../urls';
+import { home, assistance, rent, rentWithDriver, contacts, faq } from '../urls';
 
 import '../styles/navbar.css';
 
@@ -150,6 +150,9 @@ export default function Navbar() {
             <li className="nav-item mr-lg-3 mr-md-0">
               <Link to={assistance} className="nav-link">{t('Асистенс')}</Link>
             </li>
+            <li className="nav-item mr-lg-3 mr-md-0">
+              <Link to={faq} className="nav-link">FAQ</Link>
+            </li>
             <li className="nav-item">
               <Link to={contacts} className="nav-link">{t('Контакти')}</Link>
             </li>
@@ -163,6 +166,7 @@ export default function Navbar() {
               <div className="dropdown-menu" onClick={(e) => changeLanguage(e.target.innerText.toLowerCase())}>
                 <button className="dropdown-item">UA</button>
                 <button className="dropdown-item">RU</button>
+                <button className="dropdown-item">EN</button>
               </div>
             </li>
             {location.pathname !== home && (
