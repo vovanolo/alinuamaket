@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function RentStep({ icon, iconAlt, title, subTitle }) {
   return (
-    <div className="col-md col-12 mb-4">
+    <div className="col-lg col-12 mb-4">
       <div className="rent-step__icon-container">
         <img className="rent-step__icon" src={icon} alt={iconAlt} />
       </div>

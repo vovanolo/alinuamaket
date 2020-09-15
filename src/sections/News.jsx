@@ -57,14 +57,15 @@ export default function News() {
 
       <div className="row row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
         {news.map(({ id, imgUrl, title, description }) => (
-          <NewsCard
-            key={id}
-            id={id}
-            imgUrl={imgUrl}
-            imgAlt={t(title)}
-            title={t(title)}
-            description={t(description)}
-          />
+          <div key={id} className="col mb-lg-0 mb-md-3 mb-3">
+            <NewsCard
+              id={id}
+              imgUrl={imgUrl}
+              imgAlt={t(title)}
+              title={t(title)}
+              description={t(description)}
+            />
+          </div>
         ))}
       </div>
     </div>

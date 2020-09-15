@@ -6,7 +6,7 @@ import { news } from '../urls';
 
 import '../styles/news.css';
 
-export default function NewsCard({ id, imgUrl, imgAlt, title, description }) {
+export default function NewsCard({ id, imgUrl, title, description }) {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
 
@@ -26,7 +26,7 @@ export default function NewsCard({ id, imgUrl, imgAlt, title, description }) {
       <img
         src={imgUrl}
         className="img-responsive img-responsive_cover"
-        alt={imgAlt}
+        alt={title}
       />
 
       <div className="news-card__info-box">

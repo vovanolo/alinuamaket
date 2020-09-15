@@ -46,23 +46,26 @@ export default function News() {
   }, [pathname]);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-3">
-          {news.map(({ id, imgUrl, title, description }, index) => (
-            <NewsCard
-              key={id}
-              id={id}
-              imgUrl={imgUrl}
-              title={title}
-              description={description}
-            />
-          ))}
-        </div>
-        <div className="col-lg-9">
-          <img src={imgUrl} alt={title} />
-          <h3>{title}</h3>
-          <p>{text}</p>
+    <div className="navbar-offset">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-4">
+            {news.map(({ id, imgUrl, title, description }) => (
+              <div key={id} className="mb-3">
+                <NewsCard
+                  id={id}
+                  imgUrl={imgUrl}
+                  title={title}
+                  description={description}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="col-lg-8 mt-lg-0 mt-md-3 mt-3">
+            <img src={imgUrl} alt={title} width="100%" />
+            <h3 className="mt-3">{title}</h3>
+            <p className="mt-1">{text}</p>
+          </div>
         </div>
       </div>
     </div>
