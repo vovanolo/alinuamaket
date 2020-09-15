@@ -1,15 +1,18 @@
-.card_border{
-    border: none;
-    /* background-color: black; */
+.card_border {
+  border: none;
 }
 
-.card_back{
-    background-color:#E0E0E0;
-}
-.card_height{
-    height: 40px;
+.card_border .card-header {
+  display: block !important;
 }
 
-.faq_section{
-    margin-top: 150px;
+.card_back {
+  background-color: #e0e0e0;
+}
+.card_height {
+  height: 40px;
+}
+
+.faq_section {
+  margin-top: 150px;
 }
