@@ -158,6 +158,8 @@ export default function Navbar() {
             </li>
           </ul>
 
+
+
           <ul className={`navbar-nav ${location.pathname === home ? 'navbar__menu-language' : ''}`}>
             <li className={`nav-item dropdown ${location.pathname !== home ? 'mx-lg-4 mx-md-0' : ''}`}>
               <button className={`btn nav-link dropdown-toggle nav__lang-btn ${location.pathname === home || location.pathname === assistance ? 'navbar__lang-btn_light' : 'navbar__lang-btn_grey'}`} data-toggle="dropdown">
@@ -171,9 +173,9 @@ export default function Navbar() {
             </li>
             {location.pathname !== home && (
               <li className="nav-item">
-                <Link to={contacts} className="btn_main btn_nav">
+                <button type='button' className="btn_main btn_nav">
                   {t('Зв\'язок')}
-                </Link>
+                </button>
               </li>
             )}
           </ul>
