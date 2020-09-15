@@ -18,30 +18,6 @@ const ExtrasType = {
   onetime: 'Одноразово',
 };
 
-// class ExtrasItem {
-//   constructor(price, priceMultiplier, type, text) {
-//     this.price = price;
-//     this.priceMultiplier = priceMultiplier < 1 ? 1 : priceMultiplier;
-//     this.type = type;
-//     this.text = text;
-
-//     this.displayPrice = this.price * this.priceMultiplier;
-//     this.formattedText = `${this.text} ${this.price}€ / ${this.type}`;
-//   }
-// }
-
-// const extrasValues = {
-//   Charger: new ExtrasItem(5, 1, ExtrasType.perDay, 'Зарядне/тримач для тел'),
-//   BabyChair: new ExtrasItem(5, 1, ExtrasType.perDay, 'Дитяче крісло'),
-//   AdditionalDriver: new ExtrasItem(
-//     10,
-//     1,
-//     ExtrasType.onetime,
-//     'Додатковий водій'
-//   ),
-//   GPS: new ExtrasItem(5, 1, ExtrasType.perDay, 'GPS навігація'),
-// };
-
 const extrasValues = [
   {
     id: 1,
@@ -108,7 +84,7 @@ export default function Reserv({ sendData }) {
   }, [language]);
 
   useEffect(() => {
-    console.log(formik.values);
+    // console.log(formik.values);
 
     const { receiveDate, returnDate } = formik.values;
 
