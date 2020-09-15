@@ -1,5 +1,13 @@
 .card_border{
     border: none;
+    /* background-color: black; */
+}
+
+.card_back{
+    background-color:#E0E0E0;
+}
+.card_height{
+    height: 40px;
 }
 
 .faq_section{
