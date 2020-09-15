@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/alinuamaket/precache-manifest.650522c1204aa72bda9b2dc4c2cf7b31.js"
+  "/alinuamaket/precache-manifest.ff06b5b584f5070ea239cb83f0ad50eb.js"
 );
 
 self.addEventListener('message', (event) => {

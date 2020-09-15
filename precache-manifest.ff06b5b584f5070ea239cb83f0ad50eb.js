@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e7e5c1cc7be21c7be64794c4707e2f57",
+    "revision": "046f64d91910bb6f01a3564c25f5403c",
     "url": "/alinuamaket/index.html"
   },
   {
-    "revision": "bf332cdfa37caf154011",
+    "revision": "f869469967682873efd8",
     "url": "/alinuamaket/static/css/2.71652b47.chunk.css"
   },
   {
-    "revision": "8297ac362145c5ed81f6",
-    "url": "/alinuamaket/static/css/main.5f700233.chunk.css"
+    "revision": "c4cbf1ed84f9e12f3fab",
+    "url": "/alinuamaket/static/css/main.18bf5ead.chunk.css"
   },
   {
-    "revision": "bf332cdfa37caf154011",
-    "url": "/alinuamaket/static/js/2.03e5e07c.chunk.js"
+    "revision": "f869469967682873efd8",
+    "url": "/alinuamaket/static/js/2.70d8c187.chunk.js"
   },
   {
     "revision": "b9c80c723de486fb475df0ee178fb0df",
-    "url": "/alinuamaket/static/js/2.03e5e07c.chunk.js.LICENSE.txt"
+    "url": "/alinuamaket/static/js/2.70d8c187.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8297ac362145c5ed81f6",
-    "url": "/alinuamaket/static/js/main.7fc2fc8a.chunk.js"
+    "revision": "c4cbf1ed84f9e12f3fab",
+    "url": "/alinuamaket/static/js/main.0d0cd7ca.chunk.js"
   },
   {
     "revision": "b0985fe81794e6a4d73d",
@@ -188,6 +188,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/alinuamaket/static/media/minus-square.df533ea8.svg"
   },
   {
+    "revision": "f635f7f7d04b20f7b10e762db5a38d24",
+    "url": "/alinuamaket/static/media/minus.f635f7f7.svg"
+  },
+  {
     "revision": "68010ee1aadb7a17eda3e4ffeccbbb7c",
     "url": "/alinuamaket/static/media/mitsubishi.68010ee1.png"
   },
@@ -206,6 +210,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7ad5686be86cc6a7765c8adefdae8605",
     "url": "/alinuamaket/static/media/plus-square.7ad5686b.svg"
+  },
+  {
+    "revision": "94ec3c3db5afd9dce04181cc51543574",
+    "url": "/alinuamaket/static/media/plus.94ec3c3d.svg"
   },
   {
     "revision": "0bc677bce52a305dcbfbc129db4f10c7",

@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/alinuamaket/static/css/main.5f700233.chunk.css",
-    "main.js": "/alinuamaket/static/js/main.7fc2fc8a.chunk.js",
-    "main.js.map": "/alinuamaket/static/js/main.7fc2fc8a.chunk.js.map",
+    "main.css": "/alinuamaket/static/css/main.18bf5ead.chunk.css",
+    "main.js": "/alinuamaket/static/js/main.0d0cd7ca.chunk.js",
+    "main.js.map": "/alinuamaket/static/js/main.0d0cd7ca.chunk.js.map",
     "runtime-main.js": "/alinuamaket/static/js/runtime-main.2c0f3c47.js",
     "runtime-main.js.map": "/alinuamaket/static/js/runtime-main.2c0f3c47.js.map",
     "static/css/2.71652b47.chunk.css": "/alinuamaket/static/css/2.71652b47.chunk.css",
-    "static/js/2.03e5e07c.chunk.js": "/alinuamaket/static/js/2.03e5e07c.chunk.js",
-    "static/js/2.03e5e07c.chunk.js.map": "/alinuamaket/static/js/2.03e5e07c.chunk.js.map",
+    "static/js/2.70d8c187.chunk.js": "/alinuamaket/static/js/2.70d8c187.chunk.js",
+    "static/js/2.70d8c187.chunk.js.map": "/alinuamaket/static/js/2.70d8c187.chunk.js.map",
     "index.html": "/alinuamaket/index.html",
-    "precache-manifest.650522c1204aa72bda9b2dc4c2cf7b31.js": "/alinuamaket/precache-manifest.650522c1204aa72bda9b2dc4c2cf7b31.js",
+    "precache-manifest.ff06b5b584f5070ea239cb83f0ad50eb.js": "/alinuamaket/precache-manifest.ff06b5b584f5070ea239cb83f0ad50eb.js",
     "service-worker.js": "/alinuamaket/service-worker.js",
     "static/css/2.71652b47.chunk.css.map": "/alinuamaket/static/css/2.71652b47.chunk.css.map",
-    "static/css/main.5f700233.chunk.css.map": "/alinuamaket/static/css/main.5f700233.chunk.css.map",
-    "static/js/2.03e5e07c.chunk.js.LICENSE.txt": "/alinuamaket/static/js/2.03e5e07c.chunk.js.LICENSE.txt",
+    "static/css/main.18bf5ead.chunk.css.map": "/alinuamaket/static/css/main.18bf5ead.chunk.css.map",
+    "static/js/2.70d8c187.chunk.js.LICENSE.txt": "/alinuamaket/static/js/2.70d8c187.chunk.js.LICENSE.txt",
     "static/media/01_Car.png": "/alinuamaket/static/media/01_Car.0cf3839a.png",
     "static/media/5_percent.svg": "/alinuamaket/static/media/5_percent.1df6edf9.svg",
     "static/media/index.css": "/alinuamaket/static/media/Gilroy-Regular.ae5e7255.ttf",
@@ -53,10 +53,12 @@
     "static/media/map-pin.svg": "/alinuamaket/static/media/map-pin.e33fccb0.svg",
     "static/media/max_discount.svg": "/alinuamaket/static/media/max_discount.78b4f543.svg",
     "static/media/option.css": "/alinuamaket/static/media/plus-square.7ad5686b.svg",
+    "static/media/minus.svg": "/alinuamaket/static/media/minus.f635f7f7.svg",
     "static/media/mitsubishi.png": "/alinuamaket/static/media/mitsubishi.68010ee1.png",
     "static/media/niko.png": "/alinuamaket/static/media/niko.648b9c80.png",
     "static/media/people.svg": "/alinuamaket/static/media/people.c697e339.svg",
     "static/media/phone.svg": "/alinuamaket/static/media/phone.9c5fa101.svg",
+    "static/media/plus.svg": "/alinuamaket/static/media/plus.94ec3c3d.svg",
     "static/media/rent_step_line.svg": "/alinuamaket/static/media/rent_step_line.0bc677bc.svg",
     "static/media/second.svg": "/alinuamaket/static/media/second.f588e88a.svg",
     "static/media/sixth.svg": "/alinuamaket/static/media/sixth.f9c178c0.svg",
@@ -68,8 +70,8 @@
   "entrypoints": [
     "static/js/runtime-main.2c0f3c47.js",
     "static/css/2.71652b47.chunk.css",
-    "static/js/2.03e5e07c.chunk.js",
-    "static/css/main.5f700233.chunk.css",
-    "static/js/main.7fc2fc8a.chunk.js"
+    "static/js/2.70d8c187.chunk.js",
+    "static/css/main.18bf5ead.chunk.css",
+    "static/js/main.0d0cd7ca.chunk.js"
   ]
 }
