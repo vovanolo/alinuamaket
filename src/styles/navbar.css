@@ -36,34 +36,33 @@
 .nav__lang-btn::after {
   color: var(--color-black) !important;
 }
-/* 
-.navbar__lang-btn_grey {
-  color: var(--color-grey) !important;
-}
-.navbar__lang-btn_grey:hover {
-  color: var(--color-grey_light) !important;
+
+.contact-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  z-index: 1001;
 }
 
-.navbar__lang-btn_light {
-  color: var(--color-white) !important;
-}
-.navbar__lang-btn_light:hover {
-  color: var(--color-white_hover) !important;
-} */
-
-@media(max-width: 1199px) {
+@media (max-width: 1199px) {
   .navbar__menu-language {
     margin-right: 110px;
   }
 }
 
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   .navbar__menu-list {
     margin-left: 0;
   }
-  
+
   .navbar__menu-language {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .contact-modal {
+    width: 90%;
   }
 }
