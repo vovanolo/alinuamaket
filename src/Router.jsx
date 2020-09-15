@@ -21,7 +21,7 @@ export default function Router() {
   const [data, setData] = useState(null);
 
   return (
-    <BrowserRouter basename={urls.basename}>
+    <BrowserRouter>
       <Navbar />
       <Switch>
         <Route exact path={urls.home}>

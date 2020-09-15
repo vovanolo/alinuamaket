@@ -1,4 +1,4 @@
-export const basename = '/alinuamaket';
+export const basename = '/';
 export const home = '/';
 export const rentWithDriver = '/rent_width_driver';
 export const rent = '/rent';
