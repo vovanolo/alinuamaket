@@ -2,7 +2,9 @@
   text-align: right;
 }
 
-.slider__container_hero .swiper-pagination > .swiper-pagination-bullet:last-child {
+.slider__container_hero
+  .swiper-pagination
+  > .swiper-pagination-bullet:last-child {
   margin-right: 15%;
 }
 
@@ -29,7 +31,6 @@
 
 .hero-cta-box {
   height: 100vh;
-  padding-top: 30vh;
   z-index: 2;
 }
 
@@ -56,7 +57,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  max-width: 50vw;
+  max-width: 45vw;
 }
 
 .slider__container_hero::before {
@@ -67,7 +68,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  left: 15vw;
+  left: 17vw;
   border-bottom-left-radius: 75px;
   z-index: 1;
 }

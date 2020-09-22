@@ -37,14 +37,8 @@
   width: 100%;
 }
 
-.switch__input[type="date"],
-.switch__input[type="time"] {
-  min-width: 50%;
-}
-
 .switch__input {
   display: block;
-  min-width: 100%;
   width: 100%;
   border: none;
   font-size: 1rem;

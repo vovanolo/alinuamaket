@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Formik, Field, Form, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { useHistory } from 'react-router-dom';
 
 import { rentWithDriver } from '../urls';
+import { FormContext } from '../components/ContextProvider';
 
 import '../styles/reserv.css';
 import '../styles/switch.css';
@@ -56,6 +57,7 @@ export default function Reserv({ sendData }) {
 
   const { t, i18n } = useTranslation();
   const history = useHistory();
+  const [data, setData] = useContext(FormContext);
 
   const formik = useFormik({
     initialValues: {
@@ -71,6 +73,7 @@ export default function Reserv({ sendData }) {
       email: '',
       comment: '',
       agreeWithTerms: false,
+      ...data,
     },
     onSubmit: handleFormSubmit,
   });
@@ -84,8 +87,6 @@ export default function Reserv({ sendData }) {
   }, [language]);
 
   useEffect(() => {
-    // console.log(formik.values);
-
     const { receiveDate, returnDate } = formik.values;
 
     if (!(receiveDate && returnDate)) return;
