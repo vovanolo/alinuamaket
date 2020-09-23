@@ -4,7 +4,6 @@ import { useFormik } from 'formik';
 import { useHistory } from 'react-router-dom';
 
 import { rentWithDriver } from '../urls';
-import { FormContext } from '../components/ContextProvider';
 
 import '../styles/reserv.css';
 import '../styles/switch.css';
@@ -13,6 +12,8 @@ import circleSwitch from '../images/circle_switch.svg';
 import car from '../images/slider/01_Car.png';
 
 import Option from '../components/Option';
+import { FormContext } from '../components/ContextProvider';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const ExtrasType = {
   perDay: 'Доба',
@@ -184,8 +185,13 @@ export default function Reserv({ sendData }) {
   }
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className="navbar-offset">
       <div className="container">
+        <div className="row">
+          <div className="col">
+            <Breadcrumbs active="reserv" />
+          </div>
+        </div>
         <div className="row">
           <div className="col">
             <h2 className="text_black reserv__title">

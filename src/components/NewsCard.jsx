@@ -31,7 +31,6 @@ export default function NewsCard({ id, imgUrl, title, description }) {
 
       <div className="news-card__info-box">
         <h5 className="news-card__title">{title}</h5>
-        <p className="news-card__description">{description}</p>
       </div>
     </Link>
   );

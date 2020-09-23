@@ -6,6 +6,7 @@ import '../styles/rent_page.css';
 import car from '../images/slider/01_Car.png';
 
 import CarCard from '../components/CarCard';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const Filters = {
   all: 'Всі автомобілі',
@@ -131,8 +132,13 @@ export default function Rent() {
   });
 
   return (
-    <div className="rent_page">
+    <div className="navbar-offset">
       <div className="container">
+        <div className="row">
+          <div className="col">
+            <Breadcrumbs active="rent" />
+          </div>
+        </div>
         <div className="row car_nav_diseapear">
           <div className="col-lg-9">
             <button

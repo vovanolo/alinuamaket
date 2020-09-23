@@ -49,7 +49,7 @@ export default function News() {
     <div className="navbar-offset">
       <div className="container">
         <div className="row">
-          <div className="col-lg-4">
+          <div className="col-xl-2 col-lg-3 col-md-4">
             {news.map(({ id, imgUrl, title, description }) => (
               <div key={id} className="mb-3">
                 <NewsCard
@@ -61,9 +61,9 @@ export default function News() {
               </div>
             ))}
           </div>
-          <div className="col-lg-8 mt-lg-0 mt-md-3 mt-3">
-            <img src={imgUrl} alt={title} width="100%" />
-            <h3 className="mt-3">{title}</h3>
+          <div className="col-xl-10 col-lg-9 col-md-8 mt-lg-0 mt-md-3 mt-3">
+            <img src={imgUrl} alt={title} style={{ float: 'left' }} />
+            <h2 className="mt-3">{title}</h2>
             <p className="mt-1">{text}</p>
           </div>
         </div>
