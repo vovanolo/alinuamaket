@@ -384,9 +384,8 @@ export default function Reserv({ sendData }) {
 
                 <div className="form-row mb-3">
                   <div className="col">
-                    <input
+                    <textarea
                       name="comment"
-                      as="textarea"
                       className="input"
                       placeholder={t('Коментар')}
                       onChange={formik.handleChange}

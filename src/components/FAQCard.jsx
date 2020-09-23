@@ -4,7 +4,7 @@ import { useState } from 'react';
 import plus from '../images/plus.svg';
 import minus from '../images/minus.svg';
 
-export default function FAQCard({ id, title, description }) {
+export default function FAQCard({ id, title: name, description }) {
   const [visible, setVisible] = useState(false);
 
   const toggleCollapse = () => {
@@ -16,7 +16,6 @@ export default function FAQCard({ id, title, description }) {
       <div className={`card-header mt-4 ${visible ? 'card_back' : ''}`} id={id}>
         <h2 className="mb-0">
           <button
-            // id="myCollapsible"
             className="btn btn-block text-left d-flex justify-content-between align-items-center card_height"
             type="button"
             data-toggle="collapse"
@@ -25,7 +24,7 @@ export default function FAQCard({ id, title, description }) {
             aria-controls={id}
             onClick={toggleCollapse}
           >
-            <p className="text">{title}</p>
+            <p className="text">{name}</p>
             <img
               src={visible ? minus : plus}
               alt="Expand icon"
@@ -40,7 +39,7 @@ export default function FAQCard({ id, title, description }) {
         aria-labelledby={id}
         data-parent="#faqAccordion"
       >
-        <div className="card-body">{description}</div>
+        <div className="card-body" dangerouslySetInnerHTML={description} />
       </div>
     </div>
   );

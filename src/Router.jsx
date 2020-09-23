@@ -12,7 +12,6 @@ import RentWithDriver from './pages/RentWithDriver';
 import Rent from './pages/Rent';
 import Reserv from './pages/Reserv';
 import Contacts from './pages/Contacts';
-import CarInfo from './pages/CarInfo';
 import Assistance from './pages/Assistance';
 import Faq from './pages/Faq';
 import News from './pages/News';
@@ -44,9 +43,6 @@ export default function Router() {
           </Route>
           <Route exact path={urls.contacts}>
             <Contacts />
-          </Route>
-          <Route path={`${urls.carInfo}/:id`}>
-            <CarInfo />
           </Route>
           <Route exact path={urls.faq}>
             <Faq />

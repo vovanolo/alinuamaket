@@ -1,28 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { fetchFaqData } from '../utils/fetchFaqData';
 
 import '../styles/faq.css';
 
 import FAQCard from '../components/FAQCard';
 
-const faqData = [
-  {
-    id: 1,
-    title: 'Title 1',
-    description: 'Description 1',
-  },
-  {
-    id: 2,
-    title: 'Title 2',
-    description: 'Description 2',
-  },
-  {
-    id: 3,
-    title: 'Title 3',
-    description: 'Description 3',
-  },
-];
-
 export default function Faq() {
+  const [faqData, setFaqData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchFaqData()
+      .then((res) => console.log(res))
+      .catch((err) => console.dir(err));
+  }, []);
+
   return (
     <div className="faq_section">
       <div className="container">
@@ -32,11 +26,11 @@ export default function Faq() {
           </div>
         </div>
         <div className="accordion" id="faqAccordion">
-          {faqData.map(({ id, title, description }) => (
+          {faqData.map(({ id, name, description }) => (
             <FAQCard
               key={id}
               id={`faqAccordion${id}`}
-              title={title}
+              name={name}
               description={description}
             />
           ))}

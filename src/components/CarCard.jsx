@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import * as urls from '../urls';
 
 import '../styles/car_card.css';
 
 import place from '../images/Places.svg';
 import wind from '../images/wind.svg';
 import group from '../images/Group 388.svg';
-import { Link } from 'react-router-dom';
 
 export default function CarCard({
   name,
@@ -55,8 +57,8 @@ export default function CarCard({
               <span className="text_button">
                 <span className="text_grey">{dayPrice}€</span> / в день
               </span>
-              <Link to="/car_info/1" className="mt-2 btn_main btn_slim">
-                Детальніше
+              <Link to={urls.reserv} className="mt-2 btn_main btn_slim">
+                Бронювати
               </Link>
             </div>
           </div>
