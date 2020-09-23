@@ -91,6 +91,9 @@ a.text_black:hover {
 .text_grey {
   color: var(--color-grey);
 }
+.text_red {
+  color: var(--color-red);
+}
 
 .btn_main {
   padding: 0.9rem 0;

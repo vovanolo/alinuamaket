@@ -132,15 +132,21 @@ export default function Hero() {
 
       <div className="container">
         <div className="hero-cta-box navbar-offset">
-          <div className="row">
+          <div className="row mb-4">
             <div className="col">
               <div className="hero-cta-box__title-box">
                 <h1>
                   <span className="text_black hero-cta-box__title">
-                    {t('Прокат нових авто')}
+                    {t('Прокат авто')}
                   </span>
-                  <span className="text_grey hero-cta-box__subtitle">
-                    {t('у Львові')}
+                  <span className="item-1 text_red hero-cta-box__subtitle">
+                      {t('Львів')}
+                  </span>
+                  <span className="item-2 text_red hero-cta-box__subtitle">
+                      {t('Тернопіль')}
+                  </span>
+                  <span className="item-3 text_red hero-cta-box__subtitle">
+                      {t('Івано-Франківськ')}
                   </span>
                 </h1>
               </div>
