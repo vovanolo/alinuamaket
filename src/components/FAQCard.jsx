@@ -4,7 +4,7 @@ import { useState } from 'react';
 import plus from '../images/plus.svg';
 import minus from '../images/minus.svg';
 
-export default function FAQCard({ id, title: name, description }) {
+export default function FAQCard({ id, name, description }) {
   const [visible, setVisible] = useState(false);
 
   const toggleCollapse = () => {
@@ -39,7 +39,7 @@ export default function FAQCard({ id, title: name, description }) {
         aria-labelledby={id}
         data-parent="#faqAccordion"
       >
-        <div className="card-body" dangerouslySetInnerHTML={description} />
+        <div className="card-body" dangerouslySetInnerHTML={{__html:description}} />
       </div>
     </div>
   );

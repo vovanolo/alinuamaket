@@ -13,8 +13,11 @@ export default function Faq() {
 
   useEffect(() => {
     fetchFaqData()
-      .then((res) => console.log(res))
+      .then((res) => setFaqData(res))
       .catch((err) => console.dir(err));
+
+      // setFaqData(res)
+      // console.log(faqData);
   }, []);
 
   return (
@@ -26,7 +29,7 @@ export default function Faq() {
           </div>
         </div>
         <div className="accordion" id="faqAccordion">
-          {faqData.map(({ id, name, description }) => (
+          {faqData.map(({ id, name, description})  => (
             <FAQCard
               key={id}
               id={`faqAccordion${id}`}
