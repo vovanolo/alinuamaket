@@ -6,18 +6,37 @@ import '../styles/faq.css';
 
 import FAQCard from '../components/FAQCard';
 
+let mounted = true;
+
 export default function Faq() {
   const [faqData, setFaqData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchFaqData()
-      .then((res) => setFaqData(res))
-      .catch((err) => console.dir(err));
+    mounted = true;
+    setIsLoading(true);
 
-      // setFaqData(res)
-      // console.log(faqData);
+    fetchFaqData()
+      .then((res) => {
+        if (mounted) {
+          setFaqData(res);
+        }
+      })
+      .catch((err) => {
+        if (mounted) {
+          setError(err);
+        }
+      })
+      .finally(() => {
+        if (mounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (
@@ -28,16 +47,20 @@ export default function Faq() {
             <h2>FAQ</h2>
           </div>
         </div>
-        <div className="accordion" id="faqAccordion">
-          {faqData.map(({ id, name, description})  => (
-            <FAQCard
-              key={id}
-              id={`faqAccordion${id}`}
-              name={name}
-              description={description}
-            />
-          ))}
-        </div>
+        {isLoading && <div className="spinner-border" />}
+        {error && !isLoading && 'Error!'}
+        {faqData.length > 0 && !isLoading && !error && (
+          <div className="accordion" id="faqAccordion">
+            {faqData.map(({ id, name, description }) => (
+              <FAQCard
+                key={id}
+                id={`faqAccordion${id}`}
+                name={name}
+                description={description}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
