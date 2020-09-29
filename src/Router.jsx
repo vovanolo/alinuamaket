@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import * as urls from './urls';
+import * as urls from "./urls";
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import NotFound from './pages/NotFound';
-import Home from './pages/Home';
-import RentWithDriver from './pages/RentWithDriver';
-import Rent from './pages/Rent';
-import Reserv from './pages/Reserv';
-import Contacts from './pages/Contacts';
-import Assistance from './pages/Assistance';
-import Faq from './pages/Faq';
-import News from './pages/News';
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+import RentWithDriver from "./pages/RentWithDriver";
+import Rent from "./pages/Rent";
+import Reserv from "./pages/Reserv";
+import Contacts from "./pages/Contacts";
+import Assistance from "./pages/Assistance";
+import Faq from "./pages/Faq";
+import News from "./pages/News";
 
-import { FormContextProvider } from './components/ContextProvider';
+import { FormContextProvider } from "./components/ContextProvider";
 
 export default function Router() {
   const [data, setData] = useState(null);
@@ -47,7 +47,7 @@ export default function Router() {
           <Route exact path={urls.faq}>
             <Faq />
           </Route>
-          <Route path={`${urls.news}/:id`}>
+          <Route path={`${urls.news}/:slug`}>
             <News />
           </Route>
 

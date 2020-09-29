@@ -1,48 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
 
-import NewsCard from '../components/NewsCard';
+import NewsCard from "../components/NewsCard";
 
-import car_1 from '../images/news/car_1.jpg';
-import car_2 from '../images/news/car_2.jpg';
-import car_3 from '../images/news/car_3.jpg';
+import { fetchNewsData } from "../utils/fetchNewsData";
+import { fetchNewsDataOne } from "../utils/fetchNewsDataOne";
 
-const newsMock = [
-  {
-    id: 1,
-    imgUrl: car_1,
-    title: 'Оренда авто',
-    description: 'Для юридичних лиць',
-  },
-  {
-    id: 2,
-    imgUrl: car_2,
-    title: 'Оренда авто',
-    description: 'З водієм',
-  },
-  {
-    id: 3,
-    imgUrl: car_3,
-    title: 'Новинки',
-    description: 'Новий асортимент',
-  },
-];
+import car_1 from "../images/news/car_1.jpg";
+import car_2 from "../images/news/car_2.jpg";
+import car_3 from "../images/news/car_3.jpg";
 
 export default function News() {
-  const [title, setTitle] = useState('');
-  const [text, setText] = useState('');
-  const [imgUrl, setImgUrl] = useState('');
   const [news, setNews] = useState([]);
+  const [newsData, setNewsData] = useState(null);
 
-  const { id: newsId } = useParams();
+  const { slug: newsSlug } = useParams();
 
   const { pathname } = useLocation();
 
   useEffect(() => {
-    setNews(newsMock);
-    setTitle(newsMock[newsId - 1].title);
-    setText(newsMock[newsId - 1].description);
-    setImgUrl(newsMock[newsId - 1].imgUrl);
+    // setNews(newsMock);
+    fetchNewsData()
+      .then((res) => setNews(res))
+      .catch((err) => console.dir(err));
+  }, []);
+
+  useEffect(() => {
+    fetchNewsDataOne(newsSlug)
+      .then((res) => setNewsData(res))
+      .catch((err) => console.dir(err));
   }, [pathname]);
 
   return (
@@ -50,22 +36,24 @@ export default function News() {
       <div className="container">
         <div className="row">
           <div className="col-xl-2 col-lg-3 col-md-4">
-            {news.map(({ id, imgUrl, title, description }) => (
-              <div key={id} className="mb-3">
+            {news.map(({ slug, imgUrl, name, description }) => (
+              <div key={slug} className="mb-3">
                 <NewsCard
-                  id={id}
-                  imgUrl={imgUrl}
-                  title={title}
+                  slug={slug}
+                  imgUrl={car_1}
+                  title={name}
                   description={description}
                 />
               </div>
             ))}
           </div>
-          <div className="col-xl-10 col-lg-9 col-md-8 mt-lg-0 mt-md-3 mt-3">
-            <img src={imgUrl} alt={title} style={{ float: 'left' }} />
-            <h2 className="mt-3">{title}</h2>
-            <p className="mt-1">{text}</p>
-          </div>
+          {newsData && (
+            <div className="col-xl-10 col-lg-9 col-md-8 mt-lg-0 mt-md-3 mt-3">
+              <img src={car_1} alt={newsData.name} style={{ float: "left" }} />
+              <h2 className="mt-3">{newsData.name}</h2>
+              <p className="mt-1">{newsData.description}</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

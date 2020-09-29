@@ -42,10 +42,10 @@ export default function News() {
       </div>
 
       <div className="row row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
-        {news.map(({ id, imgUrl, name, description }) => (
-          <div key={id} className="col mb-lg-0 mb-md-3 mb-3">
+        {news.map(({ slug, imgUrl, name, description }) => (
+          <div key={slug} className="col mb-lg-0 mb-md-3 mb-3">
             <NewsCard
-              id={id}
+              slug={slug}
               imgUrl={imgUrl}
               imgAlt={t(name)}
               title={t(name)}
