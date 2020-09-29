@@ -3,3 +3,4 @@ export function fetchFaqData() {
     response.json()
   );
 }
+

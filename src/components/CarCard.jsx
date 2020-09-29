@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import * as urls from '../urls';
+import * as urls from "../urls";
 
-import '../styles/car_card.css';
+import "../styles/car_card.css";
 
-import place from '../images/Places.svg';
-import wind from '../images/wind.svg';
-import group from '../images/Group 388.svg';
+import place from "../images/Places.svg";
+import wind from "../images/wind.svg";
+import group from "../images/Group 388.svg";
 
 export default function CarCard({
   name,
@@ -43,10 +43,16 @@ export default function CarCard({
                 <span className="car-card__spec-name">{placesCount}</span>
               </div>
 
-              <div className="mt-1">
-                <img className="car-card__spec-icon" src={wind} alt="konduk" />
-                <span className="car-card__spec-name">{air}</span>
-              </div>
+              {air == 1 && (
+                <div className="mt-1">
+                  <img
+                    className="car-card__spec-icon"
+                    src={wind}
+                    alt="konduk"
+                  />
+                  {/* <span className="car-card__spec-name"></span> */}
+                </div>
+              )}
 
               <div className="mt-1">
                 <img className="car-card__spec-icon" src={group} alt="price" />

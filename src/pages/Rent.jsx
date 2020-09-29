@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { fetchCarData } from '../utils/fetchCarData';
+
 import '../styles/rent_page.css';
 
 import car from '../images/slider/01_Car.png';
@@ -22,58 +24,7 @@ const Sorters = {
   priceDesc: 'За спаданням ціни',
 };
 
-const CardData = [
-  {
-    id: 1,
-    name: 'BMW S SERIES SEDAN',
-    year: '2018',
-    placesCount: '5 місць',
-    air: 'кондиціонер',
-    price: 100,
-    photo: car,
-    type: Filters.cabriolet,
-  },
-  {
-    id: 2,
-    name: 'BMW S SERIES SEDAN',
-    year: '2018',
-    placesCount: '5 місць',
-    air: 'кондиціонер',
-    price: 350,
-    photo: car,
-    type: Filters.cheap,
-  },
-  {
-    id: 3,
-    name: 'BMW S SERIES SEDAN',
-    year: '2018',
-    placesCount: '5 місць',
-    air: 'кондиціонер',
-    price: 450,
-    photo: car,
-    type: Filters.suv,
-  },
-  {
-    id: 4,
-    name: 'BMW S SERIES SEDAN',
-    year: '2018',
-    placesCount: '5 місць',
-    air: 'кондиціонер',
-    price: 100,
-    photo: car,
-    type: Filters.cheap,
-  },
-  {
-    id: 5,
-    name: 'BMW S SERIES SEDAN',
-    year: '2018',
-    placesCount: '5 місць',
-    air: 'кондиціонер',
-    price: 19235,
-    photo: car,
-    type: Filters.cheap,
-  },
-];
+
 
 export default function Rent() {
   const [language, setLanguage] = useState('ua');
@@ -83,12 +34,23 @@ export default function Rent() {
 
   const { t, i18n } = useTranslation();
 
+
+
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
 
   useEffect(() => {
-    setCars(CardData);
+   
+      fetchCarData()
+        .then((res) => setCars(res))
+        .catch((err) => console.dir(err));
+  
+        // setFaqData(res)
+        // console.log(faqData);
+ 
+  
+    // setCars(CardData);
   }, []);
 
   function changeLanguage(newLanguage) {
@@ -195,13 +157,13 @@ export default function Rent() {
       <div className="container">
         <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-4">
           {sortedCars.map(
-            ({ id, name, year, placesCount, air, price, photo }) => (
+            ({ id, name, year, count, conditioner, price, photo }) => (
               <CarCard
                 key={id}
                 name={name}
                 year={year}
-                placesCount={placesCount}
-                air={air}
+                placesCount={count}
+                air={conditioner}
                 price={price}
                 dayPrice={Math.round(price / 31)}
                 photo={photo}
