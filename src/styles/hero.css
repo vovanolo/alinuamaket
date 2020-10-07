@@ -61,55 +61,83 @@
 }
 
 .slider__container_hero::before {
-  content: '';
+  content: "";
   display: block;
-  background-color: var(--color-grey);
+  background-image: url("../images/windrose.png");
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 17vw;
+  left: 10vw;
   border-bottom-left-radius: 75px;
   z-index: 1;
 }
 
-.item-1, 
-.item-2, 
+.item-1,
+.item-2,
 .item-3 {
   position: absolute;
 
-   
-	animation-duration: 20s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
+  animation-duration: 20s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
-.item-1{
-	animation-name: anim-1;
+.item-1 {
+  animation-name: anim-1;
 }
 
-.item-2{
-	animation-name: anim-2;
+.item-2 {
+  animation-name: anim-2;
 }
 
-.item-3{
-	animation-name: anim-3;
+.item-3 {
+  animation-name: anim-3;
 }
 
 @keyframes anim-1 {
-	0%, 8.3% { opacity: 0; }
-  8.3%,25% { opacity: 1; }
-  33.33%, 100% { opacity: 0; }
+  0%,
+  8.3% {
+    opacity: 0;
+  }
+  8.3%,
+  25% {
+    opacity: 1;
+  }
+  33.33%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes anim-2 {
-	0%, 33.33% { opacity: 0; }
-  41.63%, 58.29% { opacity: 1; }
-  66.66%, 100% { opacity: 0; }
+  0%,
+  33.33% {
+    opacity: 0;
+  }
+  41.63%,
+  58.29% {
+    opacity: 1;
+  }
+  66.66%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes anim-3 {
-	0%, 66.66% { opacity: 0; }
-  74.96%, 91.62% { opacity: 1; }
-  100% { opacity: 0; }
+  0%,
+  66.66% {
+    opacity: 0;
+  }
+  74.96%,
+  91.62% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

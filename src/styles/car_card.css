@@ -4,7 +4,7 @@
 }
 
 .car-card__spec-name {
-  margin-left: 12px;
+  margin-left: 2px;
   vertical-align: center;
   display: inline-block;
 }
@@ -12,4 +12,38 @@
 .car-card__spec-icon {
   vertical-align: center;
   margin-top: -3px;
+}
+
+.car-info__info-list {
+  margin-top: 13px;
+  margin-bottom: 30px;
+  padding: 0;
+  list-style: none;
+}
+
+.car-info__info-item-title {
+  margin-left: 12px;
+}
+
+.car-info__price-list {
+  /* list-style: none; */
+  padding: 0;
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.car-info__price-list-item {
+  margin: 0 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.car-info__price-list-days,
+.car-info__price-list-price {
+  /* padding: 8px 17px; */
+  padding: 8px 1px;
+}
+
+.car-info__price-list-days {
+  background-color: var(--color-grey_light);
 }

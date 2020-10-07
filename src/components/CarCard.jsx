@@ -37,14 +37,36 @@ export default function CarCard({
           <h3 className="card-title">{name}</h3>
           <p className="card-text">{year}</p>
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col">
+              <ul className="car-info__price-list">
+                <li className="car-info__price-list-item">
+                  <div className="car-info__price-list-days">1-2</div>
+                  <div className="car-info__price-list-price">120€</div>
+                </li>
+                <li className="car-info__price-list-item">
+                  <div className="car-info__price-list-days">3-7</div>
+                  <div className="car-info__price-list-price">100€</div>
+                </li>
+                <li className="car-info__price-list-item">
+                  <div className="car-info__price-list-days">8+</div>
+                  <div className="car-info__price-list-price">80€</div>
+                </li>
+                <li className="car-info__price-list-item">
+                  <div className="car-info__price-list-days">30+</div>
+                  <div className="car-info__price-list-price">50€</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-6 d-flex">
               <div className="mt-1">
                 <img className="car-card__spec-icon" src={place} alt="places" />
                 <span className="car-card__spec-name">{placesCount}</span>
               </div>
 
               {air == 1 && (
-                <div className="mt-1">
+                <div className="mt-1 ml-1">
                   <img
                     className="car-card__spec-icon"
                     src={wind}
@@ -60,10 +82,11 @@ export default function CarCard({
               </div>
             </div>
             <div className="col-lg-6">
-              <span className="text_button">
+              {/* <span className="text_button">
                 <span className="text_grey">{dayPrice}€</span> / в день
-              </span>
-              <Link to={urls.reserv} className="mt-2 btn_main btn_slim">
+              </span> */}
+
+              <Link to={urls.reserv} className="btn_main btn_slim mb-0">
                 Бронювати
               </Link>
             </div>

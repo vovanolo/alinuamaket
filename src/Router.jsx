@@ -5,6 +5,7 @@ import * as urls from "./urls";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import CarInfo from "./pages/CarInfo";
 
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
@@ -49,6 +50,9 @@ export default function Router() {
           </Route>
           <Route path={`${urls.news}/:slug`}>
             <News />
+          </Route>
+          <Route path="/car_info">
+            <CarInfo />
           </Route>
 
           <Route path="*">
