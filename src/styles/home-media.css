@@ -12,8 +12,29 @@
 
 @media (max-width: 991px) {
   .slider__container_hero {
-    max-width: 60vw;
     display: none;
+  }
+
+  .slider__container_hero::before {
+    display: none;
+  }
+
+  .hero-cta-box::before {
+    content: '';
+    display: block;
+    background-image: url('../images/windrose.png');
+    opacity: 0.35;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 150px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom-left-radius: 75px;
+    z-index: -1;
   }
 
   .rent-step__line {

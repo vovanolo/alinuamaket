@@ -26,21 +26,22 @@
 }
 
 .car-info__price-list {
-  /* list-style: none; */
   padding: 0;
   display: flex;
-  /* justify-content: space-between; */
 }
 
 .car-info__price-list-item {
-  margin: 0 5px;
+  list-style: none;
   text-align: center;
   width: 100%;
 }
 
+.car-info__price-list-item:not(:first-child):not(:last-child) {
+  margin: 0 5px;
+}
+
 .car-info__price-list-days,
 .car-info__price-list-price {
-  /* padding: 8px 17px; */
   padding: 8px 1px;
 }
 

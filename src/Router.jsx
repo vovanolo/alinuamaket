@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import * as urls from "./urls";
+import * as urls from './urls';
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import CarInfo from "./pages/CarInfo";
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-import NotFound from "./pages/NotFound";
-import Home from "./pages/Home";
-import RentWithDriver from "./pages/RentWithDriver";
-import Rent from "./pages/Rent";
-import Reserv from "./pages/Reserv";
-import Contacts from "./pages/Contacts";
-import Assistance from "./pages/Assistance";
-import Faq from "./pages/Faq";
-import News from "./pages/News";
+import NotFound from './pages/NotFound';
+import Home from './pages/Home';
+import RentWithDriver from './pages/RentWithDriver';
+import Rent from './pages/Rent';
+import Reserv from './pages/Reserv';
+import Contacts from './pages/Contacts';
+import Assistance from './pages/Assistance';
+import Faq from './pages/Faq';
+import News from './pages/News';
+import Summary from './pages/Summary';
 
-import { FormContextProvider } from "./components/ContextProvider";
+import { FormContextProvider } from './components/ContextProvider';
 
 export default function Router() {
   const [data, setData] = useState(null);
@@ -30,8 +30,8 @@ export default function Router() {
           <Route exact path={urls.home}>
             <Home />
           </Route>
-          <Route exact path={urls.reserv}>
-            <Reserv sendData={(data) => setData(data)} />
+          <Route path={`${urls.reserv}/:slug`}>
+            <Reserv />
           </Route>
           <Route exact path={urls.rentWithDriver}>
             <RentWithDriver data={data} />
@@ -51,8 +51,8 @@ export default function Router() {
           <Route path={`${urls.news}/:slug`}>
             <News />
           </Route>
-          <Route path="/car_info">
-            <CarInfo />
+          <Route exact path={urls.summary}>
+            <Summary />
           </Route>
 
           <Route path="*">

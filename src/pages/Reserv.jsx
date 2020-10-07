@@ -1,24 +1,26 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useTranslation } from "react-i18next";
-import { useFormik } from "formik";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useFormik } from 'formik';
+import { useHistory, useParams } from 'react-router-dom';
 
-import { rentWithDriver } from "../urls";
+import * as urls from '../urls';
+import { fetchCarData } from '../utils/fetchCarData';
 
-import "../styles/reserv.css";
-import "../styles/switch.css";
+import '../styles/reserv.css';
+import '../styles/switch.css';
 
-import circleSwitch from "../images/circle_switch.svg";
-import car from "../images/slider/01_Car.png";
+import circleSwitch from '../images/circle_switch.svg';
+import car from '../images/slider/01_Car.png';
 
-import Option from "../components/Option";
-import { FormContext } from "../components/ContextProvider";
-import Breadcrumbs from "../components/Breadcrumbs";
-import PriceFixed from "../components/PriceFixed";
+import Option from '../components/Option';
+import OptionRadio from '../components/OptionRadio';
+import { FormContext } from '../components/ContextProvider';
+import Breadcrumbs from '../components/Breadcrumbs';
+import PriceFixed from '../components/PriceFixed';
 
 const ExtrasType = {
-  perDay: "Доба",
-  onetime: "Одноразово",
+  perDay: 'Доба',
+  onetime: 'Одноразово',
 };
 
 const extrasValues = [
@@ -27,65 +29,80 @@ const extrasValues = [
     price: 5,
     displayPrice: 5,
     type: ExtrasType.perDay,
-    value: "Зарядне/тримач для тел",
+    value: 'Зарядне/тримач для тел',
   },
   {
     id: 2,
     price: 10,
     displayPrice: 10,
     type: ExtrasType.onetime,
-    value: "Додатковий водій",
+    value: 'Додатковий водій',
   },
 ];
 
 const initialDateFormatted = `${new Date().getFullYear()}-${
   new Date().getMonth().toString().length < 2
-    ? "0" + (new Date().getMonth() + 1).toString()
+    ? '0' + (new Date().getMonth() + 1).toString()
     : new Date().getMonth()
 }-${
   new Date().getDate().toString().length < 2
-    ? "0" + new Date().getDate()
+    ? '0' + new Date().getDate()
     : new Date().getDate()
 }`;
 
 const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
-export default function Reserv({ sendData }) {
-  const [language, setLanguage] = useState("ua");
+export default function Reserv() {
+  const [language, setLanguage] = useState('ua');
   const [price, setPrice] = useState(120);
   const [allPrices, setAllPrices] = useState([]);
   const [rentDays, setRentDays] = useState(1);
   const [extras, setExtras] = useState([]);
+  const [selectedCar, setSelectedCar] = useState(null);
+  const [pledgeValue, setPledgeValue] = useState(0);
 
   const { t, i18n } = useTranslation();
   const history = useHistory();
+  const { slug } = useParams();
   const [data, setData] = useContext(FormContext);
 
   const formik = useFormik({
     initialValues: {
-      locationFrom: "",
-      locationTo: "",
+      locationFrom: '',
+      locationTo: '',
       receiveDate: initialDateFormatted,
       receiveTime: initialTimeFormatted,
       returnDate: initialDateFormatted,
       returnTime: initialTimeFormatted,
       extras: [],
-      name: "",
-      phone: "",
-      email: "",
-      comment: "",
+      name: '',
+      phone: '',
+      email: '',
+      comment: '',
       agreeWithTerms: false,
+      pledge: '300',
       ...data,
     },
     onSubmit: handleFormSubmit,
   });
 
   useEffect(() => {
-    setAllPrices([120, 100, 80, 50]);
+    fetchCarData(slug).then((res) => {
+      setSelectedCar(res);
+
+      const newPrice = Number(res.price);
+      setPrice(newPrice);
+      setAllPrices([
+        newPrice,
+        Math.floor(newPrice * 0.9),
+        Math.floor(newPrice * 0.8),
+        Math.floor(newPrice * 0.7),
+      ]);
+    });
   }, []);
 
   useEffect(() => {
-    changeLanguage(localStorage.getItem("lang") || "ua");
+    changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
 
   useEffect(() => {
@@ -106,6 +123,14 @@ export default function Reserv({ sendData }) {
   }, [formik.values]);
 
   useEffect(() => {
+    if (formik.values.pledge != 0) {
+      setPledgeValue(0);
+    } else {
+      setPledgeValue(19);
+    }
+  }, [formik.values.pledge]);
+
+  useEffect(() => {
     handleExtrasPriceSet();
   }, [rentDays]);
 
@@ -114,22 +139,23 @@ export default function Reserv({ sendData }) {
       (acc, extra) => acc + extra.displayPrice,
       0
     );
+
     if (allPrices.length > 0) {
       if (rentDays >= 1 && rentDays <= 2) {
-        setPrice(allPrices[0] * rentDays + extrasPrice);
+        setPrice((allPrices[0] + Number(pledgeValue)) * rentDays + extrasPrice);
       } else if (rentDays >= 3 && rentDays <= 7) {
-        setPrice(allPrices[1] * rentDays + extrasPrice);
+        setPrice((allPrices[1] + Number(pledgeValue)) * rentDays + extrasPrice);
       } else if (rentDays >= 8 && rentDays <= 29) {
-        setPrice(allPrices[2] * rentDays + extrasPrice);
+        setPrice((allPrices[2] + Number(pledgeValue)) * rentDays + extrasPrice);
       } else if (rentDays >= 30) {
-        setPrice(allPrices[3] * rentDays + extrasPrice);
+        setPrice((allPrices[3] + Number(pledgeValue)) * rentDays + extrasPrice);
       }
     }
   }, [extras]);
 
   function changeLanguage(newLanguage) {
     const newLang = newLanguage;
-    localStorage.setItem("lang", newLang);
+    localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
   }
@@ -184,7 +210,15 @@ export default function Reserv({ sendData }) {
   }
 
   function handleFormSubmit(values) {
-    console.log({ ...values, extras: extras, price });
+    const requestData = {
+      ...values,
+      extras: extras,
+      price,
+      selectedCar: selectedCar.slug,
+    };
+
+    setData(requestData);
+    history.push(urls.summary);
   }
 
   return (
@@ -199,7 +233,7 @@ export default function Reserv({ sendData }) {
         <div className="row">
           <div className="col">
             <h2 className="text_black reserv__title">
-              {t("Бронювання автомобіля")}
+              {t('Бронювання автомобіля')}
             </h2>
           </div>
         </div>
@@ -209,8 +243,16 @@ export default function Reserv({ sendData }) {
             <div className="row">
               <div className="col">
                 <h3 className="text_black reserv__section-title">
-                  {t("Налаштування бронювання")}
+                  {t('Налаштування бронювання')}
                 </h3>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col">
+                <fieldset>
+                  <legend>Pledge: </legend>
+                </fieldset>
               </div>
             </div>
 
@@ -226,32 +268,32 @@ export default function Reserv({ sendData }) {
                   </button>
 
                   <div className="switch__box">
-                    <p className="switch__title text_grey">{t("від")}</p>
+                    <p className="switch__title text_grey">{t('від')}</p>
                     <input
                       name="locationFrom"
                       type="text"
                       className="switch__input"
-                      placeholder={t("Вкажіть локацію")}
+                      placeholder={t('Вкажіть локацію')}
                       onChange={formik.handleChange}
                       value={formik.values.locationFrom}
                     />
                     <sub className="switch__sub-title text_grey">
-                      {t("місто, область, країна")}
+                      {t('місто, область, країна')}
                     </sub>
                   </div>
 
                   <div className="switch__box">
-                    <p className="switch__title text_grey">{t("до")}</p>
+                    <p className="switch__title text_grey">{t('до')}</p>
                     <input
                       name="locationTo"
                       type="text"
                       className="switch__input"
-                      placeholder={t("Вкажіть локацію")}
+                      placeholder={t('Вкажіть локацію')}
                       onChange={formik.handleChange}
                       value={formik.values.locationTo}
                     />
                     <sub className="switch__sub-title text_grey">
-                      {t("місто, область, країна")}
+                      {t('місто, область, країна')}
                     </sub>
                   </div>
                 </div>
@@ -270,7 +312,7 @@ export default function Reserv({ sendData }) {
                   </button>
 
                   <div className="switch__box">
-                    <p className="switch__title text_grey">{t("Отримання")}</p>
+                    <p className="switch__title text_grey">{t('Отримання')}</p>
                     <div className="switch__input-container">
                       <input
                         name="receiveDate"
@@ -290,12 +332,12 @@ export default function Reserv({ sendData }) {
                       />
                     </div>
                     <sub className="switch__sub-title text_grey">
-                      {t("місто, область, країна")}
+                      {t('місто, область, країна')}
                     </sub>
                   </div>
 
                   <div className="switch__box">
-                    <p className="switch__title text_grey">{t("Повернення")}</p>
+                    <p className="switch__title text_grey">{t('Повернення')}</p>
                     <div className="switch__input-container">
                       <input
                         name="returnDate"
@@ -314,7 +356,7 @@ export default function Reserv({ sendData }) {
                       />
                     </div>
                     <sub className="switch__sub-title text_grey">
-                      {t("місто, область, країна")}
+                      {t('місто, область, країна')}
                     </sub>
                   </div>
                 </div>
@@ -324,7 +366,7 @@ export default function Reserv({ sendData }) {
             <div className="row">
               <div className="col">
                 <h3 className="text_black reserv__section-title">
-                  {t("Додаткові опції")}
+                  {t('Додаткові опції')}
                 </h3>
               </div>
             </div>
@@ -349,7 +391,38 @@ export default function Reserv({ sendData }) {
             <div className="row">
               <div className="col">
                 <h3 className="text_black reserv__section-title">
-                  {t("Особисті дані")}
+                  {t('Завдаток')}
+                </h3>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col">
+                <div className="row row-cols-md-4 row-cols-1">
+                  <OptionRadio
+                    name="pledge"
+                    value="0"
+                    id="dawdsawdsawdsawdsawd1"
+                    checked={formik.values.pledge === '0'}
+                    onChange={formik.handleChange}
+                    label="0"
+                  />
+                  <OptionRadio
+                    name="pledge"
+                    value="300"
+                    id="dawdsawdsawdsawdsawd2"
+                    checked={formik.values.pledge === '300'}
+                    onChange={formik.handleChange}
+                    label="300"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col">
+                <h3 className="text_black reserv__section-title">
+                  {t('Особисті дані')}
                 </h3>
               </div>
             </div>
@@ -375,7 +448,7 @@ export default function Reserv({ sendData }) {
                       name="phone"
                       className="input"
                       type="tel"
-                      placeholder={t("Телефон")}
+                      placeholder={t('Телефон')}
                       onChange={formik.handleChange}
                       value={formik.values.phone}
                     />
@@ -397,7 +470,7 @@ export default function Reserv({ sendData }) {
                     <textarea
                       name="comment"
                       className="input"
-                      placeholder={t("Коментар")}
+                      placeholder={t('Коментар')}
                       onChange={formik.handleChange}
                       value={formik.values.comment}
                     />
@@ -408,28 +481,30 @@ export default function Reserv({ sendData }) {
           </div>
 
           <div className="col-md-4">
-            <div className="row">
-              <div className="col">
-                <h3 className="text_black">BMW S SERIES SEDAN (G30)</h3>
-                <h4 className="text_black">530E IPERFORMANCE</h4>
-                <h4 className="text_black">2018</h4>
-              </div>
-            </div>
+            {selectedCar && (
+              <>
+                <div className="row">
+                  <div className="col">
+                    <h3 className="text_black">{selectedCar.name}</h3>
+                  </div>
+                </div>
 
-            <div className="row mt-3 mb-4">
-              <div className="col">
-                <img
-                  className="img-responsive img-responsive_contain reserv__car-img"
-                  src={car}
-                  alt="BMW S SERIES SEDAN (G30)"
-                />
-              </div>
-            </div>
+                <div className="row mt-3 mb-4">
+                  <div className="col">
+                    <img
+                      className="img-responsive img-responsive_contain reserv__car-img"
+                      src={car}
+                      alt={selectedCar.name}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
 
             <div className="row">
               <div className="col">
                 <h4 className="text_black">
-                  {t("В вартість оренди включено")}:
+                  {t('В вартість оренди включено')}:
                 </h4>
                 <ul className="reserv__price-list">
                   {extras.map(
@@ -470,8 +545,8 @@ export default function Reserv({ sendData }) {
                   <span className="rent-days">{rentDays} </span>
                   <span>
                     {rentDays.toString().endsWith(1) && rentDays !== 11
-                      ? "day"
-                      : "days"}
+                      ? 'day'
+                      : 'days'}
                   </span>
                 </span>
               </div>
@@ -481,7 +556,7 @@ export default function Reserv({ sendData }) {
               <div className="col">
                 <div className="reserv__final-price-box">
                   <p className="reserv__final-price-title">
-                    {t("Ціна оренди")}:
+                    {t('Ціна оренди')}:
                   </p>
                   <p className="reserv__final-price">{price}€</p>
                 </div>
@@ -492,7 +567,7 @@ export default function Reserv({ sendData }) {
               <div className="col">
                 <label className="reserv__agreement-label">
                   <span className="reserv__agreement-text">
-                    {t("Я погоджуюсь з умовами прокату")}
+                    {t('Я погоджуюсь з умовами прокату')}
                   </span>
                   <input
                     name="agreeWithTerms"
@@ -512,7 +587,7 @@ export default function Reserv({ sendData }) {
                   type="submit"
                   className="btn_main"
                 >
-                  {t("Орендувати")}
+                  {t('Орендувати')}
                 </button>
               </div>
             </div>

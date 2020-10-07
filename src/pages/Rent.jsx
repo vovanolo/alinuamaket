@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { fetchCarData } from '../utils/fetchCarData';
+import { fetchCarsData } from '../utils/fetchCarsData';
+import { fetchCategoriesData } from '../utils/fetchCategoriesData';
 
 import '../styles/rent_page.css';
 
@@ -10,47 +11,32 @@ import car from '../images/slider/01_Car.png';
 import CarCard from '../components/CarCard';
 import Breadcrumbs from '../components/Breadcrumbs';
 
-const Filters = {
-  all: 'Всі автомобілі',
-  premium: 'Преміум',
-  suv: 'Позашляховик',
-  cabriolet: 'Кабріолет',
-  confort: 'Конфорт',
-  cheap: 'Економ',
-};
-
 const Sorters = {
   priceAsc: 'За зростанням ціни',
   priceDesc: 'За спаданням ціни',
 };
 
-
-
 export default function Rent() {
   const [language, setLanguage] = useState('ua');
   const [cars, setCars] = useState([]);
-  const [currentFilter, setCurrentFilter] = useState(Filters.all);
+  const [categories, setCategories] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState(null);
   const [currentSorter, setCurrentSorter] = useState('');
 
   const { t, i18n } = useTranslation();
-
-
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
 
   useEffect(() => {
-   
-      fetchCarData()
-        .then((res) => setCars(res))
-        .catch((err) => console.dir(err));
-  
-        // setFaqData(res)
-        // console.log(faqData);
- 
-  
-    // setCars(CardData);
+    fetchCarsData()
+      .then((res) => setCars(res))
+      .catch((err) => console.dir(err));
+
+    fetchCategoriesData()
+      .then((res) => setCategories(res))
+      .catch((err) => console.dir(err));
   }, []);
 
   function changeLanguage(newLanguage) {
@@ -60,13 +46,12 @@ export default function Rent() {
     i18n.changeLanguage(newLang);
   }
 
-  const filtersData = Object.values(Filters);
   const sortersData = Object.values(Sorters);
 
   function changeFilter(e) {
-    const { value } = e.target;
+    const value = e.target.value === 'all' ? null : e.target.value;
 
-    setCurrentFilter(value);
+    setCurrentCategory(value);
   }
 
   function changeSorter(e) {
@@ -75,10 +60,9 @@ export default function Rent() {
     setCurrentSorter(value);
   }
 
-  const filteredCars =
-    currentFilter === Filters.all
-      ? cars
-      : cars.filter(({ type }) => type === currentFilter);
+  const filteredCars = !currentCategory
+    ? cars
+    : cars.filter(({ category_id }) => category_id === currentCategory);
 
   const sortedCars = filteredCars.sort((a, b) => {
     switch (currentSorter) {
@@ -116,18 +100,33 @@ export default function Rent() {
               id="rentFilterCollapse"
             >
               <form className="rent-nav__filters">
-                {filtersData.map((filter) => (
-                  <React.Fragment key={filter}>
+                <input
+                  id="dawdsa;kfja;wj;d1"
+                  type="radio"
+                  className="visually-hidden rent-nav__filter-radio"
+                  value="all"
+                  checked={!currentCategory}
+                  onChange={changeFilter}
+                />
+                <label
+                  className="rent-nav__filter-item"
+                  htmlFor="dawdsa;kfja;wj;d1"
+                >
+                  {t('Всі')}
+                </label>
+                <span>/</span>
+                {categories.map(({ name, id }) => (
+                  <React.Fragment key={name}>
                     <input
-                      id={filter}
+                      id={name}
                       type="radio"
                       className="visually-hidden rent-nav__filter-radio"
-                      value={filter}
-                      checked={currentFilter === filter}
+                      value={id}
+                      checked={currentCategory === id}
                       onChange={changeFilter}
                     />
-                    <label className="rent-nav__filter-item" htmlFor={filter}>
-                      {t(filter)}
+                    <label className="rent-nav__filter-item" htmlFor={name}>
+                      {t(name)}
                     </label>
                     <span>/</span>
                   </React.Fragment>
@@ -157,7 +156,7 @@ export default function Rent() {
       <div className="container">
         <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-4">
           {sortedCars.map(
-            ({ id, name, year, count, conditioner, price, photo }) => (
+            ({ id, name, year, count, conditioner, price, photo, slug }) => (
               <CarCard
                 key={id}
                 name={name}
@@ -166,7 +165,8 @@ export default function Rent() {
                 air={conditioner}
                 price={price}
                 dayPrice={Math.round(price / 31)}
-                photo={photo}
+                photoUrl={photo}
+                slug={slug}
               />
             )
           )}

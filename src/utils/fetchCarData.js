@@ -1,5 +1,5 @@
-export function fetchCarData() {
-    return fetch('http://alin.ua/backend/api/allcars').then((response) =>
-      response.json()
-    );
-  }
+export function fetchCarData(slug) {
+  return fetch(`http://alin.ua/backend/api/allcars/${slug}`).then((response) =>
+    response.json()
+  );
+}

@@ -61,9 +61,10 @@
 }
 
 .slider__container_hero::before {
-  content: "";
+  content: '';
   display: block;
-  background-image: url("../images/windrose.png");
+  background-image: url('../images/windrose.png');
+  opacity: 0.35;
   background-position: left;
   background-size: cover;
   background-repeat: no-repeat;
