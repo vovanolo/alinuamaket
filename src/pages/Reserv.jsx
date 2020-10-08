@@ -90,13 +90,12 @@ export default function Reserv() {
     fetchCarData(slug).then((res) => {
       setSelectedCar(res);
 
-      const newPrice = Number(res.price);
-      setPrice(newPrice);
+      setPrice(res.price[1].money);
       setAllPrices([
-        newPrice,
-        Math.floor(newPrice * 0.9),
-        Math.floor(newPrice * 0.8),
-        Math.floor(newPrice * 0.7),
+        res.price[1].money,
+        Math.floor(res.price[1].money * 0.9),
+        Math.floor(res.price[1].money * 0.8),
+        res.price[0].money,
       ]);
     });
   }, []);
@@ -491,11 +490,13 @@ export default function Reserv() {
 
                 <div className="row mt-3 mb-4">
                   <div className="col">
-                    <img
-                      className="img-responsive img-responsive_contain reserv__car-img"
-                      src={selectedCar.photo.path}
-                      alt={selectedCar.name}
-                    />
+                    {selectedCar.photo && (
+                      <img
+                        className="img-responsive img-responsive_contain reserv__car-img"
+                        src={selectedCar.photo.path}
+                        alt={selectedCar.name}
+                      />
+                    )}
                   </div>
                 </div>
               </>
