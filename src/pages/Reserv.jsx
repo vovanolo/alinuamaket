@@ -493,7 +493,7 @@ export default function Reserv() {
                   <div className="col">
                     <img
                       className="img-responsive img-responsive_contain reserv__car-img"
-                      src={car}
+                      src={selectedCar.photo.path}
                       alt={selectedCar.name}
                     />
                   </div>

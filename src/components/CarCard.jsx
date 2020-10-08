@@ -12,13 +12,14 @@ import group from '../images/Group 388.svg';
 import imgPlaceholder from '../images/car_info/car1.png';
 
 function CarCard({ name, year, placesCount, air, price, photoUrl, slug }) {
+  // console.log(Object.values(price[0]));
   return (
     <div className="col mb-4">
       <div className="row">
         <div className="col">
           <div className="car-card__img-container">
             <img
-              src={photoUrl}
+              src={photoUrl.path}
               className="img-responsive img-responsive_cover"
               alt={name}
             />
@@ -70,7 +71,7 @@ function CarCard({ name, year, placesCount, air, price, photoUrl, slug }) {
 
           <div className="mt-1">
             <img className="car-card__spec-icon" src={group} alt="price" />
-            <span className="car-card__spec-name">{price}€</span>
+            <span className="car-card__spec-name">{price.days}€</span>
           </div>
         </div>
         <div className="col-lg-6">
