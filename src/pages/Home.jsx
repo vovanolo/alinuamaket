@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet';
 
 import Hero from '../sections/Hero';
 import News from '../sections/News';
@@ -19,6 +20,10 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Alin</title>
+        <meta name="description" content="Alin" />
+      </Helmet>
       <Hero />
       <News />
       <Rent />
