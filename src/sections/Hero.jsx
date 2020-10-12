@@ -1,37 +1,37 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useTranslation } from "react-i18next";
-import SwiperCore, { Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useHistory } from "react-router-dom";
-import { useFormik } from "formik";
+import React, { useEffect, useState, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import SwiperCore, { Pagination, Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useHistory } from 'react-router-dom';
+import { useFormik } from 'formik';
 
-import { FormContext } from "../components/ContextProvider";
-import * as urls from "../urls";
+import { FormContext } from '../components/ContextProvider';
+import * as urls from '../urls';
 
-import "swiper/swiper.scss";
-import "swiper/components/pagination/pagination.scss";
+import 'swiper/swiper.scss';
+import 'swiper/components/pagination/pagination.scss';
 
-import "../styles/hero.css";
+import '../styles/hero.css';
 
-import slide01 from "../images/slider/01_Car.png";
-import circleSwitch from "../images/circle_switch.svg";
+import slide01 from '../images/slider/01_Car.png';
+import circleSwitch from '../images/circle_switch.svg';
 
 SwiperCore.use([Pagination, Autoplay]);
 
 const initialDateFormatted = `${new Date().getFullYear()}-${
   new Date().getMonth().toString().length < 2
-    ? "0" + (new Date().getMonth() + 1).toString()
+    ? '0' + (new Date().getMonth() + 1).toString()
     : new Date().getMonth()
 }-${
   new Date().getDate().toString().length < 2
-    ? "0" + new Date().getDate()
+    ? '0' + new Date().getDate()
     : new Date().getDate()
 }`;
 
 const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
 export default function Hero() {
-  const [language, setLanguage] = useState("ua");
+  const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
 
   const [data, setData] = useContext(FormContext);
@@ -40,8 +40,8 @@ export default function Hero() {
 
   const formik = useFormik({
     initialValues: {
-      locationFrom: "",
-      locationTo: "",
+      locationFrom: '',
+      locationTo: '',
       receiveDate: initialDateFormatted,
       receiveTime: initialTimeFormatted,
       returnDate: initialDateFormatted,
@@ -51,13 +51,13 @@ export default function Hero() {
   });
 
   useEffect(() => {
-    changeLanguage(localStorage.getItem("lang") || "ua");
+    changeLanguage(localStorage.getItem('lang') || 'ua');
     console.log(data);
   }, [language]);
 
   function changeLanguage(newLanguage) {
     const newLang = newLanguage;
-    localStorage.setItem("lang", newLang);
+    localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
   }
@@ -137,16 +137,16 @@ export default function Hero() {
               <div className="hero-cta-box__title-box">
                 <h1>
                   <span className="text_black hero-cta-box__title">
-                    {t("Прокат авто")}
+                    {t('Прокат авто')}
                   </span>
                   <span className="item-1 text_red hero-cta-box__subtitle">
-                    {t("Львів")}
+                    {t('Львів')}
                   </span>
                   <span className="item-2 text_red hero-cta-box__subtitle">
-                    {t("Тернопіль")}
+                    {t('Тернопіль')}
                   </span>
                   <span className="item-3 text_red hero-cta-box__subtitle">
-                    {t("Івано-Франківськ")}
+                    {t('Івано-Франківськ')}
                   </span>
                 </h1>
               </div>
@@ -168,32 +168,32 @@ export default function Hero() {
                       </button>
 
                       <div className="switch__box">
-                        <p className="switch__title text_grey">{t("від")}</p>
+                        <p className="switch__title text_grey">{t('від')}</p>
                         <input
                           name="locationFrom"
                           type="text"
                           className="switch__input"
-                          placeholder={t("Вкажіть локацію")}
+                          placeholder={t('Вкажіть локацію')}
                           onChange={formik.handleChange}
                           value={formik.values.locationFrom}
                         />
                         <sub className="switch__sub-title text_grey">
-                          {t("місто, область, країна")}
+                          {t('місто, область, країна')}
                         </sub>
                       </div>
 
                       <div className="switch__box">
-                        <p className="switch__title text_grey">{t("до")}</p>
+                        <p className="switch__title text_grey">{t('до')}</p>
                         <input
                           name="locationTo"
                           type="text"
                           className="switch__input"
-                          placeholder={t("Вкажіть локацію")}
+                          placeholder={t('Вкажіть локацію')}
                           onChange={formik.handleChange}
                           value={formik.values.locationTo}
                         />
                         <sub className="switch__sub-title text_grey">
-                          {t("місто, область, країна")}
+                          {t('місто, область, країна')}
                         </sub>
                       </div>
                     </div>
@@ -213,7 +213,7 @@ export default function Hero() {
 
                       <div className="switch__box">
                         <p className="switch__title text_grey">
-                          {t("Отримання")}
+                          {t('Отримання')}
                         </p>
                         <div className="switch__input-container">
                           <input
@@ -234,13 +234,13 @@ export default function Hero() {
                           />
                         </div>
                         <sub className="switch__sub-title text_grey">
-                          {t("місто, область, країна")}
+                          {t('місто, область, країна')}
                         </sub>
                       </div>
 
                       <div className="switch__box">
                         <p className="switch__title text_grey">
-                          {t("Повернення")}
+                          {t('Повернення')}
                         </p>
                         <div className="switch__input-container">
                           <input
@@ -260,7 +260,7 @@ export default function Hero() {
                           />
                         </div>
                         <sub className="switch__sub-title text_grey">
-                          {t("місто, область, країна")}
+                          {t('місто, область, країна')}
                         </sub>
                       </div>
                     </div>
@@ -271,9 +271,9 @@ export default function Hero() {
           </div>
 
           <div className="row">
-            <div className="col-xl-3 col-lg-4 col-md-5 col-sm-7 col">
+            <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col">
               <button type="submit" form="heroReservForm" className="btn_main">
-                {t("Орендувати")}
+                {t('Орендувати')}
               </button>
             </div>
           </div>
