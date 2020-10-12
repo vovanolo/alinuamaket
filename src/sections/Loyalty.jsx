@@ -34,17 +34,20 @@ export default function Loyalty() {
     {
       icon: percent,
       iconAlt: '5% discount',
-      description: 'Орендуй на довгий термін, та отримуй за кожні 10 днів прокату по 5% знижки на наступну оренду ( *знижка накопичувальна)'
+      description:
+        'Орендуй на довгий термін, та отримуй за кожні 10 днів прокату по 5% знижки на наступну оренду ( *знижка накопичувальна)',
     },
     {
       icon: chat,
       iconAlt: 'Leave a review',
-      description: 'Залиш відгук з фотографією про компанію ALIN на нашій сторінці в Instagram або на Google Maps та отримай додатково 5% знижки на наступну оренду'
+      description:
+        'Залиш відгук з фотографією про компанію ALIN на нашій сторінці в Instagram або на Google Maps та отримай додатково 5% знижки на наступну оренду',
     },
     {
       icon: people,
       iconAlt: 'Additional discount for bringing friend',
-      description: 'Приведи друга та отримай додаткову знижку 5% для себе та 5% для товариша'
+      description:
+        'Приведи друга та отримай додаткову знижку 5% для себе та 5% для товариша',
     },
   ];
 
@@ -52,34 +55,40 @@ export default function Loyalty() {
     {
       icon: badge,
       iconAlt: 'Special conditions for regular customers',
-      description: 'Для постійних клієнтів компанї ALIN діють спеціальні умови лояльності по франшизі.'
+      description:
+        'Для постійних клієнтів компанї ALIN діють спеціальні умови лояльності по франшизі.',
     },
     {
       icon: sleep,
       iconAlt: 'Hotel discount',
-      description: 'Для постійних клієнтів компанї ALIN діють спеціальні умови лояльності по франшизі.'
+      description:
+        'Для постійних клієнтів компанї ALIN діють спеціальні умови лояльності по франшизі.',
     },
     {
       icon: discount,
       iconAlt: 'Max discount - 30%',
-      description: 'Максимально сумарна знижка 30%'
+      description: 'Максимально сумарна знижка 30%',
     },
   ];
 
   return (
     <div className="container">
-
       <div className="row">
         <div className="col-lg-6 offset-lg-6 col">
-
           <div className="row">
             <div className="col">
-              <h2 className="text_black loyalty__title">{t('Програма лояльності')}</h2>
+              <h2 className="text_black loyalty__title">
+                {t('Програма лояльності')}
+              </h2>
             </div>
           </div>
 
           <div className="loyalty__car loyalty__car_left">
-            <img className="img-responsive img-responsive_contain" src={car1} alt="Car" />
+            <img
+              className="img-responsive img-responsive_contain"
+              src={car1}
+              alt="Car"
+            />
           </div>
 
           {loyaltyCardsData1.map(({ icon, iconAlt, description }, index) => (
@@ -96,9 +105,12 @@ export default function Loyalty() {
 
       <div className="row loyalty__row">
         <div className="col-lg-6 col">
-
           <div className="loyalty__car loyalty__car_right">
-            <img className="img-responsive img-responsive_contain" src={car2} alt="Car" />
+            <img
+              className="img-responsive img-responsive_contain"
+              src={car2}
+              alt="Car"
+            />
           </div>
 
           {loyaltyCardsData2.map(({ icon, iconAlt, description }, index) => (
@@ -118,7 +130,6 @@ export default function Loyalty() {
           <button className="btn_main">{t('Орендувати')}</button>
         </div>
       </div>
-
     </div>
   );
 }

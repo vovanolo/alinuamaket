@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 
-import NewsCard from "../components/NewsCard";
+import NewsCard from '../components/NewsCard';
 
-import { fetchNewsData } from "../utils/fetchNewsData";
-import { fetchNewsDataOne } from "../utils/fetchNewsDataOne";
+import { fetchNewsData } from '../utils/fetchNewsData';
+import { fetchNewsDataOne } from '../utils/fetchNewsDataOne';
 
-import car_1 from "../images/news/car_1.jpg";
-import car_2 from "../images/news/car_2.jpg";
-import car_3 from "../images/news/car_3.jpg";
+import car_1 from '../images/news/car_1.jpg';
+import car_2 from '../images/news/car_2.jpg';
+import car_3 from '../images/news/car_3.jpg';
 
 export default function News() {
   const [news, setNews] = useState([]);
@@ -36,11 +36,11 @@ export default function News() {
       <div className="container">
         <div className="row">
           <div className="col-xl-2 col-lg-3 col-md-4">
-            {news.map(({ slug, imgUrl, name, description }) => (
+            {news.map(({ slug, news_image, name, description }) => (
               <div key={slug} className="mb-3">
                 <NewsCard
                   slug={slug}
-                  imgUrl={car_1}
+                  imgUrl={news_image.path}
                   title={name}
                   description={description}
                 />
@@ -49,7 +49,11 @@ export default function News() {
           </div>
           {newsData && (
             <div className="col-xl-10 col-lg-9 col-md-8 mt-lg-0 mt-md-3 mt-3">
-              <img src={car_1} alt={newsData.name} style={{ float: "left" }} />
+              <img
+                src={newsData.news_image.path}
+                alt={newsData.name}
+                style={{ float: 'left' }}
+              />
               <h2 className="mt-3">{newsData.name}</h2>
               <p className="mt-1">{newsData.description}</p>
             </div>

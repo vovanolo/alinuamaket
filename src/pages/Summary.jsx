@@ -27,6 +27,12 @@ export default function Summary() {
       <div className="container">
         <div className="row">
           <div className="col">
+            <h4>Заявка успішно відправлена</h4>
+            <h4>Дякуюємо вам за замовлення</h4>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
             <h4>Car: {data.selectedCar}</h4>
             <h3>Price: {data.price}</h3>
           </div>
