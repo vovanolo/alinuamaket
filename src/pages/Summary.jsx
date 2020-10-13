@@ -2,21 +2,30 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 import * as urls from '../urls';
+import { fetchCarData } from '../utils/fetchCarData';
 
 import { FormContext } from '../components/ContextProvider';
 
 export default function Summary() {
   const [data] = useContext(FormContext);
   const [loading, setLoading] = useState(false);
+  const [carData, setCarData] = useState(null);
 
   useEffect(() => {
     setLoading(true);
   }, []);
 
   useEffect(() => {
-    console.log(data);
     setLoading(false);
   }, [data]);
+
+  useEffect(() => {
+    if (!loading && data) {
+      fetchCarData(data.selectedCar)
+        .then((res) => setCarData(res))
+        .catch((error) => console.dir(error));
+    }
+  }, [loading]);
 
   if (!loading && !data) {
     return <Redirect to={urls.rent} />;
@@ -37,6 +46,19 @@ export default function Summary() {
             <h3>Price: {data.price}</h3>
           </div>
         </div>
+
+        {carData && (
+          <div className="row">
+            <div className="col">
+              <img
+                src={carData.photo.path}
+                alt={carData.name}
+                className="img-responsive"
+              />
+            </div>
+          </div>
+        )}
+
         <div className="row">
           <div className="col-md-3">
             <Link to={urls.home} className="btn_main">

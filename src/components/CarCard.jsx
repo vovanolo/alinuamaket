@@ -11,8 +11,16 @@ import group from '../images/Group 388.svg';
 
 import imgPlaceholder from '../images/car_info/car1.png';
 
-function CarCard({ name, year, placesCount, air, price, photoUrl, slug }) {
-  // console.log(Object.values(price[0]));
+function CarCard({
+  name,
+  year,
+  placesCount,
+  air,
+  price,
+  deposit,
+  photoUrl,
+  slug,
+}) {
   return (
     <div className="col mb-4">
       <div className="row">
@@ -36,22 +44,16 @@ function CarCard({ name, year, placesCount, air, price, photoUrl, slug }) {
       <div className="row">
         <div className="col">
           <ul className="car-info__price-list">
-            <li className="car-info__price-list-item">
-              <div className="car-info__price-list-days">1-2</div>
-              <div className="car-info__price-list-price">120€</div>
-            </li>
-            <li className="car-info__price-list-item">
-              <div className="car-info__price-list-days">3-7</div>
-              <div className="car-info__price-list-price">100€</div>
-            </li>
-            <li className="car-info__price-list-item">
-              <div className="car-info__price-list-days">8+</div>
-              <div className="car-info__price-list-price">80€</div>
-            </li>
-            <li className="car-info__price-list-item">
-              <div className="car-info__price-list-days">30+</div>
-              <div className="car-info__price-list-price">50€</div>
-            </li>
+            {price.map((priceElem) => (
+              <li key={priceElem.days} className="car-info__price-list-item">
+                <div className="car-info__price-list-days">
+                  {priceElem.days}
+                </div>
+                <div className="car-info__price-list-price">
+                  {priceElem.money}€
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -71,7 +73,7 @@ function CarCard({ name, year, placesCount, air, price, photoUrl, slug }) {
 
           <div className="mt-1">
             <img className="car-card__spec-icon" src={group} alt="price" />
-            <span className="car-card__spec-name">{price.days}€</span>
+            <span className="car-card__spec-name">{deposit}€</span>
           </div>
         </div>
         <div className="col-lg-6">

@@ -90,12 +90,12 @@ export default function Reserv() {
     fetchCarData(slug).then((res) => {
       setSelectedCar(res);
 
-      setPrice(res.price[1].money);
+      setPrice(res.price[0].money);
       setAllPrices([
-        res.price[1].money,
-        Math.floor(res.price[1].money * 0.9),
-        Math.floor(res.price[1].money * 0.8),
         res.price[0].money,
+        res.price[1].money,
+        res.price[2].money,
+        res.price[3].money,
       ]);
     });
   }, []);

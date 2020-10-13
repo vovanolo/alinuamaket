@@ -156,7 +156,17 @@ export default function Rent() {
       <div className="container">
         <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-4">
           {sortedCars.map(
-            ({ id, name, year, count, conditioner, price, photo, slug }) => (
+            ({
+              id,
+              name,
+              year,
+              count,
+              conditioner,
+              price,
+              deposit,
+              photo,
+              slug,
+            }) => (
               <CarCard
                 key={id}
                 name={name}
@@ -164,6 +174,7 @@ export default function Rent() {
                 placesCount={count}
                 air={conditioner}
                 price={price}
+                deposit={deposit}
                 dayPrice={Math.round(price / 31)}
                 photoUrl={photo}
                 slug={slug}
