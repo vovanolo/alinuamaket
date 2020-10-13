@@ -28,11 +28,11 @@
 }
 
 .rent-step__line:not(.rent-step__line_inverted) {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .rent-step__line_inverted {
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .rent-step__line_inverted > .rent-step__line-icon {
