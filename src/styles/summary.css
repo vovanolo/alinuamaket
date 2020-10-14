@@ -1,0 +1,7 @@
+.color_result-red {
+  background-color: var(--color-red);
+  color: #fff;
+}
+.result_page-container {
+  height: 200px;
+}

@@ -249,14 +249,6 @@ export default function Reserv() {
 
             <div className="row">
               <div className="col">
-                <fieldset>
-                  <legend>Pledge: </legend>
-                </fieldset>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col">
                 <div className="switch">
                   <button
                     type="button"
@@ -404,7 +396,7 @@ export default function Reserv() {
                     id="dawdsawdsawdsawdsawd1"
                     checked={formik.values.pledge === '0'}
                     onChange={formik.handleChange}
-                    label="0"
+                    label="Без завдатку"
                   />
                   <OptionRadio
                     name="pledge"
@@ -412,7 +404,7 @@ export default function Reserv() {
                     id="dawdsawdsawdsawdsawd2"
                     checked={formik.values.pledge === '300'}
                     onChange={formik.handleChange}
-                    label="300"
+                    label="З завдатком"
                   />
                 </div>
               </div>

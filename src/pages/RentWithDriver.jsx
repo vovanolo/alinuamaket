@@ -75,7 +75,7 @@ export default function RentWithDriver({ data }) {
               onSubmit={handleFormSubmit}
             >
               <Form className="rent_form">
-                <button type="submit">Далі</button>
+                <button type="submit submit_color-red">Далі</button>
                 <div className="row">
                   <div className="col-12">
                     <div className="input_radio_transfer">

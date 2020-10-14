@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import * as urls from '../urls';
 
 import '../styles/loyalty.css';
 
@@ -127,7 +129,9 @@ export default function Loyalty() {
 
       <div className="row">
         <div className="col-xl-3 col-lg-4 col-md-5">
-          <button className="btn_main">{t('Орендувати')}</button>
+          <Link to={urls.rent} className="btn_main">
+            {t('Орендувати')}
+          </Link>
         </div>
       </div>
     </div>
