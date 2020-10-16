@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import * as urls from '../urls';
 import { fetchCarData } from '../utils/fetchCarData';
+import { fetchRentInfo } from '../utils/fetchRentInfo';
 
 import '../styles/reserv.css';
 import '../styles/switch.css';
@@ -84,6 +85,18 @@ export default function Reserv() {
       ...data,
     },
     onSubmit: handleFormSubmit,
+  });
+  useEffect(() => {
+    try {
+      const response = fetch('http://alin.ua/backend/api/send', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+      const json = response;
+      console.log('Успех:', JSON.stringify(json));
+    } catch (error) {
+      console.error('Ошибка:', error);
+    }
   });
 
   useEffect(() => {
