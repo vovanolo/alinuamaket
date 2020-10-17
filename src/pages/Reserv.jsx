@@ -86,18 +86,6 @@ export default function Reserv() {
     },
     onSubmit: handleFormSubmit,
   });
-  useEffect(() => {
-    try {
-      const response = fetch('http://alin.ua/backend/api/send', {
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
-      const json = response;
-      console.log('Успех:', JSON.stringify(json));
-    } catch (error) {
-      console.error('Ошибка:', error);
-    }
-  });
 
   useEffect(() => {
     fetchCarData(slug).then((res) => {
@@ -230,6 +218,7 @@ export default function Reserv() {
     };
 
     setData(requestData);
+    fetchRentInfo(requestData).then((res) => console.log(res));
     history.push(urls.summary);
   }
 

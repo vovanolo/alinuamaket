@@ -1,5 +1,6 @@
-export function fetchCarsData() {
-  return fetch('http://alin.ua/backend/api/send').then((response) =>
-    response.json()
-  );
+export function fetchRentInfo(data) {
+  return fetch('http://alin.ua/backend/api/send', {
+    method: 'POST',
+    body: data,
+  }).then((response) => response.json());
 }
