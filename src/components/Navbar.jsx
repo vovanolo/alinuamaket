@@ -14,6 +14,8 @@ import {
   contacts,
   faq,
   news,
+  carSale,
+  aboutUs,
 } from '../urls';
 
 import '../styles/navbar.css';
@@ -229,7 +231,9 @@ export default function Navbar() {
                   <Link to={assistance} className="dropdown-item">
                     {t('Асистенс')}
                   </Link>
-                  <Link className="dropdown-item">{t('Автовикуп')}</Link>
+                  <Link to={carSale} className="dropdown-item">
+                    {t('Автовикуп')}
+                  </Link>
                 </div>
               </li>
               <li className="nav-item dropdown mr-lg-3 mr-md-0">
@@ -249,7 +253,9 @@ export default function Navbar() {
                   <Link className="dropdown-item">
                     {t('Програма лояльності')}
                   </Link>
-                  <Link className="dropdown-item">{t('Про нас')}</Link>
+                  <Link to={aboutUs} className="dropdown-item">
+                    {t('Про нас')}
+                  </Link>
                   <Link to={faq} className="dropdown-item">
                     {t('FAQ')}
                   </Link>

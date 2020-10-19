@@ -9,3 +9,5 @@ export const carInfo = '/car_info';
 export const faq = '/faq';
 export const news = '/news';
 export const summary = '/summary';
+export const carSale = '/car_sale';
+export const aboutUs = '/about_us';

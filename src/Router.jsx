@@ -16,6 +16,8 @@ import Assistance from './pages/Assistance';
 import Faq from './pages/Faq';
 import News from './pages/News';
 import Summary from './pages/Summary';
+import CarSale from './pages/CarSale';
+import AboutUs from './pages/AboutUs';
 
 import { FormContextProvider } from './components/ContextProvider';
 
@@ -53,6 +55,12 @@ export default function Router() {
           </Route>
           <Route exact path={urls.summary}>
             <Summary />
+          </Route>
+          <Route exact path={urls.carSale}>
+            <CarSale />
+          </Route>
+          <Route exact path={urls.aboutUs}>
+            <AboutUs />
           </Route>
 
           <Route path="*">
