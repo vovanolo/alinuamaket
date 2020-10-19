@@ -4,8 +4,17 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import $ from 'jquery';
 import { Formik, Field, Form } from 'formik';
+import { HashLink } from 'react-router-hash-link';
 
-import { home, assistance, rent, rentWithDriver, contacts, faq } from '../urls';
+import {
+  home,
+  assistance,
+  rent,
+  rentWithDriver,
+  contacts,
+  faq,
+  news,
+} from '../urls';
 
 import '../styles/navbar.css';
 
@@ -197,14 +206,58 @@ export default function Navbar() {
                   {t('Трансфери')}
                 </Link>
               </li>
-              <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={assistance} className="nav-link">
-                  {t('Асистенс')}
-                </Link>
+              <li className="nav-item dropdown mr-lg-3 mr-md-0">
+                <button
+                  style={{ paddingLeft: '0', paddingBottom: '0' }}
+                  className={`btn nav-link dropdown-toggle ${
+                    location.pathname === home ||
+                    location.pathname === assistance
+                      ? 'navbar__lang-btn_light'
+                      : 'navbar__lang-btn_grey'
+                  }`}
+                  data-toggle="dropdown"
+                >
+                  {t('Послуги')}
+                </button>
+                <div className="dropdown-menu">
+                  <Link to={rent} className="dropdown-item">
+                    {t('Прокат')}
+                  </Link>
+                  <Link to={rentWithDriver} className="dropdown-item">
+                    {t('Трансфери')}
+                  </Link>
+                  <Link to={assistance} className="dropdown-item">
+                    {t('Асистенс')}
+                  </Link>
+                  <Link className="dropdown-item">{t('Автовикуп')}</Link>
+                </div>
+              </li>
+              <li className="nav-item dropdown mr-lg-3 mr-md-0">
+                <button
+                  style={{ paddingLeft: '0', paddingBottom: '0' }}
+                  className={`btn nav-link dropdown-toggle ${
+                    location.pathname === home ||
+                    location.pathname === assistance
+                      ? 'navbar__lang-btn_light'
+                      : 'navbar__lang-btn_grey'
+                  }`}
+                  data-toggle="dropdown"
+                >
+                  {t('Про компанію')}
+                </button>
+                <div className="dropdown-menu">
+                  <Link className="dropdown-item">
+                    {t('Програма лояльності')}
+                  </Link>
+                  <Link className="dropdown-item">{t('Про нас')}</Link>
+                  <Link to={faq} className="dropdown-item">
+                    {t('FAQ')}
+                  </Link>
+                </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={faq} className="nav-link">
-                  FAQ
+                <Link to={`${news}/novina-1`} className="nav-link">
+                  {t('Блог')}
                 </Link>
               </li>
               <li className="nav-item">
