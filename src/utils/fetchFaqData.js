@@ -1,6 +1,5 @@
 export function fetchFaqData() {
-  return fetch('http://alin.ua/backend/api/faq').then((response) =>
+  return fetch('https://alin.ua/backend/api/faq').then((response) =>
     response.json()
   );
 }
-
