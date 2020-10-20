@@ -18,7 +18,6 @@ export default function Summary() {
 
   useEffect(() => {
     setLoading(false);
-    console.log(data);
   }, [data]);
 
   useEffect(() => {

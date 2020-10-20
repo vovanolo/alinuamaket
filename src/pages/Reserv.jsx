@@ -218,7 +218,9 @@ export default function Reserv() {
     };
 
     setData(requestData);
-    fetchRentInfo(requestData).then((res) => console.log(res));
+    fetchRentInfo(requestData).then((res) =>
+      console.log('Server Response', res)
+    );
     history.push(urls.summary);
   }
 
