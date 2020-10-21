@@ -71,6 +71,9 @@
   }
 }
 
+@media (max-width: 768px) {
+}
+
 @media (max-width: 450px) {
   .news-title {
     margin-top: 380px;

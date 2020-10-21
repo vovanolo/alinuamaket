@@ -52,7 +52,7 @@ export default function News() {
               <img
                 src={newsData.news_image.path}
                 alt={newsData.name}
-                style={{ float: 'left' }}
+                style={{ float: 'left', maxHeight: '300px' }}
               />
               <h2 className="mt-3">{newsData.name}</h2>
               <p className="mt-1">{newsData.description}</p>

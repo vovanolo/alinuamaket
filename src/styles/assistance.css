@@ -30,6 +30,9 @@
 .assistance__main-principle {
   height: 100%;
 }
+.loyalty-card__icon {
+  max-width: 125%;
+}
 
 .absol {
   position: absolute;

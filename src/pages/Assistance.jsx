@@ -108,16 +108,16 @@ export default function Assistance() {
               {servicesData.map((data, index) => (
                 <div key={index} className="col">
                   <div className={`row align-items-center mb-${5}`}>
-                    <div className="col-lg-4 col-12 mb-lg-0 mb-3">
+                    <div className="col-lg-4 col-12 mb-lg-0 mb-3 text-lg-left text-center">
                       <img
-                        style={{ width: '125%' }}
-                        className="loyalty-card__icon"
+                        // style={{ width: '125%' }}
+                        className="loyalty-card__icon "
                         src={data.icon}
                         alt={data.iconAlt}
                       />
                     </div>
                     <div className="col-lg-8 col-12">
-                      <p className="loyalty-card__description">
+                      <p className="loyalty-card__description text-lg-left text-center">
                         {data.description}
                       </p>
                     </div>

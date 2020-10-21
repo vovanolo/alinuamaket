@@ -59,14 +59,14 @@ function CarCard({
       </div>
 
       <div className="row">
-        <div className="col-lg-6 d-flex">
+        <div className="col-lg-6 d-flex justify-content-between">
           <div className="mt-1">
             <img className="car-card__spec-icon" src={place} alt="places" />
             <span className="car-card__spec-name">{placesCount}</span>
           </div>
 
           {air == 1 && (
-            <div className="mt-1 ml-1">
+            <div className="mt-1">
               <img className="car-card__spec-icon" src={wind} alt="konduk" />
             </div>
           )}
