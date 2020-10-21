@@ -11,11 +11,6 @@ import car from '../images/slider/01_Car.png';
 import CarCard from '../components/CarCard';
 import Breadcrumbs from '../components/Breadcrumbs';
 
-const Sorters = {
-  priceAsc: 'За зростанням ціни',
-  priceDesc: 'За спаданням ціни',
-};
-
 export default function Rent() {
   const [language, setLanguage] = useState('ua');
   const [cars, setCars] = useState([]);
@@ -45,7 +40,10 @@ export default function Rent() {
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
   }
-
+  const Sorters = {
+    priceAsc: t('За зростанням ціни'),
+    priceDesc: t('За спаданням ціни'),
+  };
   const sortersData = Object.values(Sorters);
 
   function changeFilter(e) {
