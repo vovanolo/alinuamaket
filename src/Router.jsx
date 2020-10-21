@@ -18,6 +18,7 @@ import News from './pages/News';
 import Summary from './pages/Summary';
 import CarSale from './pages/CarSale';
 import AboutUs from './pages/AboutUs';
+import LoyaltyProgram from './pages/LoyaltyProgram';
 
 import { FormContextProvider } from './components/ContextProvider';
 
@@ -61,6 +62,9 @@ export default function Router() {
           </Route>
           <Route exact path={urls.aboutUs}>
             <AboutUs />
+          </Route>
+          <Route exact path={urls.loyaltyProgram}>
+            <LoyaltyProgram />
           </Route>
 
           <Route path="*">

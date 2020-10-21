@@ -30,7 +30,9 @@ export default function Rent() {
       <div className="row">
         <div className="col">
           <h3 className="rent-subtitle text_grey">{t('Як це працює?')}</h3>
-          <h2 className="rent-title text_black">{t('Орендувати авто легче ніж ви думаєте')}</h2>
+          <h2 className="rent-title text_black">
+            {t('Бронювати авто легше ніж ви думаєте')}
+          </h2>
         </div>
       </div>
 

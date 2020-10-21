@@ -16,6 +16,7 @@ import {
   news,
   carSale,
   aboutUs,
+  loyaltyProgram,
 } from '../urls';
 
 import '../styles/navbar.css';
@@ -250,7 +251,7 @@ export default function Navbar() {
                   {t('Про компанію')}
                 </button>
                 <div className="dropdown-menu">
-                  <Link className="dropdown-item">
+                  <Link to={loyaltyProgram} className="dropdown-item">
                     {t('Програма лояльності')}
                   </Link>
                   <Link to={aboutUs} className="dropdown-item">
@@ -333,7 +334,7 @@ export default function Navbar() {
               <Form>
                 <div className="card">
                   <div className="modal-header">
-                    <h5 className="modal-title">Fill in the form below</h5>
+                    <h5 className="modal-title">{t('Заповніть форму')}</h5>
                     <button
                       type="button"
                       className="close"
@@ -350,7 +351,7 @@ export default function Navbar() {
                           <Field
                             type="text"
                             name="name"
-                            placeholder="Вкажіть імя"
+                            placeholder={t('Вкажіть імя')}
                             className="input"
                           />
                         </label>
@@ -362,7 +363,7 @@ export default function Navbar() {
                           <Field
                             type="email"
                             name="email"
-                            placeholder="Вкажіть email"
+                            placeholder={t('Вкажіть email')}
                             className="input"
                           />
                         </label>
@@ -374,7 +375,7 @@ export default function Navbar() {
                           <Field
                             type="tel"
                             name="phone"
-                            placeholder="Вкажіть телефон"
+                            placeholder={t('Вкажіть телефон')}
                             className="input"
                           />
                         </label>
@@ -398,12 +399,12 @@ export default function Navbar() {
                             Loading...
                           </>
                         )}
-                        {!isLoading && !error && 'Відправити'}
+                        {!isLoading && !error && t('Відправити')}
                       </button>
                     )}
                     {!isLoading && !error && success && (
                       <div className="alert alert-success" role="alert">
-                        Form has been successfully submitted.
+                        {t('Відправлено')}
                       </div>
                     )}
                   </div>

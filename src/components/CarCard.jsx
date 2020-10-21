@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import * as urls from '../urls';
 
@@ -11,7 +13,7 @@ import group from '../images/Group 388.svg';
 
 import imgPlaceholder from '../images/car_info/car1.png';
 
-function CarCard({
+export default function CarCard({
   name,
   year,
   placesCount,
@@ -21,6 +23,20 @@ function CarCard({
   photoUrl,
   slug,
 }) {
+  const [language, setLanguage] = useState('ua');
+
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    changeLanguage(localStorage.getItem('lang') || 'ua');
+  }, [language]);
+
+  function changeLanguage(newLanguage) {
+    const newLang = newLanguage;
+    localStorage.setItem('lang', newLang);
+    setLanguage(newLang);
+    i18n.changeLanguage(newLang);
+  }
   return (
     <div className="col mb-4">
       <div className="row">
@@ -81,7 +97,7 @@ function CarCard({
             to={`${urls.reserv}/${slug}`}
             className="btn_main btn_slim mb-0"
           >
-            Бронювати
+            {t('Бронювати')}
           </Link>
         </div>
       </div>
@@ -93,5 +109,3 @@ CarCard.defaultProps = {
   photoUrl: imgPlaceholder,
   year: new Date().getFullYear(),
 };
-
-export default CarCard;

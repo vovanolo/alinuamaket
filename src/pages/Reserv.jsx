@@ -427,6 +427,7 @@ export default function Reserv() {
                 <div className="form-row mb-3">
                   <div className="col">
                     <input
+                      required
                       name="name"
                       className="input"
                       type="text"
@@ -440,6 +441,7 @@ export default function Reserv() {
                 <div className="form-row mb-3">
                   <div className="col">
                     <input
+                      required
                       name="phone"
                       className="input"
                       type="tel"
@@ -450,6 +452,7 @@ export default function Reserv() {
                   </div>
                   <div className="col">
                     <input
+                      required
                       name="email"
                       className="input"
                       type="email"

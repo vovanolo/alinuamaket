@@ -17,7 +17,7 @@ import car2 from '../images/loyalty/car_2.png';
 
 import LoyaltyCard from '../components/LoyaltyCard';
 
-export default function Loyalty() {
+export default function LoyaltyProgram() {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
 
@@ -79,64 +79,66 @@ export default function Loyalty() {
   ];
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-6 offset-lg-6 col">
-          <div className="row">
-            <div className="col">
-              <h2 className="text_black loyalty__title">
-                {t('Програма лояльності')}
-              </h2>
+    <div className="navbar-offset">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 offset-lg-6 col">
+            <div className="row">
+              <div className="col">
+                <h2 className="text_black loyalty__title">
+                  {t('Програма лояльності')}
+                </h2>
+              </div>
             </div>
-          </div>
 
-          <div className="loyalty__car loyalty__car_left">
-            <img
-              className="img-responsive img-responsive_contain"
-              src={car1}
-              alt="Car"
-            />
-          </div>
+            <div className="loyalty__car loyalty__car_left">
+              <img
+                className="img-responsive img-responsive_contain"
+                src={car1}
+                alt="Car"
+              />
+            </div>
 
-          {loyaltyCardsData1.map(({ icon, iconAlt, description }, index) => (
-            <LoyaltyCard
-              key={index}
-              icon={icon}
-              iconAlt={iconAlt}
-              description={description}
-              margin={5}
-            />
-          ))}
+            {loyaltyCardsData1.map(({ icon, iconAlt, description }, index) => (
+              <LoyaltyCard
+                key={index}
+                icon={icon}
+                iconAlt={iconAlt}
+                description={description}
+                margin={5}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="row loyalty__row">
-        <div className="col-lg-6 col">
-          <div className="loyalty__car loyalty__car_right">
-            <img
-              className="img-responsive img-responsive_contain"
-              src={car2}
-              alt="Car"
-            />
+        <div className="row loyalty__row">
+          <div className="col-lg-6 col">
+            <div className="loyalty__car loyalty__car_right">
+              <img
+                className="img-responsive img-responsive_contain"
+                src={car2}
+                alt="Car"
+              />
+            </div>
+
+            {loyaltyCardsData2.map(({ icon, iconAlt, description }, index) => (
+              <LoyaltyCard
+                key={index}
+                icon={icon}
+                iconAlt={iconAlt}
+                description={description}
+                margin={5}
+              />
+            ))}
           </div>
-
-          {loyaltyCardsData2.map(({ icon, iconAlt, description }, index) => (
-            <LoyaltyCard
-              key={index}
-              icon={icon}
-              iconAlt={iconAlt}
-              description={description}
-              margin={5}
-            />
-          ))}
         </div>
-      </div>
 
-      <div className="row">
-        <div className="col-xl-3 col-lg-4 col-md-5">
-          <Link to={urls.rent} className="btn_main">
-            {t('Бронювати')}
-          </Link>
+        <div className="row">
+          <div className="col-xl-3 col-lg-4 col-md-5">
+            <Link to={urls.rent} className="btn_main">
+              {t('Орендувати')}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -273,7 +273,7 @@ export default function Hero() {
           <div className="row">
             <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col">
               <button type="submit" form="heroReservForm" className="btn_main">
-                {t('Орендувати')}
+                {t('Бронювати')}
               </button>
             </div>
           </div>

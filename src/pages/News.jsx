@@ -35,9 +35,9 @@ export default function News() {
     <div className="navbar-offset">
       <div className="container">
         <div className="row">
-          <div className="col-xl-2 col-lg-3 col-md-4">
+          <div className="col-xl-3 col-lg-4 col-md-4">
             {news.map(({ slug, news_image, name, description }) => (
-              <div key={slug} className="mb-3">
+              <div key={slug} className="mb-3" style={{ maxHeight: '600px' }}>
                 <NewsCard
                   slug={slug}
                   imgUrl={news_image.path}
@@ -48,14 +48,19 @@ export default function News() {
             ))}
           </div>
           {newsData && (
-            <div className="col-xl-10 col-lg-9 col-md-8 mt-lg-0 mt-md-3 mt-3">
+            <div className="col-xl-9 col-lg-8 col-md-8 mt-lg-0 mt-md-3 mt-3">
               <img
                 src={newsData.news_image.path}
                 alt={newsData.name}
-                style={{ float: 'left', maxHeight: '300px' }}
+                style={{ float: 'left', maxHeight: '300px', maxWidth: '500px' }}
               />
               <h2 className="mt-3">{newsData.name}</h2>
-              <p className="mt-1">{newsData.description}</p>
+              {/* <p className="mt-1">{newsData.body}</p> */}
+              {/* {newsData.body} */}
+              <p
+                className="mt-1"
+                dangerouslySetInnerHTML={{ __html: newsData.body }}
+              ></p>
             </div>
           )}
         </div>

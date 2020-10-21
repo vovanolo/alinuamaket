@@ -11,3 +11,4 @@ export const news = '/news';
 export const summary = '/summary';
 export const carSale = '/car_sale';
 export const aboutUs = '/about_us';
+export const loyaltyProgram = '/loyalty_program';
