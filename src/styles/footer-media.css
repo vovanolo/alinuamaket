@@ -1,4 +1,4 @@
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   .footer__logo {
     width: 100%;
     display: block;
@@ -10,7 +10,7 @@
     text-align: center;
     margin-top: 15px;
   }
-  
+
   .footer__menu-item {
     margin-top: 5px;
   }
@@ -22,7 +22,7 @@
   }
 
   .footer__social-item img {
-    width: 50px;
+    max-width: 50px;
   }
 
   .footer__up-btn {

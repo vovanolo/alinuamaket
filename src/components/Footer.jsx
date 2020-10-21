@@ -6,6 +6,8 @@ import $ from 'jquery';
 import '../styles/footer.css';
 import '../styles/footer-media.css';
 
+import { insta } from '../urls';
+
 import logo from '../images/Logo.png';
 import facebook from '../images/facebook.svg';
 import instagram from '../images/instagram.svg';
@@ -28,9 +30,12 @@ export default function Footer() {
   }
 
   function scrollTop() {
-    $([document.documentElement, document.body]).animate({
-      scrollTop: 0
-    }, 1000);
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: 0,
+      },
+      1000
+    );
   }
 
   return (
@@ -46,19 +51,29 @@ export default function Footer() {
           <div className="col-lg-6 col-12">
             <ul className="footer__menu">
               <li className="footer__menu-item">
-                <Link to="/" className="text_black">{t('Прокат')}</Link>
+                <Link to="/" className="text_black">
+                  {t('Прокат')}
+                </Link>
               </li>
               <li className="footer__menu-item">
-                <Link to="/" className="text_black">{t('Трансфери')}</Link>
+                <Link to="/" className="text_black">
+                  {t('Трансфери')}
+                </Link>
               </li>
               <li className="footer__menu-item">
-                <Link to="/" className="text_black">{t('Асистенс')}</Link>
+                <Link to="/" className="text_black">
+                  {t('Асистенс')}
+                </Link>
               </li>
               <li className="footer__menu-item">
-                <Link to="/" className="text_black">FAQ</Link>
+                <Link to="/" className="text_black">
+                  FAQ
+                </Link>
               </li>
               <li className="footer__menu-item">
-                <Link to="/" className="text_black">{t('Контакти')}</Link>
+                <Link to="/" className="text_black">
+                  {t('Контакти')}
+                </Link>
               </li>
             </ul>
           </div>
@@ -66,19 +81,25 @@ export default function Footer() {
           <div className="col-xl-2 col-lg-3 offset-xl-1 col-12">
             <ul className="footer__social-list">
               <li className="footer__social-item">
-                <Link to="/">
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/1678443565589651/"
+                >
                   <img src={facebook} alt="Facebook" />
-                </Link>
+                </a>
               </li>
               <li className="footer__social-item">
-                <Link to="/">
+                <a
+                  target="_blank"
+                  href="https://instagram.com/alin_services_for_you?igshid=12br995xgk9tr"
+                >
                   <img src={instagram} alt="Instagram" />
-                </Link>
+                </a>
               </li>
               <li className="footer__social-item">
-                <Link to="/">
+                <a target="_blank" href="mailto:alin.lviv@gmail.com">
                   <img src={mail} alt="Mail" />
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

@@ -12,3 +12,5 @@ export const summary = '/summary';
 export const carSale = '/car_sale';
 export const aboutUs = '/about_us';
 export const loyaltyProgram = '/loyalty_program';
+export const insta =
+  'https://instagram.com/alin_services_for_you?igshid=12br995xgk9tr';
