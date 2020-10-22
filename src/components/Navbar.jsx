@@ -199,10 +199,33 @@ export default function Navbar() {
                 location.pathname === home ? 'navbar__menu-list' : 'ml-auto'
               }`}
             >
-              <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={rent} className="nav-link">
+              <li className="nav-item dropdown mr-lg-3 mr-md-0">
+                <button
+                  style={{ paddingLeft: '0', paddingBottom: '0' }}
+                  className={`btn nav-link dropdown-toggle ${
+                    location.pathname === home ||
+                    location.pathname === assistance
+                      ? 'navbar__lang-btn_light'
+                      : 'navbar__lang-btn_grey'
+                  }`}
+                  data-toggle="dropdown"
+                >
                   {t('Прокат')}
-                </Link>
+                </button>
+                <div className="dropdown-menu">
+                  <Link to={`${rent}/lviv`} className="dropdown-item">
+                    {t('Прокат Львів')}
+                  </Link>
+                  <Link to={`${rent}/kyiv`} className="dropdown-item">
+                    {t('Прокат Київ')}
+                  </Link>
+                  <Link to={`${rent}/kharkiv`} className="dropdown-item">
+                    {t('Прокат Харків')}
+                  </Link>
+                  <Link to={`${rent}/ivano_fankivsk`} className="dropdown-item">
+                    {t('Прокат Івано-Франківськ')}
+                  </Link>
+                </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
                 <Link to={rentWithDriver} className="nav-link">

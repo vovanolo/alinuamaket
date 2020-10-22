@@ -39,7 +39,7 @@ export default function Router() {
           <Route exact path={urls.rentWithDriver}>
             <RentWithDriver data={data} />
           </Route>
-          <Route exact path={urls.rent}>
+          <Route exact path={`${urls.rent}/:city`}>
             <Rent />
           </Route>
           <Route exact path={urls.assistance}>
