@@ -25,5 +25,12 @@
   background: none;
   position: fixed;
   right: 50px;
-  bottom: 50px;
+  bottom: 0;
+  z-index: 1000;
+  transform: translateY(-50px);
+  transition: transform 0.2s ease-in-out;
+}
+
+.footer__up-btn.hidden {
+  transform: translateY(100%);
 }

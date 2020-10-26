@@ -35,7 +35,17 @@ import phone from '../images/phone.svg';
 
 export default function Footer() {
   const [language, setLanguage] = useState('ua');
+  const [userScrolledDown, setUserScrolledDown] = useState(false);
+
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollEventHandler);
+
+    return function cleanup() {
+      window.removeEventListener('scroll', scrollEventHandler);
+    };
+  }, []);
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
@@ -55,6 +65,10 @@ export default function Footer() {
       },
       1000
     );
+  }
+
+  function scrollEventHandler(e) {
+    setUserScrolledDown(e.currentTarget.pageYOffset > 70);
   }
 
   return (
@@ -151,41 +165,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* <div className="col-lg-6 col-12">
-            <ul className="footer__menu d-flex flex-column">
-              <li className="footer__menu-item">
-                <Link to="/" className="text_black">
-                  {t('Прокат')}
-                </Link>
-              </li>
-              <li className="footer__menu-item">
-                <Link to="/" className="text_black">
-                  {t('Трансфери')}
-                </Link>
-              </li>
-              <li className="footer__menu-item">
-                <Link to="/" className="text_black">
-                  {t('Асистенс')}
-                </Link>
-              </li>
-              <li className="footer__menu-item">
-                <Link to="/" className="text_black">
-                  FAQ
-                </Link>
-              </li>
-              <li className="footer__menu-item">
-                <Link to="/" className="text_black">
-                  {t('Контакти')}
-                </Link>
-              </li>
-            </ul>
-          </div> */}
-
           <div className="col-xl-2 col-lg-3 col-12">
             <ul className="footer__social-list">
               <li className="footer__social-item">
                 <a
                   target="_blank"
+                  rel="noreferrer noopener"
                   href="https://www.facebook.com/1678443565589651/"
                 >
                   <img src={facebook} alt="Facebook" />
@@ -194,19 +179,29 @@ export default function Footer() {
               <li className="footer__social-item">
                 <a
                   target="_blank"
+                  rel="noreferrer noopener"
                   href="https://instagram.com/alin_services_for_you?igshid=12br995xgk9tr"
                 >
                   <img src={instagram} alt="Instagram" />
                 </a>
               </li>
               <li className="footer__social-item">
-                <a target="_blank" href="mailto:alin.lviv@gmail.com">
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="mailto:alin.lviv@gmail.com"
+                >
                   <img src={mail} alt="Mail" />
                 </a>
               </li>
             </ul>
           </div>
-          <button className="footer__up-btn" onClick={scrollTop}>
+          <button
+            className={`footer__up-btn ${
+              userScrolledDown ? undefined : 'hidden'
+            }`}
+            onClick={scrollTop}
+          >
             <img src={goUp} alt="Go up" />
           </button>
         </div>
