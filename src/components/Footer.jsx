@@ -2,6 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
+import {
+  home,
+  assistance,
+  rent,
+  rentWithDriver,
+  contacts,
+  faq,
+  news,
+  carSale,
+  aboutUs,
+  loyaltyProgram,
+  additional_options,
+  rent_conditions,
+  confidential_policy,
+} from '../urls';
 
 import '../styles/footer.css';
 import '../styles/footer-media.css';
@@ -13,6 +28,10 @@ import facebook from '../images/facebook.svg';
 import instagram from '../images/instagram.svg';
 import mail from '../images/mail.svg';
 import goUp from '../images/go_up.svg';
+
+import map from '../images/map-pin.svg';
+import darkmail from '../images/darkmail.svg';
+import phone from '../images/phone.svg';
 
 export default function Footer() {
   const [language, setLanguage] = useState('ua');
@@ -42,14 +61,98 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-lg-2 col-12">
+          <div className="col-xl-2 col-lg-2 col-12">
             <Link to="/" className="footer__logo">
               <img src={logo} alt="Alin logo" />
             </Link>
           </div>
+          <div className="col-xl-8 col-lg-7 col-12">
+            <div className="row">
+              <div className="col-md-4">
+                <ul className="footer__menu d-flex flex-column">
+                  <li>
+                    <p className="text_grey footer__menu-item">Послуги</p>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={rent} className="text_black">
+                      {t('Прокат')}
+                    </Link>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={rentWithDriver} className="text_black">
+                      {t('Трансфери')}
+                    </Link>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={assistance} className="text_black">
+                      {t('Асистенс')}
+                    </Link>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={faq} className="text_black">
+                      FAQ
+                    </Link>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={contacts} className="text_black">
+                      {t('Контакти')}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
-          <div className="col-lg-6 col-12">
-            <ul className="footer__menu">
+              <div className="col-md-4">
+                <ul className="footer__menu d-flex flex-column">
+                  <li>
+                    <p className="text_grey footer__menu-item">Про компанію</p>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={rent_conditions} className="text_black">
+                      {t('Умови оренди')}
+                    </Link>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={aboutUs} className="text_black">
+                      {t('Про нас')}
+                    </Link>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={faq} className="text_black">
+                      {t('Часті запитання')}
+                    </Link>
+                  </li>
+                  <li className="footer__menu-item">
+                    <Link to={confidential_policy} className="text_black">
+                      {t('Політика конфіденційності')}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="col-md-4">
+                <ul className="footer__menu d-flex flex-column">
+                  <li className="footer__menu-item">
+                    <p className="text_grey">Контакти</p>
+                  </li>
+                  <li className="footer__menu-item">
+                    <img src={map} alt="" />
+                    <span className="ml-2">вул. Любінська 196</span>
+                  </li>
+                  <li className="footer__menu-item">
+                    <img src={darkmail} alt="" />
+                    <span className="ml-2">alin.lviv@gmail.com</span>
+                  </li>
+                  <li className="footer__menu-item">
+                    <img src={phone} alt="" />
+                    <span className="ml-2">+38 098 777 16 00</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* <div className="col-lg-6 col-12">
+            <ul className="footer__menu d-flex flex-column">
               <li className="footer__menu-item">
                 <Link to="/" className="text_black">
                   {t('Прокат')}
@@ -76,9 +179,9 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
-          <div className="col-xl-2 col-lg-3 offset-xl-1 col-12">
+          <div className="col-xl-2 col-lg-3 col-12">
             <ul className="footer__social-list">
               <li className="footer__social-item">
                 <a
@@ -103,12 +206,9 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          <div className="col-lg-1 col-12">
-            <button className="footer__up-btn" onClick={scrollTop}>
-              <img src={goUp} alt="Go up" />
-            </button>
-          </div>
+          <button className="footer__up-btn" onClick={scrollTop}>
+            <img src={goUp} alt="Go up" />
+          </button>
         </div>
       </div>
     </footer>

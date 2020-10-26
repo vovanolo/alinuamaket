@@ -1,5 +1,5 @@
-export function fetchNewsData() {
-  return fetch('https://alin.ua/backend/api/allnews').then((response) =>
-    response.json()
-  );
+export function fetchNewsData(language) {
+  return fetch(
+    `http://alin.ua/backend/api/blog/news/${language}`
+  ).then((response) => response.json());
 }

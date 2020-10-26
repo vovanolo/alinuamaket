@@ -19,6 +19,9 @@ import Summary from './pages/Summary';
 import CarSale from './pages/CarSale';
 import AboutUs from './pages/AboutUs';
 import LoyaltyProgram from './pages/LoyaltyProgram';
+import AdditionalOptions from './pages/AdditionalOptions';
+import RentConditions from './pages/RentConditions';
+import CondfidentialPolicy from './pages/CondfidentialPolicy';
 
 import { FormContextProvider } from './components/ContextProvider';
 
@@ -39,7 +42,10 @@ export default function Router() {
           <Route exact path={urls.rentWithDriver}>
             <RentWithDriver data={data} />
           </Route>
-          <Route exact path={`${urls.rent}/:city`}>
+          <Route path={`${urls.rent}/:city`}>
+            <Rent />
+          </Route>
+          <Route exact path={`${urls.rent}`}>
             <Rent />
           </Route>
           <Route exact path={urls.assistance}>
@@ -54,6 +60,9 @@ export default function Router() {
           <Route path={`${urls.news}/:slug`}>
             <News />
           </Route>
+          <Route path={`${urls.additional_options}/:slug`}>
+            <AdditionalOptions />
+          </Route>
           <Route exact path={urls.summary}>
             <Summary />
           </Route>
@@ -65,6 +74,12 @@ export default function Router() {
           </Route>
           <Route exact path={urls.loyaltyProgram}>
             <LoyaltyProgram />
+          </Route>
+          <Route exact path={urls.rent_conditions}>
+            <RentConditions />
+          </Route>
+          <Route exact path={urls.confidential_policy}>
+            <CondfidentialPolicy />
           </Route>
 
           <Route path="*">

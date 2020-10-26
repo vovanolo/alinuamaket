@@ -17,6 +17,7 @@ import {
   carSale,
   aboutUs,
   loyaltyProgram,
+  additional_options,
 } from '../urls';
 
 import '../styles/navbar.css';
@@ -246,17 +247,17 @@ export default function Navbar() {
                   {t('Послуги')}
                 </button>
                 <div className="dropdown-menu">
-                  <Link to={rent} className="dropdown-item">
-                    {t('Прокат')}
-                  </Link>
-                  <Link to={rentWithDriver} className="dropdown-item">
-                    {t('Трансфери')}
-                  </Link>
                   <Link to={assistance} className="dropdown-item">
                     {t('Асистенс')}
                   </Link>
                   <Link to={carSale} className="dropdown-item">
                     {t('Автовикуп')}
+                  </Link>
+                  <Link
+                    to={`${additional_options}/gps-navigator`}
+                    className="dropdown-item"
+                  >
+                    {t('Додаткові опції')}
                   </Link>
                 </div>
               </li>
@@ -286,7 +287,7 @@ export default function Navbar() {
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={`${news}/novina-1`} className="nav-link">
+                <Link to={`${news}/jyvi-na-povnu`} className="nav-link">
                   {t('Блог')}
                 </Link>
               </li>

@@ -21,8 +21,10 @@ export default function News() {
   }, [language]);
 
   useEffect(() => {
-    fetchNewsData()
-      .then((res) => setNews(res))
+    fetchNewsData(localStorage.getItem('lang'))
+      .then((res) => {
+        setNews(res.slice(0, 2));
+      })
       .catch((err) => console.dir(err));
   }, []);
 
@@ -32,6 +34,7 @@ export default function News() {
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
   }
+  // console.log(localStorage.getItem('lang'));
 
   return (
     <div className="container">
@@ -42,14 +45,14 @@ export default function News() {
       </div>
 
       <div className="row row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
-        {news.map(({ slug, news_image, name, description }) => (
+        {news.map(({ slug, featured_images, title, content_html }) => (
           <div key={slug} className="col mb-lg-0 mb-md-3 mb-3">
             <NewsCard
               slug={slug}
-              imgUrl={news_image.path}
-              imgAlt={t(name)}
-              title={t(name)}
-              description={t(description)}
+              imgUrl={featured_images[0].path}
+              imgAlt={t(title)}
+              title={t(title)}
+              description={t(content_html)}
             />
           </div>
         ))}

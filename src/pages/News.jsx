@@ -20,13 +20,13 @@ export default function News() {
 
   useEffect(() => {
     // setNews(newsMock);
-    fetchNewsData()
+    fetchNewsData(localStorage.getItem('lang'))
       .then((res) => setNews(res))
       .catch((err) => console.dir(err));
   }, []);
 
   useEffect(() => {
-    fetchNewsDataOne(newsSlug)
+    fetchNewsDataOne(newsSlug, localStorage.getItem('lang'))
       .then((res) => setNewsData(res))
       .catch((err) => console.dir(err));
   }, [pathname]);
@@ -36,13 +36,13 @@ export default function News() {
       <div className="container">
         <div className="row">
           <div className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11">
-            {news.map(({ slug, news_image, name, description }) => (
+            {news.map(({ slug, featured_images, title, content_html }) => (
               <div key={slug} className="mb-3" style={{ maxHeight: '600px' }}>
                 <NewsCard
                   slug={slug}
-                  imgUrl={news_image.path}
-                  title={name}
-                  description={description}
+                  imgUrl={featured_images[0].path}
+                  title={title}
+                  description={content_html}
                 />
               </div>
             ))}
@@ -52,8 +52,8 @@ export default function News() {
               <div>
                 <img
                   className="img-responsive"
-                  src={newsData.news_image.path}
-                  alt={newsData.name}
+                  src={newsData.featured_images[0].path}
+                  alt={newsData.title}
                   style={{
                     float: 'left',
                     maxHeight: '300px',
@@ -61,12 +61,12 @@ export default function News() {
                   }}
                 />
               </div>
-              <h2 className="mt-3">{newsData.name}</h2>
+              <h2 className="mt-3">{newsData.title}</h2>
               {/* <p className="mt-1">{newsData.body}</p> */}
               {/* {newsData.body} */}
               <p
                 className="mt-1"
-                dangerouslySetInnerHTML={{ __html: newsData.body }}
+                dangerouslySetInnerHTML={{ __html: newsData.content_html }}
               ></p>
             </div>
           )}

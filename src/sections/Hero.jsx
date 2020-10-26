@@ -137,7 +137,7 @@ export default function Hero() {
               <div className="hero-cta-box__title-box">
                 <h1>
                   <span className="text_black hero-cta-box__title">
-                    {t('Прокат авто')}
+                    {t('Оренда авто в Україні')}
                   </span>
                   <span className="item-1 text_red hero-cta-box__subtitle">
                     {t('Львів')}
