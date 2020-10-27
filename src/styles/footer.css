@@ -129,6 +129,8 @@
   .mp-coll {
     bottom: 100px;
     right: 25px;
+  }
+}
 @media (max-width: 560px) {
   .footer__up-btn {
     right: 20px;

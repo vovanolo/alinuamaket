@@ -33,17 +33,17 @@ export default function RentWithDriver({ data }) {
     {
       icon: transf,
       iconAlt: 'transfer',
-      description: 'Виберіть трансфер або погодинну поїздку',
+      description: t('Виберіть трансфер або погодинну поїздку'),
     },
     {
       icon: calendar,
       iconAlt: 'calendar',
-      description: 'Виберіть дату та час',
+      description: t('Виберіть дату та час'),
     },
     {
       icon: star,
       iconAlt: 'star',
-      description: 'Виберіть клас автомобіля',
+      description: t('Виберіть клас автомобіля'),
     },
   ];
 
@@ -52,7 +52,7 @@ export default function RentWithDriver({ data }) {
       <div className="container">
         <div className="row">
           <div className="col-lg-5 col-12">
-            <h2 className="text_black mb-5">Оренда машини з водієм</h2>
+            <h2 className="text_black mb-5">{t('Оренда машини з водієм')}</h2>
 
             {loyaltyCardsData.map(({ icon, iconAlt, description }, index) => (
               <LoyaltyCard
@@ -75,7 +75,7 @@ export default function RentWithDriver({ data }) {
               onSubmit={handleFormSubmit}
             >
               <Form className="rent_form">
-                <button type="submit submit_color-red">Далі</button>
+                <button type="submit submit_color-red">{t('Далі')}</button>
                 <div className="row">
                   <div className="col-12">
                     <div className="input_radio_transfer">
@@ -90,7 +90,7 @@ export default function RentWithDriver({ data }) {
                         className="transf_border mr-3"
                         htmlFor="rent_with_driver_radio"
                       >
-                        Трансфер
+                        {t('Трансфер')}
                       </label>
                     </div>
                     <div className="input_radio_transfer">
@@ -104,7 +104,7 @@ export default function RentWithDriver({ data }) {
                         className="transf_border"
                         htmlFor="rent_with_driver_radio_hours"
                       >
-                        Погодинно
+                        {t('Погодинно')}
                       </label>
                     </div>
                   </div>
@@ -112,26 +112,26 @@ export default function RentWithDriver({ data }) {
                 <div className="row mt-3  d-flex justify-content-between">
                   <div className="col-md-6">
                     <div className="transf-location d-flex flex-column justify-content-between">
-                      <p>від</p>
+                      <p>{t('від')}</p>
                       <Field
                         name="fromLocation"
-                        placeholder="Вкажіть Локацію"
+                        placeholder={t('Вкажіть локацію')}
                         className="transf_input"
                         type="text"
                       />
-                      <p>місто,область,країна</p>
+                      <p>{t('місто, область, країна')}</p>
                     </div>
                   </div>
                   <div className="col-md-6 mt-lg-0 mt-md-0 mt-sm-3 mt-3 d-flex flex-column justify-content-between">
                     <div className="transf-location d-flex flex-column justify-content-between">
-                      <p>від</p>
+                      <p>{t('до')}</p>
                       <Field
                         name="fromLocation"
-                        placeholder="Вкажіть Локацію"
+                        placeholder={t('Вкажіть локацію')}
                         className="transf_input"
                         type="text"
                       />
-                      <p>місто,область,країна</p>
+                      <p>{t('місто, область, країна')}</p>
                     </div>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ export default function RentWithDriver({ data }) {
                       <div className="row">
                         <div className="col-lg-5 mb-md-3 mb-lg-0">
                           <label className="transf-date__input">
-                            <p>Дата</p>
+                            <p>{t('Дата')}</p>
                             <Field
                               name="date"
                               type="date"
@@ -152,7 +152,7 @@ export default function RentWithDriver({ data }) {
                         </div>
                         <div className="col-lg-5 offset-lg-2 transf_date-input">
                           <label className="transf-date__input">
-                            <p>Час</p>
+                            <p>{t('Час')}</p>
                             <Field
                               name="time"
                               type="time"

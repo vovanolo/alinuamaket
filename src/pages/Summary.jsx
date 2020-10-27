@@ -59,9 +59,11 @@ export default function Summary() {
         <div className="row mt-3">
           <div className="col-md-6">
             <h5>{t('Інформація про замовлення')}</h5>
-            <p>
-              {t('Автомобіль:')} <span>{data.selectedCar}</span>
-            </p>
+            {carData && (
+              <p>
+                {t('Автомобіль:')} <span>{carData.name}</span>
+              </p>
+            )}
             {carData && (
               <img
                 src={carData.photo.path}

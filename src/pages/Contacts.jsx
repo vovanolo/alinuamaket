@@ -33,14 +33,14 @@ export default function Contacts() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h2>Контакти</h2>
+            <h2>{t('Контакти')}</h2>
           </div>
         </div>
         <div className="row mt-5">
           <div className="col-md-6">
             <div className="row">
               <div className="col-md-6">
-                <p className="text_grey">Львів</p>
+                <p className="text_grey">{t('Львів')}</p>
                 <div className="mt-3">
                   <img src={map} alt="" />
                   <span className="ml-2">вул. Любінська 196</span>
@@ -55,7 +55,7 @@ export default function Contacts() {
                 </div>
               </div>
               <div className="col-md-6">
-                <p className="text_grey">Київ</p>
+                <p className="text_grey">{t('Київ')}</p>
                 <div className="mt-3">
                   <img src={map} alt="" />
                   <span className="ml-2">Аеропорт Бориспіль</span>
@@ -72,7 +72,7 @@ export default function Contacts() {
             </div>
             <div className="row mt-5">
               <div className="col-md-6">
-                <p className="text_grey">Івано-Франківськ</p>
+                <p className="text_grey">{t('Івано-Франківськ')}</p>
                 <div className="mt-3">
                   <img src={map} alt="" />
                   <span className="ml-2">вул. Є. Коновальця 264А</span>
@@ -87,7 +87,7 @@ export default function Contacts() {
                 </div>
               </div>
               <div className="col-md-6">
-                <p className="text_grey">Харків</p>
+                <p className="text_grey">{t('Харків')}</p>
                 <div className="mt-3">
                   <img src={map} alt="" />
                   <span className="ml-2">вул. Академіка Павлова 20Б</span>
@@ -119,14 +119,14 @@ export default function Contacts() {
 
         <div className="row mt-5">
           <div className="col-md-6 mt-5">
-            <h3 className="text_grey">Є запитання?</h3>
+            <h3 className="text_grey">{t('Є запитання?')}</h3>
             <p className="mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
+              {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
               quisque est a, morbi lectus at. Pellentesque eget aenean mattis
               ullamcorper laoreet et. At sem elit felis a egestas. Ullamcorper
               eget purus aenean vel convallis arcu, euismod. Semper a, ultrices
               non nulla. Turpis phasellus neque quis sit tristique. Non iaculis
-              tellus suscipit mauris vitae.
+              tellus suscipit mauris vitae. */}
             </p>
           </div>
           <div className="col-md-6 input input_size">
@@ -139,17 +139,17 @@ export default function Contacts() {
               onSubmit={handleFormSubmit}
             >
               <Form>
-                <h3>Зв'язатись з нами</h3>
+                <h3>{t("Зв'язатись з нами")}</h3>
                 <Field
                   type="text"
                   name="name"
-                  placeholder="Ваше імя"
+                  placeholder={t('Вкажіть імя')}
                   className="input mt-2"
                 />
                 <Field
                   type="text"
                   name="email"
-                  placeholder="Ваш email"
+                  placeholder={t('Вкажіть email')}
                   className="input mt-2"
                 />
                 <Field
@@ -157,13 +157,13 @@ export default function Contacts() {
                   type="textarea"
                   name="comment"
                   className="input mt-2"
-                  placeholder="Коментар"
+                  placeholder={t('Коментар')}
                 />
 
                 <div className="row mt-2">
                   <div className="col-lg-4">
                     <button type="submit" className="btn_main">
-                      Надіслати
+                      {t('Надіслати')}
                     </button>
                   </div>
                 </div>
