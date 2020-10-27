@@ -215,16 +215,16 @@ export default function Navbar() {
                 </button>
                 <div className="dropdown-menu">
                   <Link to={`${rent}/lviv`} className="dropdown-item">
-                    {t('Прокат Львів')}
+                    {t('Прокат авто Львів')}
                   </Link>
                   <Link to={`${rent}/kyiv`} className="dropdown-item">
-                    {t('Прокат Київ')}
+                    {t('Прокат авто Київ')}
                   </Link>
                   <Link to={`${rent}/kharkiv`} className="dropdown-item">
-                    {t('Прокат Харків')}
+                    {t('Прокат авто Харків')}
                   </Link>
                   <Link to={`${rent}/ivano_fankivsk`} className="dropdown-item">
-                    {t('Прокат Івано-Франківськ')}
+                    {t('Прокат авто Івано-Франківськ')}
                   </Link>
                 </div>
               </li>
