@@ -33,6 +33,8 @@ import map from '../images/map-pin.svg';
 import darkmail from '../images/darkmail.svg';
 import phone from '../images/phone.svg';
 
+import ContactsPopup from './ContactsPopup';
+
 export default function Footer() {
   const [language, setLanguage] = useState('ua');
   const [userScrolledDown, setUserScrolledDown] = useState(false);
@@ -73,6 +75,7 @@ export default function Footer() {
 
   return (
     <footer className="footer">
+      <ContactsPopup />
       <div className="container">
         <div className="row align-items-center">
           <div className="col-xl-2 col-lg-2 col-12">
