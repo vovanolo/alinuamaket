@@ -85,7 +85,9 @@ export default function Footer() {
               <div className="col-md-4">
                 <ul className="footer__menu d-flex flex-column">
                   <li>
-                    <p className="text_grey footer__menu-item">Послуги</p>
+                    <p className="text_grey footer__menu-item">
+                      {t('Послуги')}
+                    </p>
                   </li>
                   <li className="footer__menu-item">
                     <Link to={rent} className="text_black">
@@ -118,7 +120,9 @@ export default function Footer() {
               <div className="col-md-4">
                 <ul className="footer__menu d-flex flex-column">
                   <li>
-                    <p className="text_grey footer__menu-item">Про компанію</p>
+                    <p className="text_grey footer__menu-item">
+                      {t('Про компанію')}
+                    </p>
                   </li>
                   <li className="footer__menu-item">
                     <Link to={rent_conditions} className="text_black">
@@ -146,7 +150,7 @@ export default function Footer() {
               <div className="col-md-4">
                 <ul className="footer__menu d-flex flex-column">
                   <li className="footer__menu-item">
-                    <p className="text_grey">Контакти</p>
+                    <p className="text_grey">{t('Контакти')}</p>
                   </li>
                   <li className="footer__menu-item">
                     <img src={map} alt="" />

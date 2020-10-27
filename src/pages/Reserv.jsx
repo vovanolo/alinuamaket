@@ -19,28 +19,6 @@ import { FormContext } from '../components/ContextProvider';
 import Breadcrumbs from '../components/Breadcrumbs';
 import PriceFixed from '../components/PriceFixed';
 
-const ExtrasType = {
-  perDay: 'Доба',
-  onetime: 'Одноразово',
-};
-
-const extrasValues = [
-  {
-    id: 1,
-    price: 5,
-    displayPrice: 5,
-    type: ExtrasType.perDay,
-    value: 'Зарядне/тримач для тел',
-  },
-  {
-    id: 2,
-    price: 10,
-    displayPrice: 10,
-    type: ExtrasType.onetime,
-    value: 'Додатковий водій',
-  },
-];
-
 const initialDateFormatted = `${new Date().getFullYear()}-${
   new Date().getMonth().toString().length < 2
     ? '0' + (new Date().getMonth() + 1).toString()
@@ -66,6 +44,28 @@ export default function Reserv() {
   const history = useHistory();
   const { slug } = useParams();
   const [data, setData] = useContext(FormContext);
+
+  const ExtrasType = {
+    perDay: t('Доба'),
+    onetime: t('Одноразово'),
+  };
+
+  const extrasValues = [
+    {
+      id: 1,
+      price: 5,
+      displayPrice: 5,
+      type: ExtrasType.perDay,
+      value: t('Зарядне/тримач для тел'),
+    },
+    {
+      id: 2,
+      price: 10,
+      displayPrice: 10,
+      type: ExtrasType.onetime,
+      value: t('Додатковий водій'),
+    },
+  ];
 
   const formik = useFormik({
     initialValues: {
@@ -400,7 +400,7 @@ export default function Reserv() {
                     id="dawdsawdsawdsawdsawd1"
                     checked={formik.values.pledge === '0'}
                     onChange={formik.handleChange}
-                    label="Без завдатку"
+                    label={t('Без завдатку')}
                   />
                   <OptionRadio
                     name="pledge"
@@ -408,7 +408,7 @@ export default function Reserv() {
                     id="dawdsawdsawdsawdsawd2"
                     checked={formik.values.pledge === '300'}
                     onChange={formik.handleChange}
-                    label="З завдатком"
+                    label={t('З завдатком')}
                   />
                 </div>
               </div>
@@ -431,7 +431,7 @@ export default function Reserv() {
                       name="name"
                       className="input"
                       type="text"
-                      placeholder={t("Ваше ім'я")}
+                      placeholder={t('Вкажіть імя')}
                       onChange={formik.handleChange}
                       value={formik.values.name}
                     />
@@ -445,7 +445,7 @@ export default function Reserv() {
                       name="phone"
                       className="input"
                       type="tel"
-                      placeholder={t('Телефон')}
+                      placeholder={t('Вкажіть телефон')}
                       onChange={formik.handleChange}
                       value={formik.values.phone}
                     />
@@ -456,7 +456,7 @@ export default function Reserv() {
                       name="email"
                       className="input"
                       type="email"
-                      placeholder="Email"
+                      placeholder={t('Вкажіть email')}
                       onChange={formik.handleChange}
                       value={formik.values.email}
                     />
@@ -587,7 +587,7 @@ export default function Reserv() {
                   type="submit"
                   className="btn_main"
                 >
-                  {t('Орендувати')}
+                  {t('Бронювати')}
                 </button>
               </div>
             </div>

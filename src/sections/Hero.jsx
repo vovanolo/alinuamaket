@@ -143,7 +143,7 @@ export default function Hero() {
                     {t('Львів')}
                   </span>
                   <span className="item-2 text_red hero-cta-box__subtitle">
-                    {t('Тернопіль')}
+                    {t('Харків')}
                   </span>
                   <span className="item-3 text_red hero-cta-box__subtitle">
                     {t('Івано-Франківськ')}
