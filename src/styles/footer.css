@@ -34,3 +34,9 @@
 .footer__up-btn.hidden {
   transform: translateY(100%);
 }
+
+@media (max-width: 560px) {
+  .footer__up-btn {
+    right: 20px;
+  }
+}
