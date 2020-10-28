@@ -134,8 +134,10 @@
 @media (max-width: 560px) {
   .footer__up-btn {
     right: 20px;
+    bottom: 30px;
   }
   .mp-coll {
     right: 21px;
+    bottom: 120px;
   }
 }

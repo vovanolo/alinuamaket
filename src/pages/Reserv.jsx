@@ -91,7 +91,8 @@ export default function Reserv() {
     fetchCarData(slug).then((res) => {
       setSelectedCar(res);
 
-      setPrice(res.price[0].money);
+      // setPrice(res.price[0].money);
+
       setAllPrices([
         res.price[4].money,
         res.price[3].money,
@@ -100,6 +101,20 @@ export default function Reserv() {
       ]);
     });
   }, []);
+  // console.log(allPrices);
+  useEffect(() => {
+    if (allPrices.length > 0) {
+      if (rentDays >= 1 && rentDays <= 2) {
+        setPrice((allPrices[0] + Number(pledgeValue)) * rentDays);
+      } else if (rentDays >= 3 && rentDays <= 7) {
+        setPrice((allPrices[1] + Number(pledgeValue)) * rentDays);
+      } else if (rentDays >= 8 && rentDays <= 29) {
+        setPrice((allPrices[2] + Number(pledgeValue)) * rentDays);
+      } else if (rentDays >= 30) {
+        setPrice((allPrices[3] + Number(pledgeValue)) * rentDays);
+      }
+    }
+  }, [allPrices]);
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
