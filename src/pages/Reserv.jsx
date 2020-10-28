@@ -93,10 +93,10 @@ export default function Reserv() {
 
       setPrice(res.price[0].money);
       setAllPrices([
-        res.price[0].money,
-        res.price[1].money,
-        res.price[2].money,
+        res.price[4].money,
         res.price[3].money,
+        res.price[2].money,
+        res.price[1].money,
       ]);
     });
   }, []);
