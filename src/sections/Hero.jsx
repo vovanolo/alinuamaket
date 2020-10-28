@@ -13,7 +13,10 @@ import 'swiper/components/pagination/pagination.scss';
 
 import '../styles/hero.css';
 
-import slide01 from '../images/slider/01_Car.png';
+import slide01 from '../images/slider/01.png';
+import slide02 from '../images/slider/02.png';
+import slide03 from '../images/slider/03.png';
+
 import circleSwitch from '../images/circle_switch.svg';
 
 SwiperCore.use([Pagination, Autoplay]);
@@ -117,14 +120,14 @@ export default function Hero() {
         <SwiperSlide>
           <img
             className="img-responsive img-responsive_contain img-responsive_right"
-            src={slide01}
+            src={slide02}
             alt="Slide 2"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             className="img-responsive img-responsive_contain img-responsive_right"
-            src={slide01}
+            src={slide03}
             alt="Slide 3"
           />
         </SwiperSlide>
