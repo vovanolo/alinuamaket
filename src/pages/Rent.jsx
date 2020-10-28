@@ -65,10 +65,10 @@ export default function Rent() {
   const sortedCars = filteredCars.sort((a, b) => {
     switch (currentSorter) {
       case Sorters.priceAsc:
-        return a.price - b.price;
+        return a.deposit - b.deposit;
 
-      case Sorters.priceDesc:
-        return b.price - a.price;
+      case Sorters.depositDesc:
+        return b.deposit - a.deposit;
 
       default:
         return filteredCars;
