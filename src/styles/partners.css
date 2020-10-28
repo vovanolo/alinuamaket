@@ -32,3 +32,12 @@
 .slider__container_partners .swiper-pagination {
   bottom: 0;
 }
+
+@media (max-width: 768px) {
+  .partners-slider__navigation-btn_left {
+    left: 0;
+  }
+  .partners-slider__navigation-btn_right {
+    right: 0;
+  }
+}
