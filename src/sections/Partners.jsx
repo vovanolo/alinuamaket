@@ -12,7 +12,10 @@ import mitsubishi from '../images/partners/mitsubishi.png';
 import sonata from '../images/partners/sonata.png';
 import citadel from '../images/partners/citadel.png';
 import itClub from '../images/partners/it_club.png';
-// import motors from '../images/partners/motors.jpg';
+import ksenia from '../images/partners/kseniya.png';
+import skoda from '../images/partners/skoda.png';
+import renault from '../images/partners/renault.png';
+import lyubeAvto from '../images/partners/lyube-avto.png';
 
 import arrowLeft from '../images/partners/arrow_left.svg';
 
@@ -106,6 +109,34 @@ export default function Partners() {
                 className="img-responsive img-responsive_contain img-responsive_right"
                 src={itClub}
                 alt="itClub"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="img-responsive img-responsive_contain img-responsive_right"
+                src={ksenia}
+                alt="ksenia"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="img-responsive img-responsive_contain img-responsive_right"
+                src={skoda}
+                alt="skoda"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="img-responsive img-responsive_contain img-responsive_right"
+                src={renault}
+                alt="renault"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="img-responsive img-responsive_contain img-responsive_right"
+                src={lyubeAvto}
+                alt="lyube-avto"
               />
             </SwiperSlide>
           </Swiper>
