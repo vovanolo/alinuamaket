@@ -15,7 +15,10 @@ export default function ContactsPopup() {
       <div className="mp-coll mp-bg-color-violet">
         <div className="shows">
           <div className="mp-social" style={styles.mpSocial}>
-            <a href="https://www.instagram.com/Your_profil" target="_blank">
+            <a
+              href="https://instagram.com/alin_services_for_you?igshid=12br995xgk9tr"
+              target="_blank"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 661 649.17">
                 <title>icon</title>
                 <g id="fotter">
@@ -54,7 +57,7 @@ export default function ContactsPopup() {
             </a>
           </div>
           <div className="mp-social" style={styles.mpSocial}>
-            <a href="viber://add?number=Your_namber">
+            <a href="viber://chat?number=%2B380987771600">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 545 535">
                 <title>icon</title>
                 <g id="page2">
@@ -90,7 +93,7 @@ export default function ContactsPopup() {
             </a>
           </div>
           <div className="mp-social" style={styles.mpSocial}>
-            <a href="https://t.me/Your_profil" target="_blank">
+            <a href="https://telegram.me/alin_services_for_you" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 545 535">
                 <title>icon</title>
                 <g id="page2">

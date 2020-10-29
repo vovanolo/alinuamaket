@@ -36,7 +36,7 @@
 }
 
 .mp-bg-color-violet {
-  background-color: #5c66af;
+  background-color: var(--color-red);
 }
 .mp-coll {
   min-width: 40px;
@@ -74,14 +74,14 @@
 
 .cb-inst-cls-2 {
   fill: none;
-  stroke: #5c67ae;
+  stroke: var(--color-red);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 34.57px;
 }
 
 .cb-inst-cls-3 {
-  fill: #5c67ae;
+  fill: var(--color-red);
 }
 
 .cb-viber-cls-1 {
@@ -89,7 +89,7 @@
 }
 
 .cb-viber-cls-2 {
-  fill: #5c67ae;
+  fill: var(--color-red);
 }
 
 .cb-telegram-cls-1 {
@@ -97,7 +97,7 @@
 }
 
 .cb-telegram-cls-2 {
-  fill: #5c67ae;
+  fill: var(--color-red);
 }
 
 .cb-close-cls-1 {
@@ -106,14 +106,14 @@
 
 .cb-close-cls-2 {
   fill: none;
-  stroke: #5c67ae;
+  stroke: var(--color-red);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 21.49px;
 }
 
 .cb-phone-cls-1 {
-  fill: #5c67ae;
+  fill: var(--color-red);
 }
 
 .cb-phone-cls-2 {
