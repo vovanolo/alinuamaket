@@ -557,7 +557,7 @@ export default function Reserv() {
               </div>
               <div className="col-lg-4 text-right">
                 <span>
-                  <span className="rent-days">{rentDays} </span>
+                  <span className="rent-days">{rentDays}</span>
                   <span>
                     {rentDays.toString().endsWith(1) && rentDays !== 11
                       ? 'day'

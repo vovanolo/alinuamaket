@@ -22,15 +22,14 @@ export default function Rent() {
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
+    fetchCategoriesData(localStorage.getItem('lang'))
+      .then((res) => setCategories(res))
+      .catch((err) => console.dir(err));
   }, [language]);
 
   useEffect(() => {
     fetchCarsData()
       .then((res) => setCars(res))
-      .catch((err) => console.dir(err));
-
-    fetchCategoriesData()
-      .then((res) => setCategories(res))
       .catch((err) => console.dir(err));
   }, []);
 

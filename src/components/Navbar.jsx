@@ -75,6 +75,7 @@ export default function Navbar() {
 
     $('#mainNavbar').on('show.bs.collapse', showNavbar);
     $('#mainNavbar').on('hide.bs.collapse', hideNavbar);
+    // changeLanguage(localStorage.getItem('lang') || 'ua');
 
     return function cleanup() {
       window.removeEventListener('scroll', scrollEventHandler);
@@ -113,7 +114,12 @@ export default function Navbar() {
   }, [location]);
 
   useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
+    // changeLanguage(localStorage.getItem('lang') || 'ua');
+    const newLang = localStorage.getItem('lang') || 'ua';
+    localStorage.setItem('lang', newLang);
+    setLanguage(newLang);
+    i18n.changeLanguage(newLang);
+    // window.location.reload();
   }, [language]);
 
   //#endregion
@@ -139,6 +145,7 @@ export default function Navbar() {
     localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
+    window.location.reload();
   }
 
   function handleFormSubmit(values) {

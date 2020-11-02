@@ -8,6 +8,7 @@ import '../styles/contacts.css';
 import map from '../images/map-pin.svg';
 import darkmail from '../images/darkmail.svg';
 import phone from '../images/phone.svg';
+import arrow from '../images/arrow4.png';
 
 export default function Contacts() {
   const [language, setLanguage] = useState('ua');
@@ -118,15 +119,25 @@ export default function Contacts() {
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-6 mt-5">
-            <h3 className="text_grey">{t('Є запитання?')}</h3>
-            <p className="mt-4">
+          <div className="col-md-6 ">
+            <h3 className="">{t('Є запитання?')}</h3>
+            <p className="mt-4 ml-5">
               {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
               quisque est a, morbi lectus at. Pellentesque eget aenean mattis
               ullamcorper laoreet et. At sem elit felis a egestas. Ullamcorper
               eget purus aenean vel convallis arcu, euismod. Semper a, ultrices
               non nulla. Turpis phasellus neque quis sit tristique. Non iaculis
               tellus suscipit mauris vitae. */}
+              <img
+                src={arrow}
+                alt=""
+                className="img-responsive"
+                style={{
+                  maxWidth: '200px',
+                  maxHeight: '200px',
+                  marginLeft: '100px',
+                }}
+              />
             </p>
           </div>
           <div className="col-md-6 input input_size">
