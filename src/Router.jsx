@@ -22,6 +22,7 @@ import LoyaltyProgram from './pages/LoyaltyProgram';
 import AdditionalOptions from './pages/AdditionalOptions';
 import RentConditions from './pages/RentConditions';
 import CondfidentialPolicy from './pages/CondfidentialPolicy';
+import AllNews from './pages/AllNews';
 
 import { FormContextProvider } from './components/ContextProvider';
 
@@ -56,6 +57,9 @@ export default function Router() {
           </Route>
           <Route exact path={urls.faq}>
             <Faq />
+          </Route>
+          <Route exact path={urls.news}>
+            <AllNews />
           </Route>
           <Route path={`${urls.news}/:slug`}>
             <News />

@@ -17,7 +17,7 @@ export default function Faq() {
     mounted = true;
     setIsLoading(true);
 
-    fetchFaqData()
+    fetchFaqData(localStorage.getItem('item'))
       .then((res) => {
         if (mounted) {
           setFaqData(res);

@@ -294,7 +294,7 @@ export default function Navbar() {
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={`${news}/jyvi-na-povnu`} className="nav-link">
+                <Link to={`${news}`} className="nav-link">
                   {t('Блог')}
                 </Link>
               </li>

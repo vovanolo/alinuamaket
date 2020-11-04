@@ -35,7 +35,7 @@ export default function News() {
     <div className="navbar-offset">
       <div className="container">
         <div className="row">
-          <div className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11">
+          <div className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11 bg-info p-3">
             {news.map(({ slug, featured_images, title, content_html }) => (
               <div key={slug} className="mb-3" style={{ maxHeight: '600px' }}>
                 <NewsCard
