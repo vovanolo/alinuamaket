@@ -236,7 +236,7 @@ export default function Reserv() {
     fetchRentInfo(requestData).then((res) =>
       console.log('Server Response', res)
     );
-    history.push(urls.summary);
+    // history.push(urls.summary);
   }
 
   return (

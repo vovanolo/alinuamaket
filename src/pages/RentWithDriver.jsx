@@ -114,7 +114,7 @@ export default function RentWithDriver({ data }) {
                     <div className="transf-location d-flex flex-column justify-content-between">
                       <p>{t('від')}</p>
                       <Field
-                        name="fromLocation"
+                        name="fromLocationFrom"
                         placeholder={t('Вкажіть локацію')}
                         className="transf_input"
                         type="text"
@@ -126,7 +126,7 @@ export default function RentWithDriver({ data }) {
                     <div className="transf-location d-flex flex-column justify-content-between">
                       <p>{t('до')}</p>
                       <Field
-                        name="fromLocation"
+                        name="fromLocationTo"
                         placeholder={t('Вкажіть локацію')}
                         className="transf_input"
                         type="text"

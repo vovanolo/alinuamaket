@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import NewsCard from '../components/NewsCard';
 
@@ -38,12 +39,19 @@ export default function News() {
           <div className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11 bg-info p-3">
             {news.map(({ slug, featured_images, title, content_html }) => (
               <div key={slug} className="mb-3" style={{ maxHeight: '600px' }}>
-                <NewsCard
-                  slug={slug}
-                  imgUrl={featured_images[0].path}
-                  title={title}
-                  description={content_html}
-                />
+                <Link to={`/news/${slug}`} className="news-card">
+                  <img
+                    src={featured_images[0].path}
+                    className="img-responsive img-responsive_cover"
+                    alt={title}
+                  />
+
+                  <div className="news-card__info-box">
+                    <h5 className="news-card__title news-card__lower-case">
+                      {title}
+                    </h5>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>

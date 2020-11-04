@@ -27,6 +27,9 @@ export default function Contacts() {
 
   function handleFormSubmit(values) {
     console.log(values);
+    // fetchContactsInfo(requestData).then((res) =>
+    //   console.log('Server Response', res)
+    // );
   }
 
   return (

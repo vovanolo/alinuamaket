@@ -151,6 +151,16 @@ export default function Navbar() {
   function handleFormSubmit(values) {
     setIsLoading(true);
 
+    // fetchModalData(values).then((res) => {
+    //   setIsLoading(false);
+    //   setSuccess(true);
+
+    //   setTimeout(() => {
+    //     setModalVisible(false);
+    //     setSuccess(false);
+    //   }, 3000);
+    // });
+
     setTimeout(() => {
       setIsLoading(false);
       setSuccess(true);

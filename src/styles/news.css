@@ -33,3 +33,7 @@
 .news_in-block {
   max-height: 400px;
 }
+
+.news-card__lower-case {
+  font-size: 18px;
+}
