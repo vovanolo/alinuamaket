@@ -23,6 +23,7 @@ import AdditionalOptions from './pages/AdditionalOptions';
 import RentConditions from './pages/RentConditions';
 import CondfidentialPolicy from './pages/CondfidentialPolicy';
 import AllNews from './pages/AllNews';
+import AllAdditionalOptions from './pages/AllAdditionalOptions';
 
 import { FormContextProvider } from './components/ContextProvider';
 
@@ -84,6 +85,9 @@ export default function Router() {
           </Route>
           <Route exact path={urls.confidential_policy}>
             <CondfidentialPolicy />
+          </Route>
+          <Route>
+            <AdditionalOptions exact path={urls.additional_options} />
           </Route>
 
           <Route path="*">

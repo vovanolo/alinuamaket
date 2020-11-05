@@ -270,10 +270,7 @@ export default function Navbar() {
                   <Link to={carSale} className="dropdown-item">
                     {t('Автовикуп')}
                   </Link>
-                  <Link
-                    to={`${additional_options}/gps-navigator`}
-                    className="dropdown-item"
-                  >
+                  <Link to={`${additional_options}`} className="dropdown-item">
                     {t('Додаткові опції')}
                   </Link>
                 </div>
