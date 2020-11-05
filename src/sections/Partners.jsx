@@ -37,7 +37,7 @@ export default function Partners() {
   }
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <div className="row">
         <div className="col">
           <h2 className="text_black partners__title">

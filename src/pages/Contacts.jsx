@@ -33,7 +33,7 @@ export default function Contacts() {
   }
 
   return (
-    <div className="contacts">
+    <div className="contacts mb-5">
       <div className="container">
         <div className="row">
           <div className="col">

@@ -246,7 +246,7 @@ export default function Navbar() {
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={rentWithDriver} className="nav-link">
+                <Link to={rentWithDriver} className="btn nav-link">
                   {t('Трансфери')}
                 </Link>
               </li>
@@ -301,12 +301,12 @@ export default function Navbar() {
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={`${news}`} className="nav-link">
+                <Link to={`${news}`} className="btn nav-link">
                   {t('Блог')}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={contacts} className="nav-link">
+                <Link to={contacts} className="btn nav-link">
                   {t('Контакти')}
                 </Link>
               </li>

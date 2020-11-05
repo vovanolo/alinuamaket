@@ -30,10 +30,9 @@ export default function AllAdditionalOptions() {
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
   }
-  // console.log(localStorage.getItem('lang'));
 
   return (
-    <div className="navbar-offset">
+    <div className="navbar-offset" style={{ minHeight: 'calc(100vh - 390px)' }}>
       <div className="container">
         <div className="row">
           <div className="col">

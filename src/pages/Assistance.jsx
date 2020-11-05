@@ -135,7 +135,7 @@ export default function Assistance() {
           </div>
         </div>
       </div>
-      <div className="main-principle d-flex">
+      <div className="main-principle d-flex mb-5">
         <div className="container">
           <div className="row h-100 align-items-center">
             <div className="absol">

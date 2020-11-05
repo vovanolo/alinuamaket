@@ -33,7 +33,7 @@ export default function AllNews() {
   // console.log(localStorage.getItem('lang'));
 
   return (
-    <div className="navbar-offset">
+    <div className="navbar-offset mb-5">
       <div className="container">
         <div className="row">
           <div className="col">

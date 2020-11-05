@@ -79,7 +79,7 @@ export default function LoyaltyProgram() {
   ];
 
   return (
-    <div className="navbar-offset">
+    <div className="navbar-offset mb-5">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 offset-lg-6 col">

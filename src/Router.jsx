@@ -68,6 +68,9 @@ export default function Router() {
           <Route path={`${urls.additional_options}/:slug`}>
             <AdditionalOptions />
           </Route>
+          <Route exact path={urls.additional_options}>
+            <AllAdditionalOptions />
+          </Route>
           <Route exact path={urls.summary}>
             <Summary />
           </Route>
@@ -85,9 +88,6 @@ export default function Router() {
           </Route>
           <Route exact path={urls.confidential_policy}>
             <CondfidentialPolicy />
-          </Route>
-          <Route>
-            <AdditionalOptions exact path={urls.additional_options} />
           </Route>
 
           <Route path="*">
