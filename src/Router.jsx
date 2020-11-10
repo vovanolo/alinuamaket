@@ -26,6 +26,7 @@ import AllNews from './pages/AllNews';
 import AllAdditionalOptions from './pages/AllAdditionalOptions';
 
 import { FormContextProvider } from './components/ContextProvider';
+import TransferInfo from './pages/TransferInfo';
 
 export default function Router() {
   const [data, setData] = useState(null);
@@ -88,6 +89,9 @@ export default function Router() {
           </Route>
           <Route exact path={urls.confidential_policy}>
             <CondfidentialPolicy />
+          </Route>
+          <Route exact path={`${urls.transferInfo}/:slug`}>
+            <TransferInfo />
           </Route>
 
           <Route path="*">

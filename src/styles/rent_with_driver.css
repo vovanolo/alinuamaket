@@ -110,14 +110,14 @@
   display: block;
   position: absolute;
   border: none;
-  width: 107px;
+  width: 127px;
   height: 34px;
   background: var(--color-red);
   border-radius: 10px;
   font-size: 18px;
   line-height: 21px;
   color: var(--color-white);
-  bottom: -4%;
+  bottom: -2.5%;
   right: 6%;
 }
 
@@ -146,6 +146,7 @@
 .input_radio_transfer {
   display: inline-block;
 }
+
 @media (max-width: 992px) {
   .rent_with_driver {
     height: auto;

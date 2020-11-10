@@ -75,4 +75,7 @@
   .contact-modal {
     width: 90%;
   }
+  .padding_off {
+    padding-bottom: 0;
+  }
 }

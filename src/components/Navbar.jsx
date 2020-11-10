@@ -246,7 +246,10 @@ export default function Navbar() {
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={rentWithDriver} className="btn nav-link">
+                <Link
+                  to={rentWithDriver}
+                  className="btn nav-link text-left padding_off"
+                >
                   {t('Трансфери')}
                 </Link>
               </li>
@@ -301,12 +304,18 @@ export default function Navbar() {
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
-                <Link to={`${news}`} className="btn nav-link">
+                <Link
+                  to={`${news}`}
+                  className="btn nav-link text-left padding_off"
+                >
                   {t('Блог')}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={contacts} className="btn nav-link">
+                <Link
+                  to={contacts}
+                  className="btn nav-link text-left padding_off"
+                >
                   {t('Контакти')}
                 </Link>
               </li>
