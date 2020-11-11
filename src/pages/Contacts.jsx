@@ -134,7 +134,7 @@ export default function Contacts() {
               <img
                 src={arrow}
                 alt=""
-                className="img-responsive"
+                className="img-responsive contacts-image_disapear"
                 style={{
                   maxWidth: '200px',
                   maxHeight: '200px',

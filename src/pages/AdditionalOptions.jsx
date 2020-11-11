@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import AdditionalOptionsCard from '../components/AdditionalOptionsCard';
 
@@ -30,24 +31,34 @@ export default function AdditionalOptions() {
   return (
     <div className="navbar-offset">
       <div className="container">
-        <div className="row">
-          <div className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11">
+        <div className="row mb-5">
+          <div
+            style={{ backgroundColor: '#00bcff' }}
+            className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11 p-3"
+          >
             {additionalInfo.map(
               ({ slug, featured_images, title, content_html }) => (
                 <div key={slug} className="mb-3" style={{ maxHeight: '600px' }}>
-                  <AdditionalOptionsCard
-                    slug={slug}
-                    imgUrl={featured_images[0].path}
-                    title={title}
-                    description={content_html}
-                  />
+                  <Link to={`/news/${slug}`} className="news-card">
+                    <img
+                      src={featured_images[0].path}
+                      className="img-responsive img-responsive_cover"
+                      alt={title}
+                    />
+
+                    <div className="news-card__info-box">
+                      <h5 className="news-card__title news-card__lower-case">
+                        {title}
+                      </h5>
+                    </div>
+                  </Link>
                 </div>
               )
             )}
           </div>
           {additionalInfoData && (
             <div className="col-xl-9 col-lg-8 col-md-8 mt-lg-0 mt-md-3 mt-3 order-md-12 order-1">
-              <div>
+              {/* <div>
                 <img
                   className="img-responsive"
                   src={additionalInfoData.featured_images[0].path}
@@ -58,8 +69,8 @@ export default function AdditionalOptions() {
                     maxWidth: '500px',
                   }}
                 />
-              </div>
-              <h2 className="mt-3">{additionalInfoData.title}</h2>
+              </div> */}
+              <h2 className="mt-3 text-center">{additionalInfoData.title}</h2>
               {/* <p className="mt-1">{newsData.body}</p> */}
               {/* {newsData.body} */}
               <p

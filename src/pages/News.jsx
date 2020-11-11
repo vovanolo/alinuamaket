@@ -35,8 +35,11 @@ export default function News() {
   return (
     <div className="navbar-offset">
       <div className="container">
-        <div className="row">
-          <div className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11 bg-info p-3">
+        <div className="row mb-5">
+          <div
+            style={{ backgroundColor: '#00bcff' }}
+            className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11 p-3"
+          >
             {news.map(({ slug, featured_images, title, content_html }) => (
               <div key={slug} className="mb-3" style={{ maxHeight: '600px' }}>
                 <Link to={`/news/${slug}`} className="news-card">
@@ -57,7 +60,7 @@ export default function News() {
           </div>
           {newsData && (
             <div className="col-xl-9 col-lg-8 col-md-8 mt-lg-0 mt-md-3 mt-3 order-md-12 order-1">
-              <div>
+              {/* <div>
                 <img
                   className="img-responsive"
                   src={newsData.featured_images[0].path}
@@ -68,8 +71,8 @@ export default function News() {
                     maxWidth: '500px',
                   }}
                 />
-              </div>
-              <h2 className="mt-3">{newsData.title}</h2>
+              </div> */}
+              <h2 className="mt-3 text-center">{newsData.title}</h2>
               {/* <p className="mt-1">{newsData.body}</p> */}
               {/* {newsData.body} */}
               <p

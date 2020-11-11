@@ -1,9 +1,15 @@
-.contacts{
-    margin-top: 150px;;
+.contacts {
+  margin-top: 150px;
 }
-iframe{
-    width: 100%;
+iframe {
+  width: 100%;
 }
-.input_size{
-    padding: 25px 58px 38px 58px;
+.input_size {
+  padding: 25px 58px 38px 58px;
+}
+
+@media (max-width: 767px) {
+  .contacts-image_disapear {
+    display: none;
+  }
 }
