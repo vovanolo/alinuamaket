@@ -236,7 +236,7 @@ export default function Reserv() {
     fetchRentInfo(requestData).then((res) =>
       console.log('Server Response', res)
     );
-    // history.push(urls.summary);
+    history.push(urls.summary);
   }
 
   return (
@@ -595,7 +595,7 @@ export default function Reserv() {
               </div>
             </div>
 
-            <div className="row">
+            <div className="row mb-4">
               <div className="col-md-10">
                 <button
                   disabled={!formik.values.agreeWithTerms}

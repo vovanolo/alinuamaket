@@ -25,6 +25,7 @@
   font-weight: 400;
   /* text-transform: uppercase; */
   max-height: 45px;
+  font-size: 18px;
 }
 
 .news-card__description {
@@ -36,4 +37,10 @@
 
 .news-card__lower-case {
   font-size: 18px;
+}
+
+@media (max-width: 767px) {
+  .offset-dis_able {
+    margin-top: 0 !important;
+  }
 }

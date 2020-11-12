@@ -56,6 +56,9 @@
 .rent_with_driver__input::placeholder {
   color: #fff !important;
 }
+.rent_with_driver__input[type='text'] {
+  color: white;
+}
 
 .transf-location {
   border: 1px solid #9e9e9e;
@@ -150,6 +153,9 @@
 @media (max-width: 992px) {
   .rent_with_driver {
     height: auto;
+  }
+  .icon_transfer-dis {
+    display: none;
   }
 }
 

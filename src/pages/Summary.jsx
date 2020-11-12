@@ -101,7 +101,7 @@ export default function Summary() {
             </p>
           </div>
         </div>
-        <div className="row mt-3">
+        <div className="row mt-3 mb-3">
           <div className="col-md-3">
             <Link to={urls.home} className="btn_main">
               {t('На головну')}

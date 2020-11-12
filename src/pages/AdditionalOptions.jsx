@@ -39,7 +39,10 @@ export default function AdditionalOptions() {
             {additionalInfo.map(
               ({ slug, featured_images, title, content_html }) => (
                 <div key={slug} className="mb-3" style={{ maxHeight: '600px' }}>
-                  <Link to={`/news/${slug}`} className="news-card">
+                  <Link
+                    to={`/additional_options/${slug}`}
+                    className="news-card"
+                  >
                     <img
                       src={featured_images[0].path}
                       className="img-responsive img-responsive_cover"

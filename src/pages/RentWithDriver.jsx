@@ -71,7 +71,10 @@ export default function RentWithDriver({ data }) {
 
                 {loyaltyCardsData.map(
                   ({ icon, iconAlt, description }, index) => (
-                    <div key={index} className="row align-items-center mb-4">
+                    <div
+                      key={index}
+                      className="row align-items-center mb-4 icon_transfer-dis"
+                    >
                       <div className="col-lg-3 col-12 mb-lg-0 mb-3  text-lg-left text-center ">
                         <img
                           className="loyalty-card__icon"
@@ -103,7 +106,11 @@ export default function RentWithDriver({ data }) {
                   onSubmit={handleFormSubmit}
                 >
                   <Form className="rent_form">
-                    <button type="submit submit_color-red">
+                    <button
+                      data-toggle="modal"
+                      data-target="#staticBackdrop"
+                      type="submit submit_color-red"
+                    >
                       {t('Бронювати')}
                     </button>
                     <div className="row">
@@ -303,6 +310,44 @@ export default function RentWithDriver({ data }) {
               }
             }
           )}
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-backdrop="static"
+        data-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                {/* Modal title */}
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <h3>{t('Дякуємо за заявку')}</h3>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                {t('Закрити')}
+              </button>
+              {/* <button type="button" class="btn btn-primary">
+                Understood
+              </button> */}
+            </div>
+          </div>
         </div>
       </div>
     </div>

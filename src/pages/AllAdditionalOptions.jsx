@@ -36,7 +36,9 @@ export default function AllAdditionalOptions() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h2 className="news-title">{t('Додаткові опції')}</h2>
+            <h2 className="news-title offset-dis_able">
+              {t('Додаткові опції')}
+            </h2>
           </div>
         </div>
 
