@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import '../styles/loyalty.css';
-
 export default function LoyaltyCard({ icon, iconAlt, description, margin }) {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();

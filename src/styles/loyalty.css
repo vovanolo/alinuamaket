@@ -21,3 +21,16 @@
   left: 100%;
   right: -100%;
 }
+
+@media (max-width: 991px) {
+  .loyalty__car {
+    position: unset;
+    transform: none;
+    margin-top: 25px;
+    margin-bottom: 50px;
+  }
+
+  .loyalty__row {
+    margin-top: 0;
+  }
+}
