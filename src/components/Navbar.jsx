@@ -375,7 +375,7 @@ export default function Navbar() {
             <Formik
               initialValues={{
                 name: '',
-                email: '',
+                // email: '',
                 phone: '',
               }}
               onSubmit={handleFormSubmit}
@@ -383,7 +383,9 @@ export default function Navbar() {
               <Form>
                 <div className="card">
                   <div className="modal-header">
-                    <h5 className="modal-title">{t('Заповніть форму')}</h5>
+                    <h5 className="modal-title">
+                      {t('Залиште свій номер і ми вам зателефонуємо!')}
+                    </h5>
                     <button
                       type="button"
                       className="close"
@@ -406,7 +408,7 @@ export default function Navbar() {
                         </label>
                       </div>
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                       <div className="col">
                         <label className="w-100">
                           <Field
@@ -417,7 +419,7 @@ export default function Navbar() {
                           />
                         </label>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="row">
                       <div className="col">
                         <label className="w-100">
