@@ -149,6 +149,8 @@ export default function Navbar() {
   }
 
   function handleFormSubmit(values) {
+    console.log(values);
+
     setIsLoading(true);
 
     // fetchModalData(values).then((res) => {
