@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import $ from 'jquery';
 import { Formik, Field, Form } from 'formik';
 import { HashLink } from 'react-router-hash-link';
+import { fetchCallBack } from '../utils/fetchCallBack';
 
 import {
   home,
@@ -153,25 +154,24 @@ export default function Navbar() {
 
     setIsLoading(true);
 
-    // fetchModalData(values).then((res) => {
-    //   setIsLoading(false);
-    //   setSuccess(true);
-
-    //   setTimeout(() => {
-    //     setModalVisible(false);
-    //     setSuccess(false);
-    //   }, 3000);
-    // });
-
-    setTimeout(() => {
+    fetchCallBack(values).then((res) => {
       setIsLoading(false);
       setSuccess(true);
-
       setTimeout(() => {
         setModalVisible(false);
         setSuccess(false);
       }, 3000);
-    }, 1000);
+      console.log(res);
+    });
+
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    //   setSuccess(true);
+    //   // setTimeout(() => {
+    //   //   setModalVisible(false);
+    //   //   setSuccess(false);
+    //   // }, 3000);
+    // }, 1000);
   }
 
   function toggleModal() {

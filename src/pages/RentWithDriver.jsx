@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import '../styles/rent_with_driver.css';
 import { fetchTransferPosts } from '../utils/fetchTransferPosts';
+import { fetchTransferOrder } from '../utils/fetchTransferOrder';
 
 import transf from '../images/rent_with_driver/id_card.svg';
 import calendar from '../images/rent_with_driver/calendar.svg';
@@ -38,6 +39,9 @@ export default function RentWithDriver({ data }) {
 
   function handleFormSubmit(values) {
     console.log(values);
+    fetchTransferOrder(values).then((res) =>
+      console.log('Server Response', res)
+    );
   }
 
   const loyaltyCardsData = [
@@ -279,7 +283,7 @@ export default function RentWithDriver({ data }) {
                             to={`${transferInfo}/${slug}`}
                             className="btn_main btn_slim"
                           >
-                            Get a price
+                            {t('Get a price')}
                           </Link>
                         </div>
                       </div>
@@ -294,7 +298,9 @@ export default function RentWithDriver({ data }) {
                       <p dangerouslySetInnerHTML={{ __html: content_html }}></p>
                       <div className="row mt-3">
                         <div className="col-lg-6">
-                          <Link className="btn_main btn_slim">Get a price</Link>
+                          <Link className="btn_main btn_slim">
+                            {t('Get a price')}
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -313,34 +319,38 @@ export default function RentWithDriver({ data }) {
         </div>
       </div>
       <div
-        class="modal fade"
+        className="modal fade"
         id="staticBackdrop"
         data-backdrop="static"
         data-keyboard="false"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="staticBackdropLabel">
                 {/* Modal title */}
               </h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body text-center">
+            <div className="modal-body text-center">
               <h3>{t('Дякуємо за заявку')}</h3>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-danger"
+                data-dismiss="modal"
+              >
                 {t('Закрити')}
               </button>
               {/* <button type="button" class="btn btn-primary">

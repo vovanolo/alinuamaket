@@ -9,6 +9,7 @@ import map from '../images/map-pin.svg';
 import darkmail from '../images/darkmail.svg';
 import phone from '../images/phone.svg';
 import arrow from '../images/arrow4.png';
+import { fetchContactsInfo } from '../utils/fetchContactsInfo';
 
 export default function Contacts() {
   const [language, setLanguage] = useState('ua');
@@ -27,9 +28,9 @@ export default function Contacts() {
 
   function handleFormSubmit(values) {
     console.log(values);
-    // fetchContactsInfo(requestData).then((res) =>
-    //   console.log('Server Response', res)
-    // );
+    fetchContactsInfo(values).then((res) =>
+      console.log('Server Response', res)
+    );
   }
 
   return (
@@ -192,34 +193,38 @@ export default function Contacts() {
         </div>
       </div>
       <div
-        class="modal fade"
+        className="modal fade"
         id="staticBackdrop"
         data-backdrop="static"
         data-keyboard="false"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="staticBackdropLabel">
                 {/* Modal title */}
               </h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body text-center">
+            <div className="modal-body text-center">
               <h3>{t('Дякуємо за заявку')}</h3>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-danger"
+                data-dismiss="modal"
+              >
                 {t('Закрити')}
               </button>
               {/* <button type="button" class="btn btn-primary">
