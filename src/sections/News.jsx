@@ -40,7 +40,7 @@ export default function News() {
     <div className="container">
       <div className="row">
         <div className="col">
-          <h2 className="news-title">{t('Новини')}</h2>
+          <h2 className="news-title offset-dis_able">{t('Новини')}</h2>
         </div>
       </div>
 

@@ -37,7 +37,7 @@ export default function News() {
       <div className="container">
         <div className="row mb-5">
           <div
-            style={{ backgroundColor: '#00bcff' }}
+            style={{ backgroundColor: 'rgb(214 213 213)' }}
             className="col-xl-3 col-lg-4 col-md-4 order-md-1 order-11 p-3"
           >
             {news.map(({ slug, featured_images, title, content_html }) => (

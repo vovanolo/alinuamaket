@@ -263,7 +263,7 @@ export default function RentWithDriver({ data }) {
       <div>
         <div className="container">
           {transferPosts.map(
-            ({ slug, featured_images, title, content_html }, index) => {
+            ({ slug, featured_images, title, excerpt }, index) => {
               if (index % 2 === 0) {
                 return (
                   <div key={slug} className="row mb-5 mt-5">
@@ -276,7 +276,7 @@ export default function RentWithDriver({ data }) {
                     </div>
                     <div className="col-md-6">
                       <h3 className="mb-1">{title}</h3>
-                      <p dangerouslySetInnerHTML={{ __html: content_html }}></p>
+                      <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
                       <div className="row mt-3">
                         <div className="col-lg-6">
                           <Link
@@ -295,7 +295,7 @@ export default function RentWithDriver({ data }) {
                   <div key={slug} className="row mb-5 mt-5">
                     <div className="col-md-6">
                       <h3 className="mb-1">{title}</h3>
-                      <p dangerouslySetInnerHTML={{ __html: content_html }}></p>
+                      <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
                       <div className="row mt-3">
                         <div className="col-lg-6">
                           <Link className="btn_main btn_slim">

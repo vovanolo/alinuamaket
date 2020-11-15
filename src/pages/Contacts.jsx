@@ -151,7 +151,15 @@ export default function Contacts() {
                 email: '',
                 comment: '',
               }}
-              onSubmit={handleFormSubmit}
+              onSubmit={
+                (handleFormSubmit,
+                (values, { resetForm }) => {
+                  resetForm({ values: '' });
+                })
+              }
+              //   onSubmit={(values, { resetForm }) => {
+              //     resetForm({ values: '' });
+              //   }}
             >
               <Form>
                 <h3>{t("Зв'язатись з нами")}</h3>

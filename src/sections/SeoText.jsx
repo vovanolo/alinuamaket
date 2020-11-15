@@ -16,7 +16,11 @@ export default function SeoText() {
         {seo.length !== 0 && (
           <>
             <h3 className="text-center mb-3">{seo[0].title}</h3>
-            <div dangerouslySetInnerHTML={{ __html: seo[0].content }}></div>
+            <div className="row">
+              <div className="col-md-12">
+                <div dangerouslySetInnerHTML={{ __html: seo[0].content }}></div>
+              </div>
+            </div>
           </>
         )}
         {/* <h1>{seo.title}</h1> */}
