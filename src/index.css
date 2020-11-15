@@ -34,6 +34,11 @@ button:focus,
   box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
 }
 
+sub,
+sup {
+  line-height: 1.3;
+}
+
 @font-face {
   font-family: 'Gilroy';
   src: url('./fonts/Gilroy-Regular.ttf');

@@ -26,11 +26,16 @@ export default function Contacts() {
     i18n.changeLanguage(newLang);
   }
 
-  function handleFormSubmit(values) {
-    console.log(values);
+  function handleFormSubmit(values, { resetForm }) {
     fetchContactsInfo(values).then((res) =>
       console.log('Server Response', res)
     );
+
+    resetForm({
+      name: '',
+      email: '',
+      comment: '',
+    });
   }
 
   return (
@@ -151,33 +156,26 @@ export default function Contacts() {
                 email: '',
                 comment: '',
               }}
-              onSubmit={
-                (handleFormSubmit,
-                (values, { resetForm }) => {
-                  resetForm({ values: '' });
-                })
-              }
-              //   onSubmit={(values, { resetForm }) => {
-              //     resetForm({ values: '' });
-              //   }}
+              onSubmit={handleFormSubmit}
             >
               <Form>
                 <h3>{t("Зв'язатись з нами")}</h3>
                 <Field
+                  required
                   type="text"
                   name="name"
                   placeholder={t('Вкажіть імя')}
                   className="input mt-2"
                 />
                 <Field
-                  type="text"
+                  required
+                  type="email"
                   name="email"
                   placeholder={t('Вкажіть email')}
                   className="input mt-2"
                 />
                 <Field
                   as="textarea"
-                  type="textarea"
                   name="comment"
                   className="input mt-2"
                   placeholder={t('Коментар')}
@@ -235,9 +233,6 @@ export default function Contacts() {
               >
                 {t('Закрити')}
               </button>
-              {/* <button type="button" class="btn btn-primary">
-                Understood
-              </button> */}
             </div>
           </div>
         </div>

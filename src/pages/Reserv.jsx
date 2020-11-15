@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import { useHistory, useParams } from 'react-router-dom';
+import * as Yup from 'yup';
 
 import * as urls from '../urls';
 import { fetchCarData } from '../utils/fetchCarData';
@@ -67,6 +68,24 @@ export default function Reserv() {
     },
   ];
 
+  const validationSchema = Yup.object().shape({
+    locationFrom: Yup.string()
+      .min(2, t('Location must at least 2 characters long'))
+      .required(t('Location From is a required field')),
+    locationTo: Yup.string().min(2).required(),
+    receiveDate: Yup.string().min(2).required(),
+    receiveTime: Yup.string().min(2).required(),
+    returnDate: Yup.string().min(2).required(),
+    returnTime: Yup.string().min(2).required(),
+    extras: Yup.array(),
+    name: Yup.string().min(2).required(),
+    phone: Yup.string().min(2).required(),
+    email: Yup.string().email().required(),
+    comment: Yup.string().min(5),
+    agreeWithTerms: Yup.bool(),
+    pledge: Yup.string(),
+  });
+
   const formik = useFormik({
     initialValues: {
       locationFrom: '',
@@ -84,14 +103,13 @@ export default function Reserv() {
       pledge: '300',
       ...data,
     },
+    validationSchema: validationSchema,
     onSubmit: handleFormSubmit,
   });
 
   useEffect(() => {
     fetchCarData(slug).then((res) => {
       setSelectedCar(res);
-
-      // setPrice(res.price[0].money);
 
       setAllPrices([
         res.price[4].money,
@@ -101,7 +119,7 @@ export default function Reserv() {
       ]);
     });
   }, []);
-  // console.log(allPrices);
+
   useEffect(() => {
     if (allPrices.length > 0) {
       if (rentDays >= 1 && rentDays <= 2) {
@@ -290,6 +308,11 @@ export default function Reserv() {
                     <sub className="switch__sub-title text_grey">
                       {t('місто, область, країна')}
                     </sub>
+                    {formik.errors.locationFrom && (
+                      <span className="reserv__input-error">
+                        {formik.errors.locationFrom}
+                      </span>
+                    )}
                   </div>
 
                   <div className="switch__box">
@@ -305,6 +328,11 @@ export default function Reserv() {
                     <sub className="switch__sub-title text_grey">
                       {t('місто, область, країна')}
                     </sub>
+                    {formik.errors.locationTo && (
+                      <span className="reserv__input-error">
+                        {formik.errors.locationTo}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -332,6 +360,11 @@ export default function Reserv() {
                         onChange={formik.handleChange}
                         value={formik.values.receiveDate}
                       />
+                      {formik.errors.receiveDate && (
+                        <span className="reserv__input-error">
+                          {formik.errors.receiveDate}
+                        </span>
+                      )}
                       <input
                         name="receiveTime"
                         type="time"
@@ -340,6 +373,11 @@ export default function Reserv() {
                         onChange={formik.handleChange}
                         value={formik.values.receiveTime}
                       />
+                      {formik.errors.receiveTime && (
+                        <span className="reserv__input-error">
+                          {formik.errors.receiveTime}
+                        </span>
+                      )}
                     </div>
                     <sub className="switch__sub-title text_grey">
                       {t('місто, область, країна')}
@@ -357,6 +395,11 @@ export default function Reserv() {
                         onChange={formik.handleChange}
                         value={formik.values.returnDate}
                       />
+                      {formik.errors.returnDate && (
+                        <span className="reserv__input-error">
+                          {formik.errors.returnDate}
+                        </span>
+                      )}
                       <input
                         name="returnTime"
                         type="time"
@@ -364,6 +407,11 @@ export default function Reserv() {
                         onChange={formik.handleChange}
                         value={formik.values.returnTime}
                       />
+                      {formik.errors.returnTime && (
+                        <span className="reserv__input-error">
+                          {formik.errors.returnTime}
+                        </span>
+                      )}
                     </div>
                     <sub className="switch__sub-title text_grey">
                       {t('місто, область, країна')}
@@ -450,6 +498,11 @@ export default function Reserv() {
                       onChange={formik.handleChange}
                       value={formik.values.name}
                     />
+                    {formik.errors.name && (
+                      <span className="reserv__input-error">
+                        {formik.errors.name}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -464,6 +517,11 @@ export default function Reserv() {
                       onChange={formik.handleChange}
                       value={formik.values.phone}
                     />
+                    {formik.errors.phone && (
+                      <span className="reserv__input-error">
+                        {formik.errors.phone}
+                      </span>
+                    )}
                   </div>
                   <div className="col">
                     <input
@@ -475,6 +533,11 @@ export default function Reserv() {
                       onChange={formik.handleChange}
                       value={formik.values.email}
                     />
+                    {formik.errors.email && (
+                      <span className="reserv__input-error">
+                        {formik.errors.email}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -483,7 +546,7 @@ export default function Reserv() {
                     <textarea
                       name="comment"
                       className="input"
-                      placeholder={t('Коментар')}
+                      placeholder={t("Коментар (необов'язково)")}
                       onChange={formik.handleChange}
                       value={formik.values.comment}
                     />
