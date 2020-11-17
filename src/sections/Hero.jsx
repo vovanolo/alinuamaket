@@ -237,7 +237,7 @@ export default function Hero() {
                           />
                         </div>
                         <sub className="switch__sub-title text_grey">
-                          {t('місто, область, країна')}
+                          {t('дата та час')}
                         </sub>
                       </div>
 
@@ -263,7 +263,7 @@ export default function Hero() {
                           />
                         </div>
                         <sub className="switch__sub-title text_grey">
-                          {t('місто, область, країна')}
+                          {t('дата та час')}
                         </sub>
                       </div>
                     </div>

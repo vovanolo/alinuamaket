@@ -39,7 +39,10 @@ export default function FAQCard({ id, name, description }) {
         aria-labelledby={id}
         data-parent="#faqAccordion"
       >
-        <div className="card-body" dangerouslySetInnerHTML={{__html:description}} />
+        <div
+          className="card-body"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
     </div>
   );

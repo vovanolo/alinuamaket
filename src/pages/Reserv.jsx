@@ -380,7 +380,7 @@ export default function Reserv() {
                       )}
                     </div>
                     <sub className="switch__sub-title text_grey">
-                      {t('місто, область, країна')}
+                      {t('дата та час')}
                     </sub>
                   </div>
 
@@ -414,7 +414,7 @@ export default function Reserv() {
                       )}
                     </div>
                     <sub className="switch__sub-title text_grey">
-                      {t('місто, область, країна')}
+                      {t('дата та час')}
                     </sub>
                   </div>
                 </div>
@@ -546,7 +546,7 @@ export default function Reserv() {
                     <textarea
                       name="comment"
                       className="input"
-                      placeholder={t("Коментар (необов'язково)")}
+                      placeholder={t('Коментар')}
                       onChange={formik.handleChange}
                       value={formik.values.comment}
                     />

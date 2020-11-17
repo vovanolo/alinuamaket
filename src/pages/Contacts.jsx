@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Formik, Field, Form, MyText } from 'formik';
+import * as Yup from 'yup';
 
 import '../styles/contacts.css';
 
@@ -14,6 +15,12 @@ import { fetchContactsInfo } from '../utils/fetchContactsInfo';
 export default function Contacts() {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().min(2).required(),
+    email: Yup.string().email().required(),
+    comment: Yup.string().min(5),
+  });
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
@@ -156,6 +163,7 @@ export default function Contacts() {
                 email: '',
                 comment: '',
               }}
+              validationSchema={validationSchema}
               onSubmit={handleFormSubmit}
             >
               <Form>

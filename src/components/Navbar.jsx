@@ -6,6 +6,7 @@ import $ from 'jquery';
 import { Formik, Field, Form } from 'formik';
 import { HashLink } from 'react-router-hash-link';
 import { fetchCallBack } from '../utils/fetchCallBack';
+import * as Yup from 'yup';
 
 import {
   home,
@@ -68,6 +69,11 @@ export default function Navbar() {
   const navbar = useRef(null);
 
   const location = useLocation();
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().min(2).required(),
+    phone: Yup.string().min(2).required(),
+  });
 
   //#region effects
 
@@ -378,6 +384,7 @@ export default function Navbar() {
                 // email: '',
                 phone: '',
               }}
+              validationSchema={validationSchema}
               onSubmit={handleFormSubmit}
             >
               <Form>

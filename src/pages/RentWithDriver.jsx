@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
 
 import '../styles/rent_with_driver.css';
 import { fetchTransferPosts } from '../utils/fetchTransferPosts';
@@ -61,6 +62,18 @@ export default function RentWithDriver({ data }) {
       description: t('Виберіть клас автомобіля'),
     },
   ];
+  const validationSchema = Yup.object().shape({
+    fromLocation: Yup.string()
+      .min(2, t('Location must at least 2 characters long'))
+      .required(t('Location From is a required field')),
+    toLocation: Yup.string().min(2).required(),
+    date: Yup.string().min(2).required(),
+    time: Yup.string().min(2).required(),
+    name: Yup.string().min(2).required(),
+    phone: Yup.string().min(2).required(),
+    email: Yup.string().email().required(),
+    comment: Yup.string().min(5),
+  });
 
   return (
     <div>
@@ -108,6 +121,7 @@ export default function RentWithDriver({ data }) {
                     comment: '',
                   }}
                   onSubmit={handleFormSubmit}
+                  validationSchema={validationSchema}
                 >
                   <Form className="rent_form">
                     <button
@@ -161,6 +175,11 @@ export default function RentWithDriver({ data }) {
                             type="text"
                           />
                           <p>{t('місто, область, країна')}</p>
+                          {/* {validationSchema.errors.fromLocation && (
+                            <span className="reserv__input-error">
+                              {validationSchema.errors.fromLocation}
+                            </span>
+                          )} */}
                         </div>
                       </div>
                       <div className="col-md-6 mt-lg-0 mt-md-0 mt-sm-3 mt-3 d-flex flex-column justify-content-between">

@@ -9,9 +9,9 @@
 .card_back {
   background-color: #e0e0e0;
 }
-.card_height {
-  height: 40px;
-}
+/* .card_height {
+  max-height: 40px;
+} */
 
 .faq_section {
   margin-top: 150px;
