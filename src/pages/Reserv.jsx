@@ -294,60 +294,6 @@ export default function Reserv() {
                   <button
                     type="button"
                     className="switch__btn"
-                    onClick={handleLocationSwap}
-                  >
-                    <img src={circleSwitch} alt="switch icon" />
-                  </button>
-
-                  <div className="switch__box">
-                    <p className="switch__title text_grey">{t('від')}</p>
-                    <input
-                      name="locationFrom"
-                      type="text"
-                      className="switch__input"
-                      placeholder={t('Вкажіть локацію')}
-                      onChange={formik.handleChange}
-                      value={formik.values.locationFrom}
-                    />
-                    <sub className="switch__sub-title text_grey">
-                      {t('місто, область, країна')}
-                    </sub>
-                    {formik.errors.locationFrom && (
-                      <span className="reserv__input-error">
-                        {formik.errors.locationFrom}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="switch__box">
-                    <p className="switch__title text_grey">{t('до')}</p>
-                    <input
-                      name="locationTo"
-                      type="text"
-                      className="switch__input"
-                      placeholder={t('Вкажіть локацію')}
-                      onChange={formik.handleChange}
-                      value={formik.values.locationTo}
-                    />
-                    <sub className="switch__sub-title text_grey">
-                      {t('місто, область, країна')}
-                    </sub>
-                    {formik.errors.locationTo && (
-                      <span className="reserv__input-error">
-                        {formik.errors.locationTo}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col">
-                <div className="switch">
-                  <button
-                    type="button"
-                    className="switch__btn"
                     onClick={handleDateSwap}
                   >
                     <img src={circleSwitch} alt="switch icon" />
@@ -420,6 +366,60 @@ export default function Reserv() {
                     <sub className="switch__sub-title text_grey">
                       {t('дата та час')}
                     </sub>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col">
+                <div className="switch">
+                  <button
+                    type="button"
+                    className="switch__btn"
+                    onClick={handleLocationSwap}
+                  >
+                    <img src={circleSwitch} alt="switch icon" />
+                  </button>
+
+                  <div className="switch__box">
+                    <p className="switch__title text_grey">{t('від')}</p>
+                    <input
+                      name="locationFrom"
+                      type="text"
+                      className="switch__input"
+                      placeholder={t('Вкажіть локацію')}
+                      onChange={formik.handleChange}
+                      value={formik.values.locationFrom}
+                    />
+                    <sub className="switch__sub-title text_grey">
+                      {t('місто, область, країна')}
+                    </sub>
+                    {formik.errors.locationFrom && (
+                      <span className="reserv__input-error">
+                        {formik.errors.locationFrom}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="switch__box">
+                    <p className="switch__title text_grey">{t('до')}</p>
+                    <input
+                      name="locationTo"
+                      type="text"
+                      className="switch__input"
+                      placeholder={t('Вкажіть локацію')}
+                      onChange={formik.handleChange}
+                      value={formik.values.locationTo}
+                    />
+                    <sub className="switch__sub-title text_grey">
+                      {t('місто, область, країна')}
+                    </sub>
+                    {formik.errors.locationTo && (
+                      <span className="reserv__input-error">
+                        {formik.errors.locationTo}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>

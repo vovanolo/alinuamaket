@@ -25,6 +25,7 @@ import {
 import '../styles/navbar.css';
 
 import logo from '../images/Logo.png';
+import logoVectot from '../images/ALINbig.cdr';
 
 import Modal from './Modal';
 
@@ -183,6 +184,9 @@ export default function Navbar() {
   function toggleModal() {
     setModalVisible((prevState) => !prevState);
   }
+  // function clickReload() {
+  //   window.location.reload();
+  // }
 
   //#endregion
 

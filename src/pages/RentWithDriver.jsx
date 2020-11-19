@@ -163,48 +163,6 @@ export default function RentWithDriver({ data }) {
                           </div>
                         </div>
                       </div>
-                      <div className="row mt-3  d-flex justify-content-between">
-                        <div className="col-md-6">
-                          <div className="transf-location d-flex flex-column justify-content-between">
-                            <p>{t('від')}</p>
-                            <input
-                              name="fromLocation"
-                              placeholder={t('Вкажіть локацію')}
-                              className="transf_input rent_with_driver__input"
-                              type="text"
-                              onChange={props.handleChange}
-                              onBlur={props.handleBlur}
-                              value={props.values.fromLocation}
-                            />
-                            <p>{t('місто, область, країна')}</p>
-                            {props.errors.fromLocation && (
-                              <span className="reserv__input-error">
-                                {props.errors.fromLocation}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                        <div className="col-md-6 mt-lg-0 mt-md-0 mt-sm-3 mt-3 d-flex flex-column justify-content-between">
-                          <div className="transf-location d-flex flex-column justify-content-between">
-                            <p>{t('до')}</p>
-                            <input
-                              name="toLocation"
-                              placeholder={t('Вкажіть локацію')}
-                              className="transf_input rent_with_driver__input"
-                              type="text"
-                              onChange={props.handleChange}
-                              onBlur={props.handleBlur}
-                              value={props.values.toLocation}
-                            />
-                            <p>{t('місто, область, країна')}</p>
-                            {props.errors.toLocation && (
-                              <span className="reserv__input-error">
-                                {props.errors.toLocation}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
                       <div className="row mt-3">
                         {/* transf_date */}
                         <div className="col-12">
@@ -247,6 +205,48 @@ export default function RentWithDriver({ data }) {
                                 </label>
                               </div>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row mt-3  d-flex justify-content-between">
+                        <div className="col-md-6">
+                          <div className="transf-location d-flex flex-column justify-content-between">
+                            <p>{t('від')}</p>
+                            <input
+                              name="fromLocation"
+                              placeholder={t('Вкажіть локацію')}
+                              className="transf_input rent_with_driver__input"
+                              type="text"
+                              onChange={props.handleChange}
+                              onBlur={props.handleBlur}
+                              value={props.values.fromLocation}
+                            />
+                            <p>{t('місто, область, країна')}</p>
+                            {props.errors.fromLocation && (
+                              <span className="reserv__input-error">
+                                {props.errors.fromLocation}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="col-md-6 mt-lg-0 mt-md-0 mt-sm-3 mt-3 d-flex flex-column justify-content-between">
+                          <div className="transf-location d-flex flex-column justify-content-between">
+                            <p>{t('до')}</p>
+                            <input
+                              name="toLocation"
+                              placeholder={t('Вкажіть локацію')}
+                              className="transf_input rent_with_driver__input"
+                              type="text"
+                              onChange={props.handleChange}
+                              onBlur={props.handleBlur}
+                              value={props.values.toLocation}
+                            />
+                            <p>{t('місто, область, країна')}</p>
+                            {props.errors.toLocation && (
+                              <span className="reserv__input-error">
+                                {props.errors.toLocation}
+                              </span>
+                            )}
                           </div>
                         </div>
                       </div>

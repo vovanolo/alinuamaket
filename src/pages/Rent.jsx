@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import { fetchCarsData } from '../utils/fetchCarsData';
 import { fetchCategoriesData } from '../utils/fetchCategoriesData';
+import { fetchSeoLviv } from '../utils/fetchSeoLviv';
+
 import { useParams } from 'react-router-dom';
 
 import '../styles/rent_page.css';
@@ -15,6 +17,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 export default function Rent() {
   const [language, setLanguage] = useState('ua');
   const [cars, setCars] = useState([]);
+  const [seoRent, setSeoRent] = useState([]);
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(null);
   const [currentSorter, setCurrentSorter] = useState('');
@@ -33,7 +36,18 @@ export default function Rent() {
     fetchCarsData()
       .then((res) => setCars(res))
       .catch((err) => console.dir(err));
+    // if(params.city === )
+
+    // if (params.context.location.pathname === 'rent/lviv') {
+    // window.location.reload();
+    //   fetchSeoLviv(localStorage.getItem('lang'))
+    //     .then((res) => setSeoRent(res))
+    //     .catch((err) => console.dir(err));
+    // }
   }, []);
+  useEffect(() => {
+    // window.location.reload();
+  }, [params.city]);
 
   function changeLanguage(newLanguage) {
     const newLang = newLanguage;
@@ -182,6 +196,15 @@ export default function Rent() {
             )
           )}
         </div>
+        {seoRent && (
+          <div>
+            <h3 className="text-center mt-4">{seoRent.title}</h3>
+            <div
+              className="mt-3 mb-5"
+              dangerouslySetInnerHTML={{ __html: seoRent.content_html }}
+            ></div>
+          </div>
+        )}
       </div>
     </div>
   );
