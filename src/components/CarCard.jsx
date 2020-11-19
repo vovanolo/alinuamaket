@@ -22,6 +22,7 @@ export default function CarCard({
   deposit,
   photoUrl,
   slug,
+  city,
 }) {
   const [language, setLanguage] = useState('ua');
 
@@ -94,7 +95,12 @@ export default function CarCard({
         </div>
         <div className="col-lg-6">
           <Link
-            to={`${urls.reserv}/${slug}`}
+            to={{
+              pathname: `${urls.reserv}/${slug}`,
+              state: {
+                city: city,
+              },
+            }}
             className="btn_main btn_slim mb-0"
           >
             {t('Бронювати')}

@@ -1,7 +1,7 @@
 .rent_with_driver {
   /* margin-top: 150px; */
   min-height: 768px;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url('../images/benz.png');
   background-size: cover;
   position: relative;

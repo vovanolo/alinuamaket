@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
+import $ from 'jquery';
 
 import '../styles/rent_with_driver.css';
 import { fetchTransferPosts } from '../utils/fetchTransferPosts';
@@ -40,9 +41,10 @@ export default function RentWithDriver({ data }) {
 
   function handleFormSubmit(values) {
     console.log(values);
-    fetchTransferOrder(values).then((res) =>
-      console.log('Server Response', res)
-    );
+    fetchTransferOrder(values).then((res) => {
+      console.log('Server Response', res);
+      $('#transferModal').modal('show');
+    });
   }
 
   const loyaltyCardsData = [
@@ -123,156 +125,213 @@ export default function RentWithDriver({ data }) {
                   onSubmit={handleFormSubmit}
                   validationSchema={validationSchema}
                 >
-                  <Form className="rent_form">
-                    <button
-                      data-toggle="modal"
-                      data-target="#staticBackdrop"
-                      type="submit submit_color-red"
-                    >
-                      {t('Бронювати')}
-                    </button>
-                    <div className="row">
-                      <div className="col-12">
-                        <div className="input_radio_transfer">
-                          <input
-                            id="rent_with_driver_radio"
-                            className="visually-hidden"
-                            name="transfer"
-                            type="radio"
-                            defaultChecked
-                          />
-                          <label
-                            className="transf_border mr-3 text-white"
-                            htmlFor="rent_with_driver_radio"
-                          >
-                            {t('Трансфер')}
-                          </label>
-                        </div>
-                        <div className="input_radio_transfer">
-                          <input
-                            id="rent_with_driver_radio_hours"
-                            className="visually-hidden"
-                            name="transfer"
-                            type="radio"
-                          />
-                          <label
-                            className="transf_border text-white"
-                            htmlFor="rent_with_driver_radio_hours"
-                          >
-                            {t('Погодинно')}
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row mt-3  d-flex justify-content-between">
-                      <div className="col-md-6">
-                        <div className="transf-location d-flex flex-column justify-content-between">
-                          <p>{t('від')}</p>
-                          <Field
-                            name="fromLocation"
-                            placeholder={t('Вкажіть локацію')}
-                            className="transf_input rent_with_driver__input"
-                            type="text"
-                          />
-                          <p>{t('місто, область, країна')}</p>
-                          {/* {validationSchema.errors.fromLocation && (
-                            <span className="reserv__input-error">
-                              {validationSchema.errors.fromLocation}
-                            </span>
-                          )} */}
-                        </div>
-                      </div>
-                      <div className="col-md-6 mt-lg-0 mt-md-0 mt-sm-3 mt-3 d-flex flex-column justify-content-between">
-                        <div className="transf-location d-flex flex-column justify-content-between">
-                          <p>{t('до')}</p>
-                          <Field
-                            name="toLocation"
-                            placeholder={t('Вкажіть локацію')}
-                            className="transf_input rent_with_driver__input"
-                            type="text"
-                          />
-                          <p>{t('місто, область, країна')}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row mt-3">
-                      {/* transf_date */}
-                      <div className="col-12">
-                        <div className="transf_date">
-                          <div className="row">
-                            <div className="col-lg-5 mb-md-3 mb-lg-0">
-                              <label className="transf-date__input">
-                                <p>{t('Дата')}</p>
-                                <Field
-                                  name="date"
-                                  type="date"
-                                  className="transf_time_input rent_with_driver__input"
-                                />
-                              </label>
-                            </div>
-                            <div className="col-lg-5 offset-lg-2 transf_date-input">
-                              <label className="transf-date__input">
-                                <p>{t('Час')}</p>
-                                <Field
-                                  name="time"
-                                  type="time"
-                                  className="transf_time_input rent_with_driver__input"
-                                />
-                              </label>
-                            </div>
+                  {(props) => (
+                    <form onSubmit={props.handleSubmit} className="rent_form">
+                      <button type="submit submit_color-red">
+                        {t('Бронювати')}
+                      </button>
+                      <div className="row">
+                        <div className="col-12">
+                          <div className="input_radio_transfer">
+                            <input
+                              id="rent_with_driver_radio"
+                              className="visually-hidden"
+                              name="transfer"
+                              type="radio"
+                              defaultChecked
+                            />
+                            <label
+                              className="transf_border mr-3 text-white"
+                              htmlFor="rent_with_driver_radio"
+                            >
+                              {t('Трансфер')}
+                            </label>
+                          </div>
+                          <div className="input_radio_transfer">
+                            <input
+                              id="rent_with_driver_radio_hours"
+                              className="visually-hidden"
+                              name="transfer"
+                              type="radio"
+                            />
+                            <label
+                              className="transf_border text-white"
+                              htmlFor="rent_with_driver_radio_hours"
+                            >
+                              {t('Погодинно')}
+                            </label>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col">
-                        <div className="form-row mb-3 mt-3">
-                          <div className="col">
-                            <Field
-                              required
-                              name="name"
-                              className="input rent_with_driver__input"
+                      <div className="row mt-3  d-flex justify-content-between">
+                        <div className="col-md-6">
+                          <div className="transf-location d-flex flex-column justify-content-between">
+                            <p>{t('від')}</p>
+                            <input
+                              name="fromLocation"
+                              placeholder={t('Вкажіть локацію')}
+                              className="transf_input rent_with_driver__input"
                               type="text"
-                              placeholder={t('Вкажіть імя')}
+                              onChange={props.handleChange}
+                              onBlur={props.handleBlur}
+                              value={props.values.fromLocation}
                             />
+                            <p>{t('місто, область, країна')}</p>
+                            {props.errors.fromLocation && (
+                              <span className="reserv__input-error">
+                                {props.errors.fromLocation}
+                              </span>
+                            )}
                           </div>
                         </div>
-
-                        <div className="form-row mb-3">
-                          <div className="col">
-                            <Field
-                              required
-                              name="phone"
-                              className="input rent_with_driver__input"
-                              type="tel"
-                              placeholder={t('Вкажіть телефон')}
+                        <div className="col-md-6 mt-lg-0 mt-md-0 mt-sm-3 mt-3 d-flex flex-column justify-content-between">
+                          <div className="transf-location d-flex flex-column justify-content-between">
+                            <p>{t('до')}</p>
+                            <input
+                              name="toLocation"
+                              placeholder={t('Вкажіть локацію')}
+                              className="transf_input rent_with_driver__input"
+                              type="text"
+                              onChange={props.handleChange}
+                              onBlur={props.handleBlur}
+                              value={props.values.toLocation}
                             />
-                          </div>
-                          <div className="col">
-                            <Field
-                              required
-                              name="email"
-                              className="input rent_with_driver__input"
-                              type="email"
-                              placeholder={t('Вкажіть email')}
-                            />
-                          </div>
-                        </div>
-
-                        <div className="form-row">
-                          <div className="col">
-                            <Field
-                              as="textarea"
-                              type="textarea"
-                              name="comment"
-                              className="input rent_with_driver__input"
-                              placeholder={t('Коментар')}
-                            />
+                            <p>{t('місто, область, країна')}</p>
+                            {props.errors.toLocation && (
+                              <span className="reserv__input-error">
+                                {props.errors.toLocation}
+                              </span>
+                            )}
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </Form>
+                      <div className="row mt-3">
+                        {/* transf_date */}
+                        <div className="col-12">
+                          <div className="transf_date">
+                            <div className="row">
+                              <div className="col-lg-5 mb-md-3 mb-lg-0">
+                                <label className="transf-date__input">
+                                  <p>{t('Дата')}</p>
+                                  <input
+                                    name="date"
+                                    type="date"
+                                    className="transf_time_input rent_with_driver__input"
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={props.values.date}
+                                  />
+                                  {props.errors.date && (
+                                    <span className="reserv__input-error">
+                                      {props.errors.date}
+                                    </span>
+                                  )}
+                                </label>
+                              </div>
+                              <div className="col-lg-5 offset-lg-2 transf_date-input">
+                                <label className="transf-date__input">
+                                  <p>{t('Час')}</p>
+                                  <input
+                                    name="time"
+                                    type="time"
+                                    className="transf_time_input rent_with_driver__input"
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={props.values.time}
+                                  />
+                                  {props.errors.time && (
+                                    <span className="reserv__input-error">
+                                      {props.errors.time}
+                                    </span>
+                                  )}
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col">
+                          <div className="form-row mb-3 mt-3">
+                            <div className="col">
+                              <input
+                                required
+                                name="name"
+                                className="input rent_with_driver__input"
+                                type="text"
+                                placeholder={t('Вкажіть імя')}
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.name}
+                              />
+                              {props.errors.name && (
+                                <span className="reserv__input-error">
+                                  {props.errors.name}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="form-row mb-3">
+                            <div className="col">
+                              <input
+                                required
+                                name="phone"
+                                className="input rent_with_driver__input"
+                                type="tel"
+                                placeholder={t('Вкажіть телефон')}
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.phone}
+                              />
+                              {props.errors.phone && (
+                                <span className="reserv__input-error">
+                                  {props.errors.phone}
+                                </span>
+                              )}
+                            </div>
+                            <div className="col">
+                              <input
+                                required
+                                name="email"
+                                className="input rent_with_driver__input"
+                                type="email"
+                                placeholder={t('Вкажіть email')}
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.email}
+                              />
+                              {props.errors.email && (
+                                <span className="reserv__input-error">
+                                  {props.errors.email}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="form-row">
+                            <div className="col">
+                              <textarea
+                                as="textarea"
+                                type="textarea"
+                                name="comment"
+                                className="input rent_with_driver__input"
+                                placeholder={t('Коментар')}
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.comment}
+                              />
+                              {props.errors.comment && (
+                                <span className="reserv__input-error">
+                                  {props.errors.comment}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  )}
                 </Formik>
               </div>
             </div>
@@ -339,7 +398,7 @@ export default function RentWithDriver({ data }) {
       </div>
       <div
         className="modal fade"
-        id="staticBackdrop"
+        id="transferModal"
         data-backdrop="static"
         data-keyboard="false"
         tabIndex="-1"

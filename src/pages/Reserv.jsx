@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import * as urls from '../urls';
@@ -42,6 +42,7 @@ export default function Reserv() {
   const [pledgeValue, setPledgeValue] = useState(0);
 
   const { t, i18n } = useTranslation();
+  const location = useLocation();
   const history = useHistory();
   const { slug } = useParams();
   const [data, setData] = useContext(FormContext);
@@ -248,7 +249,10 @@ export default function Reserv() {
       extras: extras,
       price,
       selectedCar: selectedCar.slug,
+      image: selectedCar.photo.path,
+      city: location.state.city,
     };
+    console.log(requestData);
 
     setData(requestData);
     fetchRentInfo(requestData).then((res) =>

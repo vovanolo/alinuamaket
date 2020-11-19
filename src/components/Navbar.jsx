@@ -387,35 +387,44 @@ export default function Navbar() {
               validationSchema={validationSchema}
               onSubmit={handleFormSubmit}
             >
-              <Form>
-                <div className="card">
-                  <div className="modal-header">
-                    <h5 className="modal-title">
-                      {t('Залиште свій номер і ми вам зателефонуємо!')}
-                    </h5>
-                    <button
-                      type="button"
-                      className="close"
-                      aria-label="Close"
-                      onClick={toggleModal}
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col">
-                        <label className="w-100">
-                          <Field
-                            type="text"
-                            name="name"
-                            placeholder={t('Вкажіть імя')}
-                            className="input"
-                          />
-                        </label>
-                      </div>
+              {(props) => (
+                <form onSubmit={props.handleSubmit}>
+                  <div className="card">
+                    <div className="modal-header">
+                      <h5 className="modal-title">
+                        {t('Залиште свій номер і ми вам зателефонуємо!')}
+                      </h5>
+                      <button
+                        type="button"
+                        className="close"
+                        aria-label="Close"
+                        onClick={toggleModal}
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
-                    {/* <div className="row">
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col">
+                          <label className="w-100">
+                            <input
+                              type="text"
+                              name="name"
+                              placeholder={t('Вкажіть імя')}
+                              className="input"
+                              onChange={props.handleChange}
+                              onBlur={props.handleBlur}
+                              value={props.values.name}
+                            />
+                            {props.errors.name && (
+                              <span className="reserv__input-error">
+                                {props.errors.name}
+                              </span>
+                            )}
+                          </label>
+                        </div>
+                      </div>
+                      {/* <div className="row">
                       <div className="col">
                         <label className="w-100">
                           <Field
@@ -427,47 +436,56 @@ export default function Navbar() {
                         </label>
                       </div>
                     </div> */}
-                    <div className="row">
-                      <div className="col">
-                        <label className="w-100">
-                          <Field
-                            type="tel"
-                            name="phone"
-                            placeholder={t('Вкажіть телефон')}
-                            className="input"
-                          />
-                        </label>
+                      <div className="row">
+                        <div className="col">
+                          <label className="w-100">
+                            <input
+                              type="tel"
+                              name="phone"
+                              placeholder={t('Вкажіть телефон')}
+                              className="input"
+                              onChange={props.handleChange}
+                              onBlur={props.handleBlur}
+                              value={props.values.phone}
+                            />
+                            {props.errors.phone && (
+                              <span className="reserv__input-error">
+                                {props.errors.phone}
+                              </span>
+                            )}
+                          </label>
+                        </div>
                       </div>
                     </div>
+                    <div className="card-footer">
+                      {!success && (
+                        <button
+                          type="submit"
+                          className="btn_main"
+                          disabled={isLoading}
+                        >
+                          {isLoading && (
+                            <>
+                              <span
+                                className="spinner-border spinner-border-sm mr-1"
+                                role="status"
+                                aria-hidden="true"
+                              ></span>
+                              Loading...
+                            </>
+                          )}
+                          {!isLoading && !error && t('Відправити')}
+                        </button>
+                      )}
+                      {!isLoading && !error && success && (
+                        <div className="alert alert-success" role="alert">
+                          {t('Відправлено')}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className="card-footer">
-                    {!success && (
-                      <button
-                        type="submit"
-                        className="btn_main"
-                        disabled={isLoading}
-                      >
-                        {isLoading && (
-                          <>
-                            <span
-                              className="spinner-border spinner-border-sm mr-1"
-                              role="status"
-                              aria-hidden="true"
-                            ></span>
-                            Loading...
-                          </>
-                        )}
-                        {!isLoading && !error && t('Відправити')}
-                      </button>
-                    )}
-                    {!isLoading && !error && success && (
-                      <div className="alert alert-success" role="alert">
-                        {t('Відправлено')}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </Form>
+                </form>
+              )}
             </Formik>
           </div>
         </Modal>

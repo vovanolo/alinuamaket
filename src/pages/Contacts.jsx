@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Formik, Field, Form, MyText } from 'formik';
 import * as Yup from 'yup';
+import $ from 'jquery';
 
 import '../styles/contacts.css';
 
@@ -34,9 +35,10 @@ export default function Contacts() {
   }
 
   function handleFormSubmit(values, { resetForm }) {
-    fetchContactsInfo(values).then((res) =>
-      console.log('Server Response', res)
-    );
+    fetchContactsInfo(values).then((res) => {
+      console.log('Server Response', res);
+      $('#contactsModal').modal('show');
+    });
 
     resetForm({
       name: '',
@@ -166,49 +168,69 @@ export default function Contacts() {
               validationSchema={validationSchema}
               onSubmit={handleFormSubmit}
             >
-              <Form>
-                <h3>{t("Зв'язатись з нами")}</h3>
-                <Field
-                  required
-                  type="text"
-                  name="name"
-                  placeholder={t('Вкажіть імя')}
-                  className="input mt-2"
-                />
-                <Field
-                  required
-                  type="email"
-                  name="email"
-                  placeholder={t('Вкажіть email')}
-                  className="input mt-2"
-                />
-                <Field
-                  as="textarea"
-                  name="comment"
-                  className="input mt-2"
-                  placeholder={t('Коментар')}
-                />
+              {(props) => (
+                <form onSubmit={props.handleSubmit}>
+                  <h3>{t("Зв'язатись з нами")}</h3>
+                  <input
+                    required
+                    type="text"
+                    name="name"
+                    placeholder={t('Вкажіть імя')}
+                    className="input mt-2"
+                    onChange={props.handleChange}
+                    onBlur={props.handleBlur}
+                    value={props.values.name}
+                  />
+                  {props.errors.name && (
+                    <span className="reserv__input-error">
+                      {props.errors.name}
+                    </span>
+                  )}
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    placeholder={t('Вкажіть email')}
+                    className="input mt-2"
+                    onChange={props.handleChange}
+                    onBlur={props.handleBlur}
+                    value={props.values.email}
+                  />
+                  {props.errors.email && (
+                    <span className="reserv__input-error">
+                      {props.errors.email}
+                    </span>
+                  )}
+                  <textarea
+                    name="comment"
+                    className="input mt-2"
+                    placeholder={t('Коментар')}
+                    onChange={props.handleChange}
+                    onBlur={props.handleBlur}
+                    value={props.values.comment}
+                  />
+                  {props.errors.comment && (
+                    <span className="reserv__input-error">
+                      {props.errors.comment}
+                    </span>
+                  )}
 
-                <div className="row mt-2">
-                  <div className="col-lg-4">
-                    <button
-                      data-toggle="modal"
-                      data-target="#staticBackdrop"
-                      type="submit"
-                      className="btn_main"
-                    >
-                      {t('Надіслати')}
-                    </button>
+                  <div className="row mt-2">
+                    <div className="col-lg-4">
+                      <button type="submit" className="btn_main">
+                        {t('Надіслати')}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </Form>
+                </form>
+              )}
             </Formik>
           </div>
         </div>
       </div>
       <div
         className="modal fade"
-        id="staticBackdrop"
+        id="contactsModal"
         data-backdrop="static"
         data-keyboard="false"
         tabIndex="-1"

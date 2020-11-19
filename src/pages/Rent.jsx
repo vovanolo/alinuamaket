@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { fetchCarsData } from '../utils/fetchCarsData';
 import { fetchCategoriesData } from '../utils/fetchCategoriesData';
+import { useParams } from 'react-router-dom';
 
 import '../styles/rent_page.css';
 
@@ -19,6 +20,7 @@ export default function Rent() {
   const [currentSorter, setCurrentSorter] = useState('');
 
   const { t, i18n } = useTranslation();
+  const params = useParams();
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
@@ -175,6 +177,7 @@ export default function Rent() {
                 dayPrice={Math.round(price / 31)}
                 photoUrl={photo}
                 slug={slug}
+                city={params.city}
               />
             )
           )}
