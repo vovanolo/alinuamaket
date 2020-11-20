@@ -72,7 +72,7 @@ export default function RentWithDriver({ data }) {
     date: Yup.string().min(2).required(),
     time: Yup.string().min(2).required(),
     name: Yup.string().min(2).required(),
-    phone: Yup.string().min(2).required(),
+    phone: Yup.string().min(10).required(),
     email: Yup.string().email().required(),
     comment: Yup.string().min(5),
   });

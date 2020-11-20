@@ -49,14 +49,14 @@ export default function Summary() {
 
   return (
     <div className="navbar-offset">
-      <div className="container">
-        <div className="row">
+      <div className="container justify-content-center">
+        <div className="row justify-content-center">
           <div className="col-md-6 text-center color_result-red">
             <h4>{t('Заявка успішно відправлена')}</h4>
             <h4>{t('Дякуємо за замовлення')}</h4>
           </div>
         </div>
-        <div className="row mt-3">
+        <div className="row mt-3 justify-content-center">
           <div className="col-md-6">
             <h5>{t('Інформація про замовлення')}</h5>
             {carData && (
@@ -79,12 +79,12 @@ export default function Summary() {
             <p></p>
             <hr />
             <p>
-              {t('Отримання')}: <span>{data.receiveDate}</span> о
+              {t('від')}: <span>{data.receiveDate}</span> о
               <span> {data.receiveTime}</span>, {t('місто')}
               <span> {data.locationFrom}</span>
             </p>
             <p>
-              {t('Повернення')}: <span>{data.returnDate}</span> о
+              {t('до')}: <span>{data.returnDate}</span> о
               <span> {data.returnTime}</span>, {t('місто')}
               <span> {data.locationTo}</span>
             </p>
@@ -101,8 +101,8 @@ export default function Summary() {
             </p>
           </div>
         </div>
-        <div className="row mt-3 mb-3">
-          <div className="col-md-3">
+        <div className="row mt-3 mb-3 justify-content-center">
+          <div className="col-md-6">
             <Link to={urls.home} className="btn_main">
               {t('На головну')}
             </Link>

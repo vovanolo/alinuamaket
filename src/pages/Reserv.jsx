@@ -80,7 +80,7 @@ export default function Reserv() {
     returnTime: Yup.string().min(2).required(),
     extras: Yup.array(),
     name: Yup.string().min(2).required(),
-    phone: Yup.string().min(2).required(),
+    phone: Yup.string().min(10).required(),
     email: Yup.string().email().required(),
     comment: Yup.string().min(5),
     agreeWithTerms: Yup.bool(),

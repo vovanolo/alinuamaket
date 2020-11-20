@@ -33,7 +33,7 @@ export default function AllAdditionalOptions() {
 
   return (
     <div className="navbar-offset" style={{ minHeight: 'calc(100vh - 390px)' }}>
-      <div className="container">
+      <div className="container mb-5">
         <div className="row">
           <div className="col">
             <h2 className="news-title offset-dis_able">

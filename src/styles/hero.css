@@ -85,6 +85,8 @@
   animation-duration: 20s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  /* font-size: 45px; */
+  /* text-emphasis: wrap; */
 }
 
 .item-1 {
@@ -146,5 +148,12 @@
 @media (max-width: 990px) {
   #heroReservForm {
     opacity: 0.7;
+  }
+}
+@media (max-width: 556px) {
+  .item-1,
+  .item-2,
+  .item-3 {
+    font-size: 40px;
   }
 }

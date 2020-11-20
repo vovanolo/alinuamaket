@@ -25,7 +25,7 @@ import {
 import '../styles/navbar.css';
 
 import logo from '../images/Logo.png';
-import logoVectot from '../images/ALINbig.cdr';
+import logoNew from '../images/alin-logo.svg';
 
 import Modal from './Modal';
 
@@ -73,7 +73,7 @@ export default function Navbar() {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(2).required(),
-    phone: Yup.string().min(2).required(),
+    phone: Yup.string().min(10).required(),
   });
 
   //#region effects
@@ -209,7 +209,7 @@ export default function Navbar() {
       >
         <div className="container">
           <Link to={home} className="navbar-brand">
-            <img src={logo} alt="Alin logo" />
+            <img width="78" height="49" src={logoNew} alt="Alin logo" />
           </Link>
           <button
             className="navbar-toggler"

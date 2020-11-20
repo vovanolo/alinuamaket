@@ -24,9 +24,11 @@ import '../styles/footer-media.css';
 import { insta } from '../urls';
 
 import logo from '../images/Logo.png';
-import facebook from '../images/facebook.svg';
-import instagram from '../images/instagram.svg';
-import mail from '../images/mail.svg';
+import logoNew from '../images/alin-logo.svg';
+
+import facebook from '../images/facebook-logo.svg';
+import instagram from '../images/instagram-logo.svg';
+import mail from '../images/email-logo.svg';
 import goUp from '../images/go_up.svg';
 
 import map from '../images/map-pin.svg';
@@ -80,7 +82,7 @@ export default function Footer() {
         <div className="row align-items-center">
           <div className="col-xl-2 col-lg-2 col-12">
             <Link to="/" className="footer__logo">
-              <img src={logo} alt="Alin logo" />
+              <img width="78" height="49" src={logoNew} alt="Alin logo" />
             </Link>
           </div>
           <div className="col-xl-8 col-lg-7 col-12">
@@ -180,7 +182,7 @@ export default function Footer() {
                   rel="noreferrer noopener"
                   href="https://www.facebook.com/1678443565589651/"
                 >
-                  <img src={facebook} alt="Facebook" />
+                  <img width="21" height="21" src={facebook} alt="Facebook" />
                 </a>
               </li>
               <li className="footer__social-item">
@@ -189,7 +191,7 @@ export default function Footer() {
                   rel="noreferrer noopener"
                   href="https://instagram.com/alin_services_for_you?igshid=12br995xgk9tr"
                 >
-                  <img src={instagram} alt="Instagram" />
+                  <img width="21" height="21" src={instagram} alt="Instagram" />
                 </a>
               </li>
               <li className="footer__social-item">
@@ -198,7 +200,7 @@ export default function Footer() {
                   rel="noreferrer noopener"
                   href="mailto:alin.lviv@gmail.com"
                 >
-                  <img src={mail} alt="Mail" />
+                  <img width="21" height="21" src={mail} alt="Mail" />
                 </a>
               </li>
             </ul>
