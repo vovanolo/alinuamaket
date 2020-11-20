@@ -134,7 +134,7 @@
 }
 
 [type='time']::-webkit-calendar-picker-indicator {
-  background: transparent url(../images/rent_with_driver/time.svg) 97% 50%
+  background: transparent url(../images/rent_with_driver/time.svg) 10% 10%
     no-repeat;
 }
 

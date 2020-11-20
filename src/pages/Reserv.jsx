@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 
@@ -68,6 +69,9 @@ export default function Reserv() {
       value: t('Додатковий водій'),
     },
   ];
+
+  const day = t('day');
+  const days = t('days');
 
   const validationSchema = Yup.object().shape({
     locationFrom: Yup.string()
@@ -608,27 +612,27 @@ export default function Reserv() {
             {formik.values.extras.length > 0 && <hr />}
 
             <div className="row">
-              <div className="col-lg-8">
+              <div className="col-lg-10">
                 <p>
-                  <b>Receive: </b>
+                  <b>{t('від')}:</b>
                   {formik.values.receiveDate} o {formik.values.receiveTime}
                   <br />
                   {formik.values.locationFrom}
                 </p>
                 <p>
-                  <b>Return: </b>
+                  <b>{t('до')}:</b>
                   {formik.values.returnDate} o {formik.values.returnTime}
                   <br />
                   {formik.values.locationTo}
                 </p>
               </div>
-              <div className="col-lg-4 text-right">
+              <div className="col-lg-2 text-right">
                 <span>
                   <span className="rent-days">{rentDays}</span>
                   <span>
                     {rentDays.toString().endsWith(1) && rentDays !== 11
-                      ? 'day'
-                      : 'days'}
+                      ? day
+                      : days}
                   </span>
                 </span>
               </div>
@@ -659,10 +663,16 @@ export default function Reserv() {
                     checked={formik.values.agreeWithTerms}
                   />
                 </label>
+                <Link
+                  to={'/rent_conditions'}
+                  className="reserv__agreement-text"
+                >
+                  {'Ознайомитись з умовами прокату'}
+                </Link>
               </div>
             </div>
 
-            <div className="row mb-4">
+            <div className="row mt-3 mb-4">
               <div className="col-md-10">
                 <button
                   disabled={!formik.values.agreeWithTerms}
