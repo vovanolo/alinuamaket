@@ -144,7 +144,14 @@ export default function Reserv() {
   }, [language]);
 
   useEffect(() => {
-    const { receiveDate, returnDate } = formik.values;
+    const { receiveDate, returnDate, receiveTime, returnTime } = formik.values;
+
+    const receiveTimeHours = new Date(
+      new Date().setHours(receiveTime.split(':')[0])
+    ).getHours();
+    const returnTimeHours = new Date(
+      new Date().setHours(returnTime.split(':')[0])
+    ).getHours();
 
     if (!(receiveDate && returnDate)) return;
 
@@ -153,11 +160,16 @@ export default function Reserv() {
 
     handleExtrasPriceSet();
 
-    setRentDays(
+    let days =
       newRentDays / (1000 * 3600 * 24) < 1
         ? 1
-        : newRentDays / (1000 * 3600 * 24)
-    );
+        : newRentDays / (1000 * 3600 * 24);
+
+    if (returnTimeHours > receiveTimeHours && receiveDate !== returnDate) {
+      days += 1;
+    }
+
+    setRentDays(days);
   }, [formik.values]);
 
   useEffect(() => {
@@ -234,8 +246,8 @@ export default function Reserv() {
             ...value1,
             displayPrice:
               value1.type === ExtrasType.perDay
-                ? value1.price * rentDays
-                : value1.price,
+                ? clamp(value1.price * rentDays, 0, 40)
+                : clamp(value1.price, 0, 40),
           };
           newValues = [...acc, newValue];
         }
@@ -245,6 +257,16 @@ export default function Reserv() {
     }, []);
 
     setExtras(extrasPrices);
+  }
+
+  function clamp(value, min, max) {
+    if (value < min) {
+      return min;
+    } else if (value > max) {
+      return max;
+    } else {
+      return value;
+    }
   }
 
   function handleFormSubmit(values) {
