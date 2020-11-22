@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { fetchCarsData } from '../utils/fetchCarsData';
 import { fetchCategoriesData } from '../utils/fetchCategoriesData';
-import { fetchSeoLviv } from '../utils/fetchSeoLviv';
+import { fetchCitySeo } from '../utils/fetchCitySeo';
 
 import { useParams } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 export default function Rent() {
   const [language, setLanguage] = useState('ua');
   const [cars, setCars] = useState([]);
-  const [seoRent, setSeoRent] = useState([]);
+  const [cityInfo, setCityInfo] = useState(null);
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(null);
   const [currentSorter, setCurrentSorter] = useState('');
@@ -33,21 +33,21 @@ export default function Rent() {
   }, [language]);
 
   useEffect(() => {
-    fetchCarsData()
-      .then((res) => setCars(res))
-      .catch((err) => console.dir(err));
-    // if(params.city === )
+    setCityInfo(null);
 
-    // if (params.context.location.pathname === 'rent/lviv') {
-    // window.location.reload();
-    //   fetchSeoLviv(localStorage.getItem('lang'))
-    //     .then((res) => setSeoRent(res))
-    //     .catch((err) => console.dir(err));
-    // }
-  }, []);
-  useEffect(() => {
-    // window.location.reload();
-  }, [params.city]);
+    if (params.city) {
+      fetchCitySeo(params.city, language)
+        .then((res) => {
+          setCars(res.cars);
+          setCityInfo(res.citi);
+        })
+        .catch((err) => console.dir(err));
+    } else {
+      fetchCarsData()
+        .then((res) => setCars(res))
+        .catch((err) => console.dir(err));
+    }
+  }, [params, language]);
 
   function changeLanguage(newLanguage) {
     const newLang = newLanguage;
@@ -196,12 +196,12 @@ export default function Rent() {
             )
           )}
         </div>
-        {seoRent && (
+        {cityInfo && (
           <div>
-            <h3 className="text-center mt-4">{seoRent.title}</h3>
+            <h3 className="text-center mt-4">{cityInfo.title}</h3>
             <div
               className="mt-3 mb-5"
-              dangerouslySetInnerHTML={{ __html: seoRent.content_html }}
+              dangerouslySetInnerHTML={{ __html: cityInfo.seo_text }}
             ></div>
           </div>
         )}

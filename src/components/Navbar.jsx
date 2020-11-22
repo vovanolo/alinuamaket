@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import $ from 'jquery';
-import { Formik, Field, Form } from 'formik';
-import { HashLink } from 'react-router-hash-link';
-import { fetchCallBack } from '../utils/fetchCallBack';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
+
+import { fetchCallBack } from '../utils/fetchCallBack';
+import { fetchAllCities } from '../utils/fetchAllCities';
 
 import {
   home,
@@ -24,7 +25,6 @@ import {
 
 import '../styles/navbar.css';
 
-import logo from '../images/Logo.png';
 import logoNew from '../images/alin-logo.svg';
 
 import Modal from './Modal';
@@ -64,6 +64,7 @@ export default function Navbar() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [cities, setCities] = useState([]);
 
   const { t, i18n } = useTranslation();
 
@@ -92,6 +93,10 @@ export default function Navbar() {
       $('#mainNavbar').off('hide.bs.collapse');
     };
   }, []);
+
+  useEffect(() => {
+    fetchAllCities(language).then((res) => setCities(res));
+  }, [language]);
 
   useEffect(() => {
     currentUrl = location.pathname;
@@ -171,6 +176,7 @@ export default function Navbar() {
       console.log(res);
     });
 
+    // Good comment
     // setTimeout(() => {
     //   setIsLoading(false);
     //   setSuccess(true);
@@ -243,18 +249,15 @@ export default function Navbar() {
                   {t('Прокат')}
                 </button>
                 <div className="dropdown-menu">
-                  <Link to={`${rent}/lviv`} className="dropdown-item">
-                    {t('Прокат авто Львів')}
-                  </Link>
-                  <Link to={`${rent}/kyiv`} className="dropdown-item">
-                    {t('Прокат авто Київ')}
-                  </Link>
-                  <Link to={`${rent}/kharkiv`} className="dropdown-item">
-                    {t('Прокат авто Харків')}
-                  </Link>
-                  <Link to={`${rent}/ivano_fankivsk`} className="dropdown-item">
-                    {t('Прокат авто Івано-Франківськ')}
-                  </Link>
+                  {cities.map((city) => (
+                    <Link
+                      key={city.id}
+                      to={`${rent}/${city.slug}`}
+                      className="dropdown-item"
+                    >
+                      {t(`Прокат авто`)} {city.title}
+                    </Link>
+                  ))}
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">

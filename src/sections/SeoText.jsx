@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { fetchSeoText } from '../utils/fetchSeoText';
+
 let mounted = true;
 
 export default function SeoText() {
