@@ -24,7 +24,7 @@ import PriceFixed from '../components/PriceFixed';
 const initialDateFormatted = `${new Date().getFullYear()}-${
   new Date().getMonth().toString().length < 2
     ? '0' + (new Date().getMonth() + 1).toString()
-    : new Date().getMonth()
+    : new Date().getMonth() + 1
 }-${
   new Date().getDate().toString().length < 2
     ? '0' + new Date().getDate()
