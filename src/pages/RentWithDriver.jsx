@@ -132,7 +132,7 @@ export default function RentWithDriver({ data }) {
                       </button>
                       <div className="row">
                         <div className="col-12">
-                          <div className="input_radio_transfer">
+                          {/* <div className="input_radio_transfer">
                             <input
                               id="rent_with_driver_radio"
                               className="visually-hidden"
@@ -146,8 +146,8 @@ export default function RentWithDriver({ data }) {
                             >
                               {t('Трансфер')}
                             </label>
-                          </div>
-                          <div className="input_radio_transfer">
+                          </div> */}
+                          {/* <div className="input_radio_transfer">
                             <input
                               id="rent_with_driver_radio_hours"
                               className="visually-hidden"
@@ -160,7 +160,7 @@ export default function RentWithDriver({ data }) {
                             >
                               {t('Погодинно')}
                             </label>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                       <div className="row mt-3">
@@ -371,18 +371,21 @@ export default function RentWithDriver({ data }) {
               } else {
                 return (
                   <div key={slug} className="row mb-5 mt-5">
-                    <div className="col-md-6">
+                    <div className="col-md-6 order-md-1 order-2">
                       <h3 className="mb-1">{title}</h3>
                       <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
                       <div className="row mt-3">
                         <div className="col-lg-6">
-                          <Link className="btn_main btn_slim">
+                          <Link
+                            to={`${transferInfo}/${slug}`}
+                            className="btn_main btn_slim"
+                          >
                             {t('Get a price')}
                           </Link>
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 order-md-2 order-1">
                       <img
                         className="img img-responsive"
                         src={featured_images[0].path}
