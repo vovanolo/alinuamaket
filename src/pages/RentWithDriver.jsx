@@ -20,6 +20,9 @@ import { transferInfo } from '../urls';
 export default function RentWithDriver({ data }) {
   const [language, setLanguage] = useState('ua');
   const [transferPosts, setTransferPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -40,11 +43,15 @@ export default function RentWithDriver({ data }) {
   }
 
   function handleFormSubmit(values) {
-    console.log(values);
-    fetchTransferOrder(values).then((res) => {
-      console.log('Server Response', res);
-      $('#transferModal').modal('show');
-    });
+    setLoading(true);
+    setError(null);
+
+    fetchTransferOrder(values)
+      .catch((error) => setError(error.toJSON()))
+      .finally(() => {
+        setLoading(false);
+        $('#transferModal').modal('show');
+      });
   }
 
   const loyaltyCardsData = [
@@ -127,11 +134,27 @@ export default function RentWithDriver({ data }) {
                 >
                   {(props) => (
                     <form onSubmit={props.handleSubmit} className="rent_form">
-                      <button type="submit submit_color-red">
-                        {t('Бронювати')}
+                      <button
+                        type="submit"
+                        className="submit_color-red"
+                        disabled={loading}
+                      >
+                        {loading ? (
+                          <>
+                            <span
+                              className="spinner-border spinner-border-sm mr-1"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                            Loading...
+                          </>
+                        ) : (
+                          t('Бронювати')
+                        )}
                       </button>
                       <div className="row">
                         <div className="col-12">
+                          {/* Another good comment */}
                           {/* <div className="input_radio_transfer">
                             <input
                               id="rent_with_driver_radio"
@@ -424,7 +447,7 @@ export default function RentWithDriver({ data }) {
               </button>
             </div>
             <div className="modal-body text-center">
-              <h3>{t('Дякуємо за заявку')}</h3>
+              <h3>{error ? error.message : t('Дякуємо за заявку')}</h3>
             </div>
             <div className="modal-footer">
               <button

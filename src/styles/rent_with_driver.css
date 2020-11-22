@@ -109,7 +109,7 @@
   font-size: 1rem;
 }
 
-.rent_form button {
+.rent_form button.submit_color-red {
   display: block;
   position: absolute;
   border: none;

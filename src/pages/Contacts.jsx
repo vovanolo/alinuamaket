@@ -15,6 +15,9 @@ import { fetchContactsInfo } from '../utils/fetchContactsInfo';
 
 export default function Contacts() {
   const [language, setLanguage] = useState('ua');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const { t, i18n } = useTranslation();
 
   const validationSchema = Yup.object().shape({
@@ -35,10 +38,15 @@ export default function Contacts() {
   }
 
   function handleFormSubmit(values, { resetForm }) {
-    fetchContactsInfo(values).then((res) => {
-      console.log('Server Response', res);
-      $('#contactsModal').modal('show');
-    });
+    setLoading(true);
+    setError(null);
+
+    fetchContactsInfo(values)
+      .catch((err) => setError(err.toJSON()))
+      .finally(() => {
+        setLoading(false);
+        $('#contactsModal').modal('show');
+      });
 
     resetForm({
       name: '',
@@ -217,8 +225,23 @@ export default function Contacts() {
 
                   <div className="row mt-2">
                     <div className="col-lg-4">
-                      <button type="submit" className="btn_main">
-                        {t('Надіслати')}
+                      <button
+                        type="submit"
+                        className="btn_main"
+                        disabled={loading}
+                      >
+                        {loading ? (
+                          <>
+                            <span
+                              className="spinner-border spinner-border-sm mr-1"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                            Loading...
+                          </>
+                        ) : (
+                          t('Надіслати')
+                        )}
                       </button>
                     </div>
                   </div>
@@ -253,7 +276,7 @@ export default function Contacts() {
               </button>
             </div>
             <div className="modal-body text-center">
-              <h3>{t('Дякуємо за заявку')}</h3>
+              <h3>{error ? error.message : t('Дякуємо за заявку')}</h3>
             </div>
             <div className="modal-footer">
               <button
