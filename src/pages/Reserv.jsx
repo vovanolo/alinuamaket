@@ -37,6 +37,7 @@ export default function Reserv() {
   const [language, setLanguage] = useState('ua');
   const [price, setPrice] = useState(120);
   const [allPrices, setAllPrices] = useState([]);
+  const [allDeposits, setAllDeposits] = useState([]);
   const [rentDays, setRentDays] = useState(1);
   const [extras, setExtras] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null);
@@ -164,6 +165,13 @@ export default function Reserv() {
         res.price[2].money,
         res.price[1].money,
       ]);
+
+      setAllDeposits([
+        res.price[4].money_deposit,
+        res.price[3].money_deposit,
+        res.price[2].money_deposit,
+        res.price[1].money_deposit,
+      ]);
     });
   }, []);
 
@@ -218,7 +226,15 @@ export default function Reserv() {
     if (formik.values.pledge != 0) {
       setPledgeValue(0);
     } else {
-      setPledgeValue(19);
+      if (rentDays >= 1 && rentDays <= 2) {
+        setPledgeValue(Number(allDeposits[0]));
+      } else if (rentDays >= 3 && rentDays <= 7) {
+        setPledgeValue(Number(allDeposits[1]));
+      } else if (rentDays >= 8 && rentDays <= 29) {
+        setPledgeValue(Number(allDeposits[2]));
+      } else if (rentDays >= 30) {
+        setPledgeValue(Number(allDeposits[3]));
+      }
     }
   }, [formik.values.pledge]);
 
