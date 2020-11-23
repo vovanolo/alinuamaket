@@ -44,7 +44,7 @@ export default function AllAdditionalOptions() {
 
         <div className="row row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
           {news.map(({ slug, featured_images, title, content_html }) => (
-            <div key={slug} className="col mb-lg-0 mb-md-3 mb-3">
+            <div key={slug} className="col mt-3 mb-lg-0 mb-md-3 mb-3">
               <AdditionalOptionsCard
                 slug={slug}
                 imgUrl={featured_images[0].path}

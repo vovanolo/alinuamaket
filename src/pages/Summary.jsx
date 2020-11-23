@@ -73,7 +73,7 @@ export default function Summary() {
             )}
             {/* <p>зараядне тримач</p>
             <p>додаткове місце для дитини</p> */}
-            {data.extras && <h6>{t('додаткові опції')}</h6>}
+            {data.extras.length !== 0 && <h6>{t('додаткові опції')}</h6>}
             {data.extras &&
               data.extras.map((extra) => <p key={extra.id}>{extra.value}</p>)}
             <p></p>

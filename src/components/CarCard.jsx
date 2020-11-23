@@ -8,8 +8,8 @@ import * as urls from '../urls';
 import '../styles/car_card.css';
 
 import place from '../images/Places.svg';
-import wind from '../images/wind.svg';
-import group from '../images/Group 388.svg';
+import wind from '../images/ac.svg';
+import group from '../images/deposit.svg';
 
 import imgPlaceholder from '../images/car_info/car1.png';
 
@@ -84,12 +84,24 @@ export default function CarCard({
 
           {air == 1 && (
             <div className="mt-1">
-              <img className="car-card__spec-icon" src={wind} alt="konduk" />
+              <img
+                width="20"
+                height="20"
+                className="car-card__spec-icon"
+                src={wind}
+                alt="konduk"
+              />
             </div>
           )}
 
           <div className="mt-1">
-            <img className="car-card__spec-icon" src={group} alt="price" />
+            <img
+              width="20"
+              height="20"
+              className="car-card__spec-icon"
+              src={group}
+              alt="price"
+            />
             <span className="car-card__spec-name">{deposit}€</span>
           </div>
         </div>

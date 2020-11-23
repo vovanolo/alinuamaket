@@ -70,7 +70,7 @@ export default function Contacts() {
                 <p className="text_grey">{t('Львів')}</p>
                 <div className="mt-3">
                   <img src={map} alt="" />
-                  <span className="ml-2">вул. Любінська 196</span>
+                  <span className="ml-2">{t('вул. Любінська 196')}</span>
                 </div>
                 <div className="mt-2">
                   <img src={darkmail} alt="" />
@@ -85,7 +85,7 @@ export default function Contacts() {
                 <p className="text_grey">{t('Київ')}</p>
                 <div className="mt-3">
                   <img src={map} alt="" />
-                  <span className="ml-2">Аеропорт Бориспіль</span>
+                  <span className="ml-2">{t('Аеропорт Бориспіль')}</span>
                 </div>
                 <div className="mt-2">
                   <img src={darkmail} alt="" />
@@ -102,7 +102,7 @@ export default function Contacts() {
                 <p className="text_grey">{t('Івано-Франківськ')}</p>
                 <div className="mt-3">
                   <img src={map} alt="" />
-                  <span className="ml-2">вул. Є. Коновальця 264А</span>
+                  <span className="ml-2">{t('вул. Є. Коновальця 264А')}</span>
                 </div>
                 <div className="mt-2">
                   <img src={darkmail} alt="" />
@@ -117,7 +117,9 @@ export default function Contacts() {
                 <p className="text_grey">{t('Харків')}</p>
                 <div className="mt-3">
                   <img src={map} alt="" />
-                  <span className="ml-2">вул. Академіка Павлова 20Б</span>
+                  <span className="ml-2">
+                    {t('вул. Академіка Павлова 20Б')}
+                  </span>
                 </div>
                 <div className="mt-2">
                   <img src={darkmail} alt="" />

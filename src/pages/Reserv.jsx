@@ -68,6 +68,48 @@ export default function Reserv() {
       type: ExtrasType.onetime,
       value: t('Додатковий водій'),
     },
+    {
+      id: 3,
+      price: 5,
+      displayPrice: 5,
+      type: ExtrasType.perDay,
+      value: t('GPS навігація'),
+    },
+    {
+      id: 4,
+      price: 5,
+      displayPrice: 5,
+      type: ExtrasType.perDay,
+      value: t('Дитяче крісло'),
+    },
+    {
+      id: 5,
+      price: 15,
+      displayPrice: 15,
+      type: ExtrasType.onetime,
+      value: t('Антибукс зимовий'),
+    },
+    {
+      id: 6,
+      price: 10,
+      displayPrice: 10,
+      type: ExtrasType.perDay,
+      value: t('Електросамокат'),
+    },
+    {
+      id: 7,
+      price: 5,
+      displayPrice: 5,
+      type: ExtrasType.perDay,
+      value: t('Wi-Fi роутер'),
+    },
+    {
+      id: 8,
+      price: 5,
+      displayPrice: 5,
+      type: ExtrasType.onetime,
+      value: t('Sim-карта'),
+    },
   ];
 
   const day = t('day');

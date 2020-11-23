@@ -25,6 +25,18 @@ export default function RentWithDriver({ data }) {
 
   const { t, i18n } = useTranslation();
 
+  const initialDateFormatted = `${new Date().getFullYear()}-${
+    new Date().getMonth().toString().length < 2
+      ? '0' + (new Date().getMonth() + 1).toString()
+      : new Date().getMonth() + 1
+  }-${
+    new Date().getDate().toString().length < 2
+      ? '0' + new Date().getDate()
+      : new Date().getDate()
+  }`;
+
+  const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()}`;
+
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
@@ -122,8 +134,8 @@ export default function RentWithDriver({ data }) {
                   initialValues={{
                     fromLocation: '',
                     toLocation: '',
-                    date: '',
-                    time: '',
+                    date: initialDateFormatted,
+                    time: initialTimeFormatted,
                     name: '',
                     email: '',
                     phone: '',
@@ -197,6 +209,7 @@ export default function RentWithDriver({ data }) {
                                   <input
                                     name="date"
                                     type="date"
+                                    min={initialDateFormatted}
                                     className="transf_time_input rent_with_driver__input"
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
@@ -215,6 +228,7 @@ export default function RentWithDriver({ data }) {
                                   <input
                                     name="time"
                                     type="time"
+                                    min={initialTimeFormatted}
                                     className="transf_time_input rent_with_driver__input"
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}

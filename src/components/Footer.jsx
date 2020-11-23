@@ -159,7 +159,7 @@ export default function Footer() {
                   </li>
                   <li className="footer__menu-item">
                     <img src={map} alt="" />
-                    <span className="ml-2">вул. Любінська 196</span>
+                    <span className="ml-2">{t('вул. Любінська 196')}</span>
                   </li>
                   <li className="footer__menu-item">
                     <img src={darkmail} alt="" />
@@ -180,7 +180,7 @@ export default function Footer() {
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href="https://www.facebook.com/1678443565589651/"
+                  href="https://www.facebook.com/alin_services_for_you-107208224245653"
                 >
                   <img width="21" height="21" src={facebook} alt="Facebook" />
                 </a>
@@ -198,7 +198,7 @@ export default function Footer() {
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href="mailto:alin.lviv@gmail.com"
+                  href="mailto:lviv@alin.ua"
                 >
                   <img width="21" height="21" src={mail} alt="Mail" />
                 </a>
