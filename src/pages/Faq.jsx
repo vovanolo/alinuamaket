@@ -47,7 +47,11 @@ export default function Faq() {
             <h2>FAQ</h2>
           </div>
         </div>
-        {isLoading && <div className="spinner-border" />}
+        {isLoading && (
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border" />
+          </div>
+        )}
         {error && !isLoading && 'Error!'}
         {faqData.length > 0 && !isLoading && !error && (
           <div className="accordion" id="faqAccordion">

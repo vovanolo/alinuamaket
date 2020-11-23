@@ -65,7 +65,11 @@ export default function News() {
         </div>
       </div>
 
-      {isLoading && <div className="spinner-border" />}
+      {isLoading && (
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" />
+        </div>
+      )}
       <div className="row row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
         {error && !isLoading && 'Error!'}
         {news.length > 0 &&

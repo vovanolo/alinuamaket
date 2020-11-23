@@ -37,7 +37,11 @@ export default function SeoText() {
   return (
     <div className="navbar-offset">
       <div className="container">
-        {isLoading && <div className="spinner-border" />}
+        {isLoading && (
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border" />
+          </div>
+        )}
         {error && !isLoading && 'Error!'}
 
         {seo.length > 0 && !isLoading && !error && seo.length !== 0 && (
