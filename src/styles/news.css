@@ -5,16 +5,14 @@
 
 .news-card {
   display: block;
-  max-height: 255px;
-  position: relative;
   overflow: hidden;
 }
 
 .news-card__info-box {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
   text-align: center;
   padding: 6px 0;
   background-color: var(--color-grey_light);
@@ -23,16 +21,11 @@
 .news-card__title {
   color: var(--color-black);
   font-weight: 400;
-  /* text-transform: uppercase; */
-  max-height: 45px;
   font-size: 18px;
 }
 
 .news-card__description {
   color: var(--color-black);
-}
-.news_in-block {
-  max-height: 400px;
 }
 
 .news-card__lower-case {
