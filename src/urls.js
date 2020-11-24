@@ -15,6 +15,6 @@ export const loyaltyProgram = '/loyalty_program';
 export const transferInfo = '/transfer_info';
 export const insta =
   'https://instagram.com/alin_services_for_you?igshid=12br995xgk9tr';
-export const additional_options = '/additional_options';
+export const additional_options = '/additional-services';
 export const rent_conditions = '/rent_conditions';
 export const confidential_policy = '/confidential_policy';

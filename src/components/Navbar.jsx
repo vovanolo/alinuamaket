@@ -65,6 +65,7 @@ export default function Navbar() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [cities, setCities] = useState([]);
+  const [citiesLoading, setCitiesLoading] = useState(false);
 
   const { t, i18n } = useTranslation();
 
@@ -95,7 +96,10 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    fetchAllCities(language).then((res) => setCities(res));
+    setCitiesLoading(true);
+    fetchAllCities(language)
+      .then((res) => setCities(res))
+      .finally(() => setCitiesLoading(false));
   }, [language]);
 
   useEffect(() => {
@@ -249,15 +253,21 @@ export default function Navbar() {
                   {t('Прокат')}
                 </button>
                 <div className="dropdown-menu">
-                  {cities.map((city) => (
-                    <Link
-                      key={city.id}
-                      to={`${rent}/${city.slug}`}
-                      className="dropdown-item"
-                    >
-                      {t(`Прокат авто`)} {city.title}
-                    </Link>
-                  ))}
+                  {citiesLoading && (
+                    <div className="spinner-border" role="status">
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  )}
+                  {cities.length > 0 &&
+                    cities.map((city) => (
+                      <Link
+                        key={city.id}
+                        to={`${rent}/${city.slug}`}
+                        className="dropdown-item"
+                      >
+                        {t(`Прокат авто`)} {city.title}
+                      </Link>
+                    ))}
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
