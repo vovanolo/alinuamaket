@@ -86,7 +86,7 @@ export default function Summary() {
             <p>
               {t('до')}: <span>{data.returnDate}</span> о
               <span> {data.returnTime}</span>, {t('місто')}
-              <span> {data.locationTo}</span>
+              <span> {data.locationFrom}</span>
             </p>
             <hr />
             <h5>{t('Замовник')}</h5>

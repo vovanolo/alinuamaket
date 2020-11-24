@@ -4,16 +4,17 @@ import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
+import { Combobox } from 'react-widgets';
 
 import * as urls from '../urls';
 import { fetchCarData } from '../utils/fetchCarData';
 import { fetchRentInfo } from '../utils/fetchRentInfo';
+import { fetchAllCities } from '../utils/fetchAllCities';
 
 import '../styles/reserv.css';
 import '../styles/switch.css';
 
 import circleSwitch from '../images/circle_switch.svg';
-import car from '../images/slider/01_Car.png';
 
 import Option from '../components/Option';
 import OptionRadio from '../components/OptionRadio';
@@ -42,6 +43,9 @@ export default function Reserv() {
   const [extras, setExtras] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null);
   const [pledgeValue, setPledgeValue] = useState(0);
+  const [cities, setCities] = useState([]);
+  const [fuelDeposit, setFuelDeposit] = useState(0);
+  const [deposit, setDeposit] = useState(0);
 
   const { t, i18n } = useTranslation();
   const location = useLocation();
@@ -120,7 +124,6 @@ export default function Reserv() {
     locationFrom: Yup.string()
       .min(2, t('Location must at least 2 characters long'))
       .required(t('Location From is a required field')),
-    locationTo: Yup.string().min(2).required(),
     receiveDate: Yup.string().min(2).required(),
     receiveTime: Yup.string().min(2).required(),
     returnDate: Yup.string().min(2).required(),
@@ -148,7 +151,7 @@ export default function Reserv() {
       email: '',
       comment: '',
       agreeWithTerms: false,
-      pledge: '300',
+      pledge: 300,
       ...data,
     },
     validationSchema: validationSchema,
@@ -191,6 +194,7 @@ export default function Reserv() {
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
+    fetchAllCities(language).then((res) => setCities(res));
   }, [language]);
 
   useEffect(() => {
@@ -225,7 +229,18 @@ export default function Reserv() {
   useEffect(() => {
     if (formik.values.pledge != 0) {
       setPledgeValue(0);
+      setDeposit(0);
+
+      if (selectedCar) {
+        setFuelDeposit(Number(selectedCar.fuel_deposit));
+      }
     } else {
+      setFuelDeposit(0);
+
+      if (selectedCar) {
+        setDeposit(Number(selectedCar.deposit));
+      }
+
       if (rentDays >= 1 && rentDays <= 2) {
         setPledgeValue(Number(allDeposits[0]));
       } else if (rentDays >= 3 && rentDays <= 7) {
@@ -269,14 +284,7 @@ export default function Reserv() {
   }
 
   function handleLocationSwap() {
-    const locationFrom = formik.values.locationFrom;
-    const locationTo = formik.values.locationTo;
-
-    formik.setValues({
-      ...formik.values,
-      locationFrom: locationTo,
-      locationTo: locationFrom,
-    });
+    return;
   }
 
   function handleDateSwap() {
@@ -335,7 +343,14 @@ export default function Reserv() {
       selectedCar: selectedCar.slug,
       image: selectedCar.photo.path,
       city: location.state.city,
+      locationTo: values.locationFrom,
     };
+
+    if (deposit == 0) {
+      requestData.deposit = Number(selectedCar.deposit);
+    } else {
+      requestData.fuelDeposit = Number(selectedCar.fuel_deposit);
+    }
     console.log(requestData);
 
     setData(requestData);
@@ -343,6 +358,13 @@ export default function Reserv() {
       console.log('Server Response', res)
     );
     history.push(urls.summary);
+  }
+
+  function handleCityFromChange(value) {
+    formik.setValues({
+      ...formik.values,
+      locationFrom: value,
+    });
   }
 
   return (
@@ -468,12 +490,13 @@ export default function Reserv() {
 
                   <div className="switch__box">
                     <p className="switch__title text_grey">{t('від')}</p>
-                    <input
+                    <Combobox
+                      data={cities.map((city) => city.title)}
                       name="locationFrom"
                       type="text"
                       className="switch__input"
                       placeholder={t('Вкажіть локацію')}
-                      onChange={formik.handleChange}
+                      onChange={handleCityFromChange}
                       value={formik.values.locationFrom}
                     />
                     <sub className="switch__sub-title text_grey">
@@ -489,21 +512,16 @@ export default function Reserv() {
                   <div className="switch__box">
                     <p className="switch__title text_grey">{t('до')}</p>
                     <input
-                      name="locationTo"
+                      name="locationFrom"
                       type="text"
                       className="switch__input"
                       placeholder={t('Вкажіть локацію')}
-                      onChange={formik.handleChange}
-                      value={formik.values.locationTo}
+                      value={formik.values.locationFrom}
+                      disabled
                     />
                     <sub className="switch__sub-title text_grey">
                       {t('місто, область, країна')}
                     </sub>
-                    {formik.errors.locationTo && (
-                      <span className="reserv__input-error">
-                        {formik.errors.locationTo}
-                      </span>
-                    )}
                   </div>
                 </div>
               </div>
@@ -547,17 +565,17 @@ export default function Reserv() {
                 <div className="row row-cols-md-4 row-cols-1">
                   <OptionRadio
                     name="pledge"
-                    value="0"
+                    value={0}
                     id="dawdsawdsawdsawdsawd1"
-                    checked={formik.values.pledge === '0'}
+                    checked={formik.values.pledge == 0}
                     onChange={formik.handleChange}
                     label={t('Без завдатку')}
                   />
                   <OptionRadio
                     name="pledge"
-                    value="300"
+                    value={300}
                     id="dawdsawdsawdsawdsawd2"
-                    checked={formik.values.pledge === '300'}
+                    checked={formik.values.pledge == 300}
                     onChange={formik.handleChange}
                     label={t('З завдатком')}
                   />
@@ -745,9 +763,10 @@ export default function Reserv() {
                 </label>
                 <Link
                   to={'/rent_conditions'}
+                  target="__blank"
                   className="reserv__agreement-text"
                 >
-                  {'Ознайомитись з умовами прокату'}
+                  {t('Ознайомитись з умовами прокату')}
                 </Link>
               </div>
             </div>

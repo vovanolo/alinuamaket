@@ -4,9 +4,11 @@ import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { Combobox } from 'react-widgets';
 
 import { FormContext } from '../components/ContextProvider';
 import * as urls from '../urls';
+import { fetchAllCities } from '../utils/fetchAllCities';
 
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -35,6 +37,9 @@ const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()
 
 export default function Hero() {
   const [language, setLanguage] = useState('ua');
+  const [cities, setCities] = useState([]);
+  const [citiesLoading, setCitiesLoading] = useState(false);
+
   const { t, i18n } = useTranslation();
 
   const [data, setData] = useContext(FormContext);
@@ -55,7 +60,10 @@ export default function Hero() {
 
   useEffect(() => {
     changeLanguage(localStorage.getItem('lang') || 'ua');
-    console.log(data);
+    setCitiesLoading(true);
+    fetchAllCities(language)
+      .then((res) => setCities(res))
+      .finally(() => setCitiesLoading(false));
   }, [language]);
 
   function changeLanguage(newLanguage) {
@@ -66,14 +74,7 @@ export default function Hero() {
   }
 
   function handleLocationSwap() {
-    const locationFrom = formik.values.locationFrom;
-    const locationTo = formik.values.locationTo;
-
-    formik.setValues({
-      ...formik.values,
-      locationFrom: locationTo,
-      locationTo: locationFrom,
-    });
+    return;
   }
 
   function handleDateSwap() {
@@ -93,7 +94,26 @@ export default function Hero() {
 
   function handleFormSubmit(values) {
     setData(values);
-    history.push(urls.rent);
+    let targetCity;
+
+    cities.forEach((city) => {
+      if (city.title === values.locationFrom) {
+        targetCity = city.slug;
+      }
+    });
+
+    if (targetCity) {
+      history.push(urls.rent + '/' + targetCity);
+    } else {
+      history.push(urls.rent + '/lviv');
+    }
+  }
+
+  function handleCityFromChange(value) {
+    formik.setValues({
+      ...formik.values,
+      locationFrom: value,
+    });
   }
 
   return (
@@ -238,13 +258,15 @@ export default function Hero() {
 
                       <div className="switch__box">
                         <p className="switch__title text_grey">{t('від')}</p>
-                        <input
+                        <Combobox
+                          data={cities.map((city) => city.title)}
                           name="locationFrom"
                           type="text"
                           className="switch__input"
                           placeholder={t('Вкажіть локацію')}
-                          onChange={formik.handleChange}
+                          onChange={handleCityFromChange}
                           value={formik.values.locationFrom}
+                          busy={citiesLoading}
                         />
                         <sub className="switch__sub-title text_grey">
                           {t('місто, область, країна')}
@@ -254,12 +276,12 @@ export default function Hero() {
                       <div className="switch__box">
                         <p className="switch__title text_grey">{t('до')}</p>
                         <input
-                          name="locationTo"
+                          name="locationFrom"
                           type="text"
                           className="switch__input"
                           placeholder={t('Вкажіть локацію')}
-                          onChange={formik.handleChange}
-                          value={formik.values.locationTo}
+                          disabled
+                          value={formik.values.locationFrom}
                         />
                         <sub className="switch__sub-title text_grey">
                           {t('місто, область, країна')}
