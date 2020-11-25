@@ -128,7 +128,7 @@ export default function Navbar() {
         500
       );
     };
-  }, [location]);
+  }, [location.pathname]);
 
   useEffect(() => {
     // changeLanguage(localStorage.getItem('lang') || 'ua');

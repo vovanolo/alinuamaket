@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useRouteMatch } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Formik, Field, Form, MyText } from 'formik';
 import * as Yup from 'yup';
@@ -23,6 +23,8 @@ export default function Contacts() {
 
   const { t, i18n } = useTranslation();
 
+  const mapRef = useRef();
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(2).required(),
     email: Yup.string().email().required(),
@@ -33,11 +35,24 @@ export default function Contacts() {
     changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
 
+  useEffect(() => {
+    setTimeout(scrollToMap, 100);
+  }, [mapMarker]);
+
   function changeLanguage(newLanguage) {
     const newLang = newLanguage;
     localStorage.setItem('lang', newLang);
     setLanguage(newLang);
     i18n.changeLanguage(newLang);
+  }
+
+  function scrollToMap() {
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: mapRef.current.scrollHeight * 1.5,
+      },
+      500
+    );
   }
 
   function changeMapMarkerKyiw() {
@@ -166,6 +181,8 @@ export default function Contacts() {
           </div>
           <div className="col-md-6">
             <iframe
+              ref={mapRef}
+              id="contactsMap"
               title="Contacts map"
               src={mapMarker}
               width={600}

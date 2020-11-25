@@ -321,7 +321,9 @@ export default function Reserv() {
             ...value1,
             displayPrice:
               value1.type === ExtrasType.perDay
-                ? clamp(value1.price * rentDays, 0, 40)
+                ? value1.id === 6
+                  ? clamp(value1.price * rentDays, 0, 200)
+                  : clamp(value1.price * rentDays, 0, 40)
                 : clamp(value1.price, 0, 40),
           };
           newValues = [...acc, newValue];
@@ -701,6 +703,11 @@ export default function Reserv() {
                         onChange={formik.handleChange}
                         value={formik.values.comment}
                       />
+                      {formik.errors.comment && (
+                        <span className="reserv__input-error">
+                          {formik.errors.comment}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
