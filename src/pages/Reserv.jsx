@@ -260,7 +260,7 @@ export default function Reserv() {
         setPledgeValue(Number(allDeposits[3]));
       }
     }
-  }, [formik.values.pledge]);
+  }, [allDeposits, formik.values.pledge, rentDays, selectedCar]);
 
   useEffect(() => {
     handleExtrasPriceSet();
