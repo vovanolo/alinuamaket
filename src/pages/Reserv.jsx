@@ -772,7 +772,7 @@ export default function Reserv() {
                     <b>{t('до')}:</b>
                     {formik.values.returnDate} o {formik.values.returnTime}
                     <br />
-                    {formik.values.locationTo}
+                    {formik.values.locationFrom}
                   </p>
                 </div>
                 <div className="col-lg-2 text-right">

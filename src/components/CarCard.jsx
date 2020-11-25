@@ -91,6 +91,7 @@ export default function CarCard({
                 src={wind}
                 alt="konduk"
               />
+              <span className="car-card__spec-name">A/C</span>
             </div>
           )}
 

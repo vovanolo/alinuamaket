@@ -1,6 +1,8 @@
 export const basename = '/';
 export const home = '/';
-export const rentWithDriver = '/rent_width_driver';
+export const rentWithDriver = `/rent_width_driver/${localStorage.getItem(
+  'lang'
+)}`;
 export const rent = '/rent';
 export const reserv = '/reserv';
 export const assistance = '/assistance';

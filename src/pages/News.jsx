@@ -72,7 +72,7 @@ export default function News() {
                   }}
                 />
               </div> */}
-              <h2 className="mt-3 text-center">{newsData.title}</h2>
+              <h2 className="mt-3 mb-3 text-center">{newsData.title}</h2>
               {/* <p className="mt-1">{newsData.body}</p> */}
               {/* {newsData.body} */}
               <p
