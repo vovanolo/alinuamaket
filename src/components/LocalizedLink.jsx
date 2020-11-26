@@ -1,13 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
-import Link from './LocalizedLink';
+import { Link } from 'react-router-dom';
 
 export default function LocalizedLink({ to, children, ...props }) {
-  const [, ri18n] = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
-    <Link to={`/${ri18n.language}${to}`} {...props}>
+    <Link to={`/${i18n.language}${to}`} {...props}>
       {children}
     </Link>
   );

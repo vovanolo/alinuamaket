@@ -12,30 +12,19 @@ export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <FormContextProvider>
+        <Switch>
+          {routes.map((route) => (
+            <Route
+              key={route.path}
+              exact={route.exact}
+              path={route.path}
+              component={route.component}
+            />
+          ))}
+        </Switch>
+      </FormContextProvider>
+      <Footer />
     </BrowserRouter>
   );
 }
-
-// export default function App() {
-//   return (
-//     <BrowserRouter>
-//       <Navbar />
-
-//       <FormContextProvider>
-//         <Switch>
-//           <Route path="/">12345</Route>
-//           {routes.map((route) => (
-//             <Route
-//               key={route.path}
-//               exact={route.exact}
-//               path={route.path}
-//               component={route.component}
-//             />
-//           ))}
-//         </Switch>
-//       </FormContextProvider>
-
-//       <Footer />
-//     </BrowserRouter>
-//   );
-// }

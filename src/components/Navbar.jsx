@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import $ from 'jquery';
 import { Formik } from 'formik';
@@ -7,6 +6,8 @@ import * as Yup from 'yup';
 
 import { fetchCallBack } from '../utils/fetchCallBack';
 import { fetchAllCities } from '../utils/fetchAllCities';
+
+import { useTranslate } from '../hooks/useTranslate';
 
 import urls from '../urls';
 
@@ -58,11 +59,7 @@ export default function Navbar() {
 
   const location = useLocation();
 
-  // const { t } = useTranslation();
-
-  function t(str) {
-    return str;
-  }
+  const { t, i18n, getLocalizedUrl, changeLanguage } = useTranslate();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(2).required(),
@@ -71,56 +68,55 @@ export default function Navbar() {
 
   //#region effects
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', scrollEventHandler);
+  useEffect(() => {
+    window.addEventListener('scroll', scrollEventHandler);
 
-  //   $('#mainNavbar').on('show.bs.collapse', showNavbar);
-  //   $('#mainNavbar').on('hide.bs.collapse', hideNavbar);
-  //   // changeLanguage(localStorage.getItem('lang') || 'ua');
+    $('#mainNavbar').on('show.bs.collapse', showNavbar);
+    $('#mainNavbar').on('hide.bs.collapse', hideNavbar);
 
-  //   return () => {
-  //     window.removeEventListener('scroll', scrollEventHandler);
+    return () => {
+      window.removeEventListener('scroll', scrollEventHandler);
 
-  //     $('#mainNavbar').off('show.bs.collapse');
-  //     $('#mainNavbar').off('hide.bs.collapse');
-  //   };
-  // }, []);
+      $('#mainNavbar').off('show.bs.collapse');
+      $('#mainNavbar').off('hide.bs.collapse');
+    };
+  }, []);
 
-  // useEffect(() => {
-  //   setCitiesLoading(true);
+  useEffect(() => {
+    setCitiesLoading(true);
 
-  //   fetchAllCities('ua')
-  //     .then((res) => setCities(res))
-  //     .finally(() => setCitiesLoading(false));
-  // }, []);
+    fetchAllCities('ua')
+      .then((res) => setCities(res))
+      .finally(() => setCitiesLoading(false));
+  }, []);
 
-  // useEffect(() => {
-  //   currentUrl = location.pathname;
+  useEffect(() => {
+    currentUrl = location.pathname;
 
-  //   switch (currentUrl) {
-  //     case urls.home:
-  //       setCurrentNavTheme(navTheme.transparent);
-  //       break;
+    switch (currentUrl) {
+      case urls.home:
+        setCurrentNavTheme(navTheme.transparent);
+        break;
 
-  //     case urls.assistance:
-  //       setCurrentNavTheme(navTheme.semiTransparent);
-  //       break;
+      case urls.assistance:
+        setCurrentNavTheme(navTheme.semiTransparent);
+        break;
 
-  //     default:
-  //       setCurrentNavTheme(navTheme.default);
-  //       break;
-  //   }
+      default:
+        setCurrentNavTheme(navTheme.default);
+        break;
+    }
 
-  //   return function cleanup() {
-  //     $('#mainNavbar').collapse('hide');
-  //     $([document.documentElement, document.body]).animate(
-  //       {
-  //         scrollTop: 0,
-  //       },
-  //       500
-  //     );
-  //   };
-  // }, [location.pathname]);
+    return function cleanup() {
+      $('#mainNavbar').collapse('hide');
+      $([document.documentElement, document.body]).animate(
+        {
+          scrollTop: 0,
+        },
+        500
+      );
+    };
+  }, [location.pathname]);
 
   //#endregion
 
@@ -169,9 +165,6 @@ export default function Navbar() {
   function toggleModal() {
     setModalVisible((prevState) => !prevState);
   }
-  // function clickReload() {
-  //   window.location.reload();
-  // }
 
   //#endregion
 
@@ -211,7 +204,7 @@ export default function Navbar() {
           >
             <ul
               className={`navbar-nav ${
-                location.pathname === urls.home
+                location.pathname === getLocalizedUrl(urls.home)
                   ? 'navbar__menu-list'
                   : 'ml-auto'
               }`}
@@ -220,8 +213,8 @@ export default function Navbar() {
                 <button
                   style={{ paddingLeft: '0', paddingBottom: '0' }}
                   className={`btn nav-link dropdown-toggle ${
-                    location.pathname === urls.home ||
-                    location.pathname === urls.assistance
+                    location.pathname === getLocalizedUrl(urls.home) ||
+                    location.pathname === getLocalizedUrl(urls.assistance)
                       ? 'navbar__lang-btn_light'
                       : 'navbar__lang-btn_grey'
                   }`}
@@ -259,8 +252,8 @@ export default function Navbar() {
                 <button
                   style={{ paddingLeft: '0', paddingBottom: '0' }}
                   className={`btn nav-link dropdown-toggle ${
-                    location.pathname === urls.home ||
-                    location.pathname === urls.assistance
+                    location.pathname === getLocalizedUrl(urls.home) ||
+                    location.pathname === getLocalizedUrl(urls.assistance)
                       ? 'navbar__lang-btn_light'
                       : 'navbar__lang-btn_grey'
                   }`}
@@ -287,8 +280,8 @@ export default function Navbar() {
                 <button
                   style={{ paddingLeft: '0', paddingBottom: '0' }}
                   className={`btn nav-link dropdown-toggle ${
-                    location.pathname === urls.home ||
-                    location.pathname === urls.assistance
+                    location.pathname === getLocalizedUrl(urls.home) ||
+                    location.pathname === getLocalizedUrl(urls.assistance)
                       ? 'navbar__lang-btn_light'
                       : 'navbar__lang-btn_grey'
                   }`}
@@ -328,32 +321,43 @@ export default function Navbar() {
 
             <ul
               className={`navbar-nav ${
-                location.pathname === urls.home ? 'navbar__menu-language' : ''
+                location.pathname === getLocalizedUrl(urls.home)
+                  ? 'navbar__menu-language'
+                  : ''
               }`}
             >
               <li
                 className={`nav-item dropdown ${
-                  location.pathname !== urls.home ? 'mx-lg-4 mx-md-0' : ''
+                  location.pathname !== getLocalizedUrl(urls.home)
+                    ? 'mx-lg-4 mx-md-0'
+                    : ''
                 }`}
               >
                 <button
                   className={`btn nav-link dropdown-toggle nav__lang-btn ${
-                    location.pathname === urls.home ||
-                    location.pathname === urls.assistance
+                    location.pathname === getLocalizedUrl(urls.home) ||
+                    location.pathname === getLocalizedUrl(urls.assistance)
                       ? 'navbar__lang-btn_light'
                       : 'navbar__lang-btn_grey'
                   }`}
                   data-toggle="dropdown"
                 >
-                  {/* {language.toUpperCase()} */}
+                  {i18n.language.toUpperCase()}
                 </button>
                 <div className="dropdown-menu">
-                  <button className="dropdown-item">UA</button>
-                  <button className="dropdown-item">RU</button>
-                  <button className="dropdown-item">EN</button>
+                  {Object.keys(i18n.store.data).map((lang) => (
+                    <button
+                      key={lang}
+                      type="button"
+                      className="dropdown-item"
+                      onClick={() => changeLanguage(lang)}
+                    >
+                      {lang.toUpperCase()}
+                    </button>
+                  ))}
                 </div>
               </li>
-              {location.pathname !== urls.home && (
+              {location.pathname !== getLocalizedUrl(urls.home) && (
                 <li className="nav-item">
                   <button
                     type="button"
@@ -367,6 +371,7 @@ export default function Navbar() {
             </ul>
           </div>
         </div>
+
         {/* Modal */}
         <Modal visible={modalVisible} toggleVisible={toggleModal}>
           <div className="contact-modal">
@@ -416,18 +421,6 @@ export default function Navbar() {
                           </label>
                         </div>
                       </div>
-                      {/* <div className="row">
-                           <div className="col">
-                             <label className="w-100">
-                               <Field
-                                 type="email"
-                                 name="email"
-                                 placeholder={t('Вкажіть email')}
-                                 className="input"
-                               />
-                             </label>
-                           </div>
-                         </div> */}
                       <div className="row">
                         <div className="col">
                           <label className="w-100">
@@ -481,6 +474,7 @@ export default function Navbar() {
             </Formik>
           </div>
         </Modal>
+
         {/* ./Modal */}
       </nav>
     </>
