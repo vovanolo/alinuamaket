@@ -9,8 +9,6 @@ import { useParams } from 'react-router-dom';
 
 import '../styles/rent_page.css';
 
-import car from '../images/slider/01_Car.png';
-
 import CarCard from '../components/CarCard';
 import Breadcrumbs from '../components/Breadcrumbs';
 

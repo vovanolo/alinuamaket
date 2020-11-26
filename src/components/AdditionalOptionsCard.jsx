@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
 
-import { additional_options } from '../urls';
+import urls from '../urls';
 
 import '../styles/news.css';
 
-export default function AdditionalOptionsCard({
-  slug,
-  imgUrl,
-  title,
-  description,
-}) {
+import Link from './LocalizedLink';
+
+export default function AdditionalOptionsCard({ slug, imgUrl, title }) {
   const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
 
@@ -27,7 +23,7 @@ export default function AdditionalOptionsCard({
   }
 
   return (
-    <Link to={`${additional_options}/${slug}`} className="news-card">
+    <Link to={`${urls.additionalOptions}/${slug}`} className="news-card">
       <img
         src={imgUrl}
         className="img-responsive img-responsive_cover"

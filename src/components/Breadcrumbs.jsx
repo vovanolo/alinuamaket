@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import * as urls from '../urls';
-
 import '../styles/breadcrumbs2.css';
 
 export default function Breadcrumbs({ active }) {

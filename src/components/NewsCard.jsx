@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 
-import { news } from '../urls';
+import urls from '../urls';
 
 import '../styles/news.css';
+
+import Link from './LocalizedLink';
 
 export default function NewsCard({ slug, imgUrl, title, description }) {
   const [language, setLanguage] = useState('ua');
@@ -22,7 +23,7 @@ export default function NewsCard({ slug, imgUrl, title, description }) {
   }
 
   return (
-    <Link to={`${news}/${slug}`} className="news-card">
+    <Link to={`${urls.news}/${slug}`} className="news-card">
       <img
         src={imgUrl}
         className="img-responsive img-responsive_cover"

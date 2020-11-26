@@ -6,8 +6,8 @@ import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Combobox } from 'react-widgets';
 
-import { FormContext } from '../components/ContextProvider';
-import * as urls from '../urls';
+import urls from '../urls';
+
 import { fetchAllCities } from '../utils/fetchAllCities';
 
 import 'swiper/swiper.scss';
@@ -20,6 +20,8 @@ import slide02 from '../images/slider/02.png';
 import slide03 from '../images/slider/03.png';
 
 import circleSwitch from '../images/circle_switch.svg';
+
+import { FormContext } from '../components/ContextProvider';
 
 SwiperCore.use([Pagination, Autoplay]);
 

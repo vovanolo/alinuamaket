@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { fetchConfidentialPolicy } from '../utils/fetchConfidentialPolicy';
 
-export default function CondfidentialPolicy() {
+export default function ConfidentialPolicy() {
   const [confidential, setConfidential] = useState([]);
 
   useEffect(() => {

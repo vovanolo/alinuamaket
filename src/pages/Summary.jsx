@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import * as urls from '../urls';
+import urls from '../urls';
 import { fetchCarData } from '../utils/fetchCarData';
 import '../styles/summary.css';
 
 import { FormContext } from '../components/ContextProvider';
+import Link from '../components/LocalizedLink';
 
 export default function Summary() {
   const [data] = useContext(FormContext);
@@ -44,7 +45,7 @@ export default function Summary() {
   }, [loading]);
 
   if (!loading && !data) {
-    return <Redirect to={urls.rent} />;
+    return <Redirect to={`/:lang${urls.rent}`} />;
   }
 
   return (

@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-
-import NewsCard from '../components/NewsCard';
 
 import { fetchNewsData } from '../utils/fetchNewsData';
 import { fetchNewsDataOne } from '../utils/fetchNewsDataOne';
 
-import car_1 from '../images/news/car_1.jpg';
-import car_2 from '../images/news/car_2.jpg';
-import car_3 from '../images/news/car_3.jpg';
+import Link from '../components/LocalizedLink';
 
 export default function News() {
   const [news, setNews] = useState([]);

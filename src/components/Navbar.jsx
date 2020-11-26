@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import $ from 'jquery';
@@ -9,25 +8,14 @@ import * as Yup from 'yup';
 import { fetchCallBack } from '../utils/fetchCallBack';
 import { fetchAllCities } from '../utils/fetchAllCities';
 
-import {
-  home,
-  assistance,
-  rent,
-  rentWithDriver,
-  contacts,
-  faq,
-  news,
-  carSale,
-  aboutUs,
-  loyaltyProgram,
-  additional_options,
-} from '../urls';
+import urls from '../urls';
 
 import '../styles/navbar.css';
 
 import logoNew from '../images/alin-logo.svg';
 
 import Modal from './Modal';
+import Link from './LocalizedLink';
 
 const navThemesClassNames = {
   grey: 'navbar_grey navbar-text_dark navbar-light',
@@ -53,10 +41,9 @@ const navTheme = {
 
 let scrollOffset = 0;
 
-let currentUrl = home;
+let currentUrl = urls.home;
 
 export default function Navbar() {
-  const [language, setLanguage] = useState('ua');
   const [currentNavTheme, setCurrentNavTheme] = useState(navTheme.transparent);
   const [userScrolledDown, setUserScrolledDown] = useState(false);
   const [userOpenedNav, setUserOpenedNav] = useState(false);
@@ -67,11 +54,15 @@ export default function Navbar() {
   const [cities, setCities] = useState([]);
   const [citiesLoading, setCitiesLoading] = useState(false);
 
-  const { t, i18n } = useTranslation();
-
   const navbar = useRef(null);
 
   const location = useLocation();
+
+  // const { t } = useTranslation();
+
+  function t(str) {
+    return str;
+  }
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(2).required(),
@@ -80,64 +71,56 @@ export default function Navbar() {
 
   //#region effects
 
-  useEffect(() => {
-    window.addEventListener('scroll', scrollEventHandler);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', scrollEventHandler);
 
-    $('#mainNavbar').on('show.bs.collapse', showNavbar);
-    $('#mainNavbar').on('hide.bs.collapse', hideNavbar);
-    // changeLanguage(localStorage.getItem('lang') || 'ua');
+  //   $('#mainNavbar').on('show.bs.collapse', showNavbar);
+  //   $('#mainNavbar').on('hide.bs.collapse', hideNavbar);
+  //   // changeLanguage(localStorage.getItem('lang') || 'ua');
 
-    return function cleanup() {
-      window.removeEventListener('scroll', scrollEventHandler);
+  //   return () => {
+  //     window.removeEventListener('scroll', scrollEventHandler);
 
-      $('#mainNavbar').off('show.bs.collapse');
-      $('#mainNavbar').off('hide.bs.collapse');
-    };
-  }, []);
+  //     $('#mainNavbar').off('show.bs.collapse');
+  //     $('#mainNavbar').off('hide.bs.collapse');
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    setCitiesLoading(true);
-    fetchAllCities(language)
-      .then((res) => setCities(res))
-      .finally(() => setCitiesLoading(false));
-  }, [language]);
+  // useEffect(() => {
+  //   setCitiesLoading(true);
 
-  useEffect(() => {
-    currentUrl = location.pathname;
+  //   fetchAllCities('ua')
+  //     .then((res) => setCities(res))
+  //     .finally(() => setCitiesLoading(false));
+  // }, []);
 
-    switch (currentUrl) {
-      case home:
-        setCurrentNavTheme(navTheme.transparent);
-        break;
+  // useEffect(() => {
+  //   currentUrl = location.pathname;
 
-      case assistance:
-        setCurrentNavTheme(navTheme.semiTransparent);
-        break;
+  //   switch (currentUrl) {
+  //     case urls.home:
+  //       setCurrentNavTheme(navTheme.transparent);
+  //       break;
 
-      default:
-        setCurrentNavTheme(navTheme.default);
-        break;
-    }
+  //     case urls.assistance:
+  //       setCurrentNavTheme(navTheme.semiTransparent);
+  //       break;
 
-    return function cleanup() {
-      $('#mainNavbar').collapse('hide');
-      $([document.documentElement, document.body]).animate(
-        {
-          scrollTop: 0,
-        },
-        500
-      );
-    };
-  }, [location.pathname]);
+  //     default:
+  //       setCurrentNavTheme(navTheme.default);
+  //       break;
+  //   }
 
-  useEffect(() => {
-    // changeLanguage(localStorage.getItem('lang') || 'ua');
-    const newLang = localStorage.getItem('lang') || 'ua';
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-    // window.location.reload();
-  }, [language]);
+  //   return function cleanup() {
+  //     $('#mainNavbar').collapse('hide');
+  //     $([document.documentElement, document.body]).animate(
+  //       {
+  //         scrollTop: 0,
+  //       },
+  //       500
+  //     );
+  //   };
+  // }, [location.pathname]);
 
   //#endregion
 
@@ -155,14 +138,6 @@ export default function Navbar() {
     scrollOffset = e.currentTarget.pageYOffset;
 
     setUserScrolledDown(scrollOffset > 70);
-  }
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-    window.location.reload();
   }
 
   function handleFormSubmit(values) {
@@ -218,7 +193,7 @@ export default function Navbar() {
         }`}
       >
         <div className="container">
-          <Link to={home} className="navbar-brand">
+          <Link to={urls.home} className="navbar-brand">
             <img width="78" height="49" src={logoNew} alt="Alin logo" />
           </Link>
           <button
@@ -236,15 +211,17 @@ export default function Navbar() {
           >
             <ul
               className={`navbar-nav ${
-                location.pathname === home ? 'navbar__menu-list' : 'ml-auto'
+                location.pathname === urls.home
+                  ? 'navbar__menu-list'
+                  : 'ml-auto'
               }`}
             >
               <li className="nav-item dropdown mr-lg-3 mr-md-0">
                 <button
                   style={{ paddingLeft: '0', paddingBottom: '0' }}
                   className={`btn nav-link dropdown-toggle ${
-                    location.pathname === home ||
-                    location.pathname === assistance
+                    location.pathname === urls.home ||
+                    location.pathname === urls.assistance
                       ? 'navbar__lang-btn_light'
                       : 'navbar__lang-btn_grey'
                   }`}
@@ -262,7 +239,7 @@ export default function Navbar() {
                     cities.map((city) => (
                       <Link
                         key={city.id}
-                        to={`${rent}/${city.slug}`}
+                        to={`${urls.rent}/${city.slug}`}
                         className="dropdown-item"
                       >
                         {t(`Прокат авто`)} {city.title}
@@ -272,7 +249,7 @@ export default function Navbar() {
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
                 <Link
-                  to={rentWithDriver}
+                  to={urls.rentWithDriver}
                   className="btn nav-link text-left padding_off"
                 >
                   {t('Трансфери')}
@@ -282,8 +259,8 @@ export default function Navbar() {
                 <button
                   style={{ paddingLeft: '0', paddingBottom: '0' }}
                   className={`btn nav-link dropdown-toggle ${
-                    location.pathname === home ||
-                    location.pathname === assistance
+                    location.pathname === urls.home ||
+                    location.pathname === urls.assistance
                       ? 'navbar__lang-btn_light'
                       : 'navbar__lang-btn_grey'
                   }`}
@@ -292,13 +269,16 @@ export default function Navbar() {
                   {t('Послуги')}
                 </button>
                 <div className="dropdown-menu">
-                  <Link to={assistance} className="dropdown-item">
+                  <Link to={urls.assistance} className="dropdown-item">
                     {t('Асистенс')}
                   </Link>
-                  <Link to={carSale} className="dropdown-item">
+                  <Link to={urls.carSale} className="dropdown-item">
                     {t('Автовикуп')}
                   </Link>
-                  <Link to={`${additional_options}`} className="dropdown-item">
+                  <Link
+                    to={`${urls.additionalOptions}`}
+                    className="dropdown-item"
+                  >
                     {t('Додаткові опції')}
                   </Link>
                 </div>
@@ -307,8 +287,8 @@ export default function Navbar() {
                 <button
                   style={{ paddingLeft: '0', paddingBottom: '0' }}
                   className={`btn nav-link dropdown-toggle ${
-                    location.pathname === home ||
-                    location.pathname === assistance
+                    location.pathname === urls.home ||
+                    location.pathname === urls.assistance
                       ? 'navbar__lang-btn_light'
                       : 'navbar__lang-btn_grey'
                   }`}
@@ -317,20 +297,20 @@ export default function Navbar() {
                   {t('Про компанію')}
                 </button>
                 <div className="dropdown-menu">
-                  <Link to={loyaltyProgram} className="dropdown-item">
+                  <Link to={urls.loyaltyProgram} className="dropdown-item">
                     {t('Програма лояльності')}
                   </Link>
-                  <Link to={aboutUs} className="dropdown-item">
+                  <Link to={urls.aboutUs} className="dropdown-item">
                     {t('Про нас')}
                   </Link>
-                  <Link to={faq} className="dropdown-item">
+                  <Link to={urls.faq} className="dropdown-item">
                     {t('FAQ')}
                   </Link>
                 </div>
               </li>
               <li className="nav-item mr-lg-3 mr-md-0">
                 <Link
-                  to={`${news}`}
+                  to={urls.news}
                   className="btn nav-link text-left padding_off"
                 >
                   {t('Блог')}
@@ -338,7 +318,7 @@ export default function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
-                  to={contacts}
+                  to={urls.contacts}
                   className="btn nav-link text-left padding_off"
                 >
                   {t('Контакти')}
@@ -348,37 +328,32 @@ export default function Navbar() {
 
             <ul
               className={`navbar-nav ${
-                location.pathname === home ? 'navbar__menu-language' : ''
+                location.pathname === urls.home ? 'navbar__menu-language' : ''
               }`}
             >
               <li
                 className={`nav-item dropdown ${
-                  location.pathname !== home ? 'mx-lg-4 mx-md-0' : ''
+                  location.pathname !== urls.home ? 'mx-lg-4 mx-md-0' : ''
                 }`}
               >
                 <button
                   className={`btn nav-link dropdown-toggle nav__lang-btn ${
-                    location.pathname === home ||
-                    location.pathname === assistance
+                    location.pathname === urls.home ||
+                    location.pathname === urls.assistance
                       ? 'navbar__lang-btn_light'
                       : 'navbar__lang-btn_grey'
                   }`}
                   data-toggle="dropdown"
                 >
-                  {language.toUpperCase()}
+                  {/* {language.toUpperCase()} */}
                 </button>
-                <div
-                  className="dropdown-menu"
-                  onClick={(e) =>
-                    changeLanguage(e.target.innerText.toLowerCase())
-                  }
-                >
+                <div className="dropdown-menu">
                   <button className="dropdown-item">UA</button>
                   <button className="dropdown-item">RU</button>
                   <button className="dropdown-item">EN</button>
                 </div>
               </li>
-              {location.pathname !== home && (
+              {location.pathname !== urls.home && (
                 <li className="nav-item">
                   <button
                     type="button"
@@ -442,17 +417,17 @@ export default function Navbar() {
                         </div>
                       </div>
                       {/* <div className="row">
-                      <div className="col">
-                        <label className="w-100">
-                          <Field
-                            type="email"
-                            name="email"
-                            placeholder={t('Вкажіть email')}
-                            className="input"
-                          />
-                        </label>
-                      </div>
-                    </div> */}
+                           <div className="col">
+                             <label className="w-100">
+                               <Field
+                                 type="email"
+                                 name="email"
+                                 placeholder={t('Вкажіть email')}
+                                 className="input"
+                               />
+                             </label>
+                           </div>
+                         </div> */}
                       <div className="row">
                         <div className="col">
                           <label className="w-100">

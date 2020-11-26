@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import $ from 'jquery';
 
 export default function ContactsPopup() {
   const [show, setShow] = useState(false);

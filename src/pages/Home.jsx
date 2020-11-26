@@ -11,24 +11,24 @@ import Partners from '../sections/Partners';
 import '../styles/home-media.css';
 
 export default function Home() {
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
 
-  useEffect(() => {
-    const newLanguage = localStorage.getItem('lang');
-    i18n.changeLanguage(newLanguage);
-  }, []);
+  // useEffect(() => {
+  //   const newLanguage = localStorage.getItem('lang');
+  //   i18n.changeLanguage(newLanguage);
+  // }, []);
 
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>Alin</title>
         <meta name="description" content="Alin" />
-      </Helmet>
-      <Hero />
-      <News />
+      </Helmet> */}
+      {/* <Hero /> */}
+      {/* <News />
       <Rent />
       <SeoText />
-      <Partners />
+      <Partners /> */}
     </>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Formik, Field, Form, MyText } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import $ from 'jquery';
 

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import NewsCard from '../components/NewsCard';
 import { fetchNewsData } from '../utils/fetchNewsData';
+
+import NewsCard from '../components/NewsCard';
 
 import '../styles/news.css';
 
-import car_1 from '../images/news/car_1.jpg';
-import car_2 from '../images/news/car_2.jpg';
-import car_3 from '../images/news/car_3.jpg';
 let mounted = true;
 
 export default function News() {

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import * as urls from '../urls';
+import urls from '../urls';
 
 import '../styles/car_card.css';
 
@@ -13,9 +11,10 @@ import group from '../images/deposit.svg';
 
 import imgPlaceholder from '../images/car_info/car1.png';
 
+import Link from './LocalizedLink';
+
 export default function CarCard({
   name,
-  year,
   placesCount,
   air,
   price,

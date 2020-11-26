@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Combobox } from 'react-widgets';
 
-import * as urls from '../urls';
+import urls from '../urls';
+
 import { fetchCarData } from '../utils/fetchCarData';
 import { fetchRentInfo } from '../utils/fetchRentInfo';
 import { fetchAllCities } from '../utils/fetchAllCities';
@@ -21,6 +21,7 @@ import OptionRadio from '../components/OptionRadio';
 import { FormContext } from '../components/ContextProvider';
 import Breadcrumbs from '../components/Breadcrumbs';
 import PriceFixed from '../components/PriceFixed';
+import Link from '../components/LocalizedLink';
 
 const initialDateFormatted = `${new Date().getFullYear()}-${
   new Date().getMonth().toString().length < 2

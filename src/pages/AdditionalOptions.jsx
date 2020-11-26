@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
-import * as urls from '../urls';
-
-import AdditionalOptionsCard from '../components/AdditionalOptionsCard';
+import urls from '../urls';
 
 import { fetchAdditionalOptions } from '../utils/fetchAdditionalOptions';
 import { fetchAdditionalOptionOne } from '../utils/fetchAdditionalOptionOne';
+
+import Link from '../components/LocalizedLink';
 
 export default function AdditionalOptions() {
   const [additionalInfo, setAdditionalInfo] = useState([]);
@@ -69,7 +68,7 @@ export default function AdditionalOptions() {
                     style={{ maxHeight: '600px' }}
                   >
                     <Link
-                      to={`${urls.additional_options}/${slug}`}
+                      to={`${urls.additionalOptions}/${slug}`}
                       className="news-card"
                     >
                       <img

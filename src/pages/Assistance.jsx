@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet';
 
 import '../styles/assistance.css';
 
-import LoyaltyCard from '../components/LoyaltyCard';
-
 import first from '../images/assistance/first.svg';
 import second from '../images/assistance/second.svg';
 import third from '../images/assistance/third.svg';

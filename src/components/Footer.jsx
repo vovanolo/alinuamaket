@@ -1,29 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import $ from 'jquery';
-import {
-  home,
-  assistance,
-  rent,
-  rentWithDriver,
-  contacts,
-  faq,
-  news,
-  carSale,
-  aboutUs,
-  loyaltyProgram,
-  additional_options,
-  rent_conditions,
-  confidential_policy,
-} from '../urls';
+
+import urls from '../urls';
 
 import '../styles/footer.css';
 import '../styles/footer-media.css';
 
-import { insta } from '../urls';
-
-import logo from '../images/Logo.png';
 import logoNew from '../images/alin-logo.svg';
 
 import facebook from '../images/facebook-logo.svg';
@@ -40,6 +23,7 @@ import viber from '../images/viber.svg';
 import whatsapp from '../images/whatsapp.svg';
 
 import ContactsPopup from './ContactsPopup';
+import Link from './LocalizedLink';
 
 export default function Footer() {
   const [language, setLanguage] = useState('ua');
@@ -85,7 +69,7 @@ export default function Footer() {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-xl-2 col-lg-2 col-12">
-            <Link to="/" className="footer__logo">
+            <Link to={urls.home} className="footer__logo">
               <img width="78" height="49" src={logoNew} alt="Alin logo" />
             </Link>
           </div>
@@ -99,27 +83,27 @@ export default function Footer() {
                     </p>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={rent} className="text_black">
+                    <Link to={urls.rent} className="text_black">
                       {t('Прокат')}
                     </Link>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={rentWithDriver} className="text_black">
+                    <Link to={urls.rentWithDriver} className="text_black">
                       {t('Трансфери')}
                     </Link>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={assistance} className="text_black">
+                    <Link to={urls.assistance} className="text_black">
                       {t('Асистенс')}
                     </Link>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={faq} className="text_black">
+                    <Link to={urls.faq} className="text_black">
                       FAQ
                     </Link>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={contacts} className="text_black">
+                    <Link to={urls.contacts} className="text_black">
                       {t('Контакти')}
                     </Link>
                   </li>
@@ -134,22 +118,22 @@ export default function Footer() {
                     </p>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={rent_conditions} className="text_black">
+                    <Link to={urls.rentConditions} className="text_black">
                       {t('Умови оренди')}
                     </Link>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={aboutUs} className="text_black">
+                    <Link to={urls.aboutUs} className="text_black">
                       {t('Про нас')}
                     </Link>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={faq} className="text_black">
+                    <Link to={urls.faq} className="text_black">
                       {t('Часті запитання')}
                     </Link>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={confidential_policy} className="text_black">
+                    <Link to={urls.confidentialPolicy} className="text_black">
                       {t('Політика конфіденційності')}
                     </Link>
                   </li>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Formik, Field, Form } from 'formik';
-import { Link } from 'react-router-dom';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import $ from 'jquery';
 
 import '../styles/rent_with_driver.css';
+
 import { fetchTransferPosts } from '../utils/fetchTransferPosts';
 import { fetchTransferOrder } from '../utils/fetchTransferOrder';
 
@@ -13,11 +13,11 @@ import transf from '../images/rent_with_driver/id_card.svg';
 import calendar from '../images/rent_with_driver/calendar.svg';
 import star from '../images/rent_with_driver/star.svg';
 
-import LoyaltyCard from '../components/LoyaltyCard';
-import slide01 from '../images/slider/01.png';
-import { transferInfo } from '../urls';
+import urls from '../urls';
 
-export default function RentWithDriver({ data }) {
+import Link from '../components/LocalizedLink';
+
+export default function RentWithDriver() {
   const [language, setLanguage] = useState('ua');
   const [transferPosts, setTransferPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -395,7 +395,7 @@ export default function RentWithDriver({ data }) {
                       <div className="row mt-3">
                         <div className="col-lg-6">
                           <Link
-                            to={`${transferInfo}/${slug}`}
+                            to={`${urls.transferInfo}/${slug}`}
                             className="btn_main btn_slim"
                           >
                             {t('Get a price')}
@@ -414,7 +414,7 @@ export default function RentWithDriver({ data }) {
                       <div className="row mt-3">
                         <div className="col-lg-6">
                           <Link
-                            to={`${transferInfo}/${slug}`}
+                            to={`${urls.transferInfo}/${slug}`}
                             className="btn_main btn_slim"
                           >
                             {t('Get a price')}

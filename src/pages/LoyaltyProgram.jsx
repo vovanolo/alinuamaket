@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import * as urls from '../urls';
+
+import urls from '../urls';
 
 import '../styles/loyalty.css';
 
@@ -16,6 +16,7 @@ import car1 from '../images/loyalty/car_1.png';
 import car2 from '../images/loyalty/car_2.png';
 
 import LoyaltyCard from '../components/LoyaltyCard';
+import Link from '../components/LocalizedLink';
 
 export default function LoyaltyProgram() {
   const [language, setLanguage] = useState('ua');
