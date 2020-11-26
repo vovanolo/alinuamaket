@@ -9,6 +9,7 @@ import { Combobox } from 'react-widgets';
 import urls from '../urls';
 
 import { fetchAllCities } from '../utils/fetchAllCities';
+import { getLocalizedUrl } from '../utils/getLocalizedUrl';
 
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -104,11 +105,9 @@ export default function Hero() {
       }
     });
 
-    if (targetCity) {
-      history.push(urls.rent + '/' + targetCity);
-    } else {
-      history.push(urls.rent + '/lviv');
-    }
+    const desiredUrl = urls.rent + '/' + (targetCity || 'lviv');
+
+    history.push(getLocalizedUrl(desiredUrl));
   }
 
   function handleCityFromChange(value) {

@@ -10,6 +10,7 @@ import urls from '../urls';
 import { fetchCarData } from '../utils/fetchCarData';
 import { fetchRentInfo } from '../utils/fetchRentInfo';
 import { fetchAllCities } from '../utils/fetchAllCities';
+import { getLocalizedUrl } from '../utils/getLocalizedUrl';
 
 import '../styles/reserv.css';
 import '../styles/switch.css';
@@ -369,7 +370,7 @@ export default function Reserv() {
     fetchRentInfo(requestData).then((res) =>
       console.log('Server Response', res)
     );
-    history.push(urls.summary);
+    history.push(getLocalizedUrl(urls.summary));
   }
 
   function handleCityFromChange(value) {

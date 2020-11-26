@@ -85,7 +85,7 @@ export default function Navbar() {
   useEffect(() => {
     setCitiesLoading(true);
 
-    fetchAllCities('ua')
+    fetchAllCities(localStorage.getItem('lang') || 'ua')
       .then((res) => setCities(res))
       .finally(() => setCitiesLoading(false));
   }, []);
@@ -94,11 +94,11 @@ export default function Navbar() {
     currentUrl = location.pathname;
 
     switch (currentUrl) {
-      case urls.home:
+      case getLocalizedUrl(urls.home):
         setCurrentNavTheme(navTheme.transparent);
         break;
 
-      case urls.assistance:
+      case getLocalizedUrl(urls.assistance):
         setCurrentNavTheme(navTheme.semiTransparent);
         break;
 

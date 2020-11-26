@@ -3,7 +3,10 @@ import { Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import urls from '../urls';
+
 import { fetchCarData } from '../utils/fetchCarData';
+import { getLocalizedUrl } from '../utils/getLocalizedUrl';
+
 import '../styles/summary.css';
 
 import { FormContext } from '../components/ContextProvider';
@@ -45,7 +48,7 @@ export default function Summary() {
   }, [loading]);
 
   if (!loading && !data) {
-    return <Redirect to={`/:lang${urls.rent}`} />;
+    return <Redirect to={getLocalizedUrl(urls.rent)} />;
   }
 
   return (
