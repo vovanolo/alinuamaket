@@ -379,7 +379,7 @@ const resources = {
       'Івано-Франківськ': 'Ivano-Frankivsk',
       Харків: 'Kharkiv',
       Київ: 'Kyiw',
-      від: 'Innings',
+      від: 'Pick up',
       до: 'Return',
       'Вкажіть локацію': 'Enter location',
       'місто, область, країна': 'city, region, country',

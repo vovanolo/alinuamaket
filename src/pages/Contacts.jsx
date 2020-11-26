@@ -35,9 +35,9 @@ export default function Contacts() {
     changeLanguage(localStorage.getItem('lang') || 'ua');
   }, [language]);
 
-  useEffect(() => {
-    setTimeout(scrollToMap, 100);
-  }, [mapMarker]);
+  // useEffect(() => {
+  //   setTimeout(scrollToMap, 100);
+  // }, [mapMarker]);
 
   function changeLanguage(newLanguage) {
     const newLang = newLanguage;
@@ -46,14 +46,14 @@ export default function Contacts() {
     i18n.changeLanguage(newLang);
   }
 
-  function scrollToMap() {
-    $([document.documentElement, document.body]).animate(
-      {
-        scrollTop: mapRef.current.scrollHeight * 1.5,
-      },
-      500
-    );
-  }
+  // function scrollToMap() {
+  //   $([document.documentElement, document.body]).animate(
+  //     {
+  //       scrollTop: mapRef.current.scrollHeight * 1.5,
+  //     },
+  //     500
+  //   );
+  // }
 
   function changeMapMarkerKyiw() {
     setMapMarker(
@@ -106,7 +106,11 @@ export default function Contacts() {
           <div className="col-md-6">
             <div className="row">
               <div className="col-md-6">
-                <a onClick={changeMapMarkerLviv} className="text_grey">
+                <a
+                  style={{ cursor: 'pointer' }}
+                  onClick={changeMapMarkerLviv}
+                  className="text_grey"
+                >
                   {t('Львів')}
                 </a>
                 <div className="mt-3">
@@ -123,7 +127,11 @@ export default function Contacts() {
                 </div>
               </div>
               <div className="col-md-6">
-                <a onClick={changeMapMarkerKyiw} className="text_grey">
+                <a
+                  style={{ cursor: 'pointer' }}
+                  onClick={changeMapMarkerKyiw}
+                  className="text_grey"
+                >
                   {t('Київ')}
                 </a>
                 <div className="mt-3">
@@ -142,7 +150,11 @@ export default function Contacts() {
             </div>
             <div className="row mt-5">
               <div className="col-md-6">
-                <a onClick={changeMapMarkerFranyk} className="text_grey">
+                <a
+                  style={{ cursor: 'pointer' }}
+                  onClick={changeMapMarkerFranyk}
+                  className="text_grey"
+                >
                   {t('Івано-Франківськ')}
                 </a>
                 <div className="mt-3">
@@ -159,7 +171,11 @@ export default function Contacts() {
                 </div>
               </div>
               <div className="col-md-6">
-                <a onClick={changeMapMarkerHarkiv} className="text_grey">
+                <a
+                  style={{ cursor: 'pointer' }}
+                  onClick={changeMapMarkerHarkiv}
+                  className="text_grey"
+                >
                   {t('Харків')}
                 </a>
                 <div className="mt-3">

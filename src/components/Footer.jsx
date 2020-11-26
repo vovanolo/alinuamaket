@@ -35,6 +35,10 @@ import map from '../images/map-pin.svg';
 import darkmail from '../images/darkmail.svg';
 import phone from '../images/phone.svg';
 
+import telegram from '../images/telegram.svg';
+import viber from '../images/viber.svg';
+import whatsapp from '../images/whatsapp.svg';
+
 import ContactsPopup from './ContactsPopup';
 
 export default function Footer() {
@@ -201,6 +205,35 @@ export default function Footer() {
                   href="mailto:lviv@alin.ua"
                 >
                   <img width="21" height="21" src={mail} alt="Mail" />
+                </a>
+              </li>
+            </ul>
+            <ul className="footer__social-list mt-4">
+              <li className="footer__social-item">
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="https://telegram.me/alin_services_for_you"
+                >
+                  <img width="21" height="21" src={telegram} alt="telegram" />
+                </a>
+              </li>
+              <li className="footer__social-item">
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="viber://chat?number=%2B380987771600"
+                >
+                  <img width="21" height="21" src={viber} alt="viber" />
+                </a>
+              </li>
+              <li className="footer__social-item">
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="https://wa.me/380987771600"
+                >
+                  <img width="21" height="21" src={whatsapp} alt="whatsapp" />
                 </a>
               </li>
             </ul>
