@@ -83,8 +83,6 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    console.log(i18n.language);
-
     setCitiesLoading(true);
 
     fetchAllCities(i18n.language)

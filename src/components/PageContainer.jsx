@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import { fetchSeo } from '../utils/fetchSeo';
 
 import { useTranslate } from '../hooks/useTranslate';
+import Loader from './Loader';
 
 export default function PageContainer({ component: Component }) {
   const [seo, setSeo] = useState(null);
@@ -43,7 +44,10 @@ export default function PageContainer({ component: Component }) {
           <meta name="canonical" content={seo.canonical} />
         </Helmet>
       )}
-      <Component seo={seo} />
+
+      <Suspense fallback={<Loader />}>
+        <Component seo={seo} />
+      </Suspense>
     </>
   );
 }
