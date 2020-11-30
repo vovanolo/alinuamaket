@@ -1,9 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
+import { useTranslate } from '../hooks/useTranslate';
+
 export default function LocalizedLink({ to, children, ...props }) {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslate();
 
   let url = null;
 

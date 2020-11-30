@@ -6,6 +6,7 @@ import urls from './urls';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import PageContainer from './components/PageContainer';
 
 import { FormContextProvider } from './components/ContextProvider';
 
@@ -22,12 +23,9 @@ export default function App() {
           </Route>
 
           {routes.map((route) => (
-            <Route
-              key={route.path}
-              exact={route.exact}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={route.path} exact={route.exact} path={route.path}>
+              <PageContainer component={route.component} />
+            </Route>
           ))}
         </Switch>
       </FormContextProvider>
