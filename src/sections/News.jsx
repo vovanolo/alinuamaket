@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { fetchNewsData } from '../utils/fetchNewsData';
 
 import NewsCard from '../components/NewsCard';
 
 import '../styles/news.css';
+import { useTranslate } from '../hooks/useTranslate';
 
 let mounted = true;
 
 export default function News() {
-  const [language, setLanguage] = useState('ua');
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslate();
+
+  mounted = true;
 
   useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
-
-  useEffect(() => {
-    mounted = true;
     setIsLoading(true);
 
-    fetchNewsData(localStorage.getItem('lang'))
+    fetchNewsData(i18n.language)
       .then((res) => {
         if (mounted) {
           setNews(res);
@@ -41,19 +37,11 @@ export default function News() {
           setIsLoading(false);
         }
       });
+  }, [i18n.language]);
 
-    return () => {
-      mounted = false;
-    };
+  useEffect(() => {
+    return () => (mounted = false);
   }, []);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
-  // console.log(localStorage.getItem('lang'));
 
   return (
     <div className="container">

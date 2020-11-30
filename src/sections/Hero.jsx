@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +9,8 @@ import urls from '../urls';
 
 import { fetchAllCities } from '../utils/fetchAllCities';
 import { getLocalizedUrl } from '../utils/getLocalizedUrl';
+
+import { useTranslate } from '../hooks/useTranslate';
 
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -38,12 +39,13 @@ const initialDateFormatted = `${new Date().getFullYear()}-${
 
 const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
+let mounted = false;
+
 export default function Hero() {
-  const [language, setLanguage] = useState('ua');
   const [cities, setCities] = useState([]);
   const [citiesLoading, setCitiesLoading] = useState(false);
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslate();
 
   const [data, setData] = useContext(FormContext);
 
@@ -61,20 +63,27 @@ export default function Hero() {
     onSubmit: handleFormSubmit,
   });
 
-  useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-    setCitiesLoading(true);
-    fetchAllCities(language)
-      .then((res) => setCities(res))
-      .finally(() => setCitiesLoading(false));
-  }, [language]);
+  mounted = true;
 
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
+  useEffect(() => {
+    return () => (mounted = false);
+  }, []);
+
+  useEffect(() => {
+    setCitiesLoading(true);
+
+    fetchAllCities(i18n.language)
+      .then((res) => {
+        if (mounted) {
+          setCities(res);
+        }
+      })
+      .finally(() => {
+        if (mounted) {
+          setCitiesLoading(false);
+        }
+      });
+  }, [i18n.language]);
 
   function handleLocationSwap() {
     return;

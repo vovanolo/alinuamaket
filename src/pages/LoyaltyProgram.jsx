@@ -137,7 +137,7 @@ export default function LoyaltyProgram() {
         <div className="row justify-content-lg-start justify-content-md-center">
           <div className="col-xl-3 col-lg-4 col-md-5">
             <Link to={urls.rent} className="btn_main">
-              {t('Орендувати')}
+              {t('Бронювати')}
             </Link>
           </div>
         </div>

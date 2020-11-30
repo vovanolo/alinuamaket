@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { fetchFaqData } from '../utils/fetchFaqData';
 
+import { useTranslate } from '../hooks/useTranslate';
+
 import '../styles/faq.css';
 
 import FAQCard from '../components/FAQCard';
@@ -13,11 +15,18 @@ export default function Faq() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const { t, i18n } = useTranslate();
+
+  mounted = true;
+
   useEffect(() => {
-    mounted = true;
+    return () => (mounted = false);
+  }, []);
+
+  useEffect(() => {
     setIsLoading(true);
 
-    fetchFaqData(localStorage.getItem('lang'))
+    fetchFaqData(i18n.language)
       .then((res) => {
         if (mounted) {
           setFaqData(res);
@@ -33,11 +42,7 @@ export default function Faq() {
           setIsLoading(false);
         }
       });
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  }, [i18n.language]);
 
   return (
     <div className="faq_section mb-5">

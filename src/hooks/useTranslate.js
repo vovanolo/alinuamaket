@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 
@@ -5,6 +6,10 @@ export function useTranslate() {
   const { t, i18n } = useTranslation();
   const history = useHistory();
   const location = useLocation();
+
+  useEffect(() => {
+    changeLanguage(localStorage.getItem('lang') || 'ua');
+  }, []);
 
   /**
    * Change i18m language and save it to localStorage.lang

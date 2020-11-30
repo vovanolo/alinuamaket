@@ -2,15 +2,23 @@ import React, { useEffect, useState } from 'react';
 
 import { fetchSeoText } from '../utils/fetchSeoText';
 
-let mounted = true;
+import { useTranslate } from '../hooks/useTranslate';
 
+let mounted;
 export default function SeoText() {
   const [seo, setSeo] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const { t, i18n } = useTranslate();
+
+  mounted = true;
+
   useEffect(() => {
-    mounted = true;
+    return () => (mounted = false);
+  }, []);
+
+  useEffect(() => {
     setIsLoading(true);
 
     fetchSeoText(localStorage.getItem('lang'))
@@ -29,11 +37,8 @@ export default function SeoText() {
           setIsLoading(false);
         }
       });
+  }, [i18n.language]);
 
-    return () => {
-      mounted = false;
-    };
-  }, []);
   return (
     <div className="navbar-offset">
       <div className="container">

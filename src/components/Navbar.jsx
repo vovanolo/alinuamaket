@@ -83,12 +83,14 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    console.log(i18n.language);
+
     setCitiesLoading(true);
 
-    fetchAllCities(localStorage.getItem('lang') || 'ua')
+    fetchAllCities(i18n.language)
       .then((res) => setCities(res))
       .finally(() => setCitiesLoading(false));
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     currentUrl = location.pathname;
@@ -107,7 +109,7 @@ export default function Navbar() {
         break;
     }
 
-    return function cleanup() {
+    return () => {
       $('#mainNavbar').collapse('hide');
       $([document.documentElement, document.body]).animate(
         {
@@ -116,7 +118,7 @@ export default function Navbar() {
         500
       );
     };
-  }, [location.pathname]);
+  }, [location.pathname.slice(3)]);
 
   //#endregion
 

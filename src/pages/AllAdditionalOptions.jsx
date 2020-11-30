@@ -1,38 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import AdditionalOptionsCard from '../components/AdditionalOptionsCard';
 import { fetchAdditionalOptions } from '../utils/fetchAdditionalOptions';
 
+import { useTranslate } from '../hooks/useTranslate';
+
 import '../styles/news.css';
 
 export default function AllAdditionalOptions() {
-  const [language, setLanguage] = useState('ua');
   const [news, setNews] = useState([]);
   const [newsLoading, setNewsLoading] = useState(false);
 
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
+  const { t, i18n } = useTranslate();
 
   useEffect(() => {
     setNewsLoading(true);
-    fetchAdditionalOptions(localStorage.getItem('lang'))
+
+    fetchAdditionalOptions(i18n.language)
       .then((res) => {
         setNews(res);
       })
       .catch((err) => console.dir(err))
       .then(() => setNewsLoading(false));
-  }, []);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
+  }, [i18n.language]);
 
   return (
     <div className="navbar-offset" style={{ minHeight: 'calc(100vh - 390px)' }}>

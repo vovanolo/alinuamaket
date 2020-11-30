@@ -6,6 +6,8 @@ import urls from '../urls';
 import { fetchAdditionalOptions } from '../utils/fetchAdditionalOptions';
 import { fetchAdditionalOptionOne } from '../utils/fetchAdditionalOptionOne';
 
+import { useTranslate } from '../hooks/useTranslate';
+
 import Link from '../components/LocalizedLink';
 
 export default function AdditionalOptions() {
@@ -18,23 +20,27 @@ export default function AdditionalOptions() {
 
   const { pathname } = useLocation();
 
+  const { t, i18n } = useTranslate();
+
   useEffect(() => {
     // setNews(newsMock);
     setServicesLoading(true);
-    fetchAdditionalOptions(localStorage.getItem('lang'))
+
+    fetchAdditionalOptions(i18n.language)
       .then((res) => setAdditionalInfo(res))
       .catch((err) => console.dir(err))
       .finally(() => setServicesLoading(false));
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     setServiceLoading(true);
     setAdditionalInfoData(null);
-    fetchAdditionalOptionOne(additionalSlug, localStorage.getItem('lang'))
+
+    fetchAdditionalOptionOne(additionalSlug, i18n.language)
       .then((res) => setAdditionalInfoData(res))
       .catch((err) => console.dir(err))
       .finally(() => setServiceLoading(false));
-  }, [pathname]);
+  }, [pathname, i18n.language]);
 
   return (
     <div className="navbar-offset">

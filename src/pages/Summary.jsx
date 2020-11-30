@@ -116,6 +116,8 @@ export default function Summary() {
     </div>
   );
 }
+
+// Another one
 // {carData && (
 //   <div className="row">
 //     <div className="col">

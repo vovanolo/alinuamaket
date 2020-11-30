@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import $ from 'jquery';
@@ -8,6 +7,8 @@ import '../styles/rent_with_driver.css';
 
 import { fetchTransferPosts } from '../utils/fetchTransferPosts';
 import { fetchTransferOrder } from '../utils/fetchTransferOrder';
+
+import { useTranslate } from '../hooks/useTranslate';
 
 import transf from '../images/rent_with_driver/id_card.svg';
 import calendar from '../images/rent_with_driver/calendar.svg';
@@ -18,12 +19,12 @@ import urls from '../urls';
 import Link from '../components/LocalizedLink';
 
 export default function RentWithDriver() {
-  const [language, setLanguage] = useState('ua');
   const [transferPosts, setTransferPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [postsLoading, setPostsLoading] = useState(false);
+  const [orderLoading, setOrderLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslate();
 
   const initialDateFormatted = `${new Date().getFullYear()}-${
     new Date().getMonth().toString().length < 2
@@ -38,30 +39,23 @@ export default function RentWithDriver() {
   const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
   useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
+    setPostsLoading(true);
+    // setTransferPosts([]);
 
-  useEffect(() => {
-    fetchTransferPosts(localStorage.getItem('lang'))
+    fetchTransferPosts(i18n.language)
       .then((res) => setTransferPosts(res))
-      .catch((err) => console.dir(err));
-  }, []);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
+      .catch((err) => console.dir(err))
+      .finally(() => setPostsLoading(false));
+  }, [i18n.language]);
 
   function handleFormSubmit(values) {
-    setLoading(true);
+    setOrderLoading(true);
     setError(null);
 
     fetchTransferOrder(values)
       .catch((error) => setError(error.toJSON()))
       .finally(() => {
-        setLoading(false);
+        setOrderLoading(false);
         $('#transferModal').modal('show');
       });
   }
@@ -83,6 +77,7 @@ export default function RentWithDriver() {
       description: t('Виберіть клас автомобіля'),
     },
   ];
+
   const validationSchema = Yup.object().shape({
     fromLocation: Yup.string()
       .min(2, t('Location must at least 2 characters long'))
@@ -149,9 +144,9 @@ export default function RentWithDriver() {
                       <button
                         type="submit"
                         className="submit_color-red"
-                        disabled={loading}
+                        disabled={orderLoading}
                       >
-                        {loading ? (
+                        {orderLoading ? (
                           <>
                             <span
                               className="spinner-border spinner-border-sm mr-1"
@@ -377,63 +372,78 @@ export default function RentWithDriver() {
       </div>
       <div>
         <div className="container">
-          {transferPosts.map(
-            ({ slug, featured_images, title, excerpt }, index) => {
-              if (index % 2 === 0) {
-                return (
-                  <div key={slug} className="row mb-5 mt-5">
-                    <div className="col-md-6">
-                      <img
-                        className="img img-responsive"
-                        src={featured_images[0].path}
-                        alt={title}
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <h3 className="mb-1">{title}</h3>
-                      <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
-                      <div className="row mt-3">
-                        <div className="col-lg-6">
-                          <Link
-                            to={`${urls.transferInfo}/${slug}`}
-                            className="btn_main btn_slim"
-                          >
-                            {t('Get a price')}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              } else {
-                return (
-                  <div key={slug} className="row mb-5 mt-5">
-                    <div className="col-md-6 order-md-1 order-2">
-                      <h3 className="mb-1">{title}</h3>
-                      <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
-                      <div className="row mt-3">
-                        <div className="col-lg-6">
-                          <Link
-                            to={`${urls.transferInfo}/${slug}`}
-                            className="btn_main btn_slim"
-                          >
-                            {t('Get a price')}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-6 order-md-2 order-1">
-                      <img
-                        className="img img-responsive"
-                        src={featured_images[0].path}
-                        alt={title}
-                      />
-                    </div>
-                  </div>
-                );
-              }
-            }
+          {postsLoading && (
+            <div
+              className="spinner-border"
+              style={{
+                width: '3rem',
+                height: '3rem',
+                margin: '50px 0',
+              }}
+              role="status"
+            >
+              <span className="sr-only">Loading...</span>
+            </div>
           )}
+
+          {transferPosts.length > 0 &&
+            transferPosts.map(
+              ({ slug, featured_images, title, excerpt }, index) => {
+                if (index % 2 === 0) {
+                  return (
+                    <div key={slug} className="row mb-5 mt-5">
+                      <div className="col-md-6">
+                        <img
+                          className="img img-responsive"
+                          src={featured_images[0].path}
+                          alt={title}
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <h3 className="mb-1">{title}</h3>
+                        <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
+                        <div className="row mt-3">
+                          <div className="col-lg-6">
+                            <Link
+                              to={`${urls.transferInfo}/${slug}`}
+                              className="btn_main btn_slim"
+                            >
+                              {t('Get a price')}
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={slug} className="row mb-5 mt-5">
+                      <div className="col-md-6 order-md-1 order-2">
+                        <h3 className="mb-1">{title}</h3>
+                        <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
+                        <div className="row mt-3">
+                          <div className="col-lg-6">
+                            <Link
+                              to={`${urls.transferInfo}/${slug}`}
+                              className="btn_main btn_slim"
+                            >
+                              {t('Get a price')}
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6 order-md-2 order-1">
+                        <img
+                          className="img img-responsive"
+                          src={featured_images[0].path}
+                          alt={title}
+                        />
+                      </div>
+                    </div>
+                  );
+                }
+              }
+            )}
         </div>
       </div>
       <div
