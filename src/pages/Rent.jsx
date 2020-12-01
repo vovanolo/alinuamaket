@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 import { fetchCarsData } from '../utils/fetchCarsData';
 import { fetchCategoriesData } from '../utils/fetchCategoriesData';
 import { fetchCitySeo } from '../utils/fetchCitySeo';
 
-import { useParams } from 'react-router-dom';
+import { useTranslate } from '../hooks/useTranslate';
 
 import '../styles/rent_page.css';
 
@@ -13,7 +13,6 @@ import CarCard from '../components/CarCard';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function Rent() {
-  const [language, setLanguage] = useState('ua');
   const [cars, setCars] = useState([]);
   const [carsLoading, setCarsLoading] = useState(false);
   const [cityInfo, setCityInfo] = useState(null);
@@ -22,24 +21,23 @@ export default function Rent() {
   const [currentCategory, setCurrentCategory] = useState(null);
   const [currentSorter, setCurrentSorter] = useState('');
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslate();
   const params = useParams();
 
   useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-
     setCategoriesLoading(true);
-    fetchCategoriesData(localStorage.getItem('lang'))
+
+    fetchCategoriesData(i18n.language)
       .then((res) => setCategories(res))
       .catch((err) => console.dir(err))
       .finally(() => setCategoriesLoading(false));
-  }, [language]);
+  }, [i18n.language]);
 
   useEffect(() => {
     setCityInfo(null);
 
     if (params.city) {
-      fetchCitySeo(params.city, language)
+      fetchCitySeo(params.city, i18n.language)
         .then((res) => {
           setCars(res.cars);
           setCityInfo(res.citi);
@@ -52,14 +50,8 @@ export default function Rent() {
         .catch((err) => console.dir(err))
         .finally(() => setCarsLoading(false));
     }
-  }, [params, language]);
+  }, [params, i18n.language]);
 
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
   const Sorters = {
     priceAsc: t('За зростанням ціни'),
     priceDesc: t('За спаданням ціни'),
