@@ -106,7 +106,9 @@ export default function Navbar() {
         setCurrentNavTheme(navTheme.default);
         break;
     }
+  }, [location.pathname]);
 
+  useEffect(() => {
     return () => {
       $('#mainNavbar').collapse('hide');
       $([document.documentElement, document.body]).animate(

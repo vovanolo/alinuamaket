@@ -1,5 +1,23 @@
-import { lazy } from 'react';
 import Home from './pages/Home';
+import Reserv from './pages/Reserv';
+import RentWithDriver from './pages/RentWithDriver';
+import Rent from './pages/Rent';
+import Assistance from './pages/Assistance';
+import Contacts from './pages/Contacts';
+import Faq from './pages/Faq';
+import AllNews from './pages/AllNews';
+import News from './pages/News';
+import AllAdditionalOptions from './pages/AllAdditionalOptions';
+import AdditionalOptions from './pages/AdditionalOptions';
+import Summary from './pages/Summary';
+import CarSale from './pages/CarSale';
+import AboutUs from './pages/AboutUs';
+import LoyaltyProgram from './pages/LoyaltyProgram';
+import RentConditions from './pages/RentConditions';
+import ConfidentialPolicy from './pages/ConfidentialPolicy';
+import TransferInfo from './pages/TransferInfo';
+import NotFound from './pages/NotFound';
+
 import urls from './urls';
 
 const routes = [
@@ -11,140 +29,92 @@ const routes = [
   {
     path: urls.reserv + '/:slug',
     exact: true,
-    component: lazy(() =>
-      import('./pages/Reserv' /* webpackChunkName: 'ReservPage' */)
-    ),
+    component: Reserv,
   },
   {
     path: urls.rentWithDriver,
     exact: true,
-    component: lazy(() =>
-      import(
-        './pages/RentWithDriver' /* webpackChunkName: 'RentWithDriverPage' */
-      )
-    ),
+    component: RentWithDriver,
   },
   {
     path: urls.rent + '/:city',
     exact: true,
-    component: lazy(() =>
-      import('./pages/Rent' /* webpackChunkName: 'RentDriverPage' */)
-    ),
+    component: Rent,
   },
   {
     path: urls.assistance,
     exact: true,
-    component: lazy(() =>
-      import('./pages/Assistance' /* webpackChunkName: 'AssistancePage' */)
-    ),
+    component: Assistance,
   },
   {
     path: urls.contacts,
     exact: true,
-    component: lazy(() =>
-      import('./pages/Contacts' /* webpackChunkName: 'ContactsPage' */)
-    ),
+    component: Contacts,
   },
   {
     path: urls.faq,
     exact: true,
-    component: lazy(() =>
-      import('./pages/Faq' /* webpackChunkName: 'FaqPage' */)
-    ),
+    component: Faq,
   },
   {
     path: urls.news,
     exact: true,
-    component: lazy(() =>
-      import('./pages/AllNews' /* webpackChunkName: 'AllNewsPage' */)
-    ),
+    component: AllNews,
   },
   {
     path: urls.news + '/:slug',
     exact: true,
-    component: lazy(() =>
-      import('./pages/News' /* webpackChunkName: 'NewsPage' */)
-    ),
+    component: News,
   },
   {
     path: urls.additionalOptions,
     exact: true,
-    component: lazy(() =>
-      import(
-        './pages/AllAdditionalOptions' /* webpackChunkName: 'AllAdditionalOptionsPage' */
-      )
-    ),
+    component: AllAdditionalOptions,
   },
   {
     path: urls.additionalOptions + '/:slug',
     exact: true,
-    component: lazy(() =>
-      import(
-        './pages/AdditionalOptions' /* webpackChunkName: 'AdditionalOptionsPage' */
-      )
-    ),
+    component: AdditionalOptions,
   },
   {
     path: urls.summary,
     exact: true,
-    component: lazy(() =>
-      import('./pages/Summary' /* webpackChunkName: 'SummaryPage' */)
-    ),
+    component: Summary,
   },
   {
     path: urls.carSale,
     exact: true,
-    component: lazy(() =>
-      import('./pages/CarSale' /* webpackChunkName: 'CarSalePage' */)
-    ),
+    component: CarSale,
   },
   {
     path: urls.aboutUs,
     exact: true,
-    component: lazy(() =>
-      import('./pages/AboutUs' /* webpackChunkName: 'AboutUsPage' */)
-    ),
+    component: AboutUs,
   },
   {
     path: urls.loyaltyProgram,
     exact: true,
-    component: lazy(() =>
-      import(
-        './pages/LoyaltyProgram' /* webpackChunkName: 'LoyaltyProgramPage' */
-      )
-    ),
+    component: LoyaltyProgram,
   },
   {
     path: urls.rentConditions,
     exact: true,
-    component: lazy(() =>
-      import(
-        './pages/RentConditions' /* webpackChunkName: 'RentConditionsPage' */
-      )
-    ),
+    component: RentConditions,
   },
   {
     path: urls.confidentialPolicy,
     exact: true,
-    component: lazy(() =>
-      import(
-        './pages/ConfidentialPolicy' /* webpackChunkName: 'ConfidentialPolicyPage' */
-      )
-    ),
+    component: ConfidentialPolicy,
   },
   {
     path: urls.transferInfo + '/:slug',
     exact: true,
-    component: lazy(() =>
-      import('./pages/TransferInfo' /* webpackChunkName: 'TransferInfoPage' */)
-    ),
+    component: TransferInfo,
   },
   {
     path: '*',
     exact: false,
-    component: lazy(() =>
-      import('./pages/NotFound' /* webpackChunkName: 'NotFoundPage' */)
-    ),
+    component: NotFound,
   },
 ];
 

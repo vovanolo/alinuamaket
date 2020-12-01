@@ -8,7 +8,8 @@ export default function LocalizedLink({ to, children, ...props }) {
 
   let url = null;
 
-  const formatUrl = (url) => `/${i18n.language}${url}`;
+  const formatUrl = (url) =>
+    url === '/' ? `/${i18n.language}` : `/${i18n.language}${url}`;
 
   if (typeof to === 'object') {
     url = {

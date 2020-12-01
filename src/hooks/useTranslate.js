@@ -25,7 +25,9 @@ export function useTranslate() {
   };
 
   const getLocalizedUrl = (url) => {
-    return `/${localStorage.getItem('lang') || 'ua'}${url}`;
+    const lang = localStorage.getItem('lang') || 'ua';
+
+    return url === '/' ? `/${lang}` : `/${lang}${url}`;
   };
 
   return {
