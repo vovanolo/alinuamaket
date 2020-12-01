@@ -7,6 +7,8 @@ import SeoText from '../sections/SeoText';
 import Partners from '../sections/Partners';
 
 import '../styles/home-media.css';
+import '../styles/rent_with_driver.css';
+
 import '../styles/switch.css';
 
 export default function Home() {

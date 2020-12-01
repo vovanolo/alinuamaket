@@ -1,14 +1,12 @@
 import { lazy } from 'react';
-
+import Home from './pages/Home';
 import urls from './urls';
 
 const routes = [
   {
     path: urls.home,
     exact: true,
-    component: lazy(() =>
-      import('./pages/Home' /* webpackChunkName: 'HomePage' */)
-    ),
+    component: Home,
   },
   {
     path: urls.reserv + '/:slug',
