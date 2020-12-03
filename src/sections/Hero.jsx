@@ -216,7 +216,11 @@ export default function Hero() {
                           <input
                             name="receiveTime"
                             type="time"
-                            min={initialTimeFormatted}
+                            min={
+                              formik.values.receiveDate === initialDateFormatted
+                                ? initialTimeFormatted
+                                : '00:00'
+                            }
                             className="switch__input"
                             onChange={formik.handleChange}
                             value={formik.values.receiveTime}
@@ -235,7 +239,7 @@ export default function Hero() {
                           <input
                             name="returnDate"
                             type="date"
-                            min={initialDateFormatted}
+                            min={formik.values.receiveDate}
                             className="switch__input"
                             onChange={formik.handleChange}
                             value={formik.values.returnDate}
@@ -243,6 +247,11 @@ export default function Hero() {
                           <input
                             name="returnTime"
                             type="time"
+                            min={
+                              formik.values.returnDate === initialDateFormatted
+                                ? initialTimeFormatted
+                                : '00:00'
+                            }
                             className="switch__input"
                             onChange={formik.handleChange}
                             value={formik.values.returnTime}

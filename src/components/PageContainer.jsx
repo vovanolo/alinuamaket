@@ -28,19 +28,27 @@ export default function PageContainer({ component: Component }) {
       {seo && (
         <Helmet>
           {languages.length > 0 &&
-            languages.map((lang) => (
-              <link
-                key={lang}
-                rel="alternate"
-                hrefLang={lang}
-                href={`https://alin.ua${pathname.replace(i18n.language, lang)}`}
-              />
-            ))}
+            languages.map((lang) => {
+              if (lang !== (localStorage.getItem('lang') || 'ua')) {
+                return (
+                  <link
+                    key={lang}
+                    rel="alternate"
+                    hrefLang={lang}
+                    href={`https://alin.ua${pathname.replace(
+                      i18n.language,
+                      lang
+                    )}`}
+                  />
+                );
+              }
+            })}
           <title>Alin - {seo.page_title}</title>
           <meta name="title" content={seo.meta_title} />
           <meta name="description" content={seo.meta_description} />
           <meta name="keyword" content={seo.meta_keywords} />
-          <meta name="canonical" content={seo.canonical} />
+          {/* <meta name="canonical" content={seo.canonical} /> */}
+          <link rel="canonical" href={seo.canonical} />
         </Helmet>
       )}
 

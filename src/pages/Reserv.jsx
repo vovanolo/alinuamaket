@@ -107,8 +107,8 @@ export default function Reserv() {
     },
     {
       id: 7,
-      price: 5,
-      displayPrice: 5,
+      price: 3,
+      displayPrice: 3,
       type: ExtrasType.perDay,
       value: t('Wi-Fi роутер'),
     },
@@ -360,8 +360,10 @@ export default function Reserv() {
     };
 
     if (deposit == 0) {
+      delete requestData.fuelDeposit;
       requestData.deposit = Number(selectedCar.deposit);
     } else {
+      delete requestData.deposit;
       requestData.fuelDeposit = Number(selectedCar.fuel_deposit);
     }
     console.log(requestData);
@@ -470,7 +472,11 @@ export default function Reserv() {
                         <input
                           name="receiveTime"
                           type="time"
-                          min={initialTimeFormatted}
+                          min={
+                            formik.values.receiveDate === initialDateFormatted
+                              ? initialTimeFormatted
+                              : '00:00'
+                          }
                           className="switch__input"
                           onChange={formik.handleChange}
                           value={formik.values.receiveTime}
@@ -494,7 +500,7 @@ export default function Reserv() {
                         <input
                           name="returnDate"
                           type="date"
-                          min={initialDateFormatted}
+                          min={formik.values.receiveDate}
                           className="switch__input"
                           onChange={formik.handleChange}
                           value={formik.values.returnDate}
@@ -507,6 +513,11 @@ export default function Reserv() {
                         <input
                           name="returnTime"
                           type="time"
+                          min={
+                            formik.values.returnDate === initialDateFormatted
+                              ? initialTimeFormatted
+                              : '00:00'
+                          }
                           className="switch__input"
                           onChange={formik.handleChange}
                           value={formik.values.returnTime}

@@ -83,7 +83,7 @@ export default function Footer() {
                     </p>
                   </li>
                   <li className="footer__menu-item">
-                    <Link to={urls.rent} className="text_black">
+                    <Link to={`${urls.rent}/lviv`} className="text_black">
                       {t('Прокат')}
                     </Link>
                   </li>
@@ -146,16 +146,20 @@ export default function Footer() {
                     <p className="text_grey">{t('Контакти')}</p>
                   </li>
                   <li className="footer__menu-item">
-                    <img src={map} alt="" />
-                    <span className="ml-2">{t('вул. Любінська 196')}</span>
-                  </li>
-                  <li className="footer__menu-item">
                     <img src={darkmail} alt="" />
-                    <span className="ml-2">alin.lviv@gmail.com</span>
+                    <span className="ml-2">lviv@alin.ua</span>
                   </li>
                   <li className="footer__menu-item">
                     <img src={phone} alt="" />
-                    <span className="ml-2">+38 098 777 16 00</span>
+                    <a className="text_black" href="tel:+38 098 777 16 00">
+                      <span className="ml-2">+38 098 777 16 00</span>
+                    </a>
+                  </li>
+                  <li className="footer__menu-item">
+                    <img src={phone} alt="" />
+                    <a className="text_black" href="tel:+38 098 777 15 00">
+                      <span className="ml-2">+38 098 777 15 00</span>
+                    </a>
                   </li>
                 </ul>
               </div>

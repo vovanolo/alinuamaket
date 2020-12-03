@@ -8,6 +8,18 @@ iframe {
   padding: 25px 58px 38px 58px;
 }
 
+.contact-city_btn {
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  margin: 2px;
+  /* padding: 2px; */
+}
+.contact-city_btn_active {
+  border: 2px solid var(--color-red);
+  margin: 0;
+}
+
 @media (max-width: 767px) {
   .contacts-image_disapear {
     display: none;

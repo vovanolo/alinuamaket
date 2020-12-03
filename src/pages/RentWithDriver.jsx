@@ -223,7 +223,11 @@ export default function RentWithDriver() {
                                   <input
                                     name="time"
                                     type="time"
-                                    min={initialTimeFormatted}
+                                    min={
+                                      props.values.date === initialDateFormatted
+                                        ? initialTimeFormatted
+                                        : '00:00'
+                                    }
                                     className="transf_time_input rent_with_driver__input"
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
@@ -394,6 +398,7 @@ export default function RentWithDriver() {
                     <div key={slug} className="row mb-5 mt-5">
                       <div className="col-md-6">
                         <img
+                          style={{ maxHeight: '400px' }}
                           className="img img-responsive"
                           src={featured_images[0].path}
                           alt={title}
@@ -434,6 +439,7 @@ export default function RentWithDriver() {
                       </div>
                       <div className="col-md-6 order-md-2 order-1">
                         <img
+                          style={{ maxHeight: '400px' }}
                           className="img img-responsive"
                           src={featured_images[0].path}
                           alt={title}
