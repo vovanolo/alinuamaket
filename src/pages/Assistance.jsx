@@ -64,10 +64,10 @@ export default function Assistance() {
 
   return (
     <div className="assistance">
-      <Helmet>
+      {/* <Helmet>
         <title>Assitance</title>
         <meta name="description" content="Alin assistance" />
-      </Helmet>
+      </Helmet> */}
 
       <div className="bg_absolute">
         <div className="container">
