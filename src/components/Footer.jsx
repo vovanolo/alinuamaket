@@ -181,7 +181,7 @@ export default function Footer() {
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href="https://instagram.com/alin_services_for_you?igshid=12br995xgk9tr"
+                  href="https://instagram.com/alin_rent_a_car"
                 >
                   <img width="21" height="21" src={instagram} alt="Instagram" />
                 </a>

@@ -18,7 +18,7 @@ export default function AllAdditionalOptions() {
 
     fetchAdditionalOptions(i18n.language)
       .then((res) => {
-        setNews(res);
+        setNews(res.reverse());
       })
       .catch((err) => console.dir(err))
       .then(() => setNewsLoading(false));
@@ -29,9 +29,9 @@ export default function AllAdditionalOptions() {
       <div className="container mb-5">
         <div className="row">
           <div className="col">
-            <h2 className="news-title offset-dis_able">
+            <h1 className="news-title offset-dis_able">
               {t('Додаткові опції')}
-            </h2>
+            </h1>
           </div>
         </div>
 

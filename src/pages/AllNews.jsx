@@ -19,7 +19,7 @@ export default function AllNews() {
 
     fetchNewsData(i18n.language)
       .then((res) => {
-        setNews(res);
+        setNews(res.reverse());
       })
       .catch((err) => console.dir(err))
       .finally(() => setNewsLoading(false));
@@ -30,7 +30,7 @@ export default function AllNews() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h2 className="news-title offset-dis_able">{t('Новини')}</h2>
+            <h1 className="news-title offset-dis_able">{t('Новини')}</h1>
           </div>
         </div>
 

@@ -27,7 +27,7 @@ export default function AdditionalOptions() {
     setServicesLoading(true);
 
     fetchAdditionalOptions(i18n.language)
-      .then((res) => setAdditionalInfo(res))
+      .then((res) => setAdditionalInfo(res.reverse()))
       .catch((err) => console.dir(err))
       .finally(() => setServicesLoading(false));
   }, [i18n.language]);

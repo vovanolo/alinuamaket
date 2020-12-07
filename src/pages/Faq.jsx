@@ -49,7 +49,7 @@ export default function Faq() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h2>FAQ</h2>
+            <h1>FAQ</h1>
           </div>
         </div>
         {isLoading && (

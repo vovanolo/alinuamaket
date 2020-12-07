@@ -86,9 +86,9 @@ export default function LoyaltyProgram() {
           <div className="col-lg-6 offset-lg-6 col">
             <div className="row">
               <div className="col">
-                <h2 className="text_black loyalty__title">
+                <h1 className="text_black loyalty__title offset-dis_able">
                   {t('Програма лояльності')}
-                </h2>
+                </h1>
               </div>
             </div>
 

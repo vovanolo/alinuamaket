@@ -43,7 +43,7 @@ export default function PageContainer({ component: Component }) {
                 );
               }
             })}
-          <title>Alin - {seo.page_title}</title>
+          <title>{seo.title}</title>
           <meta name="title" content={seo.meta_title} />
           <meta name="description" content={seo.meta_description} />
           <meta name="keyword" content={seo.meta_keywords} />

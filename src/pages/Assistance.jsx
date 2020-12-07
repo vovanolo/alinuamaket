@@ -74,7 +74,7 @@ export default function Assistance() {
           <div className="row">
             <div className="col-lg-8 offset-lg-4">
               <div className="head_text">
-                <h2 className="mb-3">{t('Послуга «Alin Assistance»')}</h2>
+                <h1 className="mb-3">{t('Послуга «Alin Assistance»')}</h1>
                 <div>
                   <p>
                     {t(

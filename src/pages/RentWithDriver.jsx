@@ -98,9 +98,9 @@ export default function RentWithDriver() {
           <div className="container">
             <div className="row">
               <div className="col-lg-5 col-12">
-                <h2 className="text-white text-md-left text-lg-left text-center mb-5">
+                <h1 className="text-white text-md-left text-lg-left text-center mb-5">
                   {t('Оренда машини з водієм')}
-                </h2>
+                </h1>
 
                 {loyaltyCardsData.map(
                   ({ icon, iconAlt, description }, index) => (
@@ -405,7 +405,7 @@ export default function RentWithDriver() {
                         />
                       </div>
                       <div className="col-md-6">
-                        <h3 className="mb-1">{title}</h3>
+                        <h2 className="mb-1">{title}</h2>
                         <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
                         <div className="row mt-3">
                           <div className="col-lg-6">
@@ -424,7 +424,7 @@ export default function RentWithDriver() {
                   return (
                     <div key={slug} className="row mb-5 mt-5">
                       <div className="col-md-6 order-md-1 order-2">
-                        <h3 className="mb-1">{title}</h3>
+                        <h2 className="mb-1">{title}</h2>
                         <p dangerouslySetInnerHTML={{ __html: excerpt }}></p>
                         <div className="row mt-3">
                           <div className="col-lg-6">

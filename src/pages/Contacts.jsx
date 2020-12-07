@@ -96,7 +96,7 @@ export default function Contacts() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h2>{t('Контакти')}</h2>
+            <h1>{t('Контакти')}</h1>
           </div>
         </div>
         <div className="row mt-5">

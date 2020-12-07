@@ -134,7 +134,7 @@ export default function Rent() {
                 data-toggle="collapse"
                 data-target="#rentFilterCollapse"
               >
-                Filter By...
+                {t('Клас авто')}
               </button>
               <div
                 className="collapse collapse rent__filter-container"
@@ -226,7 +226,7 @@ export default function Rent() {
           </div>
           {cityInfo && (
             <div>
-              <h3 className="text-center mt-4">{cityInfo.title}</h3>
+              <h1 className="text-center mt-4">{cityInfo.title}</h1>
               <div
                 className="mt-3 mb-5"
                 dangerouslySetInnerHTML={{ __html: cityInfo.seo_text }}

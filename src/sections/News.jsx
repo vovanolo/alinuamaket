@@ -24,7 +24,7 @@ export default function News() {
     fetchNewsData(i18n.language)
       .then((res) => {
         if (mounted) {
-          setNews(res);
+          setNews(res.reverse().slice(0, 3));
         }
       })
       .catch((err) => {

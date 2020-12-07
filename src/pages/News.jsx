@@ -25,7 +25,7 @@ export default function News() {
     setNewsLoading(true);
 
     fetchNewsData(i18n.language)
-      .then((res) => setNews(res))
+      .then((res) => setNews(res.reverse()))
       .catch((err) => console.dir(err))
       .finally(() => setNewsLoading(false));
   }, [i18n.language]);
