@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-
+import TagManager from 'react-gtm-module';
 import routes from './routes';
 
 import Navbar from './components/Navbar';
@@ -9,13 +9,19 @@ import PageContainer from './components/PageContainer';
 
 import { FormContextProvider } from './components/ContextProvider';
 
+const tagManagerArgs = {
+  gtmId: 'GTM-NWSZJLP',
+};
+
+TagManager.initialize(tagManagerArgs);
+
 export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <FormContextProvider>
         <Switch>
-          <Route exact path="/" sta>
+          <Route exact path="/">
             <Redirect to={`/${localStorage.getItem('lang') || 'ua'}`} />
           </Route>
 
