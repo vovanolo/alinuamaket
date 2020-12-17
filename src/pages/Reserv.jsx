@@ -833,7 +833,7 @@ export default function Reserv() {
                     />
                   </label>
                   <Link
-                    to={'/rent_conditions'}
+                    to={'/rent-conditions'}
                     target="__blank"
                     className="reserv__agreement-text"
                   >

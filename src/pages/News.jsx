@@ -25,7 +25,7 @@ export default function News() {
     setNewsLoading(true);
 
     fetchNewsData(i18n.language)
-      .then((res) => setNews(res.reverse()))
+      .then((res) => setNews(res.reverse().slice(0, 6)))
       .catch((err) => console.dir(err))
       .finally(() => setNewsLoading(false));
   }, [i18n.language]);
@@ -77,7 +77,7 @@ export default function News() {
           )}
           {newsData && (
             <div className="col-xl-9 col-lg-8 col-md-8 mt-lg-0 mt-md-3 mt-3 order-md-12 order-1">
-              <h2 className="mt-3 mb-3 text-center">{newsData.title}</h2>
+              <h1 className="mt-3 mb-3 text-center">{newsData.title}</h1>
               <p
                 className="mt-1"
                 dangerouslySetInnerHTML={{ __html: newsData.content_html }}

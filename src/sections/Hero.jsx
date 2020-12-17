@@ -172,16 +172,16 @@ export default function Hero() {
                   <span className="text_black hero-cta-box__title">
                     {t('Оренда авто в Україні')}
                   </span>
-                  <span className="item-1 text_red hero-cta-box__subtitle">
-                    {t('Львів')}
-                  </span>
-                  <span className="item-2 text_red hero-cta-box__subtitle">
-                    {t('Харків')}
-                  </span>
-                  <span className="item-3 text_red hero-cta-box__subtitle">
-                    {t('Івано-Франківськ')}
-                  </span>
                 </h1>
+                <span className="item-1 text_red hero-cta-box__subtitle">
+                  {t('Львів')}
+                </span>
+                <span className="item-2 text_red hero-cta-box__subtitle">
+                  {t('Харків')}
+                </span>
+                <span className="item-3 text_red hero-cta-box__subtitle">
+                  {t('Івано-Франківськ')}
+                </span>
               </div>
             </div>
           </div>

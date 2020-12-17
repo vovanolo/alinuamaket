@@ -123,9 +123,9 @@ export default function AdditionalOptions() {
                   }}
                 />
               </div> */}
-                <h2 className="mt-3 mb-3 text-center">
+                <h1 className="mt-3 mb-3 text-center">
                   {additionalInfoData.title}
-                </h2>
+                </h1>
                 {/* <p className="mt-1">{newsData.body}</p> */}
                 {/* {newsData.body} */}
                 <p

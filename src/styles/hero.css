@@ -81,6 +81,7 @@
 .item-2,
 .item-3 {
   position: absolute;
+  font-size: 32pt;
 
   animation-duration: 20s;
   animation-timing-function: ease-in-out;
@@ -154,6 +155,6 @@
   .item-1,
   .item-2,
   .item-3 {
-    font-size: 40px;
+    font-size: 26pt;
   }
 }
