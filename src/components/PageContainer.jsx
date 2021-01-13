@@ -27,6 +27,7 @@ export default function PageContainer({ component: Component }) {
     <>
       {seo && (
         <Helmet>
+          <link rel="canonical" href={seo.canonical} />
           {languages.length > 0 &&
             languages.map((lang) => {
               if (lang !== (localStorage.getItem('lang') || 'ua')) {
@@ -48,7 +49,6 @@ export default function PageContainer({ component: Component }) {
           <meta name="description" content={seo.meta_description} />
           <meta name="keyword" content={seo.meta_keywords} />
           {/* <meta name="canonical" content={seo.canonical} /> */}
-          <link rel="canonical" href={seo.canonical} />
         </Helmet>
       )}
 

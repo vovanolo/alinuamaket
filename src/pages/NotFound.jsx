@@ -1,7 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 export default function NotFound() {
   return (
-    <h1 className="navbar-offset">Not Found!</h1>
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+      <h1 className="navbar-offset">Not Found!</h1>
+    </>
   );
 }
