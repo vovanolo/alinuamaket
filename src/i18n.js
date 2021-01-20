@@ -519,6 +519,11 @@ const resources = {
       'Клас авто': 'Class auto',
     },
   },
+  pl: {
+    translation: {
+      'Клас авто': 'class',
+    },
+  },
 };
 
 i18n

@@ -48,3 +48,8 @@
 .car-info__price-list-days {
   background-color: var(--color-grey_light);
 }
+
+.red_sale-color {
+  color: red;
+  font-weight: 600;
+}

@@ -60,16 +60,37 @@ export default function CarCard({
       <div className="row">
         <div className="col">
           <ul className="car-info__price-list">
-            {price.map((priceElem) => (
-              <li key={priceElem.days} className="car-info__price-list-item">
-                <div className="car-info__price-list-days">
-                  {priceElem.days}
-                </div>
-                <div className="car-info__price-list-price">
-                  {priceElem.money}€
-                </div>
-              </li>
-            ))}
+            {price.map((priceElem, index) => {
+              if (index === 2 || index === 3) {
+                return (
+                  <li
+                    key={priceElem.days}
+                    className="car-info__price-list-item"
+                  >
+                    <div className="car-info__price-list-days">
+                      {priceElem.days}
+                    </div>
+                    <div className="car-info__price-list-price red_sale-color">
+                      {priceElem.money}€
+                    </div>
+                  </li>
+                );
+              } else {
+                return (
+                  <li
+                    key={priceElem.days}
+                    className="car-info__price-list-item"
+                  >
+                    <div className="car-info__price-list-days">
+                      {priceElem.days}
+                    </div>
+                    <div className="car-info__price-list-price">
+                      {priceElem.money}€
+                    </div>
+                  </li>
+                );
+              }
+            })}
           </ul>
         </div>
       </div>
