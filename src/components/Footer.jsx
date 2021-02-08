@@ -84,7 +84,9 @@ export default function Footer() {
                   </li>
                   <li className="footer__menu-item">
                     <Link to={`${urls.rent}/lviv`} className="text_black">
-                      {t('Прокат')}
+                      {t('Прокат авто')}
+                      {t(' ')}
+                      {t('Львів')}
                     </Link>
                   </li>
                   <li className="footer__menu-item">

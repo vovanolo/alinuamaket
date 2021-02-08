@@ -348,14 +348,14 @@ export default function Navbar() {
                 </button>
                 <div className="dropdown-menu">
                   {Object.keys(i18n.store.data).map((lang) => (
-                    <button
+                    <a
                       key={lang}
                       type="button"
-                      className="dropdown-item"
+                      className="dropdown-item btn"
                       onClick={() => changeLanguage(lang)}
                     >
                       {lang.toUpperCase()}
-                    </button>
+                    </a>
                   ))}
                 </div>
               </li>

@@ -832,6 +832,7 @@ export default function Reserv() {
                       checked={formik.values.agreeWithTerms}
                     />
                   </label>
+                  <br />
                   <Link
                     to={'/rent-conditions'}
                     target="__blank"

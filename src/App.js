@@ -17,7 +17,6 @@ const tagManagerArgs = {
 TagManager.initialize(tagManagerArgs);
 
 export default function App() {
-  console.log(routes);
   return (
     <BrowserRouter>
       <Navbar />
@@ -25,13 +24,16 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <Redirect to={`/${localStorage.getItem('lang') || 'ua'}`} />
-            {/* <Redirect to="*" /> */}
+            {/* <Redirect handler={NotFound} /> */}
           </Route>
-
+          {/* {routes.map((route) => {
+            if (route.exact === false) {
+              return <Redirect component={NotFound} />;
+            }
+          })} */}
           {/* <Route exact={false} path="*">
             <Redirect component={NotFound} />
           </Route> */}
-
           {routes.map((route) => (
             <Route key={route.path} exact={route.exact} path={route.path}>
               <PageContainer component={route.component} />
