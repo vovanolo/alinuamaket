@@ -16,6 +16,7 @@ const urls = {
   additionalOptions: '/additional-services',
   rentConditions: '/rent-conditions',
   confidentialPolicy: '/confidential-policy',
+  notFound: '/404',
 };
 
 export default urls;

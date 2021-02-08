@@ -19,7 +19,7 @@ export default function News() {
 
   const { pathname } = useLocation();
 
-  const { t, i18n } = useTranslate();
+  const { i18n } = useTranslate();
 
   useEffect(() => {
     setNewsLoading(true);

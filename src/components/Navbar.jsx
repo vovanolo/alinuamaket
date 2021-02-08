@@ -348,6 +348,7 @@ export default function Navbar() {
                 </button>
                 <div className="dropdown-menu">
                   {Object.keys(i18n.store.data).map((lang) => (
+                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
                     <a
                       key={lang}
                       type="button"

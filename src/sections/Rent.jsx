@@ -11,19 +11,7 @@ import carKeyIcon from '../images/rent/car_key.svg';
 import rentStepLine from '../images/rent/rent_step_line.svg';
 
 export default function Rent() {
-  const [language, setLanguage] = useState('ua');
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
+  const { t } = useTranslation();
 
   return (
     <div className="container">

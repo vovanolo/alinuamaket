@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import slide01 from '../images/slider/01.png';
-import slide02 from '../images/slider/02.png';
-import slide03 from '../images/slider/03.png';
 import v from '../images/carsale/2020.svg';
 import x from '../images/carsale/x.svg';
 
 import { fetchCarSale } from '../utils/fetchCarSale';
 import { fetchSeoSale } from '../utils/fetchSeoSale';
+
 let mounted;
 
 export default function CarSale() {
-  const [language, setLanguage] = useState('ua');
   const { t, i18n } = useTranslation();
 
   const [carSale, setCarSale] = useState([]);
@@ -24,10 +21,6 @@ export default function CarSale() {
   useEffect(() => {
     return () => (mounted = false);
   }, []);
-
-  useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
 
   useEffect(() => {
     fetchCarSale(localStorage.getItem('lang'))
@@ -61,12 +54,6 @@ export default function CarSale() {
       });
   }, [i18n.language]);
 
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
   return (
     <div className="navbar-offset">
       <div className="container">

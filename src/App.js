@@ -1,14 +1,17 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import TagManager from 'react-gtm-module';
+
 import routes from './routes';
+import languages from './constants/languages';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PageContainer from './components/PageContainer';
-import NotFound from './pages/NotFound';
 
 import { FormContextProvider } from './components/ContextProvider';
+import LocalizedRouter from './components/localization/LocalizedRouter';
+import LocalizedSwitch from './components/localization/LocalizedSwitch';
 
 const tagManagerArgs = {
   gtmId: 'GTM-NWSZJLP',
@@ -16,32 +19,25 @@ const tagManagerArgs = {
 
 TagManager.initialize(tagManagerArgs);
 
+const defaultLanguage = languages.English;
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <LocalizedRouter
+      RouterComponent={BrowserRouter}
+      defaultLanguage={defaultLanguage}
+    >
       <Navbar />
       <FormContextProvider>
-        <Switch>
-          <Route exact path="/">
-            <Redirect to={`/${localStorage.getItem('lang') || 'ua'}`} />
-            {/* <Redirect handler={NotFound} /> */}
-          </Route>
-          {/* {routes.map((route) => {
-            if (route.exact === false) {
-              return <Redirect component={NotFound} />;
-            }
-          })} */}
-          {/* <Route exact={false} path="*">
-            <Redirect component={NotFound} />
-          </Route> */}
+        <LocalizedSwitch>
           {routes.map((route) => (
             <Route key={route.path} exact={route.exact} path={route.path}>
               <PageContainer component={route.component} />
             </Route>
           ))}
-        </Switch>
+        </LocalizedSwitch>
       </FormContextProvider>
       <Footer />
-    </BrowserRouter>
+    </LocalizedRouter>
   );
 }

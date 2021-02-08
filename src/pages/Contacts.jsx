@@ -31,12 +31,11 @@ const cityMarkers = {
 };
 
 export default function Contacts() {
-  const [language, setLanguage] = useState('ua');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [mapMarker, setMapMarker] = useState(City.LVIV);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const mapRef = useRef();
 
@@ -47,21 +46,10 @@ export default function Contacts() {
   });
 
   useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
-
-  useEffect(() => {
     if (window.innerWidth < 640 && window.innerHeight < 960) {
       setTimeout(scrollToMap, 100);
     }
   }, [mapMarker]);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
 
   function scrollToMap() {
     $([document.documentElement, document.body]).animate(

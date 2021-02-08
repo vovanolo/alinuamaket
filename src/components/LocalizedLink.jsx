@@ -1,28 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-import { useTranslate } from '../hooks/useTranslate';
+function LocalizedLink({ to, children, ...props }) {
+  const { i18n } = useTranslation();
 
-export default function LocalizedLink({ to, children, ...props }) {
-  const { i18n } = useTranslate();
-
-  let url = null;
-
-  const formatUrl = (url) =>
-    url === '/' ? `/${i18n.language}` : `/${i18n.language}${url}`;
-
-  if (typeof to === 'object') {
-    url = {
-      ...to,
-      pathname: formatUrl(to.pathname),
-    };
-  } else {
-    url = formatUrl(to);
-  }
+  const getLocalizedLink = (url) => {
+    return `/${i18n.language}${url}`;
+  };
 
   return (
-    <Link to={url} {...props}>
+    <Link to={getLocalizedLink(to)} {...props}>
       {children}
     </Link>
   );
 }
+
+export default LocalizedLink;

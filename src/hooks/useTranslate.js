@@ -27,7 +27,7 @@ export function useTranslate() {
   const getLocalizedUrl = (url) => {
     const lang = localStorage.getItem('lang') || 'ua';
 
-    return url === '/' ? `/${lang}` : `/${lang}${url}`;
+    return url === '/' ? `/${lang}/` : `/${lang}${url}`;
   };
 
   return {

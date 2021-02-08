@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet';
 
 import '../styles/assistance.css';
 
@@ -14,19 +13,8 @@ import car from '../images/assistance/car.png';
 import last from '../images/assistance/last.png';
 
 export default function Assistance() {
-  const [language, setLanguage] = useState('ua');
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
   const servicesData = [
     {
       icon: first,

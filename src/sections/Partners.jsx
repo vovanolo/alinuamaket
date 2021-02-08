@@ -22,19 +22,7 @@ import arrowLeft from '../images/partners/arrow_left.svg';
 SwiperCore.use([Pagination, Autoplay, Navigation]);
 
 export default function Partners() {
-  const [language, setLanguage] = useState('ua');
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
+  const { t } = useTranslation();
 
   return (
     <div className="container mb-5">

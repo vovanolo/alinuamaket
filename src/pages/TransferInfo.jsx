@@ -5,11 +5,13 @@ import { useParams } from 'react-router-dom';
 export default function TransferInfo() {
   const [transfer, setTransfer] = useState([]);
   const { slug } = useParams();
+
   useEffect(() => {
     fetchTransferInfo(slug, localStorage.getItem('lang'))
       .then((res) => setTransfer(res))
       .catch((err) => console.dir(err));
   }, []);
+
   return (
     <div className="navbar-offset">
       <div className="container">

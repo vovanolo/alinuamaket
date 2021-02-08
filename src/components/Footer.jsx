@@ -14,7 +14,6 @@ import instagram from '../images/instagram-logo.svg';
 import mail from '../images/email-logo.svg';
 import goUp from '../images/go_up.svg';
 
-import map from '../images/map-pin.svg';
 import darkmail from '../images/darkmail.svg';
 import phone from '../images/phone.svg';
 
@@ -26,10 +25,9 @@ import ContactsPopup from './ContactsPopup';
 import Link from './LocalizedLink';
 
 export default function Footer() {
-  const [language, setLanguage] = useState('ua');
   const [userScrolledDown, setUserScrolledDown] = useState(false);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.addEventListener('scroll', scrollEventHandler);
@@ -38,17 +36,6 @@ export default function Footer() {
       window.removeEventListener('scroll', scrollEventHandler);
     };
   }, []);
-
-  useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
 
   function scrollTop() {
     $([document.documentElement, document.body]).animate(

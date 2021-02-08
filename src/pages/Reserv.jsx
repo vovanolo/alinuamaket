@@ -37,7 +37,6 @@ const initialDateFormatted = `${new Date().getFullYear()}-${
 const initialTimeFormatted = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
 export default function Reserv() {
-  const [language, setLanguage] = useState('ua');
   const [price, setPrice] = useState(120);
   const [allPrices, setAllPrices] = useState([]);
   const [allDeposits, setAllDeposits] = useState([]);
@@ -201,12 +200,11 @@ export default function Reserv() {
   }, [allPrices]);
 
   useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
     setCitiesLoading(true);
-    fetchAllCities(language)
+    fetchAllCities(i18n.language)
       .then((res) => setCities(res))
       .finally(() => setCitiesLoading(false));
-  }, [language]);
+  }, [i18n.language]);
 
   useEffect(() => {
     const { receiveDate, returnDate, receiveTime, returnTime } = formik.values;
@@ -286,13 +284,6 @@ export default function Reserv() {
       }
     }
   }, [extras]);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
 
   function handleLocationSwap() {
     return;

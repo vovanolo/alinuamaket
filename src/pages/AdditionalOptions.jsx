@@ -20,7 +20,7 @@ export default function AdditionalOptions() {
 
   const { pathname } = useLocation();
 
-  const { t, i18n } = useTranslate();
+  const { i18n } = useTranslate();
 
   useEffect(() => {
     // setNews(newsMock);

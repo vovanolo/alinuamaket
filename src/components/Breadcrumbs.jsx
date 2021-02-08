@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import '../styles/breadcrumbs2.css';
 
 export default function Breadcrumbs({ active }) {
-  const [language, setLanguage] = useState('ua');
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    changeLanguage(localStorage.getItem('lang') || 'ua');
-  }, [language]);
-
-  function changeLanguage(newLanguage) {
-    const newLang = newLanguage;
-    localStorage.setItem('lang', newLang);
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-  }
+  const { t } = useTranslation();
 
   const itemDefaultClasses = ['breadcrumbs2__item'];
   const itemActiveClasses = [

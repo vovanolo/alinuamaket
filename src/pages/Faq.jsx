@@ -15,7 +15,7 @@ export default function Faq() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { t, i18n } = useTranslate();
+  const { i18n } = useTranslate();
 
   mounted = true;
 
