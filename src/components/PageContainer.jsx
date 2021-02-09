@@ -16,7 +16,6 @@ export default function PageContainer({ component: Component }) {
 
   useEffect(() => {
     let pageKey = pathname.split('/').slice(2).join('-');
-
     pageKey = pageKey.length > 0 ? pageKey : 'home';
 
     fetchSeo(pageKey, i18n.language).then((res) => setSeo(res));

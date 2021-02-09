@@ -6,7 +6,18 @@ function LocalizedLink({ to, children, ...props }) {
   const { i18n } = useTranslation();
 
   const getLocalizedLink = (url) => {
-    return `/${i18n.language}${url}`;
+    switch (typeof url) {
+      case 'string':
+        return `/${i18n.language}${url}`;
+      case 'object':
+        return {
+          ...url,
+          pathname: `/${i18n.language}${url.pathname}`,
+        };
+
+      default:
+        break;
+    }
   };
 
   return (
