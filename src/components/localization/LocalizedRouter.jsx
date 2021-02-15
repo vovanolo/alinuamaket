@@ -5,8 +5,9 @@ import { useTranslation } from 'react-i18next';
 import urls from '../../urls';
 
 const LocalizedRouter = ({ RouterComponent, defaultLanguage, children }) => {
-  const { i18n } = useTranslation();
   const [languageLoading, setLanguageLoading] = useState(true);
+
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const newLang = localStorage.getItem('lang') || defaultLanguage;
@@ -24,9 +25,13 @@ const LocalizedRouter = ({ RouterComponent, defaultLanguage, children }) => {
 
             const { pathname } = location;
 
+            const validLanguage = i18n.languages.filter((lang) =>
+              pathname.includes(`/${lang}/`)
+            );
+
             if (pathname === '/') {
               return <Redirect to={`/${lang}${urls.home}`} />;
-            } else if (!pathname.includes(`/${lang}/`)) {
+            } else if (!validLanguage) {
               return <Redirect to={`/${lang}${urls.notFound}`} />;
             }
 

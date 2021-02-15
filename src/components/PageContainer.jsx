@@ -11,7 +11,6 @@ export default function PageContainer({ component: Component }) {
   const [seo, setSeo] = useState(null);
 
   const { pathname } = useLocation();
-
   const { i18n } = useTranslate();
 
   useEffect(() => {
@@ -21,14 +20,13 @@ export default function PageContainer({ component: Component }) {
     fetchSeo(pageKey, i18n.language).then((res) => setSeo(res));
   }, [pathname, i18n.language]);
 
-  const currentLanguage = localStorage.getItem('lang') || 'ua';
   return (
     <>
       {seo && (
         <Helmet>
           <link rel="canonical" href={seo.canonical} />
           {Object.values(languages).map((lang) => {
-            if (lang === currentLanguage) {
+            if (lang === i18n.language) {
               return null;
             }
 
